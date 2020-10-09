@@ -62,13 +62,6 @@
     <Reference Include="System.Xml">
       <Private>True</Private>
     </Reference>
-    <Reference Include="VNC.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8e85d2f854dfd286, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Common\VNC.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="VNC.XamlHelper">
-      <HintPath>..\Common\VNC.XamlHelper.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
@@ -307,6 +300,16 @@
     <PackageReference Include="System.Xml.ReaderWriter">
       <Version>4.3.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VNC.Logging\VNC.Logging.csproj">
+      <Project>{0a14cb8d-94e2-4bd4-bab3-1dc242d49f03}</Project>
+      <Name>VNC.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VNC.XamlHelper\VNC.XamlHelper.csproj">
+      <Project>{d7a74541-04c0-4172-8f17-c30c06290274}</Project>
+      <Name>VNC.XamlHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

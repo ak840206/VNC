@@ -1,4 +1,6 @@
 ﻿
+using System.Data.Entity;
+
 namespace VNC.AZDOHelper.Interfaces
 {
     public interface IDatabaseService
@@ -6,5 +8,5 @@ namespace VNC.AZDOHelper.Interfaces
         IDbSet<>  { get; set; }
 
     void Save();
-}
+    }
 }
