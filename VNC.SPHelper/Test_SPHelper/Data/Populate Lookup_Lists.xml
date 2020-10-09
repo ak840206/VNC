@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" xWebUri="http://vncsp2010" >
+	
+	<DeleteListItems>
+		<List Title="Lookup_Fruit" DeleteAllItems="false">
+			<ListItem Title="Cherry" />
+		</List>
+		<List Title="Lookup_Application" DeleteAllItems="true" />
+	</DeleteListItems>
+
+	<AddListItems>
+		<List Title="Lookup_ArtifactType" >
+			<ListItem>
+				<Field Name="Title"       Value="Capability" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Guideline" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Job Aid" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Roadmap" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Reference" />
+			</ListItem>
+		</List>
+	</AddListItems>
+
+</SharePointProvisioning>
+

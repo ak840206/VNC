@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	FA Create SiteColumns and ContentTypes.xml
+	
+	This file is used to create the common SiteColumns and ContentTypes
+	used in a FA (crhodes) style SharePoint Site Collection
+	
+	NB. It is not possible to specify the Id of a list.  
+		The SiteColumns(Fields) need to specify the Id of a lookup list.
+		It would be useful to have a query performed to get the List Id so
+		this file could only specify the ListName
+		
+		Current:
+		
+		<Field DisplayName="FA Application Tier" Name="FAApplicationTier" 
+			   Description="Application Tier form Lookup list" Group="First American"
+			   Type="Number" ID="{0E8EB4B1-6319-41DE-8C62-0E70EB944694}"
+			   List="bc31ab3b-4b96-4353-bd11-dccb6fb9a1c6" ShowField="Title" />
+			   
+		Desired:
+		
+		If List="" then use ListName="<list name>" to lookup list and populate List="<list ID>"
+		
+		<Field DisplayName="FA Application Tier" Name="FAApplicationTier" 
+			   Description="Application Tier form Lookup list" Group="First American"
+			   Type="Number" ID="{0E8EB4B1-6319-41DE-8C62-0E70EB944694}"
+			   List="" ListName="Lookup_FA_DRTier" ShowField="Title" />			   
+
+	-->
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" >
+	<DeleteSiteColumns>
+		<!--<Field Name="FA Application Name" />-->
+		<!--<Field Name="FA Application Tier" />-->
+		<!--<Field Name="FA Document Type" />-->
+		<!--<Field Name="FA Page Type" />-->
+	</DeleteSiteColumns>
+	
+	<!--
+		DisplayName = Visible Name
+		Name = Internal Name
+		AddFieldOptions enumeration (bit field)
+			DefaultValue=0	
+			AddToDefaultContentType=1
+			AddToNoContentType=2
+			AddToAllContentTypes=4
+			AddFieldInternalNameHint=8
+			AddFieldToDefaultView=16
+			AddFieldCheckDisplayName=32
+	-->
+	
+	<AddSiteColumns>
+		<!--<Field DisplayName="FA Application Name" Name="FAApplicationName" 
+			   Description="Application Name from Lookup list" 
+			   Group="First American"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{BF55A931-E423-4458-95DF-56ACA9614C55}"
+			   ListName="Lookup_FA_ApplicationName" ShowField="Title" />-->
+		
+		<!--<Field DisplayName="FA Application Tier" Name="FAApplicationTier" 
+			   Description="Application Tier form Lookup list" 
+			   Group="First American"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{0E8EB4B1-6319-41DE-8C62-0E70EB944694}"
+			   ListName="Lookup_FA_DRTier" ShowField="Title" />-->
+
+		<Field DisplayName="FA Customer Name" Name="FACustomerName" 
+			   Description="Customer Name from Lookup list" 
+			   Group="First American"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{CC524734-60CE-485C-98B9-16DC0875187F}"
+			   ListName="Lookup_FA_CustomerName" ShowField="Title" />
+		
+		<!--<Field DisplayName="FA Document Type" Name="FADocumentType" 
+				Description="FA Document Type Description" 
+				Group="First American"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{5954790F-EBBC-4B5F-9CC2-0E41B7FB3B14}"
+			   ListName="Lookup_FA_ArtifactType" ShowField="Title" />-->
+		
+		<!--<Field DisplayName="FA Page Type" Name="FAPageType" 
+			   Description="FA Page Type Description" 
+			   Group="First American"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{0FF49A76-45BB-4477-A985-1F1FF38594E5}"
+			   ListName="Lookup_FA_ArtifactType" ShowField="Title" />-->
+
+		<!--<Field DisplayName="FA Capability Description" Name="FACapabilityDescription" 
+			   Description="FA Capability Description" 
+			   Group="First American"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{CE2A97C2-750D-4E75-B255-18684C08B51D}" />-->
+		
+		<!--<Field DisplayName="FA Capability Research" Name="FACapabilityResearch" 
+			   Description="FA Capability Research items" 
+			   Group="First American"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8" 
+			   ID="{DCDC33B6-DE40-4B29-90BC-BEE92CEDC417}" />-->
+
+		<!--<Field DisplayName="FA Capability Current" Name="FACapabilityCurrent"
+			   Description="FA Capability Current items"
+			   Group="First American"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{E3B2BA52-4D04-4126-8F90-EABDB26A0857}" />-->
+
+		<!--<Field DisplayName="FA Capability Contain" Name="FACapabilityContain"
+			   Description="FA Capability Contain items"
+			   Group="First American"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{2045A3C8-EB2D-4E6F-8051-AF4605292D7E}" />-->
+
+		<!--<Field DisplayName="FA Capability Retire" Name="FACapabilityRetire"
+			   Description="FA Capability Retire items"
+			   Group="First American"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{644E147F-6AE5-4149-B715-7DBDBA987804}" />-->		
+	</AddSiteColumns>
+
+	<UpdateSiteColumns>
+		<!--<Field DisplayName="FA Capability Description" Name="FACapabilityDescription"
+		   Description="FA Capability Description"
+		   Group="First American"
+		   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml"
+		   AddFieldOptions="8"
+		   ID="{23373D27-1430-49A2-BC40-DDD1742D9D74}" />-->
+	</UpdateSiteColumns>
+	
+<!-- 
+<Field 
+Type="LookupMulti" 
+DisplayName="FA Document Type" 
+Required="FALSE" 
+EnforceUniqueValues="FALSE" 
+List="{b1d6a5ff-876b-4761-a05d-210038e31639}" 
+WebId="666b287f-2709-476b-a739-e1de9150fb37" 
+ShowField="Title" 
+Mult="TRUE" 
+Sortable="FALSE" 
+UnlimitedLengthInDocumentLibrary="FALSE" 
+Group="Custom Columns" 
+ID="{54284401-4090-4b4f-ad45-a7d7a2c1b497}" 
+SourceID="{666b287f-2709-476b-a739-e1de9150fb37}" 
+StaticName="FA_x0020_Document_x0020_Type" 
+Name="FA_x0020_Document_x0020_Type" /> -->
+	
+	<DeleteContentTypes>
+		<!--Need to keep these in dependency order.  E.g. AppPage depends on Page-->
+		<!--<ContentType Name="FA Application Page" />
+		<ContentType Name="FA Capability Page" />
+		<ContentType Name="FA Page" />-->
+		<!--<ContentType Name="FA L0 Capability Page" />-->
+		<!--<ContentType Name="FA L1 Activity Page" />-->
+		<!--<ContentType Name="FA L2 Activity Page" />-->
+		<!--<ContentType Name="FA Role Page" />-->
+	</DeleteContentTypes>	
+	
+	<AddContentTypes>
+		<!--This works-->
+		<!--<ContentType Name="FA Page" 
+					 Group="First American" 
+					 ParentContentType="Page" >
+			<Field Name="FAPageType" />
+		</ContentType>-->
+
+		<ContentType Name="FA Application Page"
+			 Group="First American"
+			 ParentContentType="FA Page" >
+			<Field Name="FAApplicationName" />
+		</ContentType>
+
+		<ContentType Name="FA Capability Page"
+					 Group="First American"
+					 ParentContentType="FA Page" >
+			<Field Name="FACapabilityDescription" />
+			<Field Name="FACapabilityRetire" />
+			<Field Name="FACapabilityContain" />			
+			<Field Name="FACapabilityCurrent" />
+			<Field Name="FACapabilityResearch" />
+		</ContentType>
+		
+		<!--This doesn't seem to work.  ContentType is created but Id is ignored.  Inherits from Item-->
+		<!--<ContentType Name="FA Page2"
+					 Group="First American"
+					 Id="0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D332" >
+			<Field Name="FAPageType" />
+		</ContentType>-->
+
+		<!--This doesn't seem to work.  ContentType is created but Id is ignored.  Inherits from Item-->
+		<!--<ContentType Name="CTTest1"
+			 Group="First American"
+			 Id="0x0100BDD5E43587AF469CA722FD068065DF5D" >
+			<Field Name="FAPageType" />
+		</ContentType>-->
+		
+		<!--This works but the specified ID is ignored.  It correctly inherits from "Page"-->
+		<!--<ContentType Name="FA Page1"
+					 Group="First American"
+					 Id="0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D332"
+					 ParentContentType="Page" >
+			<Field Name="FAPageType" />
+		</ContentType>-->
+
+		<!--FA Page
+		0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D332
+		FA Application Page
+		0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D33201
+		FA Capability Page
+		0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D33202-->
+		
+		<!--<ContentType Name="FA Page"
+					 Group="First American"
+					 Id="FA8D276A-93F1-4B0F-8CAC-115185F47019"
+					 ParentContentType="Page" >
+			<Field Name="FAPageType" />
+		</ContentType>
+
+		<ContentType Name="FA Page"
+					 Group="First American"
+					 Id="FA8D276A-93F1-4B0F-8CAC-115185F47019"
+					 ParentContentType="Page" >
+			<Field Name="FAPageType" />
+		</ContentType>-->
+		
+		<!--<ContentType Name="FA L0 Capability Page" Group="First American" Id="7FE38CD0-0A2B-4EA3-9852-6FE9F5821F52" ParentContentType="FA Page" />
+		<ContentType Name="FA L1 Activity Page" Group="First American" Id="313765A5-9EDD-4629-ABC9-5455D9C017EE" ParentContentType="FA Page" />
+		<ContentType Name="FA L2 Activity Page" Group="First American" Id="10D63D61-CB97-4E28-9C9A-33F90C2CC860" ParentContentType="FA Page" />
+		<ContentType Name="FA Role Page" Group="First American" Id="68A9779F-DBAA-4C1A-A6FF-3F424DEEB5B9" ParentContentType="FA Page" />-->
+	</AddContentTypes>
+
+</SharePointProvisioning>

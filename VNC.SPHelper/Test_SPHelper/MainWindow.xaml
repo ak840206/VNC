@@ -1,0 +1,188 @@
+﻿<Window 
+    x:Class="Test_SPHelper.MainWindow"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:User_Controls="clr-namespace:VNC.SP.User_Interface.User_Controls;assembly=VNC.SPHelper" 
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+    Title="MainWindow" Loaded="Window_Loaded" >
+    <Window.Resources>
+        <Style x:Key="GridControlStyle" >
+            <Setter Property="dxg:GridControl.AllowMRUFilterList" Value="True" />
+            <Setter Property="dxg:GridControl.AllowColumnMRUFilterList" Value="True" />
+            <Setter Property="dxg:GridControl.ShowBorder" Value="False" />
+            <!-- Curiously, setting VerticalAlignment to Top casues the Infinite Height error -->
+            <!--<Setter Property="dxg:GridControl.VerticalAlignment" Value="Top" />-->
+            <!-- So try setting a MaxHeight.  This just makes things short or long :) -->
+            <!--<Setter Property="dxg:GridControl.MaxHeight" Value="500" />-->
+            <!--<Setter Property="dxg:GridControl.Height" Value="500" />-->
+        </Style>
+    </Window.Resources>
+
+    <dxlc:LayoutControl Orientation="Vertical">
+        <dxlc:LayoutItem>
+            <User_Controls:wucSPSiteCollection_Picker x:Name="spSiteCollection_Picker"/>
+        </dxlc:LayoutItem>
+        
+        <dxlc:LayoutItem>
+            <dxe:TextEdit x:Name="teSiteCollectionUri" />
+        </dxlc:LayoutItem>
+        
+        <dxlc:LayoutItem>
+            <Button Content="ProvisionSite" Click="btnProvisionSite_Click" />
+        </dxlc:LayoutItem>
+
+        <dxlc:LayoutGroup View="GroupBox" Header="SiteColumn Information" 
+                    VerticalAlignment="Top" 
+                    Orientation="Vertical" 
+                    IsCollapsible="True"  IsCollapsed="True">
+
+            <dxlc:LayoutGroup.ItemStyle>
+                <Style TargetType="dxlc:LayoutItem">
+                    <Setter Property="AddColonToLabel" Value="True" />
+                    <Setter Property="LabelPosition" Value="Top" />
+                </Style>
+            </dxlc:LayoutGroup.ItemStyle>
+
+            <dxlc:LayoutItem>
+                <Button Content="Display SiteColumns" Click="btnDisplaySiteColumns_Click" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Height="300" >
+                <dxg:GridControl 
+                    x:Name="dataGrid_SiteColumns" >
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Title" VisibleIndex="0" />
+                        <dxg:GridColumn FieldName="Group" VisibleIndex="1" />
+                        <dxg:GridColumn FieldName="Id" VisibleIndex="2" />
+                        <dxg:GridColumn FieldName="TypeAsString" VisibleIndex="3" />
+                        <dxg:GridColumn FieldName="Description" VisibleIndex="4"  />
+                        <dxg:GridColumn FieldName="SchemaXml" VisibleIndex="5"  />
+                        <!--<dxg:GridColumn FieldName="AllowContentTypes" VisibleIndex="3" />
+                        <dxg:GridColumn FieldName="Created" VisibleIndex="4" />
+                        <dxg:GridColumn FieldName="Hidden" VisibleIndex="5" />
+                        <dxg:GridColumn FieldName="ParentWebUrl" VisibleIndex="6" />
+                        <dxg:GridColumn FieldName="LastItemDeletedDate" VisibleIndex="7" />
+                        <dxg:GridColumn FieldName="LastItemModifiedDate" VisibleIndex="8" />
+                        <dxg:GridColumn FieldName="ItemCount" VisibleIndex="9" />-->
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </dxlc:LayoutItem>
+
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup View="GroupBox" Header="ContentType Information" 
+                    VerticalAlignment="Top" 
+                    Orientation="Vertical" 
+                    IsCollapsible="True"  IsCollapsed="True">
+
+            <dxlc:LayoutGroup.ItemStyle>
+                <Style TargetType="dxlc:LayoutItem">
+                    <Setter Property="AddColonToLabel" Value="True" />
+                    <Setter Property="LabelPosition" Value="Top" />
+                </Style>
+            </dxlc:LayoutGroup.ItemStyle>
+
+            <dxlc:LayoutItem>
+                <Button Content="Display ContentTypes" Click="btnDisplayContentTypes_Click" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Height="300" >
+                <dxg:GridControl 
+                    x:Name="dataGrid_ContentTypes" >
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Name" VisibleIndex="0" />
+                        <dxg:GridColumn FieldName="Group" VisibleIndex="1" />
+                        <dxg:GridColumn FieldName="Id" VisibleIndex="2" />
+                        <dxg:GridColumn FieldName="Description" VisibleIndex="3"  />
+                        <dxg:GridColumn FieldName="SchemaXml" VisibleIndex="4"  />
+                        <!--<dxg:GridColumn FieldName="AllowContentTypes" VisibleIndex="3" />
+                        <dxg:GridColumn FieldName="Created" VisibleIndex="4" />
+                        <dxg:GridColumn FieldName="Hidden" VisibleIndex="5" />
+                        <dxg:GridColumn FieldName="ParentWebUrl" VisibleIndex="6" />
+                        <dxg:GridColumn FieldName="LastItemDeletedDate" VisibleIndex="7" />
+                        <dxg:GridColumn FieldName="LastItemModifiedDate" VisibleIndex="8" />
+                        <dxg:GridColumn FieldName="ItemCount" VisibleIndex="9" />-->
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </dxlc:LayoutItem>
+
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup View="GroupBox" Header="Library Information" 
+                    VerticalAlignment="Top" 
+                    Orientation="Vertical" 
+                    IsCollapsible="True"  IsCollapsed="True">
+
+            <dxlc:LayoutGroup.ItemStyle>
+                <Style TargetType="dxlc:LayoutItem">
+                    <Setter Property="AddColonToLabel" Value="True" />
+                    <Setter Property="LabelPosition" Value="Top" />
+                </Style>
+            </dxlc:LayoutGroup.ItemStyle>
+
+            <dxlc:LayoutItem>
+                <Button Content="Display Libraries" Click="btnDisplayLibraries_Click" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Height="300" >
+                <dxg:GridControl 
+                    x:Name="dataGrid_Libraries" >
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Title" VisibleIndex="0" />
+                        <dxg:GridColumn FieldName="Id" VisibleIndex="1" />
+                        <dxg:GridColumn FieldName="Description" VisibleIndex="2"  />
+                        <dxg:GridColumn FieldName="AllowContentTypes" VisibleIndex="3" />
+                        <dxg:GridColumn FieldName="Created" VisibleIndex="4" />
+                        <dxg:GridColumn FieldName="Hidden" VisibleIndex="5" />
+                        <dxg:GridColumn FieldName="ParentWebUrl" VisibleIndex="6" />
+                        <dxg:GridColumn FieldName="LastItemDeletedDate" VisibleIndex="7" />
+                        <dxg:GridColumn FieldName="LastItemModifiedDate" VisibleIndex="8" />
+                        <dxg:GridColumn FieldName="ItemCount" VisibleIndex="9" />
+                        <!--<dxg:GridColumn FieldName="SchemaXml" VisibleIndex="10"  />-->                        
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </dxlc:LayoutItem>
+
+        </dxlc:LayoutGroup>
+
+        <dxlc:LayoutGroup View="GroupBox" Header="List Information" 
+                    VerticalAlignment="Top" 
+                    Orientation="Vertical" 
+                    IsCollapsible="True"  IsCollapsed="True">
+
+            <dxlc:LayoutGroup.ItemStyle>
+                <Style TargetType="dxlc:LayoutItem">
+                    <Setter Property="AddColonToLabel" Value="True" />
+                    <Setter Property="LabelPosition" Value="Top" />
+                </Style>
+            </dxlc:LayoutGroup.ItemStyle>
+
+            <dxlc:LayoutItem>
+                <Button Content="Display Lists" Click="btnDisplayLists_Click" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Height="300" >
+                <dxg:GridControl 
+                    x:Name="dataGrid_Lists" >
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Title" VisibleIndex="0" />
+                        <dxg:GridColumn FieldName="Id" VisibleIndex="1" />
+                        <dxg:GridColumn FieldName="Description" VisibleIndex="2"  />
+                        <dxg:GridColumn FieldName="AllowContentTypes" VisibleIndex="3" />
+                        <dxg:GridColumn FieldName="Created" VisibleIndex="4" />
+                        <dxg:GridColumn FieldName="Hidden" VisibleIndex="5" />
+                        <dxg:GridColumn FieldName="ParentWebUrl" VisibleIndex="6" />
+                        <dxg:GridColumn FieldName="LastItemDeletedDate" VisibleIndex="7" />
+                        <dxg:GridColumn FieldName="LastItemModifiedDate" VisibleIndex="8" />
+                        <dxg:GridColumn FieldName="ItemCount" VisibleIndex="9" />
+                        <!--<dxg:GridColumn FieldName="SchemaXml" VisibleIndex="10"  />-->
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </dxlc:LayoutItem>
+
+        </dxlc:LayoutGroup>
+
+    </dxlc:LayoutControl>
+</Window>

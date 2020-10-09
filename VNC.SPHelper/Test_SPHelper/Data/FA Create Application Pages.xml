@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	FA Create Application Pages.xml
+	
+	This file is used to create the Application Pages.
+-->
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" >
+		
+	<DeletePages>
+		<!--<Page Name="Page1d"  />-->
+		<!--<Page Name="Page2d" />-->
+	</DeletePages>
+	
+	<AddPages>
+		<!-- Doesn't work unless create in "Site Pages"  file is created if use "Pages" but cannot edit from UI --> 
+		<!--<WikiPage Name="WikiPage1a.aspx" PageLibrary="Site Pages" />
+		<WikiPage Name="WikiPage2a.aspx" PageLibrary="Site Pages" />
+
+		<WebPartPage Name="WepPartPage1a.aspx" WebPartTemplate="WebPartTemplates.spstd1" PageLibrary="Pages" />
+		<WebPartPage Name="WebPartPage2a.aspx"  WebPartTemplate="WebPartTemplates.spstd2" PageLibrary="Pages" />--><!--
+
+		<PublishingPage Name="ArticlePage.aspx" PageLibrary="Pages"
+			LayoutPageName="ArticleLeft.aspx, ArticleLeft" ContentType="Page" />
+		
+		<PublishingPage Name="FAArticlePage.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_PageLayout.aspx, FA Page" ContentType="FA Page" />-->
+
+		<PublishingPage Name="App60.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ApplicationPageLayout.aspx, FA Application" ContentType="FA Application Page" >
+			<ListItem>
+				<Field Name="Title"						Value="App30" />
+				<Field Name="FAPageType" Type="Lookup" Value="Application" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="App61.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_ApplicationPageLayout.aspx, FA Application" ContentType="FA Application Page" >
+			<ListItem>
+				<Field Name="Title"						Value="App31" />
+				<Field Name="FAPageType" Type="Lookup" Value="Application" />
+			</ListItem>
+		</PublishingPage>
+		
+		<!--<PublishingPage Name="ApplicationPage2a.aspx" PageLibrary="Pages" 
+						LayoutPageName="FA_ApplicationLayout.aspx, FA Application" ContentType="FA Application Page" />-->
+	</AddPages>	
+	
+</SharePointProvisioning>

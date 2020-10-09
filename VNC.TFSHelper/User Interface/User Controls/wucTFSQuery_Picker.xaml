@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="VNC.TFS.User_Interface.User_Controls.wucTFSQuery_Picker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="200" >
+    <UserControl.Resources>
+        <DataTemplate x:Key="dataTemplate">
+            <StackPanel>
+                <Label Content="{Binding XPath=@Name}" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <dxlc:LayoutControl
+        Orientation="Vertical" Background="#FFFFFF" Padding="0" >
+
+        <dxlc:LayoutGroup Header="Select Query" 
+                          View="GroupBox" 
+                          Orientation="Horizontal">
+
+            <dxlc:LayoutGroup.DataContext>
+                
+                <XmlDataProvider x:Name="dataProvider" 
+                    XPath="//TFSQueries/Query" 
+                    IsAsynchronous="False"
+                    IsInitialLoadEnabled="True" />
+
+            </dxlc:LayoutGroup.DataContext>
+
+            <dxlc:LayoutItem>
+                <ComboBox HorizontalAlignment="Stretch"
+                      ItemsSource="{Binding}" 
+                      ItemTemplate="{StaticResource dataTemplate}" 
+                      SelectionChanged="ComboBox_SelectionChanged" />
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem HorizontalAlignment="Right" >
+                <Button Click="Reload_Click" 
+                        Content="..." ToolTip="Load New Config File" />
+            </dxlc:LayoutItem>
+
+        </dxlc:LayoutGroup>
+
+    </dxlc:LayoutControl>
+</UserControl>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Microsoft.TeamFoundation.Framework.Client.CatalogNode">
+    <Position X="4.5" Y="2.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.WorkItemTracking.Client.Project">
+    <Position X="7.5" Y="2.75" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.VersionControl.Client.TeamProject">
+    <Position X="10.5" Y="2.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.Server.ProjectInfo">
+    <Position X="1.25" Y="2" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.Client.TfsTeamProjectCollection">
+    <Position X="20.5" Y="7.75" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.Client.TfsConfigurationServer">
+    <Position X="20.5" Y="4.25" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.Client.TfsConnection">
+    <Position X="16.75" Y="0.75" Width="3" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem">
+    <Position X="1.75" Y="5.5" Width="2" />
+    <NestedTypes>
+      <Enum Name="Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem.EditAction" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem.EditActionFlags" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Struct Name="Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem.EditActionInfo" Collapsed="true">
+        <TypeIdentifier />
+      </Struct>
+      <Struct Name="Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem.EditActionSet" Collapsed="true">
+        <TypeIdentifier />
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItemStore">
+    <Position X="13.25" Y="3.75" Width="3" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.VersionControl.Client.VersionControlServer">
+    <Position X="9.25" Y="8" Width="3.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.Client.RegisteredConfigurationServer">
+    <Position X="4.75" Y="9.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.Client.RegisteredProjectCollection">
+    <Position X="4.25" Y="12" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.Client.RegisteredTfsConnections">
+    <Position X="5.5" Y="14.5" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.Client.TeamFoundationTeam">
+    <Position X="18" Y="14" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.TeamFoundation.Framework.Common.CatalogResourceTypes">
+    <Position X="20.75" Y="12" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

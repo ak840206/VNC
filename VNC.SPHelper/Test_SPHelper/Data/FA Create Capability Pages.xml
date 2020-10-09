@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	FA Create Capability Pages.xml
+	
+	This file is used to create the Capability Pages.
+-->
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" >
+		
+	<DeletePages>
+		<!--<Page Name="Page1d"  />
+		<Page Name="Page2d" />-->
+	</DeletePages>
+	
+	<AddPages>
+		<!-- Doesn't work unless create in "Site Pages"  file is created if use "Pages" but cannot edit from UI --> 
+		<!--<WikiPage Name="WikiPage1a.aspx" PageLibrary="Site Pages" />
+		<WikiPage Name="WikiPage2a.aspx" PageLibrary="Site Pages" />
+
+		<WebPartPage Name="WepPartPage1a.aspx" WebPartTemplate="WebPartTemplates.spstd1" PageLibrary="Pages" />
+		<WebPartPage Name="WebPartPage2a.aspx"  WebPartTemplate="WebPartTemplates.spstd2" PageLibrary="Pages" />--><!--
+
+		<PublishingPage Name="ArticlePage.aspx" PageLibrary="Pages"
+			LayoutPageName="ArticleLeft.aspx, ArticleLeft" ContentType="Page" />
+		
+		<PublishingPage Name="FAArticlePage.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_PageLayout.aspx, FA Page" ContentType="FA Page" />-->
+
+		<PublishingPage Name="Accounting Reconciliation Framework.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Accounting Reconciliation Framework" />
+				<Field Name="FACapabilityDescription"	Value="Reconciles values from disparate data sources" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Blackline" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="AOP Framework.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="AOP Framework" />
+				<Field Name="FACapabilityDescription"	Value="Aspected Oriented Programming Framework" />
+				<Field Name="FACapabilityResearch"		Value="PostSharp" />
+				<Field Name="FACapabilityCurrent"		Value="Unity Interception" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="API Service Gateway.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="API Service Gateway" />
+				<Field Name="FACapabilityDescription"	Value="Virtualizes API/Service interfaces" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="SOA Network Director" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="Build Automation.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Build Automation" />
+				<Field Name="FACapabilityDescription"	Value="Build automation of application release packages" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="PowerShell  MSI Packages" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Business Intelligence.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Business Intelligence" />
+				<Field Name="FACapabilityDescription"	Value="Dashboards" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Business Workflow.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Business Workflow" />
+				<Field Name="FACapabilityDescription"	Value="Workflow utilized by the business" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Open Text Business Workflow" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Change Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Change Management" />
+				<Field Name="FACapabilityDescription"	Value="Visibility and control over application changes" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Quest STAT" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Data Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Data Management" />
+				<Field Name="FACapabilityDescription"	Value="" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Essbase Adminstration Services" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Data Modeling.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Data Modeling" />
+				<Field Name="FACapabilityDescription"	Value="Data Modeling" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Data Store (Non-Relational).aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Data Store (Non-Relational)" />
+				<Field Name="FACapabilityDescription"	Value="Non-relational data store" />
+				<Field Name="FACapabilityResearch"		Value="MongoDB" />
+				<Field Name="FACapabilityCurrent"		Value="" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="DataStore (Relational).aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Data Store (Relational)" />
+				<Field Name="FACapabilityDescription"	Value="Relational database " />
+				<Field Name="FACapabilityResearch"		Value="SQL Server 2012  SQL Server 2014" />
+				<Field Name="FACapabilityCurrent"		Value="Oracle 12" />
+				<Field Name="FACapabilityContain"		Value="SQL Server 2008 R2  SQL Server 2008  Oracle 11" />
+				<Field Name="FACapabilityRetire"		Value="SQL Server 2005  Oracle 10" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Deployment Scripting.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Deployment Scripting" />
+				<Field Name="FACapabilityDescription"	Value="Scripting for automated deployments" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="PowerShell" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Deployment Workflow Automation.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Deployment Workflow Automation" />
+				<Field Name="FACapabilityDescription"	Value="Automation workflow for deployments and system administration" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Microsoft System Center Orchestrator" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Document Converson Utility Framework.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Document Converson Utility Framework" />
+				<Field Name="FACapabilityDescription"	Value="Framework to convert documents to pdf or other formats" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Aspose Framework (www.aspose.com)" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Document Generation.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Document Generation" />
+				<Field Name="FACapabilityDescription"	Value="Utilized to generate PDF, TIFF, and other documents" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="PDFGenerator  LEAD Tools" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Document Tracking.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Document Tracking" />
+				<Field Name="FACapabilityDescription"	Value="  Track Location of Documents " />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Green Folders" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="EMS.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="EMS" />
+				<Field Name="FACapabilityDescription"	Value="Integration Enterprise Messaging System" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="TIBCO Enterprise Messaging System" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="ESB.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="ESB" />
+				<Field Name="FACapabilityDescription"	Value="System Integration Enterprise Service Bus" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="TIBCO Business Works   Oracle ESB" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="IDE Tool.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="IDE Tool" />
+				<Field Name="FACapabilityDescription"	Value="Development Suite used to develop applications" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Visual Studio 2013   Eclipse  Net Beans   J-Developer" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="IOC Framework.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="IOC Framework" />
+				<Field Name="FACapabilityDescription"	Value="Inversion of Control Frameworks to perform dependency injection tasks." />
+				<Field Name="FACapabilityResearch"		Value="LightInject" />
+				<Field Name="FACapabilityCurrent"		Value="Unity Block - Microsoft Enterprise Library   Windsor" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Message Broker.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Message Broker" />
+				<Field Name="FACapabilityDescription"	Value="Translates messages from one to another format and manages them" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="TIBCO Messaging Suite" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Message Logging Framework.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Message Logging Framework" />
+				<Field Name="FACapabilityDescription"	Value="Handles messages coming from logging sources." />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Logging Block - Microsoft Enterprise Library  Log4Net   SOA Director Message Analytics" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Message Queue (Cloud).aspx" PageLibrary="Pages"
+				LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Message Queue (Cloud)" />
+				<Field Name="FACapabilityDescription"	Value="Queue framework to store and manage messages" />
+				<Field Name="FACapabilityResearch"		Value="Azure Queue" />
+				<Field Name="FACapabilityCurrent"		Value="" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Message Queue (Non-Cloud).aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Message Queue (non-Cloud)" />
+				<Field Name="FACapabilityDescription"	Value="Queue framework to store and manage messages" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="TIBCO Queue Framework   Microsoft Message Queue (MSMQ)" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Message Router.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Message Router" />
+				<Field Name="FACapabilityDescription"	Value="Framework that routes messages and manages this." />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Tibco Messaging Suite" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Performanceand Load Testing.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Performance and Load Testing" />
+				<Field Name="FACapabilityDescription"	Value="Test performance and load for applications" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Oracle Real Application Testing (RAT)   HP Loadrunner   Microsoft VSTS 2013" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Reporting Management UI Framework.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Reporting Management/UI Framework" />
+				<Field Name="FACapabilityDescription"	Value="Handles reporting managment and UI from data sources." />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="SQL Services Reporting Services (SSIS)   Business Objects Crystal Reports   Microsoft SQL Server 2008 Report Builder 3.0  Oracle BI Publisher" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Rule-Configuration Framework.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Rule/Configuration Framework" />
+				<Field Name="FACapabilityDescription"	Value="Manages business or configuration rules" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="JBOSS  Oracle Business Rule Engine - Insbridge  Biztalk Orchestration Suite  Tibco Orchestration Suite" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Search Engine.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Search Engine" />
+				<Field Name="FACapabilityDescription"	Value="Search engine framework" />
+				<Field Name="FACapabilityResearch"		Value="Solr Based - Fusion/SiLK    Solr Base - Azure Search   Solr Base - ElasticSearch" />
+				<Field Name="FACapabilityCurrent"		Value="" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Service Life Cycle Management.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Service Life Cycle Management" />
+				<Field Name="FACapabilityDescription"	Value="  Integration SOA Life Cycle Management " />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="SOA Software" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Source Control Framework.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Source Control Framework" />
+				<Field Name="FACapabilityDescription"	Value="Framework to manage code source versioning and security." />
+				<Field Name="FACapabilityResearch"		Value="GitHub" />
+				<Field Name="FACapabilityCurrent"		Value="Team Foundation Server 2013   Quest STAT" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Test Plan Management.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Test Plan Management" />
+				<Field Name="FACapabilityDescription"	Value="Manage test plans, test suites, and results" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Microsoft Test Manager 2013 (MTM)" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Test Tracking.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Test Tracking" />
+				<Field Name="FACapabilityDescription"	Value="Report defects and resolutions" />
+				<Field Name="FACapabilityResearch"		Value="" />
+				<Field Name="FACapabilityCurrent"		Value="Oracle Application Testing Suite (OATS)" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Tracing Message Producer.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Tracing Message Producer" />
+				<Field Name="FACapabilityDescription"	Value="Creates application trace messages based on system events." />
+				<Field Name="FACapabilityResearch"		Value="Event Tracing for Windows (ETW)" />
+				<Field Name="FACapabilityCurrent"		Value="Microsoft IntelliTrace   ASP.Net Tracing" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Web Security Analysis Tool.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Web Security Analysis Tool" />
+				<Field Name="FACapabilityDescription"	Value="Security analysis tool for web sites." />
+				<Field Name="FACapabilityResearch"		Value="Veracode" />
+				<Field Name="FACapabilityCurrent"		Value="HP WebInspect" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Web UI Templating Framework.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_CapabilityPageLayout.aspx, FA Capability" ContentType="FA Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Web UI Templating Framework" />
+				<Field Name="FACapabilityDescription"	Value="Web page Template framework for web sites" />
+				<Field Name="FACapabilityResearch"		Value="Knockout.JS  AngularJS" />
+				<Field Name="FACapabilityCurrent"		Value="" />
+				<Field Name="FACapabilityContain"		Value="" />
+				<Field Name="FACapabilityRetire"		Value="" />
+				<Field Name="FAPageType" Type="Lookup" Value="Capability" />
+			</ListItem>
+		</PublishingPage>
+
+
+		<!--<PublishingPage Name="ApplicationPage2a.aspx" PageLibrary="Pages" 
+						LayoutPageName="FA_ApplicationLayout.aspx, FA Application" ContentType="FA Application Page" />-->
+	</AddPages>	
+	
+</SharePointProvisioning>

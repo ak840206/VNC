@@ -1,0 +1,18 @@
+﻿<dx:ThemedWindow 
+    x:Class="VNC.WPF.Presentation.Dx.Views.DxThemedWindowHost"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Need Title"
+
+    Closing="OnClosing"
+    d:DesignHeight="200" d:DesignWidth="300">
+    <Grid Name="g_UserControlContainer" >
+        <TextBlock x:Name="tbMessage" Text="User Control gets loaded here"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" />
+    </Grid>
+</dx:ThemedWindow>

@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	HHS Create SiteColumns and ContentTypes.xml
+	
+	This file is used to create the common SiteColumns and ContentTypes
+	used in a HHS (crhodes) style SharePoint Site Collection
+	
+	NB. It is not possible to specify the Id of a list.  
+		The SiteColumns(Fields) need to specify the Id of a lookup list.
+		It would be useful to have a query performed to get the List Id so
+		this file could only specify the ListName
+		
+		Current:
+		
+		<Field DisplayName="HHS Application Tier" Name="HHSApplicationTier" 
+			   Description="Application Tier form Lookup list" Group="Harbor Health Systems"
+			   Type="Number" ID="{0E8EB4B1-6319-41DE-8C62-0E70EB944694}"
+			   List="bc31ab3b-4b96-4353-bd11-dccb6fb9a1c6" ShowField="Title" />
+			   
+		Desired:
+		
+		If List="" then use ListName="<list name>" to lookup list and populate List="<list ID>"
+		
+		<Field DisplayName="HHS Application Tier" Name="HHSApplicationTier" 
+			   Description="Application Tier form Lookup list" Group="Harbor Health Systems"
+			   Type="Number" ID="{0E8EB4B1-6319-41DE-8C62-0E70EB944694}"
+			   List="" ListName="Lookup_HHS_DRTier" ShowField="Title" />			   
+
+TODO:
+	Verify guid's match what was created in site.
+	
+	-->
+<SharePointProvisioning WebUri="http://myteam.onecallmedical.com/hhspoc/" >
+	<DeleteSiteColumns>
+		<!--<Field Name="HHS Application Name" />-->
+		<!--<Field Name="HHS Application Tier" />-->
+		<!--<Field Name="HHS Document Type" />-->
+		<!--<Field Name="HHS Page Type" />-->
+	</DeleteSiteColumns>
+	
+	<!--
+		DisplayName = Visible Name
+		Name = Internal Name
+		AddFieldOptions enumeration (bit field)
+			DefaultValue=0	
+			AddToDefaultContentType=1
+			AddToNoContentType=2
+			AddToAllContentTypes=4
+			AddFieldInternalNameHint=8
+			AddFieldToDefaultView=16
+			AddFieldCheckDisplayName=32
+	-->
+	
+	<AddSiteColumns>
+	
+		<!--<Field DisplayName="HHS Activity Image" Name="HHSActivityImage" 
+			   Description="Image for Activity" 
+			   Group="Harbor Health Systems"
+			   Type="Image" AddFieldOptions="8" 
+			   ID="{06e396ae-304a-43ec-98cd-0b0449114ecc}" />-->
+		
+		<!--<Field DisplayName="HHS Application Name" Name="HHSApplicationName" 
+			   Description="Application Name from Lookup list" 
+			   Group="Harbor Health Systems"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{BF55A931-E423-4458-95DF-56ACA9614C55}"
+			   ListName="Lookup_HHS_ApplicationName" ShowField="Title" />-->
+
+		<!-- This is acutally a Numeric field on site.   Maybe Integer or Text would have been better -->
+		
+		<!--<Field DisplayName="HHS Application Tier" Name="HHSApplicationTier" 
+			   Description="Application Tier form Lookup list" 
+			   Group="Harbor Health Systems"
+			   Type="Number" AddFieldOptions="8" 
+			   ID="{0E8EB4B1-6319-41DE-8C62-0E70EB944694}" />-->
+		
+		<!--<Field DisplayName="HHS Application Tier" Name="HHSApplicationTier" 
+			   Description="Application Tier form Lookup list" 
+			   Group="Harbor Health Systems"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{0E8EB4B1-6319-41DE-8C62-0E70EB944694}"
+			   ListName="Lookup_HHS_DRTier" ShowField="Title" />-->
+
+		<!--<Field DisplayName="HHS Artifact Image" Name="HHSArtifactImage" 
+			   Description="Image for Artifact" 
+			   Group="Harbor Health Systems"
+			   Type="Image" AddFieldOptions="8" 
+			   ID="{1acef814-17e2-4e8e-93e0-3dc781392374}" />-->
+		
+		<!--<Field DisplayName="HHS Artifact Samples" Name="HHSArtifactSamples" 
+			   Description="Links to sample documents" 
+			   Group="Harbor Health Systems"
+			   Type="SummaryLinks" AddFieldOptions="8" 
+			   ID="{def91dba-8835-469f-b7e8-9435e577c7e7}" />-->
+
+		<!--<Field DisplayName="HHS Artifact Templates" Name="HHSArtifactTemplates" 
+			   Description="Links to templates" 
+			   Group="Harbor Health Systems"
+			   Type="SummaryLinks" AddFieldOptions="8" 
+			   ID="{4b342a13-a96e-41f9-af62-e0038d3a69c8}" />-->
+		
+		<!--<Field DisplayName="HHS Capability Description" Name="HHSCapabilityDescription" 
+			   Description="HHS Capability Description" 
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{CE2A97C2-750D-4E75-B255-18684C08B51D}" />-->
+
+		<!--<Field DisplayName="HHS Capability Research" Name="HHSCapabilityResearch" 
+			   Description="HHS Capability Research items" 
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8" 
+			   ID="{DCDC33B6-DE40-4B29-90BC-BEE92CEDC417}" />-->
+
+		<!--<Field DisplayName="HHS Capability Current" Name="HHSCapabilityCurrent"
+			   Description="HHS Capability Current items"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{E3B2BA52-4D04-4126-8F90-EABDB26A0857}" />-->
+
+		<!--<Field DisplayName="HHS Capability Contain" Name="HHSCapabilityContain"
+			   Description="HHS Capability Contain items"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{2045A3C8-EB2D-4E6F-8051-AF4605292D7E}" />-->
+
+		<!--<Field DisplayName="HHS Capability Retire" Name="HHSCapabilityRetire"
+			   Description="HHS Capability Retire items"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{644E147F-6AE5-4149-B715-7DBDBA987804}" />-->
+		
+		<!--<Field DisplayName="HHS Customer Name" Name="HHSCustomerName" 
+			   Description="Customer Name from Lookup list" 
+			   Group="Harbor Health Systems"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{CC524734-60CE-485C-98B9-16DC0875187F}"
+			   ListName="Lookup_HHS_CustomerName" ShowField="Title" />-->
+		
+		<!--<Field DisplayName="HHS Document Type" Name="HHSDocumentType" 
+				Description="HHS Document Type Description" 
+				Group="Harbor Health Systems"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{5954790F-EBBC-4B5F-9CC2-0E41B7FB3B14}"
+			   ListName="Lookup_HHS_ArtifactType" ShowField="Title" />-->
+
+		<!--<Field DisplayName="HHS Important Terms" Name="HHSImportantTerms" 
+				Description="HHS Important Terms Lookup" 
+				Group="Harbor Health Systems"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{5954790F-EBBC-4B5F-9CC2-0E41B7FB3B14}"
+			   ListName="Lookup_HHS_Glossary" ShowField="Title" />-->
+		
+		<!--<Field DisplayName="HHS Important Terms HTML" Name="HHSImportantTermsHTML"
+			   Description="HHS Capability Current items"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{E3B2BA52-4D04-4126-8F90-EABDB26A0857}" />-->
+
+		<!--<Field DisplayName="HHS Inputs" Name="HHSInputs" 
+			   Description="Links to Inputs" 
+			   Group="Harbor Health Systems"
+			   Type="SummaryLinks" AddFieldOptions="8" 
+			   ID="{a532fca1-cb17-499f-8b0c-c78913f2de85}" />-->
+
+		<!--<Field DisplayName="HHS Level" Name="HHSLevel"
+			   Description="HHS Level"
+			   Group="Harbor Health Systems"
+			   Type="Text" AddFieldOptions="8"
+			   ID="{623599be-383c-4b58-9d77-f864c76f8e6c}" />-->
+		
+		<!--<Field DisplayName="HHS Outputs" Name="HHSOutputs" 
+			   Description="Links to Outputs" 
+			   Group="Harbor Health Systems"
+			   Type="SummaryLinks" AddFieldOptions="8" 
+			   ID="{2bc204b7-d628-49d9-9d9a-964ddd02bb4f}" />-->
+
+		<!--  Could probably do this with just a text field depending on how CSS formatting works. -->
+		
+		<!--<Field DisplayName="HHS Page Callout" Name="HHSPageCallout"
+			   Description="HHS Page Callout - Purple Cloud"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{ecb82969-0d64-40f6-b225-88a5736d2770}" />-->
+		
+		<!--<Field DisplayName="HHS Page Image" Name="HHSPageImage" 
+			   Description="Image for Page" 
+			   Group="Harbor Health Systems"
+			   Type="Image" AddFieldOptions="8" 
+			   ID="{3f79742b-c298-4ee9-b718-5058fdd174e6}" />-->
+
+		<!--<Field DisplayName="HHS Page Objectives" Name="HHSPageObjectives"
+			   Description="HHS Page Objectives"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{25089270-35ef-4e93-8e53-4edbd3e3ee99}" />-->
+
+		<!--<Field DisplayName="HHS Page Purpose" Name="HHSPagePurpose"
+			   Description="HHS Page Purpose"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{b7fb1cde-81e0-48fe-83b0-85fef64e9620}" />-->
+
+		<!--<Field DisplayName="HHS Page Type" Name="HHSPageType" 
+			   Description="HHS Page Type Description" 
+			   Group="Harbor Health Systems"
+			   Type="LookupMulti" Mult="TRUE" AddFieldOptions="8" 
+			   ID="{0FF49A76-45BB-4477-A985-1F1FF38594E5}"
+			   ListName="Lookup_HHS_ArtifactType" ShowField="Title" />-->
+
+		<!--<Field DisplayName="HHS Reference Artifacts" Name="HHSReferenceArtifacts" 
+			   Description="Links to Reference Artifacts" 
+			   Group="Harbor Health Systems"
+			   Type="SummaryLinks" AddFieldOptions="8" 
+			   ID="{3948f3b7-f00f-4659-9a5f-9a02d77ffc42}" />-->
+
+		<!--<Field DisplayName="HHS Value To Business" Name="HHSValueToBusiness"
+			   Description="HHS Value to Business"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{1da87605-f254-45a4-9fb7-0247e356a6ec}" />-->
+
+		<!-- TODO Put these in alphabetical order above -->
+
+		<!--<Field DisplayName="HHS Service Strategy" Name="HHSServiceStrategy"
+			   Description="HHS Service Strategy"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{4a8cbf94-e2a1-432f-8c80-78a940979130}" />-->
+
+		<!--<Field DisplayName="HHS Service Design" Name="HHSServiceDesign"
+			   Description="HHS Value to Business"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{e61d4631-a498-46a8-adae-dc29e8461910}" />-->
+
+		<!--<Field DisplayName="HHS Service Development" Name="HHSServiceDevelopment"
+			   Description="HHS Service Development"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{8ab4da7b-3948-4d3a-975b-f18d3ea66ad0}" />-->
+
+		<!--<Field DisplayName="HHS Service Transition" Name="HHSServiceTransition"
+			   Description="HHS Service Transition"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{ef1dda89-4450-4eb2-b1d9-d5d4c2051d3a}" />-->
+
+		<!--<Field DisplayName="HHS Service Operations" Name="HHSServiceOperations"
+			   Description="HHS Service Operations"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{c242937e-4b1c-455d-94ab-7263af0011c0}" />-->
+
+		<!--<Field DisplayName="HHS IT Management" Name="HHS IT Management"
+			   Description="HHS IT Management"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{c8fdc131-05dd-4e89-a7c6-d6e76a517718}" />-->
+
+		<!--<Field DisplayName="HHS Continuous Improvement" Name="HHS Continuous Improvement"
+			   Description="HHS Continuous Improvement"
+			   Group="Harbor Health Systems"
+			   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml" 
+			   AddFieldOptions="8"
+			   ID="{06f15aa5-c162-40e2-8b13-59d27d9d9403}" />-->
+		
+	</AddSiteColumns>
+
+	<UpdateSiteColumns>
+		<!--<Field DisplayName="HHS Capability Description" Name="HHSCapabilityDescription"
+		   Description="HHS Capability Description"
+		   Group="Harbor Health Systems"
+		   Type="HTML" RichText="TRUE" RichTextMode="ThemeHtml"
+		   AddFieldOptions="8"
+		   ID="{23373D27-1430-49A2-BC40-DDD1742D9D74}" />-->
+	</UpdateSiteColumns>
+	
+<!-- 
+<Field 
+Type="LookupMulti" 
+DisplayName="HHS Document Type" 
+Required="FALSE" 
+EnforceUniqueValues="FALSE" 
+List="{b1d6a5ff-876b-4761-a05d-210038e31639}" 
+WebId="666b287f-2709-476b-a739-e1de9150fb37" 
+ShowField="Title" 
+Mult="TRUE" 
+Sortable="FALSE" 
+UnlimitedLengthInDocumentLibrary="FALSE" 
+Group="Custom Columns" 
+ID="{54284401-4090-4b4f-ad45-a7d7a2c1b497}" 
+SourceID="{666b287f-2709-476b-a739-e1de9150fb37}" 
+StaticName="HHS_x0020_Document_x0020_Type" 
+Name="HHS_x0020_Document_x0020_Type" /> -->
+	
+	<DeleteContentTypes>
+		<!--Need to keep these in dependency order.  E.g. AppPage depends on Page-->
+		<!--<ContentType Name="HHS Application Page" />
+		<ContentType Name="HHS Capability Page" />
+		<ContentType Name="HHS Page" />-->
+		<!--<ContentType Name="HHS L0 Capability Page" />-->
+		<!--<ContentType Name="HHS L1 Activity Page" />-->
+		<!--<ContentType Name="HHS L2 Activity Page" />-->
+		<!--<ContentType Name="HHS Role Page" />-->
+	</DeleteContentTypes>	
+	
+	<AddContentTypes>
+		<!--This works-->
+		<!--<ContentType Name="HHS Page" 
+					 Group="Harbor Health Systems" 
+					 ParentContentType="Page" >
+			<Field Name="HHSPageType" />
+		</ContentType>-->
+
+		<!--<ContentType Name="HHS Application Page"
+			 Group="Harbor Health Systems"
+			 ParentContentType="HHS Page" >
+			<Field Name="HHSApplicationName" />
+		</ContentType>-->
+
+		<!--<ContentType Name="HHS Capability Page"
+					 Group="Harbor Health Systems"
+					 ParentContentType="HHS Page" >
+			<Field Name="HHSCapabilityDescription" />
+			<Field Name="HHSCapabilityRetire" />
+			<Field Name="HHSCapabilityContain" />			
+			<Field Name="HHSCapabilityCurrent" />
+			<Field Name="HHSCapabilityResearch" />
+		</ContentType>-->
+		
+		<!--This doesn't seem to work.  ContentType is created but Id is ignored.  Inherits from Item-->
+		<!--<ContentType Name="HHS Page2"
+					 Group="Harbor Health Systems"
+					 Id="0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D332" >
+			<Field Name="HHSPageType" />
+		</ContentType>-->
+
+		<!--This doesn't seem to work.  ContentType is created but Id is ignored.  Inherits from Item-->
+		<!--<ContentType Name="CTTest1"
+			 Group="Harbor Health Systems"
+			 Id="0x0100BDD5E43587AF469CA722FD068065DF5D" >
+			<Field Name="HHSPageType" />
+		</ContentType>-->
+		
+		<!--This works but the specified ID is ignored.  It correctly inherits from "Page"-->
+		<!--<ContentType Name="HHS Page1"
+					 Group="Harbor Health Systems"
+					 Id="0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D332"
+					 ParentContentType="Page" >
+			<Field Name="HHSPageType" />
+		</ContentType>-->
+
+		<!--HHS Page
+		0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D332
+		HHS Application Page
+		0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D33201
+		HHS Capability Page
+		0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF39004ABAD2D0FD668D4C8334501527B2D33202-->
+		
+		<!--<ContentType Name="HHS Page"
+					 Group="Harbor Health Systems"
+					 Id="FA8D276A-93F1-4B0F-8CAC-115185F47019"
+					 ParentContentType="Page" >
+			<Field Name="HHSPageType" />
+		</ContentType>
+
+		<ContentType Name="HHS Page"
+					 Group="Harbor Health Systems"
+					 Id="FA8D276A-93F1-4B0F-8CAC-115185F47019"
+					 ParentContentType="Page" >
+			<Field Name="HHSPageType" />
+		</ContentType>-->
+		
+		<!--<ContentType Name="HHS L0 Capability Page" Group="Harbor Health Systems" Id="7FE38CD0-0A2B-4EA3-9852-6FE9F5821F52" ParentContentType="HHS Page" />
+		<ContentType Name="HHS L1 Activity Page" Group="Harbor Health Systems" Id="313765A5-9EDD-4629-ABC9-5455D9C017EE" ParentContentType="HHS Page" />
+		<ContentType Name="HHS L2 Activity Page" Group="Harbor Health Systems" Id="10D63D61-CB97-4E28-9C9A-33F90C2CC860" ParentContentType="HHS Page" />
+		<ContentType Name="HHS Role Page" Group="Harbor Health Systems" Id="68A9779F-DBAA-4C1A-A6FF-3F424DEEB5B9" ParentContentType="HHS Page" />-->
+	</AddContentTypes>
+
+</SharePointProvisioning>

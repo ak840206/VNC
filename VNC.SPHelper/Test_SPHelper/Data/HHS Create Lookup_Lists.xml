@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	HHS Create Lookup_Lists.xml
+	
+	This file is used to create the common Lookup lists that are
+	used in a HHS (crhodes) style SharePoint Site Collection.
+	The Lookup lists provide values to several HHS_SiteColumns.
+	
+	NB. It is not possible to specify the Id of a list.  The SiteColumns
+		need to query the web for the Id of a lookup list.
+	
+	Population of the lists is done by a corresponding file,
+	HHS Populate Lookup_Lists.xml
+	-->
+<SharePointProvisioning WebUri="http://myteam.onecallmedical.com/hhspoc" >
+	<DeleteLists>
+		<!--<List Title="Lookup_HHS_ApplicationName" />-->
+  <!--<List Title="Lookup_HHS_ArtifactType" />-->
+		<!--<List Title="Lookup_HHS_CustomerName" />-->
+		<!--<List Title="Lookup_HHS_DRTier" />-->
+	</DeleteLists>
+	
+	<!--
+		DisplayName = Visible Name
+		Name = Internal Name
+		AddFieldOptions enumeration (bit field)
+			DefaultValue=0	
+			AddToDefaultContentType=1
+			AddToNoContentType=2
+			AddToAllContentTypes=4
+			AddFieldInternalNameHint=8
+			AddFieldToDefaultView=16
+			AddFieldCheckDisplayName=32
+	-->
+	<AddLists>
+		<!--<List Title="Lookup_HHS_ApplicationName" 
+			  Description="HHS Application Lookup List">
+			<Field Name="Description" DisplayName="Description" Description="" Type="Text" AddFieldOptions="24" />
+		</List>-->
+		
+		<List Title="Lookup_HHS_ArtifactType"
+			  Description="Determines the types of artifacts (documents, pages) that exist on the site.  Enables webpart filtering in lists and libraries.">
+			<Field Name="Description" DisplayName="Description" Description="" Type="Text" AddFieldOptions="24" />
+		</List>
+
+		<!--<List Title="Lookup_HHS_CustomerName"
+			  Description="HHS Customer Lookup List">
+			<Field Name="Description" DisplayName="Description" Description="" Type="Text" AddFieldOptions="24" />
+		</List>-->
+		
+		<!--<List Title="Lookup_HHS_DRTier"
+			  Description="List of HHS Disaster Recovery Tiers">
+			<Field Name="Description" DisplayName="Description" Description="" Type="Text" AddFieldOptions="24" />
+		</List>-->
+	</AddLists>
+	
+</SharePointProvisioning>
+

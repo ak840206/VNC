@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	FA Populate Lookup_Lists.xml
+
+	This file is used to populate the common Lookup lists that are
+	used in a FA (crhodes) style SharePoint Site Collection.
+	The Lookup lists provide values to several FA_SiteColumns.
+
+	NB. It is not possible to specify the Id of a list.  The SiteColumns
+	need to query the web for the Id of a lookup list.
+
+	Creation of the lookup lists is done by a corresponding file,
+	FA Create Lookup_Lists.xml
+-->
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" xWebUri="http://vncsp2010" >
+	
+	<DeleteListItems>
+		<!--<List Title="Lookup_FA_ApplicationName" DeleteAllItems="true" />-->
+		<!--<List Title="Lookup_FA_ArtifactType" DeleteAllItems="true" />-->
+		<!--<List Title="Lookup_FA_CustomerName" DeleteAllItems="true" />-->
+		<!--<List Title="Lookup_FA_DRTier" DeleteAllItems="true" />-->		
+	</DeleteListItems>
+
+	<AddListItems>
+		<!--<List Title="Lookup_FA_ArtifactType" >
+			<ListItem>
+				<Field Name="Title"       Value="Activity Page" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Capability" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Communication" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Guideline" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Job Aid" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Policy" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Reference" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Roadmap" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Template" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Training" />
+			</ListItem>
+		</List>-->
+
+		<List Title="Lookup_FA_CustomerName" >
+			<ListItem>
+				<Field Name="Title"       Value="Agency Division" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Corporate Title Division / Support" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Database Solutions" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Direct Division" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="FA Trust" />
+			</ListItem>			
+			<ListItem>
+				<Field Name="Title"       Value="Home Warranty" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="International Division" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Interthinx" />
+			</ListItem>			
+			<ListItem>
+				<Field Name="Title"       Value="Lender Services" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Mortgage Solutions Default" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Mortgage Solutions Origination" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="National Commercial Services" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="National Production Services" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Property Casualty" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="SMS" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="UCC" />
+			</ListItem>
+		</List>
+
+		<!--<List Title="Lookup_FA_DRTier" >
+			<ListItem>
+				<Field Name="Title"       Value="Tier 0" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Tier 1" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Tier 2" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Tier 3" />
+			</ListItem>
+		</List>-->
+	</AddListItems>
+
+</SharePointProvisioning>
+

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" xWebUri="http://vncsp2010" >
+	<DeleteLists>
+		<List Title="Lookup_Application" />
+		<List Title="Lookup_ArtifactType" />
+	</DeleteLists>
+	
+	<!--
+		DisplayName = Visible Name
+		Name = Internal Name
+		AddFieldOptions enumeration (bit field)
+			DefaultValue=0	
+			AddToDefaultContentType=1
+			AddToNoContentType=2
+			AddToAllContentTypes=4
+			AddFieldInternalNameHint=8
+			AddFieldToDefaultView=16
+			AddFieldCheckDisplayName=32
+	-->
+	<AddLists>
+		<List Title="Lookup_Application" 
+			  Description="Application Lookup List">
+			<Field DisplayName="Description" Description="" Name="Description" Type="Text" AddFieldOptions="24" />
+		</List>
+		<List Title="Lookup_ArtifactType" Id="b1d6a5ff-876b-4761-a05d-210038e31639"
+			  Description="Determines the types of artifacts (documents, pages) that exist on the site.  Enables webpart filtering in lists and libraries.">
+			<Field DisplayName="Description" Description="" Name="Description" Type="Text" AddFieldOptions="24" />
+		</List>	
+	</AddLists>
+	
+</SharePointProvisioning>
+

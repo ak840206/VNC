@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	FA Create Delivery Framework Artifact Pages.xml
+	
+	This file is used to create the Artifact Pages.
+-->
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" >
+		
+	<DeletePages>
+		<!--<Page Name="Page1d"  />
+		<Page Name="Page2d" />-->
+	</DeletePages>
+	
+	<AddPages>
+		
+		<!--Create Artifact Pages (15) -->
+		
+		<!-- Application Layout -->
+
+		<PublishingPage Name="Application-Design-Specification.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactApplication_PageLayout.aspx, FA ArtifactApplication Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Application Design Specification (ADS)" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Application-Support-Docs.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactApplication_PageLayout.aspx, FA ArtifactApplication Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Application Support Documents" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Application-Deployment-Plan.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactApplication_PageLayout.aspx, FA ArtifactApplication Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Application Deployment Plan" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+			</ListItem>
+		</PublishingPage>
+
+		<!-- Project Layout -->
+
+		<!--<PublishingPage Name="Project-Plan.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactProject_PageLayout.aspx, FA ArtifactProject Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Project Plan" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+				-->
+		<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+		<!--
+			</ListItem>
+		</PublishingPage>-->
+
+		<!--<PublishingPage Name="Project-Schedule.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactProject_PageLayout.aspx, FA ArtifactProject Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Project Schedule" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+				-->
+		<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+		<!--
+			</ListItem>
+		</PublishingPage>-->
+
+
+		<!-- Reference Layout -->
+
+		<PublishingPage Name="Technology-Roadmap.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactReference_PageLayout.aspx, FA ArtifactReference Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Technology Roadmap" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Capability-Catalog.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactReference_PageLayout.aspx, FA ArtifactReference Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Capability Catalog" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+			</ListItem>
+		</PublishingPage>		
+
+		<PublishingPage Name="IT-Guide-To-Project-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactReference_PageLayout.aspx, FA ArtifactReference Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="IT Guide to Project Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+			</ListItem>
+		</PublishingPage>
+
+		<!-- Team Layout -->
+
+		<PublishingPage Name="Team-Operating-Agreement.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactTeam_PageLayout.aspx, FA ArtifactTeam Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Team Operating Agreement" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+			</ListItem>
+		</PublishingPage>
+
+
+		<!-- Work Effort Layout -->
+
+		<!--<PublishingPage Name="Project-Plan.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactWorkEffort_PageLayout.aspx, FA ArtifactWorkEffort Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Project Plan" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+				-->
+		<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+		<!--
+			</ListItem>
+		</PublishingPage>-->
+
+		<!--<PublishingPage Name="Project-Schedule.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactWorkEffort_PageLayout.aspx, FA ArtifactWorkEffort Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Project Schedule" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+				-->
+		<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+		<!--
+			</ListItem>
+		</PublishingPage>-->
+
+		<PublishingPage Name="Application-Security-Controls-Checklist.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactWorkEffort_PageLayout.aspx, FA ArtifactWorkEffort Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Application Security Controls Checklist" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Solution-Allocation-Statement.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactWorkEffort_PageLayout.aspx, FA ArtifactWorkEffort Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Solution Allocation Statement (SAS)" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Solution-Requirements.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactWorkEffort_PageLayout.aspx, FA ArtifactWorkEffort Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Solution Requirements" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Network-Deployment-Diagram.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactWorkEffort_PageLayout.aspx, FA ArtifactWorkEffort Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Network Deployment Diagram (NDD)" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Application-Security-Controls-Checklist.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactWorkEffort_PageLayout.aspx, FA ArtifactWorkEffort Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Application Security Controls Checklist" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Security-Test-Results.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_ArtifactWorkEffort_PageLayout.aspx, FA ArtifactWorkEffort Page" ContentType="FA Artifact Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Security Test Results" />
+				<Field Name="FAPageType" Type="Lookup" Value="15" />
+
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+
+			</ListItem>
+		</PublishingPage>
+
+
+	</AddPages>	
+	
+</SharePointProvisioning>

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	-->
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" >
+	<DeleteSiteColumns>
+		<Field Name="VNCSiteCol1" />
+		<Field Name="VNCSiteCol2" />
+		<Field Name="VNCSiteCol3" />
+		<Field Name="VNCSiteCol4" />
+		<Field Name="VNCSiteCol5" />
+		<Field Name="VNCSiteCol6" />
+		<Field Name="VNCSiteCol7" />
+	</DeleteSiteColumns>
+	
+	<!--
+		DisplayName = Visible Name
+		Name = Internal Name
+		AddFieldOptions enumeration (bit field)
+			DefaultValue=0	
+			AddToDefaultContentType=1
+			AddToNoContentType=2
+			AddToAllContentTypes=4
+			AddFieldInternalNameHint=8
+			AddFieldToDefaultView=16
+			AddFieldCheckDisplayName=32
+	-->
+	
+	<!-- 
+		The entire <Field ... /> element is passed as the schemaXML argument to AddFieldAsXml(...) 
+		So use what is presented when querying for SiteColumns as basis for what Attributes can be used
+		Not all attributes are filled in below for all samples.
+		E.g. ID field can be passed if a specific ID is desired, otherwise one is assigned.
+	-->
+	<AddSiteColumns>
+		<Field DisplayName="VNCSiteCol Text" Name="VNCSiteColText" AddFieldOptions="8" Description="VNCSiteCol Single Line of Text Description" Group="VNC" Type="Text" ID="{42c2ab58-5621-4d8a-a91e-4e9691803670}" />
+		
+		<Field DisplayName="VNCSiteCol Number" Name="VNCSiteColNumber" AddFieldOptions="8" Description="VNCSiteCol Number Description" Group="VNC" Type="Number" />
+		
+		<Field DisplayName="VNCSiteCol Currency" Name="VNCSiteColCurrency" AddFieldOptions="8" Description="VNCSiteCol Currency Description" Group="VNC" Type="Currency" />
+		
+		<Field DisplayName="VNCSiteCol Integer" Name="VNCSiteColInteger" AddFieldOptions="8" Description="VNCSiteCol Integer Description" Group="VNC" Type="Integer" />
+		
+		<Field DisplayName="VNCSiteCol DateTime" Name="VNCSiteColDateTime" AddFieldOptions="8" Description="VNCSiteCol DateTime Description" Group="VNC" Type="DateTime" />
+		
+		<Field DisplayName="VNCSiteCol Note" Name="VNCSiteColNote" AddFieldOptions="8" Description="VNCSiteCol Nultiple Lines of Text Description" Group="VNC" Type="Note" />
+		
+		<Field DisplayName="VNCSiteCol HTML" Name="VNCSiteColHTML" AddFieldOptions="8" Description="VNCSiteCol FullHTML Description" Group="VNC" Type="HTML" />
+		
+		<Field DisplayName="VNCSiteCol Url" Name="VNCSiteColUrl" AddFieldOptions="8" Description="VNCSiteCol Hyperlink or Picture Description" Group="VNC" Type="Url" />
+		
+		<Field DisplayName="VNCSiteCol Link" Name="VNCSiteColLink" AddFieldOptions="8" Description="VNCSiteCol Hyperlink with Formatting Description" Group="VNC" Type="Link" />
+		
+		<Field DisplayName="VNCSiteCol SummaryLinks" Name="VNCSiteColLink" AddFieldOptions="8" Description="VNCSiteCol Summary Links Description" Group="VNC" Type="SummaryLinks" />
+		
+		<Field DisplayName="VNCSiteCol Image" Name="VNCSiteColImage" AddFieldOptions="8" Description="VNCSiteCol Image with Formatting Description" Group="VNC" Type="Image" />
+		
+		<Field DisplayName="VNCSiteCol User" Name="VNCSiteColUser" AddFieldOptions="8" Description="VNCSiteCol Person or Group Description" Group="VNC" Type="User" />
+		
+		<Field DisplayName="VNCSiteCol MediaFieldType" Name="VNCSiteColMediaFieldType" AddFieldOptions="8" Description="VNCSiteCol Rich Media Data Description" Group="VNC" Type="MediaFieldType" />
+		
+		<Field DisplayName="VNCSiteCol Choice" Name="VNCSiteColChoice" AddFieldOptions="8" Description="VNCSiteCol Choice Description" Group="VNC" Type="Choice" >
+			<Default>Green</Default>
+			<CHOICES>
+				<CHOICE>Red</CHOICE>
+				<CHOICE>Blue</CHOICE>
+				<CHOICE>Green</CHOICE>
+			</CHOICES>
+		</Field>
+		
+		<Field DisplayName="VNCSiteCol Lookup" Name="VNCSiteColLookup" AddFieldOptions="8" Description="VNCSiteCol Lookup Description" Group="VNC" Type="Lookup"  
+				List="d5ed24bb-7fd9-4d40-b388-c1d396e0e935" ShowField="Title" />
+		
+		<Field DisplayName="VNCSiteCol LookupMulti" Name="VNCSiteColLookupMulti" AddFieldOptions="8" Description="VNCSiteCol Multiple Lookup Description x" Group="VNC" Type="LookupMulti" Mult="TRUE"  
+				List="d5ed24bb-7fd9-4d40-b388-c1d396e0e935" ShowField="Title" />
+
+		<Field DisplayName="VNCSiteCol Boolean" Name="VNCSiteColBoolean" Description="VNCSiteCol Yes/No Description" Group="VNC" Type="Boolean" />
+		
+		<!--TODO(crhodes): Calculated Fields-->
+	</AddSiteColumns>
+	
+<!-- 
+<Field 
+Type="LookupMulti" 
+DisplayName="FA Document Type" 
+Required="FALSE" 
+EnforceUniqueValues="FALSE" 
+List="{b1d6a5ff-876b-4761-a05d-210038e31639}" 
+WebId="666b287f-2709-476b-a739-e1de9150fb37" 
+ShowField="Title" 
+Mult="TRUE" 
+Sortable="FALSE" 
+UnlimitedLengthInDocumentLibrary="FALSE" 
+Group="Custom Columns" 
+ID="{54284401-4090-4b4f-ad45-a7d7a2c1b497}" 
+SourceID="{666b287f-2709-476b-a739-e1de9150fb37}" 
+StaticName="FA_x0020_Document_x0020_Type" 
+Name="FA_x0020_Document_x0020_Type" /> -->
+	
+	<DeleteContentTypes>
+	<!--<ContentType Name="VNCContentType1" />
+		<ContentType Name="VNCContentType2" />
+		<ContentType Name="VNCContentType3" />
+		<ContentType Name="VNCContentType4" />-->
+	</DeleteContentTypes>	
+	
+	<AddContentTypes>
+		<!--<ContentType Name="FA Page" >
+			<Field Name="FLD1"/>
+			<Field Name="FLD2"/>
+		</ContentType>
+		<ContentType Name="CT2"/>-->
+	</AddContentTypes>
+
+</SharePointProvisioning>

@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	FA Create Capability Pages.xml
+	
+	This file is used to create the Capability Pages.
+-->
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" >
+		
+	<DeletePages>
+		<!--<Page Name="Page1d"  />
+		<Page Name="Page2d" />-->
+	</DeletePages>
+	
+	<AddPages>
+		<!-- Doesn't work unless create in "Site Pages"  file is created if use "Pages" but cannot edit from UI --> 
+		<!--<WikiPage Name="WikiPage1a.aspx" PageLibrary="Site Pages" />
+		<WikiPage Name="WikiPage2a.aspx" PageLibrary="Site Pages" />
+
+		<WebPartPage Name="WepPartPage1a.aspx" WebPartTemplate="WebPartTemplates.spstd1" PageLibrary="Pages" />
+		<WebPartPage Name="WebPartPage2a.aspx"  WebPartTemplate="WebPartTemplates.spstd2" PageLibrary="Pages" />--><!--
+
+		<PublishingPage Name="ArticlePage.aspx" PageLibrary="Pages"
+			LayoutPageName="ArticleLeft.aspx, ArticleLeft" ContentType="Page" />
+		
+		<PublishingPage Name="FAArticlePage.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_PageLayout.aspx, FA Page" ContentType="FA Page" />-->
+
+		<!-- Have to escape the <img ...> tag! -->
+		<!--<img alt="" src="/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceDevelopment.png" style="BORDER: 0px solid; ">-->		
+<!--<code text="&lt;a href=&quot;/&quot;&gt;">-->
+		
+		<!--Create L0 Pages-->
+		
+		<!--<PublishingPage Name="L0-Service Strategy.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L0CapabilityPageLayout.aspx, FA L0 Capability Page" ContentType="FA L0 Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L0 Service Strategy" />
+				<Field Name="FAPageType" Type="Lookup" Value="11" />
+				<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>-->
+		
+		<!--<PublishingPage Name="L0-Service Design.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L0CapabilityPageLayout.aspx, FA L0 Capability Page" ContentType="FA L0 Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L0 Service Design" />
+				<Field Name="FAPageType" Type="Lookup" Value="11" />
+				<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceDesign.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>-->
+				
+		<!--<PublishingPage Name="L0-Software-Development.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L0CapabilityPageLayout.aspx, FA L0 Capability Page" ContentType="FA L0 Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L0 Service Development" />
+				<Field Name="FAPageType" Type="Lookup" Value="11" />
+				<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-SoftwareDevelopment.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>-->
+
+		<!--<PublishingPage Name="L0-Service Transition.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L0CapabilityPageLayout.aspx, FA L0 Capability Page" ContentType="FA L0 Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L0 Service Transition" />
+				<Field Name="FAPageType" Type="Lookup" Value="11" />
+				<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceTransition.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>-->
+		
+		<!--<PublishingPage Name="L0-Service Operation.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L0CapabilityPageLayout.aspx, FA L0 Capability Page" ContentType="FA L0 Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L0 Service Operation" />
+				<Field Name="FAPageType" Type="Lookup" Value="11" />
+				<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceOperation.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>-->
+	
+		<!--<PublishingPage Name="L0-IT Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L0CapabilityPageLayout.aspx, FA L0 Capability Page" ContentType="FA L0 Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L0 IT Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="11" />
+				<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ITManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>-->
+
+		<!--<PublishingPage Name="L0-Continual Service Improvement.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L0CapabilityPageLayout.aspx, FA L0 Capability Page" ContentType="FA L0 Capability Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L0 Continual Service Improvement" />
+				<Field Name="FAPageType" Type="Lookup" Value="11" />
+				<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ContinualServiceImprovement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>-->
+				
+<!--Create L1 Pages-->
+		
+		<!-- Service Strategy -->
+		
+		<PublishingPage Name="L1-Technology-Vision-and-Architecture.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Technology Vision and Architecture" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-TechnologyVisionandArchitecture.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Service-Portfolio-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Service Portfolio Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ServicePortfolioManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+				
+		<PublishingPage Name="L1-Financial-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Financial Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-FinancialManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Business-Relationship-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Business Relationship Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-BusinessRelationshipManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+				
+		<PublishingPage Name="L1-Demand-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Demand Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-DemandManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		 <!--Service Design--> 
+		
+		<PublishingPage Name="L1-Design-Coordination.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Design Coordination" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-DesignCoordination.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Service-Catalog-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Service Catalog Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ServiceCatalogManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Service-Level-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Service Level Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ServiceLevelManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+				 
+		<PublishingPage Name="L1-Availablility-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Availablility Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-AvailablilityManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Capacity-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Capacity Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-CapacityManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-IT-Service-Continuity-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 IT Service Continuity Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-IT ServiceContinuityManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+				 
+		<PublishingPage Name="L1-Informaiton-Security-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Informaiton Security Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-InformaitonSecurityManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+				 
+		<PublishingPage Name="L1-Supplier-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Supplier Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-SupplierManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		 <!--Software Development--> 
+						
+		<PublishingPage Name="L1-Solution-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Solution Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-SolutionPlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L1-Release-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Release Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ReleasePlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />			
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Solution-Delivery.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Solution Delivery" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-SolutionDelivery.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Solution-Lifecycle-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Solution Lifecycle Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-SolutionLifecycleManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Application-Lifecycle-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Application Lifecycle Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ApplicationLifecycleManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+				
+		 <!--Service Transition--> 
+		
+		<PublishingPage Name="L1-Transition-Planning-and-Support.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Transition Planning and Support" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-TransitionPlanningandSupport.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L1-Change-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Change Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ChangeManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Service-Asset-and-Configuration-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Service Asset and Configuration Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ServiceAssetandConfigurationManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Release-and-Deployment-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Release and Deployment Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ReleaseandDeploymentManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Knowledge-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Knowledge Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-KnowledgeManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		 <!--Service Operation--> 
+		
+		<PublishingPage Name="L1-Event-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Event Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-EventManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L1-Incident-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Incident Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-IncidentManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Problem-Management-.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Problem Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ProblemManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Request-Fulfillment.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Request Fulfillment" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-RequestFulfillment.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Access-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Access Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-AccessManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		 <!--IT Management--> 
+		
+		<PublishingPage Name="L1-Management-and-Control.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Management and Control" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ManagementandControl.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-IT Workforce-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 IT Workforce Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-ITWorkforceManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		 <!--Continual Service Improvement--> 		
+		
+		<PublishingPage Name="L1-Delivery-Framework-Evolution-and-Governance.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Delivery Framework Evolution and Governance" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-DeliveryFrameworkEvolutionandGovernance.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="L1-Seven-Step-Improvement.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L1_Process_PageLayout.aspx, FA L1 Process Page" ContentType="FA L1 Process Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L1 Seven Step Improvement" />
+				<Field Name="FAPageType" Type="Lookup" Value="12" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L1-SevenStepImprovement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+				
+	<!-- Create L2 Pages -->
+
+    <!--Technology Vision and Architecture -->
+    
+		<PublishingPage Name="L2-Maintain-Technology-Vision-and-Architecture.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Maintain Technology Vision and Architecture" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-MaintainTechnologyVisionandArchitecture.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Evaluate-3rd-Party-Software.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Evaluate 3rd Party Software" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-Evaluate3rdPartySoftware.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Maintain-Capability-Catalog.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Maintain Capability Catalog" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-MaintainCapabilityCatalog.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<!--Demand Management-->
+
+		<PublishingPage Name="L2-Capture-Demand.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Capture Demand" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-Capture.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Classify-Demand.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Classify Demand" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-Classify.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Assess-Impact-and-Risk.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Assess Impact and Risk" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-AssessImpactandRisk.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Provide-LOE.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Provide LOE" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ProvideLOE.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Manage-Governance-Process.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Manage Governance Process" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ManageGovernanceProcess.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-OverseeOverall-Resource-Capacity-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Oversee Overall Resource Capacity Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-OverseeOverallResourceCapacityPlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+		
+		
+		<!--Service Design-->
+		
+		<!--Service Development-->
+		
+		<PublishingPage Name="L2-Project-Solution-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Project Solution Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage" 
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ProjectSolutionPlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Establish-Solution-Artifact-Detail-Level.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Establish Solution Artifact Detail Level" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-EstablishSolutionArtifactDetailLevel.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Manage-High-Level-Solution-Backlog-Items.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Manage High Level Solution Backlog Items" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ManageHighLevelSolutionBacklogItems.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Architecture-Planing.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Architecture Planing" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ArchitecturePlaning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Infrastructue-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Infrastructue Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-InfrastructuePlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Project-Release-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Project Release Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ProjectReleasePlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Enterprise-Release-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Enterprise Release Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-EnterpriseReleasePlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Application-Release-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Application Release Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ApplicationReleasePlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Infrastructure-Release-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Infrastructure Release Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-InfrastructureReleasePlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Coordinate-Delivery-Team-Structure-and-Capacity.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Coordinate Delivery Team Structure and Capacity" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-CoordinateDeliveryTeamStructureandCapacity.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Technical-Infrasturcture-Provisioning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Technical Infrasturcture Provisioning" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-TechnicalInfrasturctureProvisioning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Build-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Build Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-BuildManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Iteration-Planning.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Iteration Planning" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-IterationPlanning.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Iteration-Execution.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Iteration Execution" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-IterationExecution.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Iteration-Review.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Iteration Review" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-IterationReview.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Iteration-Retrospective.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Iteration Retrospective" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-IterationRetrospective.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Confirm-Solution-Artifact-Detail-Level.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Confirm Solution Artifact Detail Level" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ConfirmSolutionArtifactDetailLevel.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Monitor-Service-Development-Activities-and-Metrics.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Monitor Service Development Activities and Metrics" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-MonitorServiceDevelopmentActivitiesandMetrics.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Time-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Time Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-TimeManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Status-Reporting.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Status Reporting" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-StatusReporting.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Chagne-Control.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Change Control" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ChangeControl.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Risk-Issue-Action-Decision-Management.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Risk, Issue, Action, Decision Management" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-RiskIssueActionDecisionManagement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Solution-Retrospecitve.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Solution Retrospecitve" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-SolutionRetrospecitve.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Application-Initiation.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Application Initiation" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ApplicationInitiation.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Maintain-Application-Roadmap.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Maintain Application Roadmap" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-MaintainApplicationRoadmap.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Application-Review-Process.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Application Review Process" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ApplicationReviewProcess.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Manage-the-Application-Backlog.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Manage the Application Backlog" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ManagetheApplicationBacklog.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="L2-Application-Retirement.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 Application Retirement" />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-ApplicationRetirement.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>
+
+		<!--<PublishingPage Name="L2-.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_L2_Activity_PageLayout.aspx, FA L2 Activity Page" ContentType="FA L2 Activity Page" >
+			<ListItem>
+				<Field Name="Title"						Value="L2 " />
+				<Field Name="FAPageType" Type="Lookup" Value="1" />
+				<Field Name="FAPageImage"
+					   Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L2-.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />
+			</ListItem>
+		</PublishingPage>-->
+
+	</AddPages>	
+	
+</SharePointProvisioning>

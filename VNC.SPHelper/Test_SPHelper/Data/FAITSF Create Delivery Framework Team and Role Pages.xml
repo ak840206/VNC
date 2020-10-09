@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+	FA Create Delivery Framework Team and Role Pages.xml
+	
+	This file is used to create the Capability Pages.
+-->
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" >
+		
+	<DeletePages>
+		<!--<Page Name="Page1d"  />
+		<Page Name="Page2d" />-->
+	</DeletePages>
+	
+	<AddPages>
+		
+		<!--Create Team Pages (13) -->
+		
+		<PublishingPage Name="Engagement-Management-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Engagement Management Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Project-Management-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Project Management Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Release-Management-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Release Management Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="ServiceDesk-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="ServiceDesk Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Command-Center-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Command Center Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Technical-Account-Manager-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Technical Account Manager (TAM) Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Application-Performance-Management-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Application Performance Management Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Middleware-Operations-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Middleware Operations Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Software-Configuration-Management-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Software Configuration Management (SCM) Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Security-Operations-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Security Operations Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Security-Architects-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Security Architects Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Enterprise-Information-Management-Team.aspx" PageLibrary="Pages"
+		LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Enterprise Information Management (EIM) Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Delivery-Framework-Governance-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Delivery Framework Governance Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>		
+
+		<PublishingPage Name="Delivery-Framework-Governance-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Delivery Framework Governance Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Delivery-Framework-Governance-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Delivery Framework Governance Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Solution-Application-Architects-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Solution and Application Architects Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Technology-Services-Architects-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Technology Services Architects Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+		
+		<PublishingPage Name="IT-Management-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="IT Management Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Product-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Product Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Delivery-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Delivery Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Architecture-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Architecture Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Build-Masters-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Build Masters Team" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Product-Owners-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Product Owner" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+
+		<PublishingPage Name="Scrum-Masters-Team.aspx" PageLibrary="Pages"
+				LayoutPageName="FA_TeamPageLayout.aspx, FA Team Page" ContentType="FA Team Page" >
+			<ListItem>
+				<Field Name="Title"						Value="Scrum Master" />
+				<Field Name="FAPageType" Type="Lookup" Value="13" />
+				<!--<Field Name="FAPageImage" Value="&lt;img alt=&quot;&quot; height=&quot;1000&quot; src=&quot;/sites/FAITSF/SiteAssets/FAITDeliveryFramework-Master.vsdx-L0-ServiceStrategy.png&quot; style=&quot;BORDER: 0px solid; &quot;&gt;" />-->
+			</ListItem>
+		</PublishingPage>
+		
+		<!--Create Role Pages (14) -->
+	
+
+	</AddPages>	
+	
+</SharePointProvisioning>

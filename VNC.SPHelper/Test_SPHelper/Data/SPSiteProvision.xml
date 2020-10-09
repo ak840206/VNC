@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SharePointProvisioning WebUri="http://communities.na.firstam.net/sites/FAITSF" xWebUri="http://vncsp2010" >
+	<DeleteWebs>
+		<Web Name="SubSiteOned" />
+		<Web Name="SubSiteTwod" />
+	</DeleteWebs>
+	
+	<AddWebs>
+		<Web Name="SubSiteOnea" />
+		<Web Name="SubSiteTwoa" />
+	</AddWebs>
+
+	<DeleteSiteColumns>
+		<Field Name="VNCSiteCol1" />
+	</DeleteSiteColumns>
+	
+	<AddSiteColumns>
+		<Field Type="Text" DisplayName="VNCSiteCol1" Name="VNCSiteCol1" Group="VNC" ID="{42c2ab58-5621-4d8a-a91e-4e9691803670}" SourceID="{40946667-fdbf-41e1-ac64-537f213c9662}" StaticName="VNCSiteCol1" />
+		<Field Name="File1a"/>
+		<Field Name="File2a"/>
+	</AddSiteColumns>
+	
+	<DeleteContentTypes>
+		<ContentType Name="VNCContentType1" />
+		<ContentType Name="VNCContentType2" />
+		<ContentType Name="VNCContentType3" />
+		<ContentType Name="VNCContentType4" />
+	</DeleteContentTypes>	
+	
+	<AddContentTypes>
+		<ContentType Name="FA Page" >
+			<Field Name="FLD1"/>
+			<Field Name="FLD2"/>
+		</ContentType>
+		<ContentType Name="CT2"/>
+	</AddContentTypes>
+
+	<DeleteLists>
+		<List Title="List1a" />
+		<List Title="Lookup_Fruit" />
+		<List Title="Lookup_Applications" />
+		<List Title="List2a" />
+		<List Title="List2a" />
+	</DeleteLists>
+	
+	<!--
+		DisplayName = Visible Name
+		Name = Internal Name
+		AddFieldOptions enumeration (bit field)
+			DefaultValue=0	
+			AddToDefaultContentType=1
+			AddToNoContentType=2
+			AddToAllContentTypes=4
+			AddFieldInternalNameHint=8
+			AddFieldToDefaultView=16
+			AddFieldCheckDisplayName=32
+	-->
+	<AddLists>
+		<List Title="List1a" Description="List1a Description" />
+		<List Title="Lookup_Fruit" Description="Fruit Lookup List">
+			<Field DisplayName="Description" Description="" Name="Description" Type="Text" AddFieldOptions="24" />
+		</List>
+		<List Title="Lookup_Application" Description="Application Lookup List">
+			<Field DisplayName="Description" Description="" Name="Description" Type="Text" AddFieldOptions="24" />
+			<ListItem>
+				<Field Name="Title"       Value="App1" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="App2" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="App3" />
+			</ListItem>
+		</List>
+		<List Title="List2a" Description="List2a Description" >
+			<Field DisplayName="Col1 Number" Description="Col1 Number Description" Name="Col1Number" Type="Number" AddFieldOptions="24" />
+			<Field DisplayName="Col2 Text"   Name="Col2_Text"  Type="Text"   AddFieldOptions="24" />
+			<Field DisplayName="Col3 Integer" Name="Col3Integer"  Type="Integer"   AddFieldOptions="24" />
+			<Field DisplayName="Col4 Note"   Name="Col4Note"  Type="Note"   AddFieldOptions="24" />
+			<Field DisplayName="Col5 Choice" Name="Col5Choice" Type="Choice" AddFieldOptions="8">
+				<Default>Green</Default>
+				<CHOICES>
+					<CHOICE>Red</CHOICE>
+					<CHOICE>Blue</CHOICE>
+					<CHOICE>Green</CHOICE>
+				</CHOICES>
+			</Field>
+			<Field DisplayName="Col6 Lookup" Name="Col5Lookup" Type="Lookup" AddFieldOptions="8" />
+			<ListItem>
+				<Field Name="Title"       Value="New Apple" />
+				<Field Name="Col2_Text"   Value="Apple" />
+				<Field Name="Col1Number"  Value="1.1" />
+				<Field Name="Col3Integer" Value="7" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="New Pear" />
+				<Field Name="Col2_Text"  Value="Pear" />
+				<Field Name="Col4Note"  Value="This is a really long note that covers mutiple lines and goes on and on and on\rand " />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="New Banana" />
+				<Field Name="Col2_Text"  Value="Banana" />
+				<Field Name="Col5Choice" Value="Blue" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="New Banana" />
+				<Field Name="Col2_Text"  Value="Banana" />
+				<Field Name="Col5Choice" Value="Red" />
+			</ListItem>
+		</List>
+	</AddLists>
+
+	<DeleteListItems>
+		<List Title="Lookup_Fruit" DeleteAllItems="true">
+			<ListItem Title="Cherry" />
+		</List>
+		<List Title="Lookup_Applications" DeleteAllItems="true" />
+	</DeleteListItems>
+	
+	<AddListItems>
+		<List Title="Lookup_Fruit">
+			<ListItem>
+				<Field Name="Title"       Value="Apple" />
+				<Field Name="Description"  Value="An apple" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Pear" />
+				<Field Name="Description"  Value="A pear" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="Banana" />
+			</ListItem>
+		</List>
+		<List Title="Lookup_Applications" Description="Application Lookup List">
+			<ListItem>
+				<Field Name="Title"       Value="App1" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="App2" />
+			</ListItem>
+			<ListItem>
+				<Field Name="Title"       Value="App3" />
+			</ListItem>
+		</List>		
+	</AddListItems>
+	
+	<DeleteLibraries>
+		<Library Name="Library1d" />
+		<Library Name="Library2d" />
+	</DeleteLibraries>
+	
+	<AddLibraries>
+		<Library Name="Library1a" />
+		<Library Name="Library2a" />		
+	</AddLibraries>
+	
+	<DeletePages>
+		<Page Name="Page1d" />
+		<Page Name="Page2d" />
+	</DeletePages>
+	
+	<AddPages>
+		<Page Name="Page1a" />
+		<Page Name="Page2a" />
+	</AddPages>	
+	
+</SharePointProvisioning>
