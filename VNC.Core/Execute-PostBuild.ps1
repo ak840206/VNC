@@ -64,21 +64,7 @@ command includes the Role parameter of Get-Help.
 The intended use of the function. This content appears when the Get-Help
 command includes the Functionality parameter of Get-Help.
 
-
-<ScriptName - Consider Verb-Noun>.ps1
-
-SCC:
-	This script is under source code control.  Modifications should be 
-	checked into the TFS repository located at 
-		<Team Project Collection>
-	under a project 
-		$<TeamProject>/<Path>
-
-Last Update:
-
-v1.0.0 <Author>, <Date>, <Company>
-
-Be sure to leave two blank lines after end of block comment.
+Execute-PostBuild.ps1
 #>
 
 ##############################################    
@@ -87,9 +73,6 @@ Be sure to leave two blank lines after end of block comment.
 
 param
 (
-# <TODO: Add script level parameters>
-    # [switch] $SwitchArg1,
-    # [switch] $SwitchArg2,
     [string] $Configuration, 
     [string] $Platform,
 	[string] $TargetName,
@@ -100,16 +83,6 @@ param
 ##############################################    
 # Script Level Variables
 ##############################################
-
-<#
-$ScriptVar1 = "Foo"
-$ScriptVar2 = 42
-$ScriptVar3 = @(
-    ("Apple")
-    ,("Pear")
-    ,("Yoghurt")
-)
-#>
 
 $UsePLLog = $false
 
@@ -126,18 +99,13 @@ function Main
     if ($SCRIPT:Verbose)
     {
         "SCRIPTNAME         = $SCRIPTNAME"
-		"SCRIPTPATH         = $SCRIPTPATH"
-		"CURRENTDIRECTORY   = $CURRENTDIRECTORY"
-		
+        "SCRIPTPATH         = $SCRIPTPATH"
+        "CURRENTDIRECTORY   = $CURRENTDIRECTORY"
+
         "Configuration      = $Configuration"
         "Platform           = $Platform"
         "TargetName         = $TargetName"
-<#
-        "ScriptVar2         = $ScriptVar2"
-        "ScriptVar3         = $ScriptVar3"
-        ""
-#>
-		"`$Verbose           = $Verbose"
+        "`$Verbose           = $Verbose"
     }
     
     if ( ! (VerifyPrerequisites))
@@ -159,10 +127,6 @@ cd $CURRENTDIRECTORY
 
     Func1
     
-#    Func2
-    
-#    Func3
-    
     $message = "Ending   " + $SCRIPTNAME + ": " + (Get-Date)
     LogMessage $message "Main" "Info"
 }
@@ -182,18 +146,18 @@ function Func1()
     if ($Configuration -eq "Debug")
     {
         $destinations = @(
-	        "..\Common\Debug"
-	        )
+            "..\Common\Debug"
+            )
     }
     else
     {
         $destinations = @(
 	        "..\Common"
-	        )
+	    )
     }
 
     $targets = @(
-	    ".\bin\$Configuration\$TargetName.dll"
+        ".\bin\$Configuration\$TargetName.dll"
 	    ".\bin\$Configuration\$TargetName.pdb"
 	    )
 	
@@ -217,46 +181,12 @@ function Func1()
 
 function VerifyFunc1()
 {
-
     $message = "  VerifyFunc1()"
     LogMessage $message "VerifyFunc1" "Trace"
-
-    # Verify something
-    
-    # if ( ! (Test-Path $InputFolder))
-    # {
-        # $message = "InputFolder: " + $InputFolder + " does not exist"
-        # LogMessage $message "VerifyInputFiles" "Error"
-
-        # return $false
-    # }
-    # else
-    # {
-        # foreach ($file in $EDMFileNames)
-        # {
-            # $inputFile = ($InputFolder + "\" + $file + ".csv")
-            
-            # if ( ! (Test-Path $inputFile))
-            # {
-                # $message = "    Missing Input file: " + $inputFile
-                # LogMessage $message "VerifyInputFiles" "Error"
-
-                # return $false
-            # }
-        # }
-    # }
     
     return $true
 }
-    
-function VerifyFunc2()
-{
-    $message = "  VerifyFunc2()"
-    LogMessage $message "VerifyFunc2" "Trace"
 
-    return $true
-}
-    
 function VerifyPrerequisites()
 {
     $message = "VerifyPrerequisites()"
@@ -266,12 +196,7 @@ function VerifyPrerequisites()
     {
         return $false
     }
-    
-    if ( ! (VerifyFunc2))
-    {
-        return $false
-    }
-            
+
     return $true
 }
 
@@ -280,11 +205,11 @@ if ($SCRIPT:Contents)
 	$myInvocation.MyCommand.ScriptBlock
 	exit
 }
-	
+
 # Call the main function.  Use Dot Sourcing to ensure executed in Script scope.
 
 . Main
 
 #
-# End New-ScriptTemplate1.ps1
+# End Execute-PostBuild.ps1
 #

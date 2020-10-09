@@ -7,8 +7,8 @@
     <ProjectGuid>{0BE582E2-80C0-4F62-BDA9-AB52D01E7BAE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GenericRepository</RootNamespace>
-    <AssemblyName>GenericRepository</AssemblyName>
+    <RootNamespace>VNC.GenericRepository</RootNamespace>
+    <AssemblyName>VNC.GenericRepository</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -50,4 +50,18 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>echo Start Pre-build Event
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -file ..\..\Execute-PreBuild.ps1 $(ConfigurationName) $(PlatformName) $(TargetName)
+
+echo End Pre-Build Event</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>echo Start Post-build Event
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -file ..\..\Execute-PostBuild.ps1 $(ConfigurationName) $(PlatformName) $(TargetName)
+
+echo End Post-Build Event</PostBuildEvent>
+  </PropertyGroup>
 </Project>

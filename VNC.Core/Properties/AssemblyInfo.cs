@@ -83,4 +83,4 @@ using System.Windows;
 //  Version   Date        By
 //  1.0.0.0   mm/dd/yyyy    Developer
 //      Initial Version
-[assembly: AssemblyInformationalVersion("2020.09.19")]
+[assembly: AssemblyInformationalVersion("2020.10.08A")]

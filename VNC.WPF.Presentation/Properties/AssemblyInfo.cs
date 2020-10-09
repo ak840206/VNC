@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VNC.WPF.UserControls")]
+[assembly: AssemblyTitle("VNC.WPF.Presentation")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VNC.WPF.UserControls")]
+[assembly: AssemblyCompany("VNC")]
+[assembly: AssemblyProduct("VNC.WPF.Presentation")]
 [assembly: AssemblyCopyright("Copyright © 2017-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -64,4 +64,4 @@ using System.Runtime.InteropServices;
 //  Version   Date        By
 //  1.0.0.0   mm/dd/yyyy    Developer
 //      Initial Version
-[assembly: AssemblyInformationalVersion("2020.03.17A")]
+[assembly: AssemblyInformationalVersion("2020.10.08A")]

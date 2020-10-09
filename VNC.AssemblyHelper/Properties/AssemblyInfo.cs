@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AssemblyTitle")]
-[assembly: AssemblyDescription("AssemblyDescription")]
-[assembly: AssemblyConfiguration("AssemblyConfiguration")]
-[assembly: AssemblyCompany("AssemblyCompany")]
-[assembly: AssemblyProduct("AssemblyProduct")]
-[assembly: AssemblyCopyright("AssemblyCopyright")]
-[assembly: AssemblyTrademark("AssemblyTrademark")]
+[assembly: AssemblyTitle("VNC.AssemblyHelper")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("VNC")]
+[assembly: AssemblyProduct("VNC.AssemblyHelper")]
+[assembly: AssemblyCopyright("Copyright  © 2014-2020")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -53,18 +53,18 @@ using System.Runtime.InteropServices;
 //      Breaking updates to AssemblyInformation.cs
 //  1.0.0.0                 Christopher Rhodes
 //      Initial Version
-[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
 
 // AssemblyFileVersion History
 //
 //  Version     Date        By
 //  1.1.0.0     9/30/2010   Christopher Rhodes
 //      Initial Version
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
 
 // AssemblyInformationalVersion History
 //
 //  Version   Date        By
 //  1.0.0.0   mm/dd/yyyy    Developer
 //      Initial Version
-[assembly: AssemblyInformationalVersion("2019.03.12")]
+[assembly: AssemblyInformationalVersion("2020.10.08A")]

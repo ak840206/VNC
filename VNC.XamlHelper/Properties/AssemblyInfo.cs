@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("XamlHelper")]
+[assembly: AssemblyTitle("VNC.XamlHelper")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("XamlHelper")]
-[assembly: AssemblyCopyright("Copyright © 2014-2017")]
+[assembly: AssemblyCompany("VNC")]
+[assembly: AssemblyProduct("VNC.XamlHelper")]
+[assembly: AssemblyCopyright("Copyright © 2014-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -64,4 +64,4 @@ using System.Runtime.InteropServices;
 //  Version   Date        By
 //  1.0.0.0   mm/dd/yyyy    Developer
 //      Initial Version
-[assembly: AssemblyInformationalVersion("2017.12.05")]
+[assembly: AssemblyInformationalVersion("2020.10.08A")]
