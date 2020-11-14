@@ -60,8 +60,8 @@ namespace VNC.TFS
             }
             catch (VersionControlException vce)
             {
-                throw;
-                teamProject = null;
+                //throw;
+                //teamProject = null;
             }
             catch (TimeoutException te)
             {
