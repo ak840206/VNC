@@ -106,7 +106,6 @@
     <Compile Include="Mvvm\Interfaces\IViewModel.cs" />
     <Compile Include="Mvvm\Prism\Interfaces\IRegionManagerAware.cs" />
     <Compile Include="Mvvm\Interfaces\IShellService.cs" />
-    <Compile Include="Mvvm\Prism\ModuleBase.cs" />
     <Compile Include="Mvvm\Prism\StackPanelRegionAdapter.cs" />
     <Compile Include="Mvvm\ModelWrapper`1.cs" />
     <Compile Include="Mvvm\ViewBase.cs" />
@@ -127,7 +126,6 @@
     <Compile Include="Mvvm\Prism\RegionManagerAwareBehavior.cs" />
     <Compile Include="Services\Interfaces\IMessageDialogService.cs" />
     <Compile Include="Services\MessageDialogService.cs" />
-    <Compile Include="Unity\ExtensionMethods.cs" />
     <Compile Include="Mvvm\ViewModelBase.cs" />
     <Compile Include="Xaml\Enums\EnumBindingSourceExtension.cs" />
     <Compile Include="Xaml\Enums\EnumDescriptionTypeConverter.cs" />
@@ -169,9 +167,6 @@
     </PackageReference>
     <PackageReference Include="Prism.Wpf">
       <Version>7.2.0.1422</Version>
-    </PackageReference>
-    <PackageReference Include="Unity">
-      <Version>5.11.7</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
