@@ -1,17 +1,17 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>VNC.Logging</id>
-    <version>1.0.0.0</version>
-    <title>VNC.Logging</title>
-    <authors>Christopher Rhodes</authors>
-    <owners>Christopher Rhodes</owners>
-    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
-    <projectUrl>https://github.com/chrhodes/vnc/tree/master/VNC.Logging</projectUrl>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Thin layer on top of Microsoft.Practices.EnterpriseLibrary.Logging application block</description>
-    <releaseNotes>Initial Release</releaseNotes>
-    <copyright>Copyright 2017 Christopher Rhodes</copyright>
-    <tags>Logging</tags>
+    <license type="expression">MIT</license>
+    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
+    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <description>$description$</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Tag1 Tag2</tags>
   </metadata>
 </package>
