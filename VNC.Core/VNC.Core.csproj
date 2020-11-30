@@ -157,6 +157,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="VNC.Core.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator">
