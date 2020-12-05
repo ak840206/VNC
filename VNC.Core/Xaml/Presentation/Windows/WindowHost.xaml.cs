@@ -2,8 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 
-using VNC;
-
 namespace VNC.Core.Xaml.Presentation
 {
 
@@ -57,7 +55,7 @@ namespace VNC.Core.Xaml.Presentation
             }
             catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.ToString());
             }
         }
 

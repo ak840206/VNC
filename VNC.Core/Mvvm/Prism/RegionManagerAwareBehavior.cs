@@ -13,13 +13,23 @@ namespace VNC.Core.Mvvm.Prism
 
         protected override void OnAttach()
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             // Attach to all regions.  But, can also pick and choose
 
             Region.ActiveViews.CollectionChanged += ActiveViews_CollectionChanged;
+
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         void ActiveViews_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 foreach (var item in e.NewItems)
@@ -49,10 +59,17 @@ namespace VNC.Core.Mvvm.Prism
                     InvokeOnRegionManagerAwareElement(item, x => x.RegionManager = null);
                 }
             }
+
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         static void InvokeOnRegionManagerAwareElement(object item, Action<IRegionManagerAware> invocation)
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             var rmAwareItem = item as IRegionManagerAware;
 
             if (rmAwareItem != null)
@@ -91,6 +108,9 @@ namespace VNC.Core.Mvvm.Prism
                     invocation(rmAwareDataContext);
                 }
             }
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
     }
 }

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RootNamespace>VNC.Logging</RootNamespace>
+        <AssemblyName>VNC.Logging</AssemblyName>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EnterpriseLibrary.Common" Version="6.0.1304" />
+        <PackageReference Include="EnterpriseLibrary.Logging" Version="6.0.1304" />
+        <PackageReference Include="Microsoft.AspNet.Cors" Version="5.2.7" />
+        <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.1" />
+        <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.1" />
+        <PackageReference Include="Microsoft.Owin.Cors" Version="4.1.0" />
+        <PackageReference Include="Microsoft.Owin.Security" Version="4.1.0" />
+        <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+        <PackageReference Include="Unity" Version="5.11.7" />
+        <PackageReference Include="Unity.Interception" Version="5.11.1" />
+    </ItemGroup>
+</Project>

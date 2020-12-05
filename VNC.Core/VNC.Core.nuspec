@@ -5,14 +5,13 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>$author$</authors>
-    <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/chrhodes/vnc</projectUrl>
-    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <!-- <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl> -->
     <description>$description$</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>Initial Package</releaseNotes>
     <copyright>$copyright$</copyright>
-    <tags>VNC</tags>
+    <tags>VNC Core</tags>
   </metadata>
 </package>

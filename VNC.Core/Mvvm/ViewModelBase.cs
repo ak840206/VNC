@@ -11,12 +11,28 @@ namespace VNC.Core.Mvvm
             set;
         }
 
-        public ViewModelBase() { }
+        public ViewModelBase() 
+        {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
+
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
+        }
 
         public ViewModelBase(IView view)
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             View = view;
             View.ViewModel = this;
+
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         private bool _isBusy;

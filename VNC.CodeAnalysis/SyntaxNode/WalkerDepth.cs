@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VNC.Xaml.Enums;
+﻿using System.ComponentModel;
+
+using VNC.Core.Xaml.Enums;
 
 namespace VNC.CodeAnalysis.SyntaxNode
 {

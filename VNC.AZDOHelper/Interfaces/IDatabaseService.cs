@@ -1,12 +1,12 @@
-﻿
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace VNC.AZDOHelper.Interfaces
 {
     public interface IDatabaseService
     {
-        IDbSet<>  { get; set; }
+        IDbSet<> { get; set; }
 
-    void Save();
+        void Save();
+
     }
 }

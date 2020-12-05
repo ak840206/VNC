@@ -17,8 +17,7 @@ namespace VNC.Core.Services
             MessageBox.Show(text, "Info");
         }
     }
-
-    
+  
     public enum MessageDialogResult
     {
         OK,
