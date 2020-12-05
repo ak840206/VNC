@@ -9,11 +9,25 @@ namespace VNC.Core.Mvvm.Prism
         public StackPanelRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory)
             : base(regionBehaviorFactory)
         {
-            
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
+
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
+
         }
 
         protected override IRegion CreateRegion()
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
+
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
             // Used for Content Controls.  One Active View.
             //return SingleActiveRegion();
 
@@ -26,6 +40,9 @@ namespace VNC.Core.Mvvm.Prism
 
         protected override void Adapt(IRegion region, StackPanel regionTarget)
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             region.Views.CollectionChanged += (s, e) =>
                 {
                     if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
@@ -38,6 +55,10 @@ namespace VNC.Core.Mvvm.Prism
 
                     //handle remove
                 };
+
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
     }
 }

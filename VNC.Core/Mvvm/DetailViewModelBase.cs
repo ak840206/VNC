@@ -22,6 +22,9 @@ namespace VNC.Core.Mvvm
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService)
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             _instanceCountDVM++;
             EventAggregator = eventAggregator;
             MessageDialogService = messageDialogService;
@@ -30,23 +33,35 @@ namespace VNC.Core.Mvvm
                 OnSaveExecute, OnSaveCanExecute);
 
             DeleteCommand = new DelegateCommand(
-                OnDeleteExecute);
+                OnDeleteExecute, OnDeleteCanExecute);
 
             CloseDetailViewCommand = new DelegateCommand(
                 OnCloseDetailViewExecute);
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         protected virtual void RaiseCollectionSavedEvent()
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             EventAggregator.GetEvent<AfterCollectionSavedEvent>()
                 .Publish(new AfterCollectionSavedEventArgs
                 {
                     ViewModelName = this.GetType().Name
                 });
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         protected virtual void OnCloseDetailViewExecute()
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             if (HasChanges)
             {
                 var result = MessageDialogService.ShowOkCancelDialog(
@@ -64,6 +79,9 @@ namespace VNC.Core.Mvvm
                     Id = this.Id,
                     ViewModelName = this.GetType().Name
                 });
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         public ICommand SaveCommand { get; }
@@ -113,6 +131,8 @@ namespace VNC.Core.Mvvm
 
         public abstract Task LoadAsync(int id);
 
+        protected abstract bool OnDeleteCanExecute();
+
         protected abstract void OnDeleteExecute();
 
         protected abstract bool OnSaveCanExecute();
@@ -121,6 +141,9 @@ namespace VNC.Core.Mvvm
 
         protected virtual void RaiseDetailDeletedEvent(int modelId)
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             EventAggregator.GetEvent<AfterDetailDeletedEvent>()
                 .Publish
                 (
@@ -130,10 +153,16 @@ namespace VNC.Core.Mvvm
                         ViewModelName = this.GetType().Name
                     }
                 );
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         protected virtual void RaiseDetailSavedEvent(int modelId, string displayMember)
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
             EventAggregator.GetEvent<AfterDetailSavedEvent>()
                 .Publish
                 (
@@ -144,6 +173,9 @@ namespace VNC.Core.Mvvm
                         ViewModelName = this.GetType().Name
                     }
                 );
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         public int InstanceCountDVM

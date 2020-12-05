@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+    <metadata>
+        <id>$id$</id>
+        <version>$version$</version>
+        <title>$title$</title>
+        <authors>$author$</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <license type="expression">MIT</license>
+        <projectUrl>https://github.com/chrhodes/vnc</projectUrl>
+        <!-- <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl> -->
+        <description>$description$</description>
+        <releaseNotes>Initial Package</releaseNotes>
+        <copyright>$copyright$</copyright>
+        <tags>VNC Log</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="EnterpriseLibrary.Common" version="6.0.1304" exclude="Build,Analyzers" />
+                <dependency id="EnterpriseLibrary.Logging" version="6.0.1304" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.AspNet.Cors" version="5.2.7" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.AspNet.SignalR.Client" version="2.4.1" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.AspNet.SignalR.Core" version="2.4.1" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Owin.Cors" version="4.1.0" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Owin.Security" version="4.1.0" exclude="Build,Analyzers" />
+                <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
+                <dependency id="Unity" version="5.11.7" exclude="Build,Analyzers" />
+                <dependency id="Unity.Interception" version="5.11.1" exclude="Build,Analyzers" />
+            </group>
+        </dependencies>
+    </metadata>
+</package>

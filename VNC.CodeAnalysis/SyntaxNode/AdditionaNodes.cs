@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-using VNC.Xaml.Enums;
+using VNC.Core.Xaml.Enums;
 
 namespace VNC.CodeAnalysis.SyntaxNode
 {

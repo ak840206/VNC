@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9D21B031-3BFE-44B1-A622-D500230F90A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VNC.CodeAnalysis</RootNamespace>
+    <AssemblyName>VNC.CodeAnalysis</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Mvvm.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common.cs" />
+    <Compile Include="DesignMetrics\CS\AbstractTypesWithConstructors.cs" />
+    <Compile Include="DesignMetrics\CS\DataClasses.cs" />
+    <Compile Include="DesignMetrics\CS\DeeplyNestedIfBlocks.cs" />
+    <Compile Include="DesignMetrics\CS\DeeplyNestedLoops.cs" />
+    <Compile Include="DesignMetrics\CS\EmptyInterfaces.cs" />
+    <Compile Include="DesignMetrics\CS\LocalClasses.cs" />
+    <Compile Include="DesignMetrics\CS\LongListOfSwitches.cs" />
+    <Compile Include="DesignMetrics\CS\LotsOfMethodOverloads.cs" />
+    <Compile Include="DesignMetrics\CS\ObjectObsession.cs" />
+    <Compile Include="DesignMetrics\CS\OutParameters.cs" />
+    <Compile Include="DesignMetrics\CS\RefusedBequest.cs" />
+    <Compile Include="DesignMetrics\CS\SealedClassAndProtectedMembers.cs" />
+    <Compile Include="DesignMetrics\CS\StaticMembersOnGenericTypes.cs" />
+    <Compile Include="DesignMetrics\CS\TooManyParametersOnGenericTypes.cs" />
+    <Compile Include="DesignMetrics\VB\StaticMembersOnGenericTypes.cs" />
+    <Compile Include="DesignMetrics\VB\TooManyParametersOnGenericTypes.cs" />
+    <Compile Include="DesignMetrics\VB\EmptyInterfaces.cs" />
+    <Compile Include="DesignMetrics\VB\LotsOfMethodOverloads.cs" />
+    <Compile Include="DesignMetrics\VB\RefusedBequest.cs" />
+    <Compile Include="DesignMetrics\VB\LocalClasses.cs" />
+    <Compile Include="DesignMetrics\VB\DataClasses.cs" />
+    <Compile Include="DesignMetrics\VB\LongListOfSwitches.cs" />
+    <Compile Include="DesignMetrics\VB\DeeplyNestedIfBlocks.cs" />
+    <Compile Include="DesignMetrics\VB\OutParameters.cs" />
+    <Compile Include="DesignMetrics\VB\AbstractTypesWithConstructors.cs" />
+    <Compile Include="DesignMetrics\VB\SealedClassAndProtectedMembers.cs" />
+    <Compile Include="DesignMetrics\VB\ObjectObsession.cs" />
+    <Compile Include="DesignMetrics\VB\DeeplyNestedLoops.cs" />
+    <Compile Include="ConfigurationOptions.cs" />
+    <Compile Include="ErrorNumbers.cs" />
+    <Compile Include="Helpers\Common.cs" />
+    <Compile Include="Helpers\CS.cs" />
+    <Compile Include="Helpers\VB.cs" />
+    <Compile Include="PerformanceMetrics\CS\AvoidBoxing.cs" />
+    <Compile Include="PerformanceMetrics\CS\AvoidExcessiveLocalVariables.cs" />
+    <Compile Include="PerformanceMetrics\CS\AvoidUnnecessaryProjections.cs" />
+    <Compile Include="PerformanceMetrics\CS\AvoidUsingDynamicByDefault.cs" />
+    <Compile Include="PerformanceMetrics\CS\AvoidUsingEmptyStringsToFindZeroLengthStrings.cs" />
+    <Compile Include="PerformanceMetrics\CS\AvoidVolatileDeclarations.cs" />
+    <Compile Include="PerformanceMetrics\CS\DoNotReturnArrayFromProperty.cs" />
+    <Compile Include="PerformanceMetrics\CS\DoNotUseObjectArrayInParams.cs" />
+    <Compile Include="PerformanceMetrics\CS\DoNotUseThreadAbortOrThreadSuspend.cs" />
+    <Compile Include="PerformanceMetrics\CS\PreferJaggedArraysOverMultidimensionalArrays.cs" />
+    <Compile Include="PerformanceMetrics\CS\PreferLiteralsOverEvaluation.cs" />
+    <Compile Include="PerformanceMetrics\CS\ValueTypesShouldOverrideEqualsAndGetHashCode.cs" />
+    <Compile Include="PerformanceMetrics\VB\AvoidBoxing.cs" />
+    <Compile Include="PerformanceMetrics\VB\AvoidExcessiveLocalVariables.cs" />
+    <Compile Include="PerformanceMetrics\VB\AvoidUnnecessaryProjections.cs" />
+    <Compile Include="PerformanceMetrics\VB\AvoidUsingDynamicByDefault.cs" />
+    <Compile Include="PerformanceMetrics\VB\AvoidUsingEmptyStringsToFindZeroLengthStrings.cs" />
+    <Compile Include="PerformanceMetrics\VB\AvoidVolatileDeclarations.cs" />
+    <Compile Include="PerformanceMetrics\VB\DoNotReturnArrayFromProperty.cs" />
+    <Compile Include="PerformanceMetrics\VB\DoNotUseObjectArrayInParams.cs" />
+    <Compile Include="PerformanceMetrics\VB\DoNotUseThreadAbortOrThreadSuspend.cs" />
+    <Compile Include="PerformanceMetrics\VB\PreferJaggedArraysOverMultidimensionalArrays.cs" />
+    <Compile Include="PerformanceMetrics\VB\PreferLiteralsOverEvaluation.cs" />
+    <Compile Include="PerformanceMetrics\VB\ValueTypesShouldOverrideEqualsAndGetHashCode.cs" />
+    <Compile Include="QualityMetrics\CS\CodeToCommentRatio.cs" />
+    <Compile Include="QualityMetrics\CS\ControlFlags.cs" />
+    <Compile Include="QualityMetrics\CS\FragmentedConditions.cs" />
+    <Compile Include="QualityMetrics\CS\GoToLabels.cs" />
+    <Compile Include="QualityMetrics\CS\HungarianVariableNames.cs" />
+    <Compile Include="QualityMetrics\CS\LadderIfStatements.cs" />
+    <Compile Include="QualityMetrics\CS\LargeClass.cs" />
+    <Compile Include="QualityMetrics\CS\LinesOfCode.cs" />
+    <Compile Include="QualityMetrics\CS\LongParameterList.cs" />
+    <Compile Include="QualityMetrics\CS\LotsOfLocalVariables.cs" />
+    <Compile Include="QualityMetrics\CS\MagicNumbersInCondition.cs" />
+    <Compile Include="QualityMetrics\CS\MagicNumbersInIndex.cs" />
+    <Compile Include="QualityMetrics\CS\MagicNumbersInMath.cs" />
+    <Compile Include="QualityMetrics\CS\MultipleReturnStatements.cs" />
+    <Compile Include="QualityMetrics\CS\UnusedMethodParameters.cs" />
+    <Compile Include="QualityMetrics\VB\CodeToCommentRatio.cs" />
+    <Compile Include="QualityMetrics\VB\ControlFlags.cs" />
+    <Compile Include="QualityMetrics\VB\FragmentedConditions.cs" />
+    <Compile Include="QualityMetrics\VB\GoToLabels.cs" />
+    <Compile Include="QualityMetrics\VB\HungarianVariableNames.cs" />
+    <Compile Include="QualityMetrics\VB\LadderIfStatements.cs" />
+    <Compile Include="QualityMetrics\VB\LargeClass.cs" />
+    <Compile Include="QualityMetrics\VB\LinesOfCode.cs" />
+    <Compile Include="QualityMetrics\VB\LongParameterList.cs" />
+    <Compile Include="QualityMetrics\VB\LotsOfLocalVariables.cs" />
+    <Compile Include="QualityMetrics\VB\MagicNumbersInCondition.cs" />
+    <Compile Include="QualityMetrics\VB\MagicNumbersInIndex.cs" />
+    <Compile Include="QualityMetrics\VB\MagicNumbersInMath.cs" />
+    <Compile Include="QualityMetrics\VB\MultipleReturnStatements.cs" />
+    <Compile Include="QualityMetrics\VB\UnusedMethodParameters.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RewriteFileCommandConfiguration.cs" />
+    <Compile Include="SearchFileCommandConfiguration.cs" />
+    <Compile Include="SearchTreeCommandConfiguration.cs" />
+    <Compile Include="RewriteTreeCommandConfiguration.cs" />
+    <Compile Include="Symbols.cs" />
+    <Compile Include="SyntaxNode\WalkerDepth.cs" />
+    <Compile Include="SyntaxNode\AdditionaNodes.cs" />
+    <Compile Include="SyntaxNode\VB\Classes.cs" />
+    <Compile Include="SyntaxNode\VB\Methods.cs" />
+    <Compile Include="SyntaxNode\VB\Modules.cs" />
+    <Compile Include="SyntaxNode\VB\Structures.cs" />
+    <Compile Include="SyntaxRewriters\CS\VNCCSSyntaxRewriterBase.cs" />
+    <Compile Include="SyntaxRewriters\Helpers.cs" />
+    <Compile Include="SyntaxRewriters\VB\AddImportsStatement.cs" />
+    <Compile Include="SyntaxRewriters\VB\RemoveMethodBody.cs" />
+    <Compile Include="SyntaxRewriters\VB\RewriteStopOrEndStatement.cs" />
+    <Compile Include="SyntaxRewriters\VB\RewriteCellFormatFontColor.cs" />
+    <Compile Include="SyntaxRewriters\VB\RemoveFieldDeclaration.cs" />
+    <Compile Include="SyntaxRewriters\VB\RemoveExpressionStatement.cs" />
+    <Compile Include="SyntaxRewriters\VB\VNCVBSyntaxRewriterBase.cs" />
+    <Compile Include="SyntaxRewriters\VB\RewriterIdeas.cs" />
+    <Compile Include="SyntaxRewriters\VB\WrapSQLFillCallsInDALHelper.cs" />
+    <Compile Include="SyntaxRewriters\VB\WrapSQLExecuteXCallsInDALHelper.cs" />
+    <Compile Include="SyntaxRewriters\VB\MultipleVariableDeclarations.cs" />
+    <Compile Include="SyntaxRewriters\CS\MyRewriter.cs" />
+    <Compile Include="SyntaxRewriters\VB\CommentOutSingleLineInvocationExpression.cs" />
+    <Compile Include="SyntaxRewriters\VB\InvocationExpression.cs" />
+    <Compile Include="SyntaxWalkers\CS\ImportsStatement.cs" />
+    <Compile Include="SyntaxWalkers\CS\MethodDeclaration.cs" />
+    <Compile Include="SyntaxWalkers\CS\MethodDeclarationNames.cs" />
+    <Compile Include="SyntaxWalkers\CS\VisitAll.cs" />
+    <Compile Include="SyntaxWalkers\CS\VNCCSSyntaxWalkerBase.cs" />
+    <Compile Include="SyntaxWalkers\CS\VNCCSTypedSyntaxWalkerBase.cs" />
+    <Compile Include="SyntaxWalkers\VB\AsNewClause.cs" />
+    <Compile Include="SyntaxWalkers\VB\ExpressionStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\HandlesClause.cs" />
+    <Compile Include="SyntaxWalkers\VB\MultiLineLambdaExpression.cs" />
+    <Compile Include="SyntaxWalkers\VB\StopOrEndStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\SingleLineLambdaExpression.cs" />
+    <Compile Include="SyntaxWalkers\VB\SyntaxNode.cs" />
+    <Compile Include="SyntaxWalkers\VB\SyntaxToken.cs" />
+    <Compile Include="SyntaxWalkers\VB\SyntaxTrivia.cs" />
+    <Compile Include="SyntaxWalkers\VB\VisitAll.cs" />
+    <Compile Include="SyntaxWalkers\VB\ArgumentList.cs" />
+    <Compile Include="SyntaxWalkers\VB\MemberAccessExpression.cs" />
+    <Compile Include="SyntaxWalkers\VB\InvocationExpressionInTryCatchWalker.cs" />
+    <Compile Include="SyntaxWalkers\VB\ObjectCreationExpression.cs" />
+    <Compile Include="SyntaxWalkers\VB\AssignmentStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\BinaryExpression.cs" />
+    <Compile Include="SyntaxWalkers\VB\SimpleAsClause.cs" />
+    <Compile Include="SyntaxWalkers\VB\LocalDeclarationStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\MethodStatementNames.cs" />
+    <Compile Include="SyntaxWalkers\VB\Parameter.cs" />
+    <Compile Include="SyntaxWalkers\VB\ParameterList.cs" />
+    <Compile Include="SyntaxWalkers\VB\PropertyBlock.cs" />
+    <Compile Include="SyntaxWalkers\VB\PropertyStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\FieldDeclaration.cs" />
+    <Compile Include="SyntaxWalkers\VB\ModuleBlock.cs" />
+    <Compile Include="SyntaxWalkers\VB\ModuleStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\MethodStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\MethodBlock.cs" />
+    <Compile Include="SyntaxWalkers\VB\HttpContextCurrentInvocationExpression.cs" />
+    <Compile Include="SyntaxWalkers\VB\ClassBlock.cs" />
+    <Compile Include="SyntaxWalkers\VB\ClassStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\NamespaceStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\ImportsStatement.cs" />
+    <Compile Include="SyntaxWalkers\VB\StructureBlock.cs" />
+    <Compile Include="SyntaxWalkers\VB\MultipleVariableDeclarator.cs" />
+    <Compile Include="SyntaxWalkers\VB\VariableDeclarator.cs" />
+    <Compile Include="SyntaxWalkers\VB\InvocationExpression.cs" />
+    <Compile Include="SyntaxWalkers\VB\VNCVBTypedSyntaxWalkerBase.cs" />
+    <Compile Include="SyntaxWalkers\VB\VNCVBSyntaxWalkerBase.cs" />
+    <Compile Include="Types.cs" />
+    <Compile Include="Workspace\Document.cs" />
+    <Compile Include="Workspace\Helper.cs" />
+    <Compile Include="Workspace\Project.cs" />
+    <Compile Include="Workspace\Solution.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Diagrams\ClassDiagram1.cd" />
+    <None Include="Execute-PostBuild.ps1" />
+    <None Include="Execute-PreBuild.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SyntaxNode\CS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CalcBinding">
+      <Version>2.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Crc32C.NET">
+      <Version>1.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="DynamicExpresso.Core">
+      <Version>2.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="ManagedEsent">
+      <Version>1.9.4</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Build">
+      <Version>15.9.20</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Build.Framework">
+      <Version>15.9.20</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Build.Tasks.Core">
+      <Version>15.9.20</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Build.Utilities.Core">
+      <Version>15.9.20</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis">
+      <Version>2.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
+      <Version>2.6.3</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.Common">
+      <Version>2.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild">
+      <Version>2.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Composition">
+      <Version>1.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reflection.Metadata">
+      <Version>1.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Security.Cryptography.Algorithms">
+      <Version>4.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.Security.Cryptography.X509Certificates">
+      <Version>4.3.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Text.Encoding.CodePages">
+      <Version>4.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Xml.ReaderWriter">
+      <Version>4.3.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj">
+      <Project>{c4e954d3-2a7a-48d2-b212-8b9a96bfeb4f}</Project>
+      <Name>VNC.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VNC.Logging\VNC.LoggingNF.csproj">
+      <Project>{0a14cb8d-94e2-4bd4-bab3-1dc242d49f03}</Project>
+      <Name>VNC.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo Start Post-build Event
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -file ..\..\Execute-PostBuild.ps1 $(ConfigurationName) $(PlatformName) $(TargetName) -V
+
+echo End Post-Build Event</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>echo Start Pre-build Event
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -file ..\..\Execute-PreBuild.ps1 $(ConfigurationName) $(PlatformName) $(TargetName) -V
+
+echo End Pre-Build Event</PreBuildEvent>
+  </PropertyGroup>
+</Project>

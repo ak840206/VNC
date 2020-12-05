@@ -9,8 +9,16 @@ namespace VNC.Core.DomainServices
 
         public DisconnectedRepository(DbContext context)
         {
+#if LOGGING
+            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+#endif
+
             _context = context;
             _dbSet = context.Set<TEntity>();
+
+#if LOGGING
+            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         // TODO(crhodes)

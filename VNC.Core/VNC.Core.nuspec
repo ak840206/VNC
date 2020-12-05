@@ -7,11 +7,11 @@
     <authors>$author$</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
-    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
-    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <projectUrl>https://github.com/chrhodes/vnc</projectUrl>
+    <!-- <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl> -->
     <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <releaseNotes>Initial Package</releaseNotes>
     <copyright>$copyright$</copyright>
-    <tags>Tag1 Tag2</tags>
+    <tags>VNC Core</tags>
   </metadata>
 </package>
