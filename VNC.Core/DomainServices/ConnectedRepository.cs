@@ -236,7 +236,7 @@ namespace VNC.Core.DomainServices
         public void Update(TEntity entity)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
 #endif
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
@@ -247,10 +247,19 @@ namespace VNC.Core.DomainServices
 #endif
         }
 
+        public async Task UpdateAsync()
+        {
+            Int64 startTicks = Log.Trace(String.Format("Enter"), Common.LOG_APPNAME);
+
+            await _context.SaveChangesAsync();
+
+            Log.Trace(String.Format("Exit"), Common.LOG_APPNAME, startTicks);
+        }
+
         public async Task UpdateAsync(TEntity entity)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
 #endif
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
@@ -312,6 +321,16 @@ namespace VNC.Core.DomainServices
 
             return includeProperties.Aggregate
               (queryable, (current, includeProperty) => current.Include(includeProperty));
+        }
+
+        public bool HasChanges()
+        {
+            Int64 startTicks = Log.Trace(String.Format("Enter"), Common.LOG_APPNAME);
+
+            Log.Trace(String.Format("Exit"), Common.LOG_APPNAME, startTicks);
+
+            var result = _context.ChangeTracker.HasChanges();
+            return result;
         }
 
         #endregion Private Methods

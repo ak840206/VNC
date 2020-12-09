@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 using Prism.Commands;
@@ -17,6 +20,12 @@ namespace VNC.Core.Mvvm
         protected readonly IMessageDialogService MessageDialogService;
         private bool _hasChanges;
         private static int _instanceCountDVM = 0;
+
+        public ICommand SaveCommand { get; }
+
+        public ICommand DeleteCommand { get; }
+
+        public ICommand CloseDetailViewCommand { get; }
 
         public DetailViewModelBase(
             IEventAggregator eventAggregator,
@@ -83,13 +92,6 @@ namespace VNC.Core.Mvvm
             Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
-
-        public ICommand SaveCommand { get; }
-
-        public ICommand DeleteCommand { get; }
-
-        public ICommand CloseDetailViewCommand { get; }
-
 
         public int Id
         {
@@ -188,6 +190,53 @@ namespace VNC.Core.Mvvm
                 _instanceCountDVM = value;
                 OnPropertyChanged();
             }
+        }
+
+        protected async Task SaveWithOptimisticConcurrencyAsync(Func<Task> saveFunc, Action afterSaveAction)
+        {
+            Int64 startTicks = Log.Trace(String.Format("Enter"), Common.LOG_APPNAME);
+
+            try
+            {
+                await saveFunc();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                var databaseValues = ex.Entries.Single().GetDatabaseValues();
+
+                if (databaseValues == null)
+                {
+                    MessageDialogService.ShowInfoDialog(
+                        "The entity has been deleted by another user.  Cannot continue.");
+                    RaiseDetailDeletedEvent(Id);
+                    return;
+                }
+
+                var result = MessageDialogService.ShowOkCancelDialog(
+                    "The entity has been changed by someone else." +
+                    " Click OK to save your changes anyway; Click Cancel" +
+                    " to reload the entity from the database.", "Question");
+
+                if (result == MessageDialogResult.OK)   // Client Wins
+                {
+                    // Update the original values with database-values
+                    var entry = ex.Entries.Single();
+                    entry.OriginalValues.SetValues(entry.GetDatabaseValues());
+                    await saveFunc();
+                }
+                else  // Database Wins
+                {
+                    // Reload entity from database
+                    await ex.Entries.Single().ReloadAsync();
+                    await LoadAsync(Id);
+                }
+            }
+
+            // Do anything that needs to occur after saving
+
+            afterSaveAction();
+
+            Log.Trace(String.Format("Exit"), Common.LOG_APPNAME, startTicks);
         }
     }
 }

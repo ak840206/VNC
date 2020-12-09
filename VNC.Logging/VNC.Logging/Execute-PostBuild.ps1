@@ -146,13 +146,13 @@ function Func1()
     if ($Configuration -eq "Debug")
     {
         $destinations = @(
-            "..\Common\Debug"
+            "..\..\Common\Debug"
             )
     }
     else
     {
         $destinations = @(
-	        "..\Common"
+	        "..\..\Common"
 	    )
     }
 

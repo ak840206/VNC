@@ -48,6 +48,8 @@ namespace VNC.Core.DomainServices
         void Update(
                 TEntity entity);
 
+        Task UpdateAsync();
+
         Task UpdateAsync(
                 TEntity entity);
 
@@ -56,5 +58,7 @@ namespace VNC.Core.DomainServices
 
         Task DeleteAsync(
             int entityId);
+
+        bool HasChanges();
     }
 }
