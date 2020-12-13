@@ -16,11 +16,11 @@
 //'																										  Info4				Log.Info4		(104)
 //'																										  Info5				Log.Info5		(105)
 //'       Verbose         Debugging trace                     16                                          Debug				Log.Debug		(1000)
-//'																										  Debug1			Log.Debug1		(101)
-//'																										  Debug2			Log.Debug2		(102)
-//'																										  Debug3			Log.Debug3		(103)
-//'																										  Debug4			Log.Debug4		(104)
-//'																										  Debug5			Log.Debug5		(105)
+//'																										  Debug1			Log.Debug1		(1001)
+//'																										  Debug2			Log.Debug2		(1002)
+//'																										  Debug3			Log.Debug3		(1003)
+//'																										  Debug4			Log.Debug4		(1004)
+//'																										  Debug5			Log.Debug5		(1005)
 //'                                                                                                       Trace				Log.Trace       (10000)
 //'                                                                                                       Trace1			Log.Trace1		(10001)
 //'                                                                                                       Trace2			Log.Trace2		(10002)
@@ -110,8 +110,10 @@ namespace VNC
 			FORM_LOAD = 10000,
 
 			EVENT_HANDLER = 10001,
+            EVENT = 10021,
 
 			STATUS = 10002,
+            APPLICATION_INITIALIZE = 10002,
 
 			REDIRECT_TRANSFER = 10003,
 
@@ -128,15 +130,27 @@ namespace VNC
 			UI_CONTROL_MED = 10017,
 			UI_CONTROL_LOW = 10027,
 
+            PRESENTATION = 10007,
+            VIEW = 10017,
+            VIEW_LOW = 10027,
+
 			UTILITY = 10008,
 			UTILITY_MED = 10018,
 			UTILITY_LOW = 10028,
+            VIEWMODEL = 10018,
+            VIEWMODEL_LOW = 10028,
 
 			OPERATION = 10009,
 			OPERATION_LOW = 10019,
+            CORE = 10009,
+            MODULE = 10019,
+            MODULE_INITIALIZE = 10029,
 
 			APPLICATION_SESSION = 10010,
 			APPLICATION_SESSION_LOW = 10020,
+
+            APPLICATION = 10010,
+            APPLICATIONSERVICES = 10020,
 
 			SYSTEM_CONFIG = 10011,
 			SYSTEM_CONFIG_LOW = 10021,
@@ -144,8 +158,14 @@ namespace VNC
 			FILE_DIR_IO = 10012,
 			FILE_DIR_IO_LOW = 10022,
 
+            DOMAIN = 10012,
+            DOMAINSERVICES = 10022,
+
 			DATABASE_IO = 10013,
 			DATABASE_IO_LOW = 10023,
+
+            PERSISTENCE = 10013,
+            PERSISTENCE_LOW = 10023,
 
 			SECURITY = 10014,
 			SECURITY_LOW = 10024,
@@ -153,6 +173,7 @@ namespace VNC
 			DEFAULT = 10019,
 
 			CLEAR_INITIALIZE = 10025,
+            CONSTRUCTOR = 10025,
 
 			// Below are the standard levels
 

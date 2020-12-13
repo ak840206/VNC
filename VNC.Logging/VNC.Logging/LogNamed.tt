@@ -75,7 +75,26 @@ namespace VNC
 
 			"CLEAR_INITIALIZE",
 
+            "CONSTRUCTOR",
+            "APPLICATION_INITIALIZE",
+            "EVENT",
+            "MODULE",
+            "MODULE_INITIALIZE",
+
+            "APPLICATION",
+            "APPLICATIONSERVICES",
+            "DOMAIN",
+            "DOMAINSERVICES",
+            "CORE",
+            "PERSISTENCE",
+            "PRESENTATION",
+            "VIEW",
+            "VIEW_LOW",
+            "VIEWMODEL",
+            "VIEWMODEL_LOW",
+            
 			"DEFAULT"
+
 			};
 
 		foreach (string methodName in named_methods)
