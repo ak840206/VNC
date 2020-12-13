@@ -14,24 +14,24 @@ namespace VNC.Core.Mvvm
         public ViewModelBase() 
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 #endif
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
         public ViewModelBase(IView view)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.CONSTRUCTOR($"Enter ({view.GetType()})", Common.LOG_APPNAME);
 #endif
             View = view;
             View.ViewModel = this;
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
@@ -59,7 +59,15 @@ namespace VNC.Core.Mvvm
 
         protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = null)
         {
+            // TODO(crhodes)
+            // Decide if we really want to log this.
+#if LOGGING
+            long startTicks = Log.VIEWMODEL_LOW("Enter", Common.LOG_APPNAME);
+#endif
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+#if LOGGING
+            Log.VIEWMODEL_LOW("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
     }
 }

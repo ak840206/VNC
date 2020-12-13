@@ -32,7 +32,7 @@ namespace VNC.Core.Mvvm
             IMessageDialogService messageDialogService)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 #endif
             _instanceCountDVM++;
             EventAggregator = eventAggregator;
@@ -47,14 +47,14 @@ namespace VNC.Core.Mvvm
             CloseDetailViewCommand = new DelegateCommand(
                 OnCloseDetailViewExecute);
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
         protected virtual void RaiseCollectionSavedEvent()
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
 #endif
             EventAggregator.GetEvent<AfterCollectionSavedEvent>()
                 .Publish(new AfterCollectionSavedEventArgs
@@ -62,14 +62,14 @@ namespace VNC.Core.Mvvm
                     ViewModelName = this.GetType().Name
                 });
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
         protected virtual void OnCloseDetailViewExecute()
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.EVENT($"Enter", Common.LOG_APPNAME);
 #endif
             if (HasChanges)
             {
@@ -82,15 +82,20 @@ namespace VNC.Core.Mvvm
                 }
             }
 
+            PublishDetailClosedEvent();
+#if LOGGING
+            Log.EVENT($"Exit", Common.LOG_APPNAME, startTicks);
+#endif
+        }
+
+        private void PublishDetailClosedEvent()
+        {
             EventAggregator.GetEvent<AfterDetailClosedEvent>()
                 .Publish(new AfterDetailClosedEventArgs
                 {
                     Id = this.Id,
                     ViewModelName = this.GetType().Name
                 });
-#if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
-#endif
         }
 
         public int Id
@@ -144,7 +149,7 @@ namespace VNC.Core.Mvvm
         protected virtual void RaiseDetailDeletedEvent(int modelId)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.EVENT($"Enter", Common.LOG_APPNAME);
 #endif
             EventAggregator.GetEvent<AfterDetailDeletedEvent>()
                 .Publish
@@ -156,14 +161,14 @@ namespace VNC.Core.Mvvm
                     }
                 );
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.EVENT($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
         protected virtual void RaiseDetailSavedEvent(int modelId, string displayMember)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.EVENT($"Enter", Common.LOG_APPNAME);
 #endif
             EventAggregator.GetEvent<AfterDetailSavedEvent>()
                 .Publish
@@ -176,7 +181,7 @@ namespace VNC.Core.Mvvm
                     }
                 );
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.EVENT($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
@@ -192,9 +197,9 @@ namespace VNC.Core.Mvvm
             }
         }
 
-        protected async Task SaveWithOptimisticConcurrencyAsync(Func<Task> saveFunc, Action afterSaveAction)
+        protected virtual async Task SaveWithOptimisticConcurrencyAsync(Func<Task> saveFunc, Action afterSaveAction)
         {
-            Int64 startTicks = Log.Trace(String.Format("Enter"), Common.LOG_APPNAME);
+            Int64 startTicks = Log.VIEWMODEL(String.Format("Enter"), Common.LOG_APPNAME);
 
             try
             {
@@ -236,7 +241,7 @@ namespace VNC.Core.Mvvm
 
             afterSaveAction();
 
-            Log.Trace(String.Format("Exit"), Common.LOG_APPNAME, startTicks);
+            Log.VIEWMODEL(String.Format("Exit"), Common.LOG_APPNAME, startTicks);
         }
     }
 }

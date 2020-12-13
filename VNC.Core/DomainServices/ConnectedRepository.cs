@@ -20,13 +20,13 @@ namespace VNC.Core.DomainServices
         public ConnectedRepository(DbContext context)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 #endif
             _context = context;
             _dbSet = context.Set<TEntity>();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
@@ -39,11 +39,11 @@ namespace VNC.Core.DomainServices
         public IEnumerable<TEntity> All()
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 #endif
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
             return _dbSet.AsNoTracking().ToList();
@@ -52,11 +52,11 @@ namespace VNC.Core.DomainServices
         public async Task<List<TEntity>> AllAsync()
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 #endif
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
             return await _dbSet.AsNoTracking().ToListAsync();
@@ -66,7 +66,7 @@ namespace VNC.Core.DomainServices
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 #endif
 
 #if LOGGING
@@ -79,7 +79,7 @@ namespace VNC.Core.DomainServices
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 #endif
 
 #if LOGGING
@@ -96,11 +96,11 @@ namespace VNC.Core.DomainServices
         public TEntity FindById(int entityId)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter entityId:({entityId})", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter entityId:({entityId})", Common.LOG_APPNAME);
 #endif
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
             return _dbSet.Find(entityId);
             //using (var context = _contextCreator())
@@ -113,11 +113,11 @@ namespace VNC.Core.DomainServices
         public async Task<TEntity> FindByIdAsync(int entityId)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter entityId:({entityId})", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter entityId:({entityId})", Common.LOG_APPNAME);
 #endif
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
             return await _dbSet.FindAsync(entityId);
@@ -127,13 +127,13 @@ namespace VNC.Core.DomainServices
             Expression<Func<TEntity, bool>> predicate)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
             IEnumerable<TEntity> results = _dbSet.AsNoTracking()
               .Where(predicate).ToList();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
             return results;
@@ -143,13 +143,13 @@ namespace VNC.Core.DomainServices
             Expression<Func<TEntity, bool>> predicate)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
             IEnumerable<TEntity> results = await _dbSet.AsNoTracking()
               .Where(predicate).ToListAsync();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
             return results;
@@ -160,13 +160,13 @@ namespace VNC.Core.DomainServices
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
             var query = GetAllIncluding(includeProperties);
             IEnumerable<TEntity> results = query.Where(predicate).ToList();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
             return results;
@@ -177,13 +177,13 @@ namespace VNC.Core.DomainServices
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
             var query = GetAllIncluding(includeProperties);
             IEnumerable<TEntity> results = await query.Where(predicate).ToListAsync();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
             return results;
@@ -206,26 +206,26 @@ namespace VNC.Core.DomainServices
         public void Insert(TEntity entity)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
             _dbSet.Add(entity);
             _context.SaveChanges();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
         public async Task InsertAsync(TEntity entity)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
             _dbSet.Add(entity);
             await _context.SaveChangesAsync();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
@@ -236,37 +236,37 @@ namespace VNC.Core.DomainServices
         public void Update(TEntity entity)
         {
 #if LOGGING
-            Int64 startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
         public async Task UpdateAsync()
         {
-            Int64 startTicks = Log.Trace(String.Format("Enter"), Common.LOG_APPNAME);
+            Int64 startTicks = Log.PERSISTENCE(String.Format("Enter"), Common.LOG_APPNAME);
 
             await _context.SaveChangesAsync();
 
-            Log.Trace(String.Format("Exit"), Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE(String.Format("Exit"), Common.LOG_APPNAME, startTicks);
         }
 
         public async Task UpdateAsync(TEntity entity)
         {
 #if LOGGING
-            Int64 startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
             _dbSet.Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
@@ -277,27 +277,27 @@ namespace VNC.Core.DomainServices
         public void Delete(int id)
         {
 #if LOGGING
-            long startTicks = Log.Debug($"Enter id:({id})", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter id:({id})", Common.LOG_APPNAME);
 #endif
             var entity = FindById(id);
             _dbSet.Remove(entity);
             _context.SaveChanges();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
         public async Task DeleteAsync(int entityId)
         {
 #if LOGGING
-            long startTicks = Log.Debug($"Enter entityId:({entityId})", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter entityId:({entityId})", Common.LOG_APPNAME);
 #endif
             var entity = FindById(entityId);
             _dbSet.Remove(entity);
             await _context.SaveChangesAsync();
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
@@ -311,12 +311,12 @@ namespace VNC.Core.DomainServices
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
             IQueryable<TEntity> queryable = _dbSet.AsNoTracking();
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
             return includeProperties.Aggregate
@@ -325,11 +325,12 @@ namespace VNC.Core.DomainServices
 
         public bool HasChanges()
         {
-            Int64 startTicks = Log.Trace(String.Format("Enter"), Common.LOG_APPNAME);
-
-            Log.Trace(String.Format("Exit"), Common.LOG_APPNAME, startTicks);
+            Int64 startTicks = Log.PERSISTENCE(String.Format("Enter"), Common.LOG_APPNAME);
 
             var result = _context.ChangeTracker.HasChanges();
+
+            Log.Trace(String.Format($"Exit ({result})"), Common.LOG_APPNAME, startTicks);
+
             return result;
         }
 
