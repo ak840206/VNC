@@ -72,6 +72,9 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VNC.Logging">
+      <HintPath>..\VNC.Logging\bin\Debug\net5.0\VNC.Logging.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -163,16 +166,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TestLoggingDLL\TestLoggingDLL.csproj">
-      <Project>{dd4c82b5-f59d-4015-8f6b-505b09a4f86f}</Project>
-      <Name>TestLoggingDLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VNC.Logging.csproj">
-      <Project>{0a14cb8d-94e2-4bd4-bab3-1dc242d49f03}</Project>
-      <Name>VNC.Logging</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
