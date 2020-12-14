@@ -13,38 +13,18 @@ namespace VNC.Core.Mvvm
 
         public ViewModelBase() 
         {
-#if LOGGING
-<<<<<<< HEAD
             long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
-#endif
 
-#if LOGGING
             Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
-=======
-            long startTicks = Log.CONSTRUCTOR($"Enter()", Common.LOG_APPNAME);
-#endif
-
-#if LOGGING
-            Log.CONSTRUCTOR($"Exit", Common.LOG_APPNAME, startTicks);
->>>>>>> 0578b93940613b246fac34e87b2166564e3d755f
-#endif
         }
 
         public ViewModelBase(IView view)
         {
-#if LOGGING
-<<<<<<< HEAD
-            long startTicks = Log.CONSTRUCTOR($"Enter ({view.GetType()})", Common.LOG_APPNAME);
-=======
             long startTicks = Log.CONSTRUCTOR($"Enter({view.GetType()})", Common.LOG_APPNAME);
->>>>>>> 0578b93940613b246fac34e87b2166564e3d755f
-#endif
+
             View = view;
             View.ViewModel = this;
-
-#if LOGGING
-            Log.CONSTRUCTOR($"Exit", Common.LOG_APPNAME, startTicks);
-#endif
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         private bool _isBusy;
@@ -73,13 +53,12 @@ namespace VNC.Core.Mvvm
         {
             // TODO(crhodes)
             // Decide if we really want to log this.
-#if LOGGING
+
             long startTicks = Log.VIEWMODEL_LOW("Enter", Common.LOG_APPNAME);
-#endif
+
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-#if LOGGING
+
             Log.VIEWMODEL_LOW("Exit", Common.LOG_APPNAME, startTicks);
-#endif
         }
     }
 }
