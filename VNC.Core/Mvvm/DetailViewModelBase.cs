@@ -12,12 +12,12 @@ using VNC.Core.Services;
 
 namespace VNC.Core.Mvvm
 {
-    public abstract class DetailViewModelBase : ViewModelBase, IDetailViewModel
+    public abstract class DetailViewModelBase : EventViewModelBase, IDetailViewModel
     {
         private static int _instanceCountDVM = 0;
 
-        protected readonly IEventAggregator EventAggregator;
-        protected readonly IMessageDialogService MessageDialogService;
+        //protected readonly IEventAggregator EventAggregator;
+        //protected readonly IMessageDialogService MessageDialogService;
 
         private string _title;
         private int _id;
@@ -32,14 +32,14 @@ namespace VNC.Core.Mvvm
 
         public DetailViewModelBase(
             IEventAggregator eventAggregator,
-            IMessageDialogService messageDialogService)
+            IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
             long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
             _instanceCountDVM++;
 
-            EventAggregator = eventAggregator;
-            MessageDialogService = messageDialogService;
+            //EventAggregator = eventAggregator;
+            //MessageDialogService = messageDialogService;
 
             SaveCommand = new DelegateCommand(
                 OnSaveExecute, OnSaveCanExecute);
