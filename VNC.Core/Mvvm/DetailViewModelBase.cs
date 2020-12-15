@@ -14,12 +14,15 @@ namespace VNC.Core.Mvvm
 {
     public abstract class DetailViewModelBase : ViewModelBase, IDetailViewModel
     {
-        private string _title;
-        private int _id;
+        private static int _instanceCountDVM = 0;
+
         protected readonly IEventAggregator EventAggregator;
         protected readonly IMessageDialogService MessageDialogService;
+
+        private string _title;
+        private int _id;
+
         private bool _hasChanges;
-        private static int _instanceCountDVM = 0;
 
         public ICommand SaveCommand { get; }
 
@@ -31,10 +34,10 @@ namespace VNC.Core.Mvvm
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService)
         {
-#if LOGGING
             long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
-#endif
+
             _instanceCountDVM++;
+
             EventAggregator = eventAggregator;
             MessageDialogService = messageDialogService;
 
@@ -46,31 +49,27 @@ namespace VNC.Core.Mvvm
 
             CloseDetailViewCommand = new DelegateCommand(
                 OnCloseDetailViewExecute);
-#if LOGGING
+
             Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
-#endif
         }
 
-        protected virtual void RaiseCollectionSavedEvent()
+        protected virtual void PublishAfterCollectionSavedEvent()
         {
-#if LOGGING
             long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
-#endif
+
             EventAggregator.GetEvent<AfterCollectionSavedEvent>()
                 .Publish(new AfterCollectionSavedEventArgs
                 {
                     ViewModelName = this.GetType().Name
                 });
-#if LOGGING
+
             Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
-#endif
         }
 
         protected virtual void OnCloseDetailViewExecute()
         {
-#if LOGGING
-            long startTicks = Log.EVENT($"Enter", Common.LOG_APPNAME);
-#endif
+            long startTicks = Log.VIEWMODEL("Enter", Common.LOG_APPNAME);
+
             if (HasChanges)
             {
                 var result = MessageDialogService.ShowOkCancelDialog(
@@ -82,20 +81,23 @@ namespace VNC.Core.Mvvm
                 }
             }
 
-            PublishDetailClosedEvent();
-#if LOGGING
-            Log.EVENT($"Exit", Common.LOG_APPNAME, startTicks);
-#endif
+            PublishAfterDetailClosedEvent();
+
+            Log.VIEWMODEL("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        private void PublishDetailClosedEvent()
+        private void PublishAfterDetailClosedEvent()
         {
+            long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+
             EventAggregator.GetEvent<AfterDetailClosedEvent>()
                 .Publish(new AfterDetailClosedEventArgs
                 {
                     Id = this.Id,
                     ViewModelName = this.GetType().Name
                 });
+
+            Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         public int Id
@@ -103,10 +105,10 @@ namespace VNC.Core.Mvvm
             get { return _id; }
             protected set
             {
-                //if (_id == value)
-                //    return;
+                if (_id == value)
+                    return;
                 _id = value;
-                //OnPropertyChanged();
+                OnPropertyChanged();
             }
         }
      
@@ -146,11 +148,10 @@ namespace VNC.Core.Mvvm
 
         protected abstract void OnSaveExecute();
 
-        protected virtual void RaiseDetailDeletedEvent(int modelId)
+        protected virtual void PublishAfterDetailDeletedEvent(int modelId)
         {
-#if LOGGING
-            long startTicks = Log.EVENT($"Enter", Common.LOG_APPNAME);
-#endif
+            long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+
             EventAggregator.GetEvent<AfterDetailDeletedEvent>()
                 .Publish
                 (
@@ -160,16 +161,14 @@ namespace VNC.Core.Mvvm
                         ViewModelName = this.GetType().Name
                     }
                 );
-#if LOGGING
-            Log.EVENT($"Exit", Common.LOG_APPNAME, startTicks);
-#endif
+
+            Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        protected virtual void RaiseDetailSavedEvent(int modelId, string displayMember)
+        protected virtual void PublishAfterDetailSavedEvent(int modelId, string displayMember)
         {
-#if LOGGING
-            long startTicks = Log.EVENT($"Enter", Common.LOG_APPNAME);
-#endif
+            long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+
             EventAggregator.GetEvent<AfterDetailSavedEvent>()
                 .Publish
                 (
@@ -180,9 +179,8 @@ namespace VNC.Core.Mvvm
                         ViewModelName = this.GetType().Name
                     }
                 );
-#if LOGGING
-            Log.EVENT($"Exit", Common.LOG_APPNAME, startTicks);
-#endif
+
+            Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         public int InstanceCountDVM
@@ -199,7 +197,7 @@ namespace VNC.Core.Mvvm
 
         protected virtual async Task SaveWithOptimisticConcurrencyAsync(Func<Task> saveFunc, Action afterSaveAction)
         {
-            Int64 startTicks = Log.VIEWMODEL(String.Format("Enter"), Common.LOG_APPNAME);
+            Int64 startTicks = Log.VIEWMODEL("Enter", Common.LOG_APPNAME);
 
             try
             {
@@ -213,7 +211,7 @@ namespace VNC.Core.Mvvm
                 {
                     MessageDialogService.ShowInfoDialog(
                         "The entity has been deleted by another user.  Cannot continue.");
-                    RaiseDetailDeletedEvent(Id);
+                    PublishAfterDetailDeletedEvent(Id);
                     return;
                 }
 
@@ -241,7 +239,7 @@ namespace VNC.Core.Mvvm
 
             afterSaveAction();
 
-            Log.VIEWMODEL(String.Format("Exit"), Common.LOG_APPNAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.LOG_APPNAME, startTicks);
         }
     }
 }

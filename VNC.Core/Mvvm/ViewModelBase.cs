@@ -5,6 +5,8 @@ namespace VNC.Core.Mvvm
 {
     public class ViewModelBase : IViewModel, INotifyPropertyChanged
     {
+        private static int _instanceCountVM = 0;
+
         public IView View
         {
             get;
@@ -14,6 +16,7 @@ namespace VNC.Core.Mvvm
         public ViewModelBase() 
         {
             long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            _instanceCountVM++;
 
             Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
@@ -22,8 +25,11 @@ namespace VNC.Core.Mvvm
         {
             long startTicks = Log.CONSTRUCTOR($"Enter({view.GetType()})", Common.LOG_APPNAME);
 
+            _instanceCountVM++;
+
             View = view;
             View.ViewModel = this;
+
             Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
@@ -35,6 +41,18 @@ namespace VNC.Core.Mvvm
             {
                 _isBusy = value;
                 OnPropertyChanged("IsBusy");
+            }
+        }
+
+        public int InstanceCountVM
+        {
+            get { return _instanceCountVM; }
+            set
+            {
+                if (_instanceCountVM == value)
+                    return;
+                _instanceCountVM = value;
+                OnPropertyChanged();
             }
         }
 
@@ -54,7 +72,7 @@ namespace VNC.Core.Mvvm
             // TODO(crhodes)
             // Decide if we really want to log this.
 
-            long startTicks = Log.VIEWMODEL_LOW("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.VIEWMODEL_LOW($"Enter ({propertyName})", Common.LOG_APPNAME);
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
