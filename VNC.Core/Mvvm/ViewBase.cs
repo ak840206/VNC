@@ -4,16 +4,14 @@ namespace VNC.Core.Mvvm
 {
     public class ViewBase : UserControl, IView
     {
+        public ViewBase()
+        {
+        }
 
-        //public ViewBase() : base()
-        //{
-
-        //}
-
-        //public ViewBase(IViewModel viewModel) : base()
-        //{
-        //    ViewModel = viewModel;
-        //}
+        public ViewBase(IViewModel viewModel)
+        {
+            ViewModel = viewModel;
+        }
 
         private IViewModel _viewModel;
 

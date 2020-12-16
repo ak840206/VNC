@@ -4,9 +4,7 @@ using System.Windows.Input;
 using Prism.Commands;
 using Prism.Events;
 
-using VNC;
 using VNC.Core.Events;
-using VNC.Core.Mvvm;
 using VNC.Core.Services;
 
 namespace VNC.Core.Mvvm

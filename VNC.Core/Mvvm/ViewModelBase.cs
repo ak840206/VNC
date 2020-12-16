@@ -5,32 +5,20 @@ namespace VNC.Core.Mvvm
 {
     public class ViewModelBase : IViewModel, INotifyPropertyChanged
     {
-        private static int _instanceCountVM = 0;
-
         public IView View
         {
             get;
             set;
         }
 
-        public ViewModelBase() 
+        public ViewModelBase()
         {
-            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
-            _instanceCountVM++;
-
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         public ViewModelBase(IView view)
         {
-            long startTicks = Log.CONSTRUCTOR($"Enter({view.GetType()})", Common.LOG_APPNAME);
-
-            _instanceCountVM++;
-
             View = view;
             View.ViewModel = this;
-
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         private bool _isBusy;
@@ -41,18 +29,6 @@ namespace VNC.Core.Mvvm
             {
                 _isBusy = value;
                 OnPropertyChanged("IsBusy");
-            }
-        }
-
-        public int InstanceCountVM
-        {
-            get { return _instanceCountVM; }
-            set
-            {
-                if (_instanceCountVM == value)
-                    return;
-                _instanceCountVM = value;
-                OnPropertyChanged();
             }
         }
 

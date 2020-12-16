@@ -14,11 +14,6 @@ namespace VNC.Core.Mvvm
 {
     public abstract class DetailViewModelBase : EventViewModelBase, IDetailViewModel
     {
-        private static int _instanceCountDVM = 0;
-
-        //protected readonly IEventAggregator EventAggregator;
-        //protected readonly IMessageDialogService MessageDialogService;
-
         private string _title;
         private int _id;
 
@@ -35,11 +30,6 @@ namespace VNC.Core.Mvvm
             IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
             long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
-
-            _instanceCountDVM++;
-
-            //EventAggregator = eventAggregator;
-            //MessageDialogService = messageDialogService;
 
             SaveCommand = new DelegateCommand(
                 OnSaveExecute, OnSaveCanExecute);
@@ -181,18 +171,6 @@ namespace VNC.Core.Mvvm
                 );
 
             Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
-        }
-
-        public int InstanceCountDVM
-        {
-            get { return _instanceCountDVM; }
-            set
-            {
-                if (_instanceCountDVM == value)
-                    return;
-                _instanceCountDVM = value;
-                OnPropertyChanged();
-            }
         }
 
         protected virtual async Task SaveWithOptimisticConcurrencyAsync(Func<Task> saveFunc, Action afterSaveAction)
