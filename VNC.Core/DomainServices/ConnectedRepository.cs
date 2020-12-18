@@ -303,6 +303,17 @@ namespace VNC.Core.DomainServices
 
         #endregion Delete
 
+        public bool HasChanges()
+        {
+            Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
+
+            var result = _context.ChangeTracker.HasChanges();
+
+            Log.PERSISTENCE($"Exit ({result})", Common.LOG_APPNAME, startTicks);
+
+            return result;
+        }
+
         #endregion Public Methods
 
         #region Private Methods
@@ -321,17 +332,6 @@ namespace VNC.Core.DomainServices
 
             return includeProperties.Aggregate
               (queryable, (current, includeProperty) => current.Include(includeProperty));
-        }
-
-        public bool HasChanges()
-        {
-            Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
-
-            var result = _context.ChangeTracker.HasChanges();
-
-            Log.PERSISTENCE($"Exit ({result})", Common.LOG_APPNAME, startTicks);
-
-            return result;
         }
 
         #endregion Private Methods

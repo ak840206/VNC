@@ -29,7 +29,7 @@ namespace VNC.Core.Mvvm
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
-            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            //long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
             SaveCommand = new DelegateCommand(
                 OnSaveExecute, OnSaveCanExecute);
@@ -40,7 +40,7 @@ namespace VNC.Core.Mvvm
             CloseDetailViewCommand = new DelegateCommand(
                 OnCloseDetailViewExecute);
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            //Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         protected virtual void PublishAfterCollectionSavedEvent()

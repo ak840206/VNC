@@ -18,12 +18,12 @@ namespace VNC.Core.Mvvm
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService)
         {
-            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            //long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 
             EventAggregator = eventAggregator;
             MessageDialogService = messageDialogService;
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            //Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         public void AfterDetailSaved(ObservableCollection<NavigationItemViewModel> items,

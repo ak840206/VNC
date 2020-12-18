@@ -25,7 +25,7 @@ namespace VNC.Core.Mvvm
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
-            Int64 startTicks = Log.CONSTRUCTOR($"Enter id:({id}) displayMember:({displayMember}) detailViewModelName:({detailViewModelName})", Common.LOG_APPNAME);
+            //Int64 startTicks = Log.CONSTRUCTOR($"Enter id:({id}) displayMember:({displayMember}) detailViewModelName:({detailViewModelName})", Common.LOG_APPNAME);
 
             Id = id;
             DisplayMember = displayMember;
@@ -33,7 +33,7 @@ namespace VNC.Core.Mvvm
 
             OpenDetailViewCommand = new DelegateCommand(OnOpenDetailViewExecute);
 
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            //Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
         }
 
         public int Id { get; set; }
