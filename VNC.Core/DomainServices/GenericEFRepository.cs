@@ -35,7 +35,7 @@ namespace VNC.Core.DomainServices
 
         #region All
 
-        public IEnumerable<TEntity> All()
+        public virtual IEnumerable<TEntity> All()
         {
 #if LOGGING
             long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
@@ -50,7 +50,7 @@ namespace VNC.Core.DomainServices
             return result;
         }
 
-        public async Task<List<TEntity>> AllAsync()
+        public virtual async Task<List<TEntity>> AllAsync()
         {
 #if LOGGING
             long startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_APPNAME);
@@ -65,7 +65,7 @@ namespace VNC.Core.DomainServices
             return result;
         }
 
-        public IEnumerable<TEntity> AllInclude(
+        public virtual IEnumerable<TEntity> AllInclude(
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
 #if LOGGING
@@ -81,7 +81,7 @@ namespace VNC.Core.DomainServices
             return result;
         }
 
-        public async Task<IEnumerable<TEntity>> AllIncludeAsync(
+        public virtual async Task<IEnumerable<TEntity>> AllIncludeAsync(
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
 #if LOGGING
@@ -101,7 +101,7 @@ namespace VNC.Core.DomainServices
 
         #region Find
 
-        public TEntity FindById(int entityId)
+        public virtual TEntity FindById(int entityId)
         {
 #if LOGGING
             long startTicks = Log.PERSISTENCE($"Enter entityId:({entityId})", Common.LOG_APPNAME);
@@ -116,7 +116,7 @@ namespace VNC.Core.DomainServices
             return result;
         }
 
-        public async Task<TEntity> FindByIdAsync(int entityId)
+        public virtual async Task<TEntity> FindByIdAsync(int entityId)
         {
 #if LOGGING
             long startTicks = Log.PERSISTENCE($"(GenericEFRepository) Enter entityId:({entityId})", Common.LOG_APPNAME);
@@ -131,7 +131,7 @@ namespace VNC.Core.DomainServices
             return result;
         }
 
-        public IEnumerable<TEntity> FindBy(
+        public virtual IEnumerable<TEntity> FindBy(
             Expression<Func<TEntity, bool>> predicate)
         {
 #if LOGGING
@@ -147,7 +147,7 @@ namespace VNC.Core.DomainServices
             return results;
         }
 
-        public async Task<IEnumerable<TEntity>> FindByAsync(
+        public virtual async Task<IEnumerable<TEntity>> FindByAsync(
             Expression<Func<TEntity, bool>> predicate)
         {
 #if LOGGING
@@ -163,7 +163,7 @@ namespace VNC.Core.DomainServices
             return results;
         }
 
-        public IEnumerable<TEntity> FindByInclude(
+        public virtual IEnumerable<TEntity> FindByInclude(
             Expression<Func<TEntity, bool>> predicate,
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
@@ -181,7 +181,7 @@ namespace VNC.Core.DomainServices
             return results;
         }
 
-        public async Task<IEnumerable<TEntity>> FindByIncludeAsync(
+        public virtual async Task<IEnumerable<TEntity>> FindByIncludeAsync(
             Expression<Func<TEntity, bool>> predicate,
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
@@ -213,7 +213,7 @@ namespace VNC.Core.DomainServices
 
         #region Add/Remove
 
-        public void Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
 #if LOGGING
             long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
@@ -225,7 +225,7 @@ namespace VNC.Core.DomainServices
 #endif
         }
 
-        public void Remove(TEntity entity)
+        public virtual void Remove(TEntity entity)
         {
 #if LOGGING
             long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
@@ -241,7 +241,7 @@ namespace VNC.Core.DomainServices
 
         #region Update
 
-        public bool HasChanges()
+        public virtual bool HasChanges()
         {
             Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 
@@ -252,7 +252,7 @@ namespace VNC.Core.DomainServices
             return result;
         }
 
-        public void Update()
+        public virtual void Update()
         {
             Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 
@@ -261,7 +261,7 @@ namespace VNC.Core.DomainServices
             Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
         }
 
-        public async Task UpdateAsync()
+        public virtual async Task UpdateAsync()
         {
             Int64 startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_APPNAME);
 
