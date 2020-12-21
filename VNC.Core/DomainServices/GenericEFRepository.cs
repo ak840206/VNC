@@ -7,22 +7,21 @@ using System.Threading.Tasks;
 
 namespace VNC.Core.DomainServices
 {
-    // TODO(crhodes)
-    // Should we call the interface IDomainService or IDataService
-    public class ConnectedRepository<TEntity> : IDataService<TEntity>
-    where TEntity : class
+    public class GenericEFRepository<TEntity,TContext> : IGenericRepository<TEntity>
+        where TEntity : class
+        where TContext : DbContext
     {
-        internal DbContext _context;
+        protected readonly TContext Context;
         internal DbSet<TEntity> _dbSet;
 
         #region Constructors
 
-        public ConnectedRepository(DbContext context)
+        public GenericEFRepository(TContext context)
         {
 #if LOGGING
             long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 #endif
-            _context = context;
+            Context = context;
             _dbSet = context.Set<TEntity>();
 
 #if LOGGING
@@ -42,24 +41,28 @@ namespace VNC.Core.DomainServices
             long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 #endif
 
+            var result = _dbSet.AsNoTracking().ToList();
+
 #if LOGGING
             Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
-            return _dbSet.AsNoTracking().ToList();
+            return result;
         }
 
         public async Task<List<TEntity>> AllAsync()
         {
 #if LOGGING
-            long startTicks = Log.PERSISTENCE("(ConnectedRepository) Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_APPNAME);
 #endif
+
+            var result = await _dbSet.AsNoTracking().ToListAsync();
 
 #if LOGGING
-            Log.PERSISTENCE("(ConnectedRepository) Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE("(GenericEFRepository) Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
-            return await _dbSet.AsNoTracking().ToListAsync();
+            return result;
         }
 
         public IEnumerable<TEntity> AllInclude(
@@ -69,24 +72,29 @@ namespace VNC.Core.DomainServices
             long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 #endif
 
+            var result = GetAllIncluding(includeProperties).ToList();
+
 #if LOGGING
             Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
 #endif
-            return GetAllIncluding(includeProperties).ToList();
+
+            return result;
         }
 
         public async Task<IEnumerable<TEntity>> AllIncludeAsync(
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
 #if LOGGING
-            long startTicks = Log.PERSISTENCE("(ConnectedRepository) Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_APPNAME);
 #endif
+
+            var result = await GetAllIncluding(includeProperties).ToListAsync();
 
 #if LOGGING
-            Log.PERSISTENCE("(ConnectedRepository) Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE("(GenericEFRepository) Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
-            return await GetAllIncluding(includeProperties).ToListAsync();
+            return result;
         }
 
         #endregion All
@@ -99,28 +107,28 @@ namespace VNC.Core.DomainServices
             long startTicks = Log.PERSISTENCE($"Enter entityId:({entityId})", Common.LOG_APPNAME);
 #endif
 
+            var result = _dbSet.Find(entityId);
+
 #if LOGGING
             Log.PERSISTENCE($"Exit", Common.LOG_APPNAME, startTicks);
 #endif
-            return _dbSet.Find(entityId);
-            //using (var context = _contextCreator())
-            //{
-            //    return context.CustomerSet.AsNoTracking()
-            //        .Single(f => f.Id == entityId);
-            //}
+
+            return result;
         }
 
         public async Task<TEntity> FindByIdAsync(int entityId)
         {
 #if LOGGING
-            long startTicks = Log.PERSISTENCE($"(ConnectedRepository) Enter entityId:({entityId})", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE($"(GenericEFRepository) Enter entityId:({entityId})", Common.LOG_APPNAME);
 #endif
+
+            var result = await _dbSet.FindAsync(entityId);
 
 #if LOGGING
-            Log.PERSISTENCE("(ConnectedRepository) Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE("(GenericEFRepository) Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
-            return await _dbSet.FindAsync(entityId);
+            return result;
         }
 
         public IEnumerable<TEntity> FindBy(
@@ -129,8 +137,8 @@ namespace VNC.Core.DomainServices
 #if LOGGING
             long startTicks = Log.PERSISTENCE($"Enter", Common.LOG_APPNAME);
 #endif
-            IEnumerable<TEntity> results = _dbSet.AsNoTracking()
-              .Where(predicate).ToList();
+
+            var results = _dbSet.AsNoTracking().Where(predicate).ToList();
 
 #if LOGGING
             Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
@@ -139,14 +147,14 @@ namespace VNC.Core.DomainServices
             return results;
         }
 
-        public async  Task<IEnumerable<TEntity>> FindByAsync(
+        public async Task<IEnumerable<TEntity>> FindByAsync(
             Expression<Func<TEntity, bool>> predicate)
         {
 #if LOGGING
-            long startTicks = Log.PERSISTENCE("(ConnectedRepository) Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_APPNAME);
 #endif
-            IEnumerable<TEntity> results = await _dbSet.AsNoTracking()
-              .Where(predicate).ToListAsync();
+
+            var results = await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
 
 #if LOGGING
             Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
@@ -162,8 +170,9 @@ namespace VNC.Core.DomainServices
 #if LOGGING
             long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 #endif
+
             var query = GetAllIncluding(includeProperties);
-            IEnumerable<TEntity> results = query.Where(predicate).ToList();
+            var results = query.Where(predicate).ToList();
 
 #if LOGGING
             Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
@@ -177,13 +186,14 @@ namespace VNC.Core.DomainServices
             params Expression<Func<TEntity, object>>[] includeProperties)
         {
 #if LOGGING
-            long startTicks = Log.PERSISTENCE("(ConnectedRepository) Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_APPNAME);
 #endif
+
             var query = GetAllIncluding(includeProperties);
-            IEnumerable<TEntity> results = await query.Where(predicate).ToListAsync();
+            var results = await query.Where(predicate).ToListAsync();
 
 #if LOGGING
-            Log.PERSISTENCE("(ConnectedRepository) Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE("(GenericEFRepository) Exit", Common.LOG_APPNAME, startTicks);
 #endif
 
             return results;
@@ -201,31 +211,29 @@ namespace VNC.Core.DomainServices
 
         #endregion
 
-        #region Insert
+        #region Add/Remove
 
-        public void Insert(TEntity entity)
+        public void Add(TEntity entity)
         {
 #if LOGGING
             long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 #endif
             _dbSet.Add(entity);
-            _context.SaveChanges();
 
 #if LOGGING
             Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
-        public async Task InsertAsync(TEntity entity)
+        public void Remove(TEntity entity)
         {
 #if LOGGING
-            long startTicks = Log.PERSISTENCE("(ConnectedRepository) Enter", Common.LOG_APPNAME);
+            long startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 #endif
-            _dbSet.Add(entity);
-            await _context.SaveChangesAsync();
+            _dbSet.Remove(entity);
 
 #if LOGGING
-            Log.PERSISTENCE("(ConnectedRepository) Exit", Common.LOG_APPNAME, startTicks);
+            Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
 #endif
         }
 
@@ -233,86 +241,67 @@ namespace VNC.Core.DomainServices
 
         #region Update
 
-        public void Update(TEntity entity)
-        {
-#if LOGGING
-            Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
-#endif
-            _dbSet.Attach(entity);
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.SaveChanges();
-
-#if LOGGING
-            Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
-#endif
-        }
-
-        public async Task UpdateAsync()
-        {
-            Int64 startTicks = Log.PERSISTENCE("(ConnectedRepository) Enter", Common.LOG_APPNAME);
-
-            await _context.SaveChangesAsync();
-
-            Log.PERSISTENCE("(ConnectedRepository) Exit", Common.LOG_APPNAME, startTicks);
-        }
-
-        public async Task UpdateAsync(TEntity entity)
-        {
-#if LOGGING
-            Int64 startTicks = Log.PERSISTENCE("(ConnectedRepository) Enter", Common.LOG_APPNAME);
-#endif
-            _dbSet.Attach(entity);
-            _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-
-#if LOGGING
-            Log.PERSISTENCE("(ConnectedRepository) Exit", Common.LOG_APPNAME, startTicks);
-#endif
-        }
-
-        #endregion Update
-
-        #region Delete
-
-        public void Delete(int id)
-        {
-#if LOGGING
-            long startTicks = Log.PERSISTENCE($"Enter id:({id})", Common.LOG_APPNAME);
-#endif
-            var entity = FindById(id);
-            _dbSet.Remove(entity);
-            _context.SaveChanges();
-
-#if LOGGING
-            Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
-#endif
-        }
-
-        public async Task DeleteAsync(int entityId)
-        {
-#if LOGGING
-            long startTicks = Log.PERSISTENCE($"(ConnectedRepository) Enter entityId:({entityId})", Common.LOG_APPNAME);
-#endif
-            var entity = FindById(entityId);
-            _dbSet.Remove(entity);
-            await _context.SaveChangesAsync();
-#if LOGGING
-            Log.PERSISTENCE("(ConnectedRepository) Exit", Common.LOG_APPNAME, startTicks);
-#endif
-        }
-
-        #endregion Delete
-
         public bool HasChanges()
         {
             Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
 
-            var result = _context.ChangeTracker.HasChanges();
+            var result = Context.ChangeTracker.HasChanges();
 
             Log.PERSISTENCE($"Exit ({result})", Common.LOG_APPNAME, startTicks);
 
             return result;
         }
+
+        public void Update()
+        {
+            Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
+
+            Context.SaveChanges();
+
+            Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
+        }
+
+        public async Task UpdateAsync()
+        {
+            Int64 startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_APPNAME);
+
+            await Context.SaveChangesAsync();
+
+            Log.PERSISTENCE("(GenericEFRepository) Exit", Common.LOG_APPNAME, startTicks);
+        }
+
+        // NOTE(crhodes)
+        // Not sure why these exist.  Causes problems if use Add and then call this with Entity
+
+        //        public void Update(TEntity entity)
+        //        {
+        //#if LOGGING
+        //            Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
+        //#endif
+        //            _dbSet.Attach(entity);
+        //            Context.Entry(entity).State = EntityState.Modified;
+        //            Context.SaveChanges();
+
+        //#if LOGGING
+        //            Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
+        //#endif
+        //        }
+
+        //        public async Task UpdateAsync(TEntity entity)
+        //        {
+        //#if LOGGING
+        //            Int64 startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_APPNAME);
+        //#endif
+        //            _dbSet.Attach(entity);
+        //            Context.Entry(entity).State = EntityState.Modified;
+        //            await Context.SaveChangesAsync();
+
+        //#if LOGGING
+        //            Log.PERSISTENCE("(GenericEFRepository) Exit", Common.LOG_APPNAME, startTicks);
+        //#endif
+        //        }
+
+        #endregion Update
 
         #endregion Public Methods
 

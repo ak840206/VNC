@@ -4673,7 +4673,7 @@ namespace VNC
     }
 
     // TODO(crhodes)
-    // Dojie put this as a nested class.  Might want to pull out and put above.  Go see how these are used.
+    // Dojie put this as an nested class.  Might want to pull out and put above.  Go see how these are used.
 
 	#region Helper Class
 
