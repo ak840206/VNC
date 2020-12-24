@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{92DA2719-D048-4CCE-86C8-B18B7E6A06F0}</ProjectGuid>
+    <ProjectGuid>{EF3A5E06-1AD6-4089-8526-07850DA33DFF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VNC.AssemblyHelper</RootNamespace>

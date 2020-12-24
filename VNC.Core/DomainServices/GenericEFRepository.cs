@@ -12,6 +12,7 @@ namespace VNC.Core.DomainServices
         where TContext : DbContext
     {
         protected readonly TContext Context;
+
         internal DbSet<TEntity> _dbSet;
 
         #region Constructors

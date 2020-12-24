@@ -15,8 +15,6 @@ using Microsoft.Practices.EnterpriseLibrary.Logging.Configuration;
 //using Microsoft.Owin.Hosting;
 using Owin;
 
-//using EaseCore;
-
 //using VNC.Logging.CustomTraceListeners.ServiceReference1;
 
 namespace VNC.Logging.TraceListeners
@@ -43,7 +41,6 @@ namespace VNC.Logging.TraceListeners
         private string sExecutableName = string.Empty;
         private string sCallstack = string.Empty;
         private double dPerformance = 0.00;
-        private int iStepInt = 1;
         private int iEventID = 0;
 
         private double maxDuration = -1; // Log if greater than this time.
@@ -155,7 +152,7 @@ namespace VNC.Logging.TraceListeners
                 //HubProxy.Invoke("Send", SignalRListenerUser, message);
                 HubProxy.Invoke("SendPriority", message, iPriority);
             }
-            catch (System.InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 // Logging framework likely spins up worker threads that are killed
                 // if not active.  When that happens we need to start again.
@@ -514,7 +511,6 @@ namespace VNC.Logging.TraceListeners
             }
             finally
             {
-
                 cmd = null;
 
                 if (conn.State == System.Data.ConnectionState.Open)
@@ -523,7 +519,6 @@ namespace VNC.Logging.TraceListeners
                     conn.Dispose();
                     conn = null;
                 }
-
             }
             return bRetVal;
         }

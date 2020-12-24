@@ -13,7 +13,7 @@ namespace VNC.WPF.Presentation.Dx.Views
 
         public DxDXWindowHost()
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
             //try
             //{
             //    var bootstrapper = new Application.Bootstrapper();
@@ -29,13 +29,13 @@ namespace VNC.WPF.Presentation.Dx.Views
             this.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
             this.VerticalAlignment = System.Windows.VerticalAlignment.Center;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         // TODO: Maybe take size and position parameters
         public DxDXWindowHost(string title, string userControlFullyQualifiedName)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
             //try
             //{
             //    //var bootstrapper = new Application.Bootstrapper();
@@ -60,12 +60,12 @@ namespace VNC.WPF.Presentation.Dx.Views
                 
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         internal void LoadUserControl(string userControlName)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
             //string typeName = string.Format("SupportTools_Visio.User_Interface.User_Controls.{0}",
             //                ((Button)sender).Tag.ToString());
 
@@ -92,7 +92,7 @@ namespace VNC.WPF.Presentation.Dx.Views
                 MessageBox.Show("Incorrect Tag Name.  Cannot load type:{0}", userControlName);
             }
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         //public void ShowUserControl(User_Interface.User_Controls.wucDX_Base control)
@@ -123,7 +123,7 @@ namespace VNC.WPF.Presentation.Dx.Views
 
         public void LoadUserControl(UserControl control)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             //UnhookTitleEvent(_currentControl);
             g_UserControlContainer.Children.Clear();
@@ -148,17 +148,17 @@ namespace VNC.WPF.Presentation.Dx.Views
 
             //HookTitleEvent(_currentControl);
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             this.Hide();
             e.Cancel = true;
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
 
         }
 
@@ -175,7 +175,7 @@ namespace VNC.WPF.Presentation.Dx.Views
             ShowWindowMode mode,
             System.Windows.Controls.UserControl userControl)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             if (host is null)
             {
@@ -189,7 +189,7 @@ namespace VNC.WPF.Presentation.Dx.Views
 
             DisplayHost(host, title, width, height, mode, startTicks);
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static void DisplayUserControlInHost(
@@ -199,7 +199,7 @@ namespace VNC.WPF.Presentation.Dx.Views
             ShowWindowMode mode,
             string userControlName = null)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             if (host is null)
             {
@@ -213,7 +213,7 @@ namespace VNC.WPF.Presentation.Dx.Views
 
             DisplayHost(host, title, width, height, mode, startTicks);
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
         public static void DisplayHost(
@@ -223,7 +223,7 @@ namespace VNC.WPF.Presentation.Dx.Views
             ShowWindowMode mode,
             long startTicks2)
         {
-            long startTicks = Log.Trace($"Enter", Common.PROJECT_NAME);
+            long startTicks = Log.Trace("Enter", Common.PROJECT_NAME);
 
             host.Title = title;
             host.Width = width;
@@ -231,7 +231,7 @@ namespace VNC.WPF.Presentation.Dx.Views
 
             if (mode == ShowWindowMode.Modal_ShowDialog)
             {
-                long endTicks2 = Log.Trace($"Exit", Common.PROJECT_NAME, startTicks2);
+                long endTicks2 = Log.Trace("Exit", Common.PROJECT_NAME, startTicks2);
 
                 host.Title = $"{host.GetType()} loadtime: {Log.GetDuration(startTicks2, endTicks2)}";
 
@@ -242,11 +242,11 @@ namespace VNC.WPF.Presentation.Dx.Views
                 host.Show();
             }
 
-            long endTicks = Log.Trace($"Exit", Common.PROJECT_NAME, startTicks2);
+            long endTicks = Log.Trace("Exit", Common.PROJECT_NAME, startTicks2);
 
             host.Tag = $"{host.GetType()} loadtime: {Log.GetDuration(startTicks2, endTicks)}";
 
-            Log.Trace($"Exit", Common.PROJECT_NAME, startTicks);
+            Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
     }
 }

@@ -28,7 +28,10 @@
         <PackageReference Include="EntityFramework" Version="6.4.4" />
         <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
         <PackageReference Include="Unity.Interception" Version="5.11.1" />
-        <PackageReference Include="VNC.LoggingNF" Version="1.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VNC.Logging\VNC.Logging\VNC.LoggingNF.csproj" />
     </ItemGroup>
 
 </Project>

@@ -19,6 +19,8 @@ namespace VNC.TFS
         public static TfsConfigurationServer Get_ConfigurationServer(
             string tfsUri)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             Uri uri = new Uri(tfsUri);
             TfsConfigurationServer configurationServer;
 
@@ -34,6 +36,8 @@ namespace VNC.TFS
             {
                 throw;
             }
+
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
 
             return configurationServer;
         }
@@ -52,6 +56,8 @@ namespace VNC.TFS
             VersionControlServer vcServer, 
             string teamProjectName)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             TeamProject teamProject = default;
 
             try
@@ -72,6 +78,8 @@ namespace VNC.TFS
                 throw;
             }
 
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
+
             return teamProject;
         }
 
@@ -79,6 +87,8 @@ namespace VNC.TFS
             string tfsUri, 
             string teamProjectCollection)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             //TfsTeamProjectCollection proj_coll = new TfsTeamProjectCollection(new Uri("http://NvnTfsserver:8080/tfs/defaultcollection/"),
             //                      new System.Net.NetworkCredential(username, password));
             //proj_coll.EnsureAuthenticated();
@@ -100,6 +110,8 @@ namespace VNC.TFS
                 throw;
             }
 
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
+
             return tpc;
         }
 
@@ -107,6 +119,8 @@ namespace VNC.TFS
             TfsConfigurationServer configurationServer,
             CatalogNode teamProjectCollectionNode)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             Guid collectionId = new Guid(teamProjectCollectionNode.Resource.Properties["InstanceId"]);
 
             TfsTeamProjectCollection teamProjectCollection;
@@ -124,30 +138,48 @@ namespace VNC.TFS
                 throw;
             }
 
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
+
             return teamProjectCollection;
         }
 
         public static ReadOnlyCollection<CatalogNode> Get_TeamProjectCollectionNodes(
             string tfsUri)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             TfsConfigurationServer configurationServer = Get_ConfigurationServer(tfsUri);
 
-            return configurationServer.CatalogNode.QueryChildren(new[] { CatalogResourceTypes.ProjectCollection }, false, CatalogQueryOptions.None);
+            var result = configurationServer.CatalogNode.QueryChildren(new[] { CatalogResourceTypes.ProjectCollection }, false, CatalogQueryOptions.None);
+
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
+
+            return result;
         }
 
         public static ReadOnlyCollection<CatalogNode> Get_TeamProjectCollectionNodes(
             TfsConfigurationServer configurationServer)
         {
-            return configurationServer.CatalogNode.QueryChildren(
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
+            var result = configurationServer.CatalogNode.QueryChildren(
                 new[] { CatalogResourceTypes.ProjectCollection }, false, CatalogQueryOptions.None);
+
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
+
+            return result;
         }
 
         public static VersionControlServer Get_VersionControlServer(
             string tfsUri, string teamProjectCollection)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             TfsTeamProjectCollection tpc = Get_TeamProjectCollection(tfsUri, teamProjectCollection);
 
             VersionControlServer vcServer = tpc.GetService<VersionControlServer>();
+
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
 
             return vcServer;
         }
@@ -155,7 +187,11 @@ namespace VNC.TFS
         public static VersionControlServer Get_VersionControlServer(
             TfsTeamProjectCollection teamProjectColleciton)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             VersionControlServer vcServer = teamProjectColleciton.GetService<VersionControlServer>();
+
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
 
             return vcServer;
         }
@@ -163,7 +199,11 @@ namespace VNC.TFS
         public static WorkItemStore Get_WorkItemStore(
             TfsTeamProjectCollection teamProjectCollection)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             WorkItemStore wiStore = teamProjectCollection.GetService<WorkItemStore>();
+
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
 
             return wiStore;
         }
@@ -171,6 +211,8 @@ namespace VNC.TFS
         public static WorkItemStore Get_WorkItemStore(
             string tfsUri, string teamProjectCollection)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             TfsConfigurationServer tfsConfigServer = Get_ConfigurationServer(tfsUri);
 
             ReadOnlyCollection<CatalogNode> teamProjectCollectionNodes = Get_TeamProjectCollectionNodes(tfsConfigServer);
@@ -179,11 +221,15 @@ namespace VNC.TFS
 
             WorkItemStore wiStore = tpc.GetService<WorkItemStore>();
 
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
+
             return wiStore;
         }
 
         public static WorkItem RetrieveWorkItem(int id, WorkItemStore workItemStore)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", Common.LOG_APPNAME);
+
             WorkItem workItem = null;
 
             string queryWI = 
@@ -197,7 +243,9 @@ namespace VNC.TFS
             {
                 workItem = queryResultsWI[0];
             }
-  
+
+            Log.DOMAINSERVICES("Exit", Common.LOG_APPNAME, startTicks);
+
             return workItem;
         }
 

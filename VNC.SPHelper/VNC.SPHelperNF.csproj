@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F86A373B-1AA5-4559-BBC4-DA22E31BF17D}</ProjectGuid>
+    <ProjectGuid>{79C204C4-7696-4980-B456-F40F97E4E972}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VNC.SP</RootNamespace>

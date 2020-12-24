@@ -16,7 +16,7 @@ namespace VNC.Core.Mvvm
 
         // TODO(crhodes)
         // Decide if we will every need the messageDialogService.
-        // This was not in Cladius.
+        // This was not in Claudius.
 
         public NavigationItemViewModel(
             int id,
@@ -25,15 +25,17 @@ namespace VNC.Core.Mvvm
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
-            //Int64 startTicks = Log.CONSTRUCTOR($"Enter id:({id}) displayMember:({displayMember}) detailViewModelName:({detailViewModelName})", Common.LOG_APPNAME);
-
+#if LOGGING
+            Int64 startTicks = Log.CONSTRUCTOR($"Enter id:({id}) displayMember:({displayMember}) detailViewModelName:({detailViewModelName})", Common.LOG_APPNAME);
+#endif
             Id = id;
             DisplayMember = displayMember;
             _detailViewModelName = detailViewModelName;
 
             OpenDetailViewCommand = new DelegateCommand(OnOpenDetailViewExecute);
-
-            //Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+#if LOGGING
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         public int Id { get; set; }
@@ -52,18 +54,27 @@ namespace VNC.Core.Mvvm
 
         public ICommand OpenDetailViewCommand { get; }
 
+        // TODO(crhodes)
+        // Maybe this should be protected virtual
+
         private void OnOpenDetailViewExecute()
         {
+#if LOGGING
             Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+#endif
 
             PublishOpenDetailViewEvent();
 
+#if LOGGING
             Log.EVENT_HANDLER("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         private void PublishOpenDetailViewEvent()
         {
+#if LOGGING
             Int64 startTicks = Log.EVENT($"Enter Id:({Id})", Common.LOG_APPNAME);
+#endif
 
             EventAggregator.GetEvent<OpenDetailViewEvent>()
               .Publish
@@ -75,7 +86,9 @@ namespace VNC.Core.Mvvm
                     }
                 );
 
+#if LOGGING
             Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
     }
 }

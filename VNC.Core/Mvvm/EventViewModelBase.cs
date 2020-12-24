@@ -18,18 +18,24 @@ namespace VNC.Core.Mvvm
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService)
         {
-            //long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+#if LOGGING
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+#endif
 
             EventAggregator = eventAggregator;
             MessageDialogService = messageDialogService;
 
-            //Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+#if LOGGING
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         public void AfterDetailSaved(ObservableCollection<NavigationItemViewModel> items,
             AfterDetailSavedEventArgs args)
         {
+#if LOGGING
             Int64 startTicks = Log.VIEWMODEL_LOW($"Enter Id:({args.Id})", Common.LOG_APPNAME);
+#endif
 
             var lookupItem = items.SingleOrDefault(l => l.Id == args.Id);
 
@@ -43,14 +49,17 @@ namespace VNC.Core.Mvvm
             {
                 lookupItem.DisplayMember = args.DisplayMember;
             }
-
+#if LOGGING
             Log.VIEWMODEL_LOW("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         public void AfterDetailDeleted(ObservableCollection<NavigationItemViewModel> items,
             AfterDetailDeletedEventArgs args)
         {
+#if LOGGING
             Int64 startTicks = Log.VIEWMODEL_LOW($"Enter Id:({args.Id})", Common.LOG_APPNAME);
+#endif
 
             var lookupItem = items.SingleOrDefault(f => f.Id == args.Id);
 
@@ -58,8 +67,9 @@ namespace VNC.Core.Mvvm
             {
                 items.Remove(lookupItem);
             }
-
+#if LOGGING
             Log.VIEWMODEL_LOW("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
     }
 }

@@ -29,8 +29,9 @@ namespace VNC.Core.Mvvm
             IEventAggregator eventAggregator,
             IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
-            //long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
-
+#if LOGGING
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+#endif
             SaveCommand = new DelegateCommand(
                 OnSaveExecute, OnSaveCanExecute);
 
@@ -39,26 +40,32 @@ namespace VNC.Core.Mvvm
 
             CloseDetailViewCommand = new DelegateCommand(
                 OnCloseDetailViewExecute);
-
-            //Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+#if LOGGING
+            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         protected virtual void PublishAfterCollectionSavedEvent()
         {
+#if LOGGING
             long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+#endif
 
             EventAggregator.GetEvent<AfterCollectionSavedEvent>()
                 .Publish(new AfterCollectionSavedEventArgs
                 {
                     ViewModelName = this.GetType().Name
                 });
-
+#if LOGGING
             Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         protected virtual void OnCloseDetailViewExecute()
         {
+#if LOGGING
             long startTicks = Log.VIEWMODEL("Enter", Common.LOG_APPNAME);
+#endif
 
             if (HasChanges)
             {
@@ -72,13 +79,16 @@ namespace VNC.Core.Mvvm
             }
 
             PublishAfterDetailClosedEvent();
-
+#if LOGGING
             Log.VIEWMODEL("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         private void PublishAfterDetailClosedEvent()
         {
+#if LOGGING
             long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+#endif
 
             EventAggregator.GetEvent<AfterDetailClosedEvent>()
                 .Publish(new AfterDetailClosedEventArgs
@@ -86,8 +96,9 @@ namespace VNC.Core.Mvvm
                     Id = this.Id,
                     ViewModelName = this.GetType().Name
                 });
-
+#if LOGGING
             Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         public int Id
@@ -140,7 +151,9 @@ namespace VNC.Core.Mvvm
 
         protected virtual void PublishAfterDetailDeletedEvent(int modelId)
         {
+#if LOGGING
             long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+#endif
 
             EventAggregator.GetEvent<AfterDetailDeletedEvent>()
                 .Publish
@@ -151,13 +164,16 @@ namespace VNC.Core.Mvvm
                         ViewModelName = this.GetType().Name
                     }
                 );
-
+#if LOGGING
             Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         protected virtual void PublishAfterDetailSavedEvent(int modelId, string displayMember)
         {
+#if LOGGING
             long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+#endif
 
             EventAggregator.GetEvent<AfterDetailSavedEvent>()
                 .Publish
@@ -169,13 +185,16 @@ namespace VNC.Core.Mvvm
                         ViewModelName = this.GetType().Name
                     }
                 );
-
+#if LOGGING
             Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
 
         protected virtual async Task SaveWithOptimisticConcurrencyAsync(Func<Task> saveFunc, Action afterSaveAction)
         {
+#if LOGGING
             Int64 startTicks = Log.VIEWMODEL("Enter", Common.LOG_APPNAME);
+#endif
 
             try
             {
@@ -216,8 +235,9 @@ namespace VNC.Core.Mvvm
             // Do anything that needs to occur after saving
 
             afterSaveAction();
-
+#if LOGGING
             Log.VIEWMODEL("Exit", Common.LOG_APPNAME, startTicks);
+#endif
         }
     }
 }

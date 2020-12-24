@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{21E368BE-7C86-42CF-AAB7-123070FDC5AD}</ProjectGuid>
+    <ProjectGuid>{C3DF2E20-F411-42B8-B694-F77DC28D8ED8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VNC.WPF.Presentation</RootNamespace>
@@ -108,10 +108,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VNC.Logging\VNC.LoggingNF.csproj">
-      <Project>{0a14cb8d-94e2-4bd4-bab3-1dc242d49f03}</Project>
-      <Name>VNC.Logging</Name>
-    </ProjectReference>
+    <PackageReference Include="VNC.CoreNF">
+      <Version>1.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
