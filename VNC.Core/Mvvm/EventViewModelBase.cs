@@ -11,8 +11,8 @@ namespace VNC.Core.Mvvm
 {
     public abstract class EventViewModelBase : ViewModelBase
     {
-        protected readonly IEventAggregator EventAggregator;
-        protected readonly IMessageDialogService MessageDialogService;
+        public readonly IEventAggregator EventAggregator;
+        public readonly IMessageDialogService MessageDialogService;
 
          public EventViewModelBase(
             IEventAggregator eventAggregator,

@@ -33,13 +33,13 @@ namespace VNC.Core.Mvvm
             long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
 #endif
             SaveCommand = new DelegateCommand(
-                OnSaveExecute, OnSaveCanExecute);
+                SaveExecute, SaveCanExecute);
 
             DeleteCommand = new DelegateCommand(
-                OnDeleteExecute, OnDeleteCanExecute);
+                DeleteExecute, DeleteCanExecute);
 
             CloseDetailViewCommand = new DelegateCommand(
-                OnCloseDetailViewExecute);
+                CloseDetailViewExecute);
 #if LOGGING
             Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
 #endif
@@ -61,7 +61,7 @@ namespace VNC.Core.Mvvm
 #endif
         }
 
-        protected virtual void OnCloseDetailViewExecute()
+        protected virtual void CloseDetailViewExecute()
         {
 #if LOGGING
             long startTicks = Log.VIEWMODEL("Enter", Common.LOG_APPNAME);
@@ -141,13 +141,13 @@ namespace VNC.Core.Mvvm
 
         public abstract Task LoadAsync(int id);
 
-        protected abstract bool OnDeleteCanExecute();
+        protected abstract bool DeleteCanExecute();
 
-        protected abstract void OnDeleteExecute();
+        protected abstract void DeleteExecute();
 
-        protected abstract bool OnSaveCanExecute();
+        protected abstract bool SaveCanExecute();
 
-        protected abstract void OnSaveExecute();
+        protected abstract void SaveExecute();
 
         protected virtual void PublishAfterDetailDeletedEvent(int modelId)
         {

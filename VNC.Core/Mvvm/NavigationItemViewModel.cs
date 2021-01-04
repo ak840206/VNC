@@ -32,7 +32,7 @@ namespace VNC.Core.Mvvm
             DisplayMember = displayMember;
             _detailViewModelName = detailViewModelName;
 
-            OpenDetailViewCommand = new DelegateCommand(OnOpenDetailViewExecute);
+            OpenDetailViewCommand = new DelegateCommand(OpenDetailViewExecute);
 #if LOGGING
             Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
 #endif
@@ -57,7 +57,7 @@ namespace VNC.Core.Mvvm
         // TODO(crhodes)
         // Maybe this should be protected virtual
 
-        private void OnOpenDetailViewExecute()
+        private void OpenDetailViewExecute()
         {
 #if LOGGING
             Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
