@@ -20,8 +20,24 @@ namespace VNC.HttpHelper
         public ObservableCollection<RequestResponseInfo> RequestResponseExchange { get; set; }
             = new ObservableCollection<RequestResponseInfo>();
 
+        private string _requestUri;
+
+        public string RequestUri
+        {
+            get => _requestUri;
+            set
+            {
+                if (_requestUri == value)
+                    return;
+                _requestUri = value;
+                OnPropertyChanged();
+            }
+        }
+
         public RequestResponseInfo InitializeExchange(HttpClient client, string requestUri)
         {
+            RequestUri = requestUri;
+
             RequestResponseExchange.Clear();
             RequestResponseInfo exchange = new RequestResponseInfo();
 

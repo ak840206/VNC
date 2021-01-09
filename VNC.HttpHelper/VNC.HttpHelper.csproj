@@ -9,12 +9,13 @@
         <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
         <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
         <PackageReference Include="Unity.Interception" Version="5.11.1" />
+        <PackageReference Include="VNC.CoreNF" Version="1.0.0" />
         <PackageReference Include="VNC.LoggingNF" Version="1.0.0" />
     </ItemGroup>
 
-    <ItemGroup>
+    <!--<ItemGroup>
       <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj" />
-    </ItemGroup>
+    </ItemGroup>-->
 
     <ItemGroup>
         <!-- Workaround for https://github.com/dotnet/wpf/issues/2648#issuecomment-635674683 -->
