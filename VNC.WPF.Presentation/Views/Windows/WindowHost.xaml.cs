@@ -30,6 +30,7 @@ namespace VNC.WPF.Presentation.Views
 
             this.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
             this.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+
             Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
@@ -58,8 +59,9 @@ namespace VNC.WPF.Presentation.Views
             }
             catch (Exception ex)
             {
-                
+                MessageBox.Show(ex.ToString());
             }
+
             Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 
@@ -86,8 +88,9 @@ namespace VNC.WPF.Presentation.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Incorrect Tag Name.  Cannot load type:{0}", userControlName);
+                MessageBox.Show($"Incorrect Tag Name.  Cannot load type:{userControlName} Exception: {ex}");
             }
+
             Log.Trace("Exit", Common.PROJECT_NAME, startTicks);
         }
 

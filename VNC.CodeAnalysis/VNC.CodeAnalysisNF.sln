@@ -1,10 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNC.CodeAnalysis", "VNC.CodeAnalysisNF
-.csproj", "{9D21B031-3BFE-44B1-A622-D500230F90A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.CodeAnalysisNF", "VNC.CodeAnalysis\VNC.CodeAnalysisNF.csproj", "{0940D032-9941-469B-B967-1E25704BC169}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9D21B031-3BFE-44B1-A622-D500230F90A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D21B031-3BFE-44B1-A622-D500230F90A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D21B031-3BFE-44B1-A622-D500230F90A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D21B031-3BFE-44B1-A622-D500230F90A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0940D032-9941-469B-B967-1E25704BC169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0940D032-9941-469B-B967-1E25704BC169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0940D032-9941-469B-B967-1E25704BC169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0940D032-9941-469B-B967-1E25704BC169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {12AC2521-DA21-4A34-B830-7AA2A8EC9204}
+		SolutionGuid = {E191B344-92F9-40CF-A6D8-B603377D1C6D}
 	EndGlobalSection
 EndGlobal
