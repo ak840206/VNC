@@ -46,7 +46,7 @@ namespace VNC.Core.Mvvm.Prism
                         if (scopedRegionManager != null)
                         {
                             regionManager = scopedRegionManager;
-                        }           
+                        }
                     }
 
                     InvokeOnRegionManagerAwareElement(item, x => x.RegionManager = regionManager);
@@ -70,12 +70,23 @@ namespace VNC.Core.Mvvm.Prism
 #if LOGGING
             long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
 #endif
+
+            // Want to support View and/or ViewModel first approaches
+
             var rmAwareItem = item as IRegionManagerAware;
+
+            // ViewModel first approach
+
+            // Check if supports IRegionManagerAware
 
             if (rmAwareItem != null)
             {
                 invocation(rmAwareItem);
             }
+
+            // View first approach
+
+            // If we get a View it will be a FrameworkElement in WPF
 
             var frameworkElement = item as FrameworkElement;
 
@@ -98,8 +109,9 @@ namespace VNC.Core.Mvvm.Prism
                         {
                             if (rmAwareDataContext == rmAwareDataContextParent)
                             {
-                                // This View doesn't have a ViewModel.  Using ViewModel
-                                // of Visible parent.
+                                // This View doesn't have a ViewModel.  
+                                // It is using ViewModel of Visible parent.  Do not set.
+
                                 return;
                             }
                         }

@@ -11,7 +11,7 @@ namespace VNC.Core.Mvvm.Prism
 #if LOGGING
             long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
 #endif
-            // Want to support View and ViewModel first approaches so
+            // Want to support View and/or ViewModel first approaches so
             // Perhaps this could become an extension method on RegionManager!
 
             var viewModelIsRegionManagerAware = viewOrViewModel as IRegionManagerAware;
