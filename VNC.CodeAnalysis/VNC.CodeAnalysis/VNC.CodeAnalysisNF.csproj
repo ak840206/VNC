@@ -6,9 +6,9 @@
   </PropertyGroup>
 
     <ItemGroup>
-
-        <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="161.46041.41" />
-
+        <PackageReference Include="Crc32C.NET" Version="1.0.5" />
+        <PackageReference Include="Microsoft.CodeAnalysis" Version="3.8.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="3.8.0" />
         <PackageReference Include="VNC.CoreNF" Version="1.0.0" />
         <PackageReference Include="VNC.LoggingNF" Version="1.0.0" />
     </ItemGroup>

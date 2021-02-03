@@ -2,13 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net4.8</TargetFramework>
+      <UseWPF>true</UseWPF>
+      <UseWinForms>true</UseWinForms>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
     <ItemGroup>
-
-        <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="161.46041.41" />
-
         <PackageReference Include="VNC.CoreNF" Version="1.0.0" />
         <PackageReference Include="VNC.LoggingNF" Version="1.0.0" />
     </ItemGroup>

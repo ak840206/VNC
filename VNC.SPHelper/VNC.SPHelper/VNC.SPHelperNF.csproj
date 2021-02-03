@@ -6,9 +6,8 @@
   </PropertyGroup>
 
     <ItemGroup>
-
-        <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="161.46041.41" />
-
+        <PackageReference Include="Microsoft.SharePoint.Client" Version="14.0.4762.1000" />
+        <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20912.12000" />
         <PackageReference Include="VNC.CoreNF" Version="1.0.0" />
         <PackageReference Include="VNC.LoggingNF" Version="1.0.0" />
     </ItemGroup>
@@ -16,5 +15,5 @@
     <!--<ItemGroup>
       <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj" />
     </ItemGroup>-->
-    
+
 </Project>

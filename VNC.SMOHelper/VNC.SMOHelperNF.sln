@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.TFSHelperNF", "VNC.TFSHelper\VNC.TFSHelperNF.csproj", "{14E705FB-B18F-4C62-9FFE-F28068E70C31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.SMOHelperNF", "VNC.SMOHelperNF.csproj", "{D3745E41-1748-436E-9E26-92F8DA6EA620}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{14E705FB-B18F-4C62-9FFE-F28068E70C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14E705FB-B18F-4C62-9FFE-F28068E70C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14E705FB-B18F-4C62-9FFE-F28068E70C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14E705FB-B18F-4C62-9FFE-F28068E70C31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3745E41-1748-436E-9E26-92F8DA6EA620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3745E41-1748-436E-9E26-92F8DA6EA620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3745E41-1748-436E-9E26-92F8DA6EA620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3745E41-1748-436E-9E26-92F8DA6EA620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DE70B98A-AAD9-42E1-8333-60C53433543F}
+		SolutionGuid = {B482BF5D-02AC-4C59-9CE1-FEE355A4C719}
 	EndGlobalSection
 EndGlobal
