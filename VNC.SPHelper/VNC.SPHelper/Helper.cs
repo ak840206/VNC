@@ -29,7 +29,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format. Ex: {ex}");
                 return;
             }
 
@@ -123,7 +123,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format. Ex: {ex}");
                 return;
             }
 
@@ -145,9 +145,9 @@ namespace VNC.SP
                     WriteDiagnosticOutput("   Deleting All Items>" + xList.Attribute("DeleteAllItems").Value);
 
                 }
-                string attributeName;
+                //string attributeName;
                 //string attributeType;
-                string attributeValue;
+                //string attributeValue;
 
                 foreach (var xListItem in xList.Elements("ListItem"))
                 {
@@ -362,7 +362,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -386,7 +386,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -404,8 +404,6 @@ namespace VNC.SP
 
                 List newLibrary = web.Lists.Add(listCreationInfo);
                 ctx.ExecuteQuery();
-
-
             }
         }
 
@@ -577,7 +575,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -775,7 +773,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -820,11 +818,8 @@ namespace VNC.SP
             }
         }
 
-
         private static string GetListId(string listName, ClientContext ctx)
         {
-            string listId = null;
-
             Web web = ctx.Web;
 
             var lists = ctx.LoadQuery(web.Lists.Where(list => list.Title == listName));
@@ -860,7 +855,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -897,7 +892,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -939,7 +934,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -963,7 +958,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -985,7 +980,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -1036,7 +1031,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -1086,7 +1081,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -1110,7 +1105,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
 
             }
@@ -1135,7 +1130,7 @@ namespace VNC.SP
             }
             catch (Exception ex)
             {
-                WriteDiagnosticOutput(string.Format("Could not parse {0} elements.  Check format", elementName));
+                WriteDiagnosticOutput($"Could not parse {elementName} elements.  Check format.  Ex: {ex}");
                 return;
             }
 
@@ -1217,12 +1212,10 @@ namespace VNC.SP
 
                 DeletePages(_RawXML, "DeletePages", ctx);
                 AddPages(_RawXML, "AddPages", ctx);
-
             }
-      
         }
 
-   #endregion
+        #endregion
 
         #region Private Methods
         

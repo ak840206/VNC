@@ -5,6 +5,7 @@
       <UseWPF>true</UseWPF>
       <UseWinForms>true</UseWinForms>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+      <RootNamespace>VNC.AssemblyHelper</RootNamespace>
   </PropertyGroup>
 
     <ItemGroup>
