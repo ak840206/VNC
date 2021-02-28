@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="VNC.Logging.Configuration.LevelFilterData">
+    <Position X="4.75" Y="0.5" Width="39.75" />
+    <TypeIdentifier>
+      <HashCode>AGYGEBAARAgIAABAAAAAIgCYAQEIAIIAAAAARAAAAAI=</HashCode>
+      <FileName>Configuration\LevelFilterData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.Logging.Configuration.DurationFilterData">
+    <Position X="0.5" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\DurationFilterData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
