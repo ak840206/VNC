@@ -23,7 +23,7 @@ namespace VNC.Logging.Configuration
 {
     /// <summary>
     /// Represents the configuration for a priority filter.
-    /// </summary>    
+    /// </summary>
     //[ResourceDescription(typeof(DesignResources), "PerformanceFilterDataDescription")]
     //[ResourceDisplayName(typeof(DesignResources), "PerformanceFilterDataDisplayName")]
     //[ElementValidation(LoggingDesignTime.ValidatorTypes.LogPriorityMinMaxValidatorType)]

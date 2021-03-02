@@ -20,8 +20,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_START(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_START,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -31,7 +29,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_START(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_START,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -41,7 +38,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_START(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_START,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -51,8 +47,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_START(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_START,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -62,7 +56,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_START(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_START,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -72,7 +65,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_START(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_START,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -82,7 +74,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_START(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_START,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -92,7 +83,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_START(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_START,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -106,8 +96,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_END(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_END,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -117,7 +105,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_END(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_END,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -127,7 +114,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_END(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_END,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -137,8 +123,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_END(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_END,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -148,7 +132,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_END(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_END,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -158,7 +141,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_END(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_END,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -168,7 +150,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_END(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_END,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -178,7 +159,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_END(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_END,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -192,8 +172,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long LOADEASE(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LOADEASE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -203,7 +181,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long LOADEASE(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LOADEASE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -213,7 +190,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long LOADEASE(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LOADEASE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -223,8 +199,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long LOADEASE(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LOADEASE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -234,7 +208,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long LOADEASE(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LOADEASE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -244,7 +217,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long LOADEASE(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LOADEASE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -254,7 +226,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long LOADEASE(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LOADEASE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -264,7 +235,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long LOADEASE(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LOADEASE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -278,8 +248,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SQL_CALL(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SQL_CALL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -289,7 +257,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SQL_CALL(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SQL_CALL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -299,7 +266,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SQL_CALL(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SQL_CALL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -309,8 +275,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SQL_CALL(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SQL_CALL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -320,7 +284,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SQL_CALL(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SQL_CALL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -330,7 +293,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SQL_CALL(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SQL_CALL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -340,7 +302,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SQL_CALL(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SQL_CALL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -350,7 +311,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SQL_CALL(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SQL_CALL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -364,8 +324,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PAGE_LOAD(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PAGE_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -375,7 +333,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PAGE_LOAD(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PAGE_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -385,7 +342,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PAGE_LOAD(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PAGE_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -395,8 +351,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PAGE_LOAD(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PAGE_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -406,7 +360,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PAGE_LOAD(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PAGE_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -416,7 +369,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PAGE_LOAD(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PAGE_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -426,7 +378,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PAGE_LOAD(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PAGE_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -436,7 +387,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PAGE_LOAD(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PAGE_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -450,8 +400,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FORM_LOAD(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FORM_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -461,7 +409,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FORM_LOAD(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FORM_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -471,7 +418,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FORM_LOAD(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FORM_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -481,8 +427,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FORM_LOAD(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FORM_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -492,7 +436,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FORM_LOAD(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FORM_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -502,7 +445,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FORM_LOAD(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FORM_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -512,7 +454,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FORM_LOAD(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FORM_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -522,7 +463,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FORM_LOAD(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FORM_LOAD,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -536,8 +476,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT_HANDLER(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT_HANDLER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -547,7 +485,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT_HANDLER(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT_HANDLER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -557,7 +494,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT_HANDLER(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT_HANDLER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -567,8 +503,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT_HANDLER(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT_HANDLER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -578,7 +512,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT_HANDLER(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT_HANDLER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -588,7 +521,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT_HANDLER(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT_HANDLER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -598,7 +530,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT_HANDLER(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT_HANDLER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -608,7 +539,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT_HANDLER(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT_HANDLER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -622,8 +552,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long STATUS(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.STATUS,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -633,7 +561,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long STATUS(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.STATUS,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -643,7 +570,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long STATUS(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.STATUS,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -653,8 +579,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long STATUS(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.STATUS,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -664,7 +588,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long STATUS(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.STATUS,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -674,7 +597,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long STATUS(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.STATUS,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -684,7 +606,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long STATUS(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.STATUS,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -694,7 +615,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long STATUS(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.STATUS,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -708,8 +628,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long REDIRECT_TRANSFER(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.REDIRECT_TRANSFER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -719,7 +637,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long REDIRECT_TRANSFER(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.REDIRECT_TRANSFER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -729,7 +646,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long REDIRECT_TRANSFER(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.REDIRECT_TRANSFER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -739,8 +655,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long REDIRECT_TRANSFER(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.REDIRECT_TRANSFER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -750,7 +664,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long REDIRECT_TRANSFER(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.REDIRECT_TRANSFER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -760,7 +673,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long REDIRECT_TRANSFER(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.REDIRECT_TRANSFER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -770,7 +682,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long REDIRECT_TRANSFER(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.REDIRECT_TRANSFER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -780,7 +691,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long REDIRECT_TRANSFER(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.REDIRECT_TRANSFER,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -794,8 +704,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long POLLING(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.POLLING,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -805,7 +713,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long POLLING(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.POLLING,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -815,7 +722,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long POLLING(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.POLLING,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -825,8 +731,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long POLLING(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.POLLING,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -836,7 +740,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long POLLING(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.POLLING,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -846,7 +749,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long POLLING(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.POLLING,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -856,7 +758,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long POLLING(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.POLLING,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -866,7 +767,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long POLLING(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.POLLING,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -880,8 +780,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -891,7 +789,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -901,7 +798,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -911,8 +807,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -922,7 +816,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -932,7 +825,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -942,7 +834,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -952,7 +843,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -966,8 +856,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -977,7 +865,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -987,7 +874,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -997,8 +883,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1008,7 +892,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1018,7 +901,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1028,7 +910,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1038,7 +919,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long ERROR_TRACE_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.ERROR_TRACE_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1052,8 +932,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1063,7 +941,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1073,7 +950,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1083,8 +959,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1094,7 +968,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1104,7 +977,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1114,7 +986,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1124,7 +995,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1138,8 +1008,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_MED(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1149,7 +1017,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_MED(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1159,7 +1026,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_MED(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1169,8 +1035,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_MED(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1180,7 +1044,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_MED(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1190,7 +1053,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_MED(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1200,7 +1062,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_MED(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1210,7 +1071,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_MED(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1224,8 +1084,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1235,7 +1093,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1245,7 +1102,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1255,8 +1111,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1266,7 +1120,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1276,7 +1129,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1286,7 +1138,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1296,7 +1147,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EASESYS_IO_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EASESYS_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1310,8 +1160,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1321,7 +1169,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1331,7 +1178,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1341,8 +1187,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1352,7 +1196,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1362,7 +1205,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1372,7 +1214,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1382,7 +1223,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1396,8 +1236,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_MED(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1407,7 +1245,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_MED(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1417,7 +1254,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_MED(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1427,8 +1263,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_MED(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1438,7 +1272,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_MED(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1448,7 +1281,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_MED(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1458,7 +1290,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_MED(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1468,7 +1299,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_MED(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1482,8 +1312,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1493,7 +1321,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1503,7 +1330,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1513,8 +1339,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1524,7 +1348,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1534,7 +1357,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1544,7 +1366,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1554,7 +1375,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UI_CONTROL_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UI_CONTROL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1568,8 +1388,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1579,7 +1397,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1589,7 +1406,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1599,8 +1415,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1610,7 +1424,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1620,7 +1433,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1630,7 +1442,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1640,7 +1451,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1654,8 +1464,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_MED(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1665,7 +1473,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_MED(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1675,7 +1482,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_MED(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1685,8 +1491,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_MED(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1696,7 +1500,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_MED(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1706,7 +1509,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_MED(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1716,7 +1518,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_MED(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1726,7 +1527,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_MED(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_MED,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1740,8 +1540,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1751,7 +1549,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1761,7 +1558,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1771,8 +1567,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1782,7 +1576,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1792,7 +1585,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1802,7 +1594,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1812,7 +1603,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long UTILITY_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.UTILITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1826,8 +1616,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1837,7 +1625,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1847,7 +1634,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1857,8 +1643,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1868,7 +1652,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1878,7 +1661,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1888,7 +1670,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1898,7 +1679,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1912,8 +1692,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -1923,7 +1701,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -1933,7 +1710,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -1943,8 +1719,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -1954,7 +1728,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -1964,7 +1737,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -1974,7 +1746,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -1984,7 +1755,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long OPERATION_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.OPERATION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -1998,8 +1768,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2009,7 +1777,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2019,7 +1786,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2029,8 +1795,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2040,7 +1804,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2050,7 +1813,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2060,7 +1822,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2070,7 +1831,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2084,8 +1844,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2095,7 +1853,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2105,7 +1862,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2115,8 +1871,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2126,7 +1880,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2136,7 +1889,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2146,7 +1898,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2156,7 +1907,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_SESSION_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_SESSION_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2170,8 +1920,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2181,7 +1929,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2191,7 +1938,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2201,8 +1947,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2212,7 +1956,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2222,7 +1965,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2232,7 +1974,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2242,7 +1983,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2256,8 +1996,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2267,7 +2005,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2277,7 +2014,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2287,8 +2023,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2298,7 +2032,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2308,7 +2041,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2318,7 +2050,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2328,7 +2059,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SYSTEM_CONFIG_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYSTEM_CONFIG_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2342,8 +2072,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2353,7 +2081,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2363,7 +2090,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2373,8 +2099,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2384,7 +2108,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2394,7 +2117,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2404,7 +2126,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2414,7 +2135,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2428,8 +2148,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2439,7 +2157,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2449,7 +2166,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2459,8 +2175,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2470,7 +2184,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2480,7 +2193,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2490,7 +2202,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2500,7 +2211,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long FILE_DIR_IO_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.FILE_DIR_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2514,8 +2224,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2525,7 +2233,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2535,7 +2242,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2545,8 +2251,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2556,7 +2260,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2566,7 +2269,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2576,7 +2278,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2586,7 +2287,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2600,8 +2300,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2611,7 +2309,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2621,7 +2318,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2631,8 +2327,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2642,7 +2336,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2652,7 +2345,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2662,7 +2354,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2672,7 +2363,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DATABASE_IO_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DATABASE_IO_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2686,8 +2376,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2697,7 +2385,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2707,7 +2394,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2717,8 +2403,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2728,7 +2412,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2738,7 +2421,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2748,7 +2430,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2758,7 +2439,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2772,8 +2452,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2783,7 +2461,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2793,7 +2470,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2803,8 +2479,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2814,7 +2488,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2824,7 +2497,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2834,7 +2506,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2844,7 +2515,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long SECURITY_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SECURITY_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2858,8 +2528,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CLEAR_INITIALIZE(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CLEAR_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2869,7 +2537,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CLEAR_INITIALIZE(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CLEAR_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2879,7 +2546,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CLEAR_INITIALIZE(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CLEAR_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2889,8 +2555,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CLEAR_INITIALIZE(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CLEAR_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2900,7 +2564,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CLEAR_INITIALIZE(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CLEAR_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2910,7 +2573,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CLEAR_INITIALIZE(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CLEAR_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -2920,7 +2582,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CLEAR_INITIALIZE(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CLEAR_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -2930,7 +2591,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CLEAR_INITIALIZE(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CLEAR_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -2944,8 +2604,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_INITIALIZE(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -2955,7 +2613,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_INITIALIZE(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -2965,7 +2622,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_INITIALIZE(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -2975,8 +2631,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_INITIALIZE(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -2986,7 +2640,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_INITIALIZE(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -2996,7 +2649,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_INITIALIZE(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3006,7 +2658,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_INITIALIZE(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3016,7 +2667,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION_INITIALIZE(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3030,8 +2680,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3041,7 +2689,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3051,7 +2698,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3061,8 +2707,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3072,7 +2716,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3082,7 +2725,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3092,7 +2734,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3102,7 +2743,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long EVENT(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVENT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3116,8 +2756,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3127,7 +2765,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3137,7 +2774,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3147,8 +2783,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3158,7 +2792,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3168,7 +2801,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3178,7 +2810,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3188,7 +2819,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3202,8 +2832,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE_INITIALIZE(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3213,7 +2841,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE_INITIALIZE(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3223,7 +2850,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE_INITIALIZE(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3233,8 +2859,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE_INITIALIZE(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3244,7 +2868,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE_INITIALIZE(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3254,7 +2877,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE_INITIALIZE(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3264,7 +2886,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE_INITIALIZE(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3274,7 +2895,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long MODULE_INITIALIZE(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.MODULE_INITIALIZE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3288,8 +2908,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3299,7 +2917,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3309,7 +2926,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3319,8 +2935,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3330,7 +2944,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3340,7 +2953,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3350,7 +2962,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3360,7 +2971,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATION(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3374,8 +2984,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATIONSERVICES(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATIONSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3385,7 +2993,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATIONSERVICES(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATIONSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3395,7 +3002,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATIONSERVICES(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATIONSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3405,8 +3011,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATIONSERVICES(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATIONSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3416,7 +3020,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATIONSERVICES(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATIONSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3426,7 +3029,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATIONSERVICES(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATIONSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3436,7 +3038,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATIONSERVICES(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATIONSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3446,7 +3047,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long APPLICATIONSERVICES(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.APPLICATIONSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3460,8 +3060,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAIN(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAIN,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3471,7 +3069,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAIN(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAIN,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3481,7 +3078,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAIN(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAIN,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3491,8 +3087,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAIN(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAIN,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3502,7 +3096,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAIN(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAIN,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3512,7 +3105,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAIN(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAIN,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3522,7 +3114,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAIN(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAIN,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3532,7 +3123,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAIN(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAIN,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3546,8 +3136,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAINSERVICES(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAINSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3557,7 +3145,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAINSERVICES(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAINSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3567,7 +3154,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAINSERVICES(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAINSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3577,8 +3163,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAINSERVICES(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAINSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3588,7 +3172,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAINSERVICES(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAINSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3598,7 +3181,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAINSERVICES(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAINSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3608,7 +3190,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAINSERVICES(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAINSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3618,7 +3199,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DOMAINSERVICES(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DOMAINSERVICES,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3632,8 +3212,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CORE(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CORE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3643,7 +3221,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CORE(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CORE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3653,7 +3230,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CORE(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CORE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3663,8 +3239,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CORE(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CORE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3674,7 +3248,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CORE(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CORE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3684,7 +3257,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CORE(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CORE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3694,7 +3266,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CORE(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CORE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3704,7 +3275,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long CORE(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.CORE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3718,8 +3288,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PERSISTENCE(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PERSISTENCE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3729,7 +3297,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PERSISTENCE(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PERSISTENCE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3739,7 +3306,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PERSISTENCE(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PERSISTENCE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3749,8 +3315,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PERSISTENCE(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PERSISTENCE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3760,7 +3324,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PERSISTENCE(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PERSISTENCE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3770,7 +3333,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PERSISTENCE(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PERSISTENCE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3780,7 +3342,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PERSISTENCE(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PERSISTENCE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3790,7 +3351,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PERSISTENCE(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PERSISTENCE,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3804,8 +3364,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PRESENTATION(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PRESENTATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3815,7 +3373,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PRESENTATION(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PRESENTATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3825,7 +3382,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PRESENTATION(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PRESENTATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3835,8 +3391,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PRESENTATION(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PRESENTATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3846,7 +3400,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PRESENTATION(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PRESENTATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3856,7 +3409,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PRESENTATION(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PRESENTATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3866,7 +3418,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PRESENTATION(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PRESENTATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3876,7 +3427,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long PRESENTATION(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PRESENTATION,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3890,8 +3440,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3901,7 +3449,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3911,7 +3458,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -3921,8 +3467,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -3932,7 +3476,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -3942,7 +3485,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -3952,7 +3494,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -3962,7 +3503,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -3976,8 +3516,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -3987,7 +3525,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -3997,7 +3534,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -4007,8 +3543,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -4018,7 +3552,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -4028,7 +3561,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -4038,7 +3570,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -4048,7 +3579,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEW_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEW_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -4062,8 +3592,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -4073,7 +3601,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -4083,7 +3610,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -4093,8 +3619,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -4104,7 +3628,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -4114,7 +3637,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -4124,7 +3646,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -4134,7 +3655,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -4148,8 +3668,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL_LOW(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -4159,7 +3677,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL_LOW(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -4169,7 +3686,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL_LOW(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -4179,8 +3695,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL_LOW(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -4190,7 +3704,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL_LOW(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -4200,7 +3713,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL_LOW(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -4210,7 +3722,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL_LOW(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -4220,7 +3731,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long VIEWMODEL_LOW(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.VIEWMODEL_LOW,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
@@ -4234,8 +3744,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DEFAULT(string message, string applicationCategory, MethodBase method = null)
         {
-            // StackTrace trace = new StackTrace();
-            // MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DEFAULT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
@@ -4245,7 +3753,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DEFAULT(string message, string applicationCategory, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DEFAULT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
@@ -4255,7 +3762,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DEFAULT(string message, string applicationCategory, int EventId)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DEFAULT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
@@ -4265,8 +3771,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DEFAULT(string message, string applicationCategory, long startTicks, MethodBase method = null)
         {
-            //StackTrace trace = new StackTrace();
-            //MethodBase method = trace.GetFrame(1).GetMethod();
             if (method == null) method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DEFAULT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
@@ -4276,7 +3780,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DEFAULT(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DEFAULT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
@@ -4286,7 +3789,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DEFAULT(string message, string applicationCategory, int EventId, long startTicks)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DEFAULT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
@@ -4296,7 +3798,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DEFAULT(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DEFAULT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
@@ -4306,7 +3807,6 @@ namespace VNC
         [DebuggerStepThrough]
         public static long DEFAULT(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
         {
-            //StackTrace trace = new StackTrace();
             MethodBase method = new StackFrame(1).GetMethod();
             InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DEFAULT,
                 method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
