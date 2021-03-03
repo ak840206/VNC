@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VNC")]
 [assembly: AssemblyProduct("VNC.ActiveDirectory")]
-[assembly: AssemblyCopyright("Copyright © 2014-2020")]
+[assembly: AssemblyCopyright("Copyright © VNC 2014-2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -64,4 +64,4 @@ using System.Runtime.InteropServices;
 //  Version   Date        By
 //  1.0.0.0   mm/dd/yyyy    Developer
 //      Initial Version
-[assembly: AssemblyInformationalVersion("2020.10.08A")]
+[assembly: AssemblyInformationalVersion("1.0.0")]

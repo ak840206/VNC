@@ -11,73 +11,75 @@ Public Class Form1
 
         frequency = System.Diagnostics.Stopwatch.Frequency
 
+        Dim loops As Int32 = Int32.Parse(txtLoops.Text)
+
         ' Time different events.
 
         ' Time around Log.Info method
 
         startTime_LogInfo = Stopwatch.GetTimestamp
 
-        For i As Integer = 1 To 100
+        For i As Integer = 1 To loops
             Log.Info("TimeInfo", "General")
         Next
 
         endTime_LogInfo = Stopwatch.GetTimestamp
-        elapsedTime_LogInfo = ((endTime_LogInfo - startTime_LogInfo) / 100.0) / frequency
+        elapsedTime_LogInfo = ((endTime_LogInfo - startTime_LogInfo) / loops) / frequency
 
         ' Time around Log.Info + Stack method
 
         startTime_LogInfoStack = Stopwatch.GetTimestamp
 
-        For i As Integer = 1 To 100
+        For i As Integer = 1 To loops
             Log.Info("TimeInfo", "General", Log.ShowStack.Yes)
         Next
 
         endTime_LogInfoStack = Stopwatch.GetTimestamp
-        elapsedTime_LogInfoStack = ((endTime_LogInfoStack - startTime_LogInfoStack) / 100.0) / frequency
+        elapsedTime_LogInfoStack = ((endTime_LogInfoStack - startTime_LogInfoStack) / loops) / frequency
 
         ' Time around Write method
 
         startTime_Write = Stopwatch.GetTimestamp
 
-        For i As Integer = 1 To 100
+        For i As Integer = 1 To loops
             Log.Write("TimeWrite", TraceEventType.Information, "General", 1000, "ClasesName", "MethodName", False, startTime_Write)
         Next
 
         endTime_Write = Stopwatch.GetTimestamp
-        elapsedTime_Write = ((endTime_Write - startTime_Write) / 100) / frequency
+        elapsedTime_Write = ((endTime_Write - startTime_Write) / loops) / frequency
 
         ' Time around WriteLight method
 
         startTime_WriteLight = Stopwatch.GetTimestamp
 
-        For i As Integer = 1 To 100
+        For i As Integer = 1 To loops
             Log.WriteLight("TimeWriteLight", TraceEventType.Information, "General", 1000, "ClasesName", "MethodName", False, startTime_WriteLight)
         Next
 
         endTime_WriteLight = Stopwatch.GetTimestamp
-        elapsedTime_WriteLight = ((endTime_WriteLight - startTime_WriteLight) / 100) / frequency
+        elapsedTime_WriteLight = ((endTime_WriteLight - startTime_WriteLight) / loops) / frequency
 
         ' Time around Log.Trace method
 
         startTime_LogTrace = Stopwatch.GetTimestamp
 
-        For i As Integer = 1 To 100
+        For i As Integer = 1 To loops
             Log.Trace("TimeTrace", "General")
         Next
 
         endTime_LogTrace = Stopwatch.GetTimestamp
-        elapsedTime_LogTrace = ((endTime_LogTrace - startTime_LogTrace) / 100) / frequency
+        elapsedTime_LogTrace = ((endTime_LogTrace - startTime_LogTrace) / loops) / frequency
 
         ' Time around Log.TraceE method
 
         startTime_LogTraceE = Stopwatch.GetTimestamp
 
-        For i As Integer = 1 To 100
+        For i As Integer = 1 To loops
             Log.Trace("TimeTrace", "General", startTime_LogTraceE)
         Next
 
         endTime_LogTraceE = Stopwatch.GetTimestamp
-        elapsedTime_LogTraceE = ((endTime_LogTraceE - startTime_LogTraceE) / 100) / frequency
+        elapsedTime_LogTraceE = ((endTime_LogTraceE - startTime_LogTraceE) / loops) / frequency
 
         ' Now update the form to reflect the results
 
@@ -179,7 +181,8 @@ Public Class Form1
     Private m_StartTime As Long
 
     Private Sub btnStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnStart.Click
-        m_StartTime = Stopwatch.GetTimestamp
+        'm_StartTime = Stopwatch.GetTimestamp
+        m_StartTime = Log.Info("Start", "TESTLOGGING")
         Me.txtEndTicks.Clear()
         Me.txtElapsedTime.Clear()
 
@@ -194,8 +197,9 @@ Public Class Form1
         Dim endTime As Long
         Dim elapsedTime As Double
 
-        frequency = System.Diagnostics.Stopwatch.Frequency
-        endTime = Stopwatch.GetTimestamp
+        frequency = Stopwatch.Frequency
+        'endTime = Stopwatch.GetTimestamp
+        endTime = Log.Info("Stop", "TESTLOGGING", m_StartTime)
         Me.txtEndTicks.Text = endTime.ToString
 
         elapsedTime = (endTime - m_StartTime) / frequency
@@ -205,10 +209,10 @@ Public Class Form1
         Me.btnStop.Enabled = False
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub btnTestBatchNotification_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTestBatchNotification.Click
         Dim tl As New TestLogging
 
-        tl.TestBatchNotificationCustomListner()
+        tl.TestBatchNotificationCustomListener()
     End Sub
 
     Private Sub btnLogEventID_Click(sender As Object, e As EventArgs) Handles btnLogEventID.Click

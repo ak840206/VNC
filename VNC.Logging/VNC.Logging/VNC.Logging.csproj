@@ -1,12 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
-        <RootNamespace>VNC.Logging</RootNamespace>
-        <AssemblyName>VNC.Logging</AssemblyName>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <AssemblyName>VNC.Logging</AssemblyName>
+        <RootNamespace>VNC.Logging</RootNamespace>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>1.0.1</PackageVersion>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>logging</PackageTags>
+        <PackageIcon>VNC.png</PackageIcon>
+        <Authors>Christopher Rhodes</Authors>
+        <Copyright>Copyright © VNC 2010-2021</Copyright>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>        
+        <Description>Logging Wrapper on top of EnterpriseLibrary.Logging</Description>
     </PropertyGroup>
 
     <ItemGroup>
@@ -32,6 +44,14 @@
       <None Update="LogNamed.tt">
         <Generator>TextTemplatingFileGenerator</Generator>
         <LastGenOutput>LogNamed.cs</LastGenOutput>
+      </None>
+      <None Include="..\..\..\VNC.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+      <None Include="LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
       </None>
     </ItemGroup>
 

@@ -9,12 +9,11 @@
   </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="VNC.CoreNF" Version="1.0.0" />
-        <PackageReference Include="VNC.LoggingNF" Version="1.0.0" />
+        <PackageReference Include="VNC.Core" Version="1.0.0" />
     </ItemGroup>
 
     <!--<ItemGroup>
-      <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj" />
+      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
     </ItemGroup>-->
     
 </Project>

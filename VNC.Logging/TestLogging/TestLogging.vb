@@ -81,7 +81,6 @@ Public Class TestLogging
     Public Sub Log_Info()
         Dim startTicks As Long
 
-
         startTicks = Log.Info("Enter", "MyInfoCategory")
 
         Log.Info("InfoMessage with Category", "MyInfoCategory")
@@ -128,6 +127,7 @@ Public Class TestLogging
         dictionary.Add("Application", "EAI_PS58Process")
         dictionary.Add("PolicyNumber", "VP12345678")
         dictionary.Add("WorksheetID", "35378")
+
         Log.Debug("DebugMessage", "OnTrac", dictionary)
         Log.Debug("DebugMessage", "OnTrac", iEventNumber, dictionary)
         Log.Debug("DebugMessage", "OnTrac", startTicks, dictionary)
@@ -204,7 +204,8 @@ Public Class TestLogging
         End Try
 
     End Sub
-    Public Sub TestBatchNotificationCustomListner()
+
+    Public Sub TestBatchNotificationCustomListener()
         Dim i As Integer
         Try
             'Throw Exception by trying to convert string to int.

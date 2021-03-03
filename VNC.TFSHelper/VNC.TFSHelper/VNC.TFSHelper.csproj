@@ -2,26 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>net4.8</TargetFramework>
-      <UseWPF>true</UseWPF>
+      <UseWPF>true</UseWPF>      
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-      <RootNamespace>VNC.SPHelper</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="TFSHelper - Copy.cs" />
+  </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="DevExpress.Wpf.Core" Version="19.2.6" />
         <PackageReference Include="DevExpress.Wpf.Grid" Version="19.2.6" />
         <PackageReference Include="DevExpress.Wpf.Layout" Version="19.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Navigation" Version="19.2.6" />
-        <PackageReference Include="Microsoft.SharePoint.Client" Version="14.0.4762.1000" />
-        <PackageReference Include="Microsoft.SharePointOnline.CSOM" Version="16.1.20912.12000" />
-        <PackageReference Include="VNC.CoreNF" Version="1.0.0" />
-        <PackageReference Include="VNC.LoggingNF" Version="1.0.0" />
+        <PackageReference Include="DevExpress.Wpf.Navigation" Version="19.2.6" />        
+        <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="16.170.0" />
+        <PackageReference Include="Microsoft.TeamFoundationServer.ExtendedClient" Version="16.170.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Services.Client" Version="16.170.0" />
+        <PackageReference Include="VNC.Core" Version="1.0.0" />
     </ItemGroup>
-
+    
     <ItemGroup>
         <!-- Workaround for https://github.com/dotnet/wpf/issues/2648#issuecomment-635674683 -->
         <Reference Include="System.Web" />
-    </ItemGroup>
+    </ItemGroup>    
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <DefineConstants>TRACE;LOGGING</DefineConstants>
@@ -30,9 +33,9 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <DefineConstants>TRACE;LOGGING</DefineConstants>
     </PropertyGroup>
-    
+
     <!--<ItemGroup>
       <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj" />
     </ItemGroup>-->
-
+   
 </Project>

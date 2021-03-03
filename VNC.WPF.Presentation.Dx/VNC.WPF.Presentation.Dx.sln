@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNC.WPF.Presentation", "VNC.WPF.PresentationNF.csproj", "{4D03FB82-471E-41B3-BEF7-6788215D89A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNC.WPF.Presentation.Dx", "VNC.WPF.Presentation.Dx.csproj", "{4D03FB82-471E-41B3-BEF7-6788215D89A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +15,10 @@ Global
 		{4D03FB82-471E-41B3-BEF7-6788215D89A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D03FB82-471E-41B3-BEF7-6788215D89A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D03FB82-471E-41B3-BEF7-6788215D89A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26CC080-8055-49DC-A176-8A6D4134AC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D26CC080-8055-49DC-A176-8A6D4134AC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D26CC080-8055-49DC-A176-8A6D4134AC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D26CC080-8055-49DC-A176-8A6D4134AC58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
