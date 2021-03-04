@@ -10,7 +10,9 @@
         <PackageReference Include="DevExpress.Wpf.Core" Version="19.2.6" />
         <PackageReference Include="DevExpress.Wpf.Grid" Version="19.2.6" />
         <PackageReference Include="DevExpress.Wpf.Layout" Version="19.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Navigation" Version="19.2.6" />    
+        <PackageReference Include="DevExpress.Wpf.Navigation" Version="19.2.6" />
+        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisDark" Version="19.2.6" />
+        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisLight" Version="19.2.6" />    
         <PackageReference Include="VNC.Core" Version="1.0.0" />
     </ItemGroup>
 
