@@ -9,12 +9,11 @@
         <PackageReference Include="Crc32C.NET" Version="1.0.5" />
         <PackageReference Include="Microsoft.CodeAnalysis" Version="3.8.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="3.8.0" />
-        <PackageReference Include="VNC.CoreNF" Version="1.0.0" />
-        <PackageReference Include="VNC.LoggingNF" Version="1.0.0" />
+        <PackageReference Include="VNC.Core" Version="1.0.0" />
     </ItemGroup>
 
     <!--<ItemGroup>
-      <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj" />
+      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
     </ItemGroup>-->
     
 </Project>

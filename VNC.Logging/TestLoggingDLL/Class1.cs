@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VNC;
+﻿using VNC;
 
 namespace TestLoggingDLL
 {
@@ -15,7 +10,7 @@ namespace TestLoggingDLL
         }
         public void bar()
         {
-            Log.Info("In foo()", "CLASS1");
+            Log.Info("In bar()", "CLASS1");
         }
     }
 }

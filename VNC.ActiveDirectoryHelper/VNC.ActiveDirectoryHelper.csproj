@@ -1,16 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>net4.8</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
       <UseWPF>true</UseWPF>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+      <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+      <PackageLicenseFile>LICENSE</PackageLicenseFile>
+      <PackageIcon>VNC.png</PackageIcon>
   </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="System.DirectoryServices" Version="5.0.0" />
         <PackageReference Include="System.DirectoryServices.AccountManagement" Version="5.0.0" />
-        <PackageReference Include="VNC.CoreNF" Version="1.0.0" />
-        <PackageReference Include="VNC.LoggingNF" Version="1.0.0" />
+        <PackageReference Include="VNC.Core" Version="1.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\VNC.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+      <None Include="..\VNC.Core\LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -22,7 +35,7 @@
     </PropertyGroup>
     
     <!--<ItemGroup>
-      <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj" />
+      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
     </ItemGroup>-->
     
 </Project>

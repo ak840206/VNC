@@ -1,7 +1,7 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 
 using Microsoft.Practices.EnterpriseLibrary.Data;
-using Microsoft.Practices.EnterpriseLibrary.Logging;
 
 using VNC;
 
@@ -20,8 +20,17 @@ namespace TestLoggingSimple
 
         private void btnLogSomething(object sender, RoutedEventArgs e)
         {
-            Log.Info("Log Something for Me", LOG_APPNAME, 0);
-            Log.EVENT_HANDLER("Log Something for Me", LOG_APPNAME, 0);
+            long startTicks;
+
+            Log.Info("Good Everything", LOG_APPNAME, 0);
+            Log.EVENT_HANDLER("High Five", LOG_APPNAME, 0);
+
+            startTicks = Log.Trace("Start", LOG_APPNAME);
+
+            Thread.Sleep(750);
+
+            Log.Trace("End", LOG_APPNAME, startTicks);
+            
         }
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.AssemblyHelperNF", "VNC.AssembyHelper\VNC.AssemblyHelperNF.csproj", "{16C03AD5-A647-4BBD-9EA9-B73689F150AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.CodeAnalysis", "VNC.CodeAnalysis\VNC.CodeAnalysis.csproj", "{0940D032-9941-469B-B967-1E25704BC169}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{16C03AD5-A647-4BBD-9EA9-B73689F150AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16C03AD5-A647-4BBD-9EA9-B73689F150AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16C03AD5-A647-4BBD-9EA9-B73689F150AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16C03AD5-A647-4BBD-9EA9-B73689F150AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0940D032-9941-469B-B967-1E25704BC169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0940D032-9941-469B-B967-1E25704BC169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0940D032-9941-469B-B967-1E25704BC169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0940D032-9941-469B-B967-1E25704BC169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E9CB2B86-B0B2-45C8-9171-D7917207F793}
+		SolutionGuid = {E191B344-92F9-40CF-A6D8-B603377D1C6D}
 	EndGlobalSection
 EndGlobal

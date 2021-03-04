@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <TargetFramework>net4.8</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="DevExpress.Wpf.Core" Version="19.2.6" />
+        <PackageReference Include="DevExpress.Wpf.Grid" Version="19.2.6" />
+        <PackageReference Include="DevExpress.Wpf.Layout" Version="19.2.6" />
+        <PackageReference Include="DevExpress.Wpf.Navigation" Version="19.2.6" />
+        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisDark" Version="19.2.6" />
+        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisLight" Version="19.2.6" />    
+        <PackageReference Include="VNC.Core" Version="1.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Workaround for https://github.com/dotnet/wpf/issues/2648#issuecomment-635674683 -->
+        <Reference Include="System.Web" />
+    </ItemGroup>    
+   
+</Project>
+
+    <!-- <Reference Include="DevExpress.Xpf.Core.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
+    <!-- <Reference Include="DevExpress.Xpf.Docking.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
+    <!-- <Reference Include="DevExpress.Xpf.LayoutControl.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
+    <!-- <Reference Include="DevExpress.Xpf.Themes.MetropolisDark.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
+    <!-- <Reference Include="DevExpress.Xpf.Themes.MetropolisLight.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
+
