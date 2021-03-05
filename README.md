@@ -12,6 +12,8 @@ Includes
   ## Documentation
   
   ## Videos &amp; Training
+  ### Logging Teaser
+  https://youtu.be/nVCl1t-gIJM
   
   ## NuGet Packages
   
