@@ -15,6 +15,9 @@ Includes
   ### Logging Teaser
   https://youtu.be/nVCl1t-gIJM
   
+  ### Logging Training Part 1
+  
+  
   ## NuGet Packages
   
   ## Visual Studio Templates
