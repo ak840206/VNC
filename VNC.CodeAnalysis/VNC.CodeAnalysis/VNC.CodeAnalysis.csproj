@@ -7,10 +7,25 @@
 
     <ItemGroup>
         <PackageReference Include="Crc32C.NET" Version="1.0.5" />
+        <PackageReference Include="Microsoft.Build" Version="16.9.0" />
+        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="16.9.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis" Version="3.9.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" Version="3.9.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Features" Version="3.9.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Features" Version="3.9.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="3.9.0" />
+        <PackageReference Include="VNC.Core" Version="1.0.0" />
+    </ItemGroup>
+
+    <!--This is what we used to use.
+        Needed to Add a bunch of stuff to get RunTime errors addressed.
+        Also needed Microsoft.Build.Taks.Core to get project.Documents to work.  See VNC.CodeAnalysis.Helper.AddSourceFilesFromVBProject.--> 
+    <!--<ItemGroup>
+        <PackageReference Include="Crc32C.NET" Version="1.0.5" />
         <PackageReference Include="Microsoft.CodeAnalysis" Version="3.8.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="3.8.0" />
         <PackageReference Include="VNC.Core" Version="1.0.0" />
-    </ItemGroup>
+    </ItemGroup>-->    
 
     <!--<ItemGroup>
       <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />

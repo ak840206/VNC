@@ -16,7 +16,7 @@ namespace VNC.CodeAnalysis.Workspace
 
         public static List<String> GetSourceFilesToProcessFromConfigFile(string configFileFullPath, string branchName, string solutionName, string projectName)
         {
-            long startTicks = VNC.Log.Trace(string.Format("configFileFullPath:({0})", configFileFullPath), Common.LOG_APPNAME);
+            long startTicks = Log.Trace(string.Format("configFileFullPath:({0})", configFileFullPath), Common.LOG_APPNAME);
 
             List<String> filesToProcess = null;
             string sourcePath = string.Empty;
@@ -100,7 +100,7 @@ namespace VNC.CodeAnalysis.Workspace
 
         public static List<String> GetSourceFilesToProcessFromVSProject(string projectFullPath)
         {
-            long startTicks = VNC.Log.Trace(string.Format("projectFullPath:({0})", projectFullPath), Common.LOG_APPNAME);
+            long startTicks = Log.Trace(string.Format("projectFullPath:({0})", projectFullPath), Common.LOG_APPNAME);
 
             List<String> filesToProcess = new List<string>();
 
@@ -109,6 +109,7 @@ namespace VNC.CodeAnalysis.Workspace
 
             // If a ProjectFile is available, use it to get the list of files
             // Otherwise return the files selected in cbeSourceFiles.
+
 
             try
             {
@@ -142,10 +143,10 @@ namespace VNC.CodeAnalysis.Workspace
             }
             catch (Exception ex)
             {
-                VNC.Log.Error(ex, Common.LOG_APPNAME);
+                Log.Error(ex, Common.LOG_APPNAME);
             }
 
-            VNC.Log.Trace(string.Format("Exit: Count({0})", filesToProcess.Count), Common.LOG_APPNAME, startTicks);
+            Log.Trace(string.Format("Exit: Count({0})", filesToProcess.Count), Common.LOG_APPNAME, startTicks);
 
             return filesToProcess;
         }
@@ -153,6 +154,9 @@ namespace VNC.CodeAnalysis.Workspace
         public static void AddSourceFilesFromVBProject(List<string> filesToProcess, Microsoft.CodeAnalysis.Project project)
         {
             long startTicks = Log.Trace1(string.Format("Enter: project.Path:({0})", project.FilePath), Common.LOG_APPNAME);
+
+            // This did not return files until Microsoft.Build.Tasks.Core was added
+            // https://github.com/dotnet/roslyn/issues/25370
 
             foreach (var document in project.Documents)
             {
@@ -183,12 +187,12 @@ namespace VNC.CodeAnalysis.Workspace
                 }
             }
 
-            VNC.Log.Trace(string.Format("Exit: Count({0})", filesToProcess.Count), Common.LOG_APPNAME, startTicks);
+            Log.Trace(string.Format("Exit: Count({0})", filesToProcess.Count), Common.LOG_APPNAME, startTicks);
         }
 
         public static void AddSourceFilesFromCSProject(List<string> filesToProcess, Microsoft.CodeAnalysis.Project project)
         {
-            VNC.Log.Trace1(string.Format("Enter: project.Path:({0})", project.FilePath), Common.LOG_APPNAME);
+            Log.Trace1(string.Format("Enter: project.Path:({0})", project.FilePath), Common.LOG_APPNAME);
 
             foreach (var document in project.Documents)
             {
@@ -214,7 +218,7 @@ namespace VNC.CodeAnalysis.Workspace
                 }
             }
 
-            VNC.Log.Trace(string.Format("Exit: Count({0})", filesToProcess.Count), Common.LOG_APPNAME);
+            Log.Trace(string.Format("Exit: Count({0})", filesToProcess.Count), Common.LOG_APPNAME);
         }
     }
 }
