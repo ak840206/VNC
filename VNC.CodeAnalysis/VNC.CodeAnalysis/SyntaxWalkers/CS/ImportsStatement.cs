@@ -9,7 +9,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
     {
         public override void VisitUsingStatement(UsingStatementSyntax node)
         {
-            long startTicks = Log.Trace15("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.Trace15("Enter", Common.LOG_CATEGORY);
 
             if (_targetPatternRegEx.Match(node.UsingKeyword.ToString()).Success)
             {
@@ -20,7 +20,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
             base.VisitUsingStatement(node);
 
-            Log.Trace15("Exit", Common.LOG_APPNAME, startTicks);
+            Log.Trace15("Exit", Common.LOG_CATEGORY, startTicks);
         }
     }
 }

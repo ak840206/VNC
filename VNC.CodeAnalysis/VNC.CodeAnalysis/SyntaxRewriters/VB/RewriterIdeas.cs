@@ -57,9 +57,9 @@ namespace VNC.CodeAnalysis.SyntaxRewriters.VB
                 var firstIdentifier = simpleMemberAccessExpression.ChildNodes().First();
                 var lastIdentifer = simpleMemberAccessExpression.ChildNodes().Last();
 
-                //Dim dbTicks as Long = Log.Debug2("Execution Start", LOG_APPNAME)
+                //Dim dbTicks as Long = Log.Debug2("Execution Start", LOG_CATEGORY)
                 //dbReader = dbCmd.ExecuteReader()
-                //Log.Trace(String.Format("Execution End: strSQL:{({0})", strSQL), LOG_APPNAME, dbTicks)
+                //Log.Trace(String.Format("Execution End: strSQL:{({0})", strSQL), LOG_CATEGORY, dbTicks)
 
                 //LocalDeclarationStatementSyntax declareVariable = GetDeclareString("myString");
 
@@ -238,7 +238,7 @@ namespace VNC.CodeAnalysis.SyntaxRewriters.VB
                 //var memberAccessEx = SyntaxFactory.SimpleMemberAccessExpression(simpleName);
 
                 string logStatement = @"
-    Dim dbTicks as Long = Log.Debug2(""ExecutionStart"", LOG_APPNAME)";
+    Dim dbTicks as Long = Log.Debug2(""ExecutionStart"", LOG_CATEGORY)";
 
                 //LocalDeclarationStatementSyntax logStartSyntax2 = SyntaxFactory.LocalDeclarationStatement(dimKeyword2, declarators);
                 var logStartSyntax = SyntaxFactory.ParseExecutableStatement(logStatement);
@@ -322,7 +322,7 @@ namespace VNC.CodeAnalysis.SyntaxRewriters.VB
             //InvocationExpressionSyntax logEndSyntax2 = SyntaxFactory.InvocationExpression(fullName, argumentList);
 
             string logStatement = @"
-Log.Debug2(String.Format(""Execution End: strSQL:({0})"", strSQL), LOG_APPNAME, dbTicks)
+Log.Debug2(String.Format(""Execution End: strSQL:({0})"", strSQL), LOG_CATEGORY, dbTicks)
 ";
 
             var logEndSyntaxA = SyntaxFactory.ParseExpression(logStatement);
