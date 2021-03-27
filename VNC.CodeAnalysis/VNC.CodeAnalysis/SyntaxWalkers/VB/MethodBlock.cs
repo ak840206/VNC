@@ -19,7 +19,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
         {
             if (_targetPatternRegEx.Match(node.SubOrFunctionStatement.Identifier.ToString()).Success)
             {
-                RecordMatchAndContext(node, BlockType.MethodBlock);                    
+                RecordMatchAndContext(node, BlockType.MethodBlock);
             }
 
             base.VisitMethodBlock(node);

@@ -22,7 +22,7 @@ namespace VNC.CodeAnalysis
         public string ReplacementPattern;
         public string Comment;
 
-        public ConfigurationOptions ConfigurationOptions;
+        public CodeAnalysisOptions ConfigurationOptions;
 
         public Dictionary<string, Int32> Replacements;
         public Dictionary<string, Int32> CRCMatchesToString;

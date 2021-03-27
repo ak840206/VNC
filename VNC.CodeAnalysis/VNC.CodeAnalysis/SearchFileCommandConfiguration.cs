@@ -14,7 +14,7 @@ namespace VNC.CodeAnalysis
         public Boolean UseRegEx;
         public string RegEx;
 
-        public ConfigurationOptions ConfigurationOptions;
+        public CodeAnalysisOptions ConfigurationOptions;
 
         public Dictionary<string, Int32> Matches;
         public Dictionary<string, Int32> CRCMatchesToString;

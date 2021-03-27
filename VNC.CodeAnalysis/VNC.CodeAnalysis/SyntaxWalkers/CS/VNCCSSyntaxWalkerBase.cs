@@ -20,7 +20,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
         public StringBuilder WalkerTrivia = new StringBuilder();
         public StringBuilder WalkerStructuredTrivia = new StringBuilder();
 
-        public ConfigurationOptions _configurationOptions = new ConfigurationOptions();
+        public CodeAnalysisOptions _configurationOptions = new CodeAnalysisOptions();
 
         private string _targetPattern;
         internal Regex _targetPatternRegEx;
@@ -62,12 +62,12 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             // NOTE(crhodes)
             // CSharp does not have concept of Module.  This Config option should be ok, however.
 
-            if (_configurationOptions.ClassOrModuleName)
+            if (_configurationOptions.DisplayClassOrModuleName)
             {
                 messageContext = Helpers.CS.GetContainingContext(node, _configurationOptions);
             }
 
-            if (_configurationOptions.MethodName)
+            if (_configurationOptions.DisplayMethodName)
             {
                 messageContext += string.Format(" Method:({0, -35})", Helpers.CS.GetContainingMethodName(node));
             }
@@ -87,7 +87,6 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             ModuleBlock = 3,
             MethodBlock = 4
         }
-
 
         public void RecordMatch(CSharpSyntaxNode node, BlockType blockType)
         {
@@ -119,12 +118,12 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                     break;
             }
 
-            if (_configurationOptions.ReplaceCRLF)
+            if (_configurationOptions.ReplaceCRLFInNodeName)
             {
                 nodeValue = nodeValue.Replace("\r\n", " ");
             }
 
-            if (_configurationOptions.CRC32)
+            if (_configurationOptions.DisplayCRC32)
             {
                 byte[] nodeToStringBytes = asciiEncoding.GetBytes(node.ToString());
                 byte[] nodeToFullStringBytes = asciiEncoding.GetBytes(node.ToFullString());
@@ -195,14 +194,14 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                     break;
 
                 case BlockType.NamespaceBlock:
-                    nodeValue = ((NamespaceDeclarationSyntax)node).ToString();
+                    nodeValue = ((NamespaceDeclarationSyntax)node).Name.ToString();
                     // TODO(crhodes)
                     // May want to remove .Name
                     nodeKey = ((NamespaceDeclarationSyntax)node).Name.ToString();
                     break;
 
                 case BlockType.ClassBlock:
-                    nodeValue = ((ClassDeclarationSyntax)node).ToString();
+                    nodeValue = ((ClassDeclarationSyntax)node).Identifier.ToString();
                     // TODO(crhodes)
                     // May want to remove .Identifier
                     nodeKey = ((ClassDeclarationSyntax)node).Identifier.ToString(); ;
@@ -228,7 +227,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                     break;
             }
 
-            if (_configurationOptions.ReplaceCRLF)
+            if (_configurationOptions.ReplaceCRLFInNodeName)
             {
                 // TODO(crhodes)
                 // This may not work if we want to see the block
@@ -236,7 +235,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                 nodeKey = nodeKey.Replace("\r\n", " ");
             }
 
-            if (_configurationOptions.CRC32)
+            if (_configurationOptions.DisplayCRC32)
             {
                 byte[] nodeToStringBytes = asciiEncoding.GetBytes(node.ToString());
                 byte[] nodeToFullStringBytes = asciiEncoding.GetBytes(node.ToFullString());
@@ -513,7 +512,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
         /// <param name="nodeValue"></param>
         public void RecordMatchAndContext(CSharpSyntaxNode node, string nodeValue)
         {
-            if (_configurationOptions.CRC32)
+            if (_configurationOptions.DisplayCRC32)
             {
                 byte[] nodeToStringBytes = asciiEncoding.GetBytes(node.ToString());
                 byte[] nodeToFullStringBytes = asciiEncoding.GetBytes(node.ToFullString());
@@ -577,37 +576,5 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                 Matches.Add(nodeValue, 1);
             }
         }
-
-        //public override void Visit(Microsoft.CodeAnalysis.SyntaxNode node)
-        //{
-        //    tabs++;
-        //    var indents = new String(' ', tabs * 3);
-        //    Messages.AppendLine(string.Format("{0}{1,6}{2}:>{3}<", indents, "Node:", node.Kind(), node.ToString()));
-
-        //    // Call base to visit children
-
-        //    base.Visit(node);
-        //    tabs--;
-        //}
-
-        //public override void VisitToken(Microsoft.CodeAnalysis.SyntaxToken token)
-        //{
-        //    var indents = new String(' ', tabs * 3);
-        //    Messages.AppendLine(string.Format("{0}{1,6}{2}:>{3}<", indents, "Token:", token.Kind(), token));
-
-        //    // Call base to visit children
-
-        //    base.VisitToken(token);
-        //}
-
-        //public override void VisitTrivia(Microsoft.CodeAnalysis.SyntaxTrivia trivia)
-        //{
-        //    var indents = new String(' ', tabs * 3);
-        //    Messages.AppendLine(string.Format("{0}{1,6}{2}:>{3}<", indents, "Trivia:", trivia.Kind(), trivia));
-
-        //    // Call base to visit children
-
-        //    base.VisitTrivia(trivia);
-        //}
     }
 }

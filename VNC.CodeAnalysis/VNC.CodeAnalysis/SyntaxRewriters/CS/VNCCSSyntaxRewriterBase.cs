@@ -13,7 +13,7 @@ namespace VNC.CodeAnalysis.SyntaxRewriters.CS
     {
         public StringBuilder Messages;
 
-        public ConfigurationOptions _configurationOptions = new ConfigurationOptions();
+        public CodeAnalysisOptions _configurationOptions = new CodeAnalysisOptions();
 
         public Boolean PerformedReplacement = false;
 
@@ -41,12 +41,12 @@ namespace VNC.CodeAnalysis.SyntaxRewriters.CS
         {
             string messageContext = "";
 
-            if (_configurationOptions.ClassOrModuleName)
+            if (_configurationOptions.DisplayClassOrModuleName)
             {
                 messageContext = VNCCA.Helpers.CS.GetContainingContext(node, _configurationOptions);
             }
 
-            if (_configurationOptions.MethodName)
+            if (_configurationOptions.DisplayMethodName)
             {
                 messageContext += string.Format(" Method:({0, -35})", VNCCA.Helpers.CS.GetContainingMethodName(node));
             }

@@ -14,9 +14,10 @@ namespace VNC.CodeAnalysis
         DataType = 1
     }
 
-    public class ConfigurationOptions
+    public class CodeAnalysisOptions
     {
         public SyntaxWalkerDepth SyntaxWalkerDepth { get; set; } = SyntaxWalkerDepth.StructuredTrivia;
+
         #region Output Options
 
         public SyntaxNode.AdditionalNodes AdditionalNodeAnalysis { get; set; } = SyntaxNode.AdditionalNodes.None;
@@ -33,21 +34,21 @@ namespace VNC.CodeAnalysis
 
         public bool IncludeStatementBlockInCRC { get; set; } = false;
 
-        public bool SourceLocation { get; set; } = false;
+        public bool DisplaySourceLocation { get; set; } = false;
 
-        public bool CRC32 { get; set; } = false;
+        public bool DisplayCRC32 { get; set; } = false;
 
         public bool ShowAnalysisCRC { get; set; } = false;
 
-        public bool ReplaceCRLF { get; set; } = false;
+        public bool ReplaceCRLFInNodeName { get; set; } = false;
 
-        public bool ClassOrModuleName { get; set; } = false;
+        public bool DisplayClassOrModuleName { get; set; } = false;
 
-        public bool MethodName { get; set; } = false;
+        public bool DisplayMethodName { get; set; } = false;
 
-         public bool ContainingMethodBlock { get; set; }    
+         public bool DisplayContainingMethodBlock { get; set; }    
         
-        public bool ContainingBlock { get; set; }
+        public bool DisplayContainingBlock { get; set; }
 
         public bool InTryBlock { get; set; } = false;
 
@@ -57,9 +58,7 @@ namespace VNC.CodeAnalysis
 
         public bool InIfBlock { get; set; } = false;
 
-
         public bool AllTypes { get; set; } = false;
-
 
         public bool Boolean { get; set; } = false;
 

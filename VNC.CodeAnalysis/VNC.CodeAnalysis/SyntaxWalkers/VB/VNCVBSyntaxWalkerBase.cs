@@ -19,7 +19,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
         public StringBuilder WalkerTrivia = new StringBuilder();
         public StringBuilder WalkerStructuredTrivia = new StringBuilder();
  
-        public ConfigurationOptions _configurationOptions = new ConfigurationOptions();
+        public CodeAnalysisOptions _configurationOptions = new CodeAnalysisOptions();
 
         private string _targetPattern;
         internal Regex _targetPatternRegEx;
@@ -58,12 +58,12 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
         {
             string messageContext = "";
 
-            if (_configurationOptions.ClassOrModuleName)
+            if (_configurationOptions.DisplayClassOrModuleName)
             {
                 messageContext = Helpers.VB.GetContainingContext(node, _configurationOptions);
             }
 
-            if (_configurationOptions.MethodName)
+            if (_configurationOptions.DisplayMethodName)
             {
                 messageContext += string.Format(" Method:({0, -35})", Helpers.VB.GetContainingMethodName(node));
             }
@@ -110,12 +110,12 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                     break;
             }
 
-            if (_configurationOptions.ReplaceCRLF)
+            if (_configurationOptions.ReplaceCRLFInNodeName)
             {
                 nodeValue = nodeValue.Replace("\r\n", " ");
             }
 
-            if (_configurationOptions.CRC32)
+            if (_configurationOptions.DisplayCRC32)
             {
                 byte[] nodeToStringBytes = asciiEncoding.GetBytes(node.ToString());
                 byte[] nodeToFullStringBytes = asciiEncoding.GetBytes(node.ToFullString());
@@ -219,7 +219,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                     break;
             }
 
-            if (_configurationOptions.ReplaceCRLF)
+            if (_configurationOptions.ReplaceCRLFInNodeName)
             {
                 // TODO(crhodes)
                 // This may not work if we want to see the block
@@ -227,7 +227,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                 nodeKey = nodeKey.Replace("\r\n", " ");
             }
 
-            if (_configurationOptions.CRC32)
+            if (_configurationOptions.DisplayCRC32)
             {
                 byte[] nodeToStringBytes = asciiEncoding.GetBytes(node.ToString());
                 byte[] nodeToFullStringBytes = asciiEncoding.GetBytes(node.ToFullString());
@@ -504,7 +504,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
         /// <param name="nodeValue"></param>
         public void RecordMatchAndContext(VisualBasicSyntaxNode node, string nodeValue)
         {
-            if (_configurationOptions.CRC32)
+            if (_configurationOptions.DisplayCRC32)
             {
                 byte[] nodeToStringBytes = asciiEncoding.GetBytes(node.ToString());
                 byte[] nodeToFullStringBytes = asciiEncoding.GetBytes(node.ToFullString());

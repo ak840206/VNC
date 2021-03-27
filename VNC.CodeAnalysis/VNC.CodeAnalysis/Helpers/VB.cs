@@ -63,7 +63,7 @@ namespace VNC.CodeAnalysis.Helpers
             return methodBlock;
         }
 
-        public static string GetContainingContext(VisualBasicSyntaxNode node, ConfigurationOptions displayInfo)
+        public static string GetContainingContext(VisualBasicSyntaxNode node, CodeAnalysisOptions displayInfo)
         {
             string ancestorContext = GetAncestorContext(node, displayInfo);
 
@@ -76,11 +76,11 @@ namespace VNC.CodeAnalysis.Helpers
             return ancestorContext + classModuleContext + methodContext + sourceContext;
         }
 
-        private static string GetSourceContext(VisualBasicSyntaxNode node, ConfigurationOptions displayInfo)
+        private static string GetSourceContext(VisualBasicSyntaxNode node, CodeAnalysisOptions displayInfo)
         {
             string sourceContext = "";
 
-            if (displayInfo.SourceLocation)
+            if (displayInfo.DisplaySourceLocation)
             {
                 var location = node.GetLocation();
                 var sourceSpan = location.SourceSpan;
@@ -99,15 +99,15 @@ namespace VNC.CodeAnalysis.Helpers
             return sourceContext;
         }
 
-        private static string GetMethodContext(VisualBasicSyntaxNode node, ConfigurationOptions displayInfo)
+        private static string GetMethodContext(VisualBasicSyntaxNode node, CodeAnalysisOptions displayInfo)
         {
             string methodContext = "";
 
-            if (displayInfo.MethodName)
+            if (displayInfo.DisplayMethodName)
             {
                 methodContext += string.Format(" Method:({0, -35})", Helpers.VB.GetContainingMethodName(node));
             }
-            else if (displayInfo.ContainingMethodBlock)
+            else if (displayInfo.DisplayContainingMethodBlock)
             {
                 methodContext += string.Format(" MethodBlock:({0})", Helpers.VB.GetContainingMethodBlock(node));
             }
@@ -115,11 +115,11 @@ namespace VNC.CodeAnalysis.Helpers
             return methodContext;
         }
 
-        private static string GetClassModuleContext(VisualBasicSyntaxNode node, ConfigurationOptions displayInfo)
+        private static string GetClassModuleContext(VisualBasicSyntaxNode node, CodeAnalysisOptions displayInfo)
         {
             string classModuleContext = "";
 
-            if (displayInfo.ClassOrModuleName)
+            if (displayInfo.DisplayClassOrModuleName)
             {
                 var inClassBlock = node.Ancestors()
                     .Where(x => x.IsKind(SyntaxKind.ClassBlock))
@@ -160,11 +160,11 @@ namespace VNC.CodeAnalysis.Helpers
             return classModuleContext;
         }
 
-        private static string GetAncestorContext(VisualBasicSyntaxNode node, ConfigurationOptions displayInfo)
+        private static string GetAncestorContext(VisualBasicSyntaxNode node, CodeAnalysisOptions displayInfo)
         {
             string ancestorContext = "";
 
-            if (displayInfo.ContainingBlock)
+            if (displayInfo.DisplayContainingBlock)
             {
                 ancestorContext += GetContainingBlock(node).Kind().ToString();
             }
@@ -229,6 +229,8 @@ namespace VNC.CodeAnalysis.Helpers
             SyntaxWalkers.VB.VNCVBSyntaxWalkerBase walker,
             SearchTreeCommandConfiguration commandConfiguration)
         {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", CodeAnalysis.Common.LOG_CATEGORY);
+
             StringBuilder results = new StringBuilder();
 
             //walker.Messages = commandConfiguration.Results;
@@ -247,7 +249,7 @@ namespace VNC.CodeAnalysis.Helpers
 
             if (results.Length > 0)
             {
-                if (commandConfiguration.ConfigurationOptions.CRC32)
+                if (commandConfiguration.ConfigurationOptions.DisplayCRC32)
                 {
                     results.AppendFormat("CRC32Node:            {0}\n", walker.CRC32Node);
                     results.AppendFormat("CRC32NodeKind:        {0}\n", walker.CRC32NodeKind);
@@ -258,6 +260,8 @@ namespace VNC.CodeAnalysis.Helpers
 
                 commandConfiguration.Results.AppendLine(results.ToString());
             }
+
+            Log.DOMAINSERVICES("Exit", CodeAnalysis.Common.LOG_CATEGORY, startTicks);
 
             return commandConfiguration.Results;
         }
