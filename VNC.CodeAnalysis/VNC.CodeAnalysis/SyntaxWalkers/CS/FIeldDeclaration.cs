@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 {
@@ -13,8 +14,26 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
         {
             long startTicks = Log.APPLICATIONSERVICES("Enter", Common.LOG_CATEGORY);
 
+            // Verify we have the correct context for the Field Declaration
+
             var parent = node.Parent;
-            var parentKind = node.Parent.RawKind;
+
+            switch (_declarationLocation)
+            {
+                case VNC.CodeAnalysis.SyntaxNode.FieldDeclarationLocation.Class:
+                    if (parent.Kind() != SyntaxKind.ClassDeclaration)
+                    {
+                        return;
+                    }
+                    break;
+
+                case VNC.CodeAnalysis.SyntaxNode.FieldDeclarationLocation.Structure:
+                    if (parent.Kind() != SyntaxKind.StructDeclaration)
+                    {
+                        return;
+                    }
+                    break;
+            }
 
             if (_targetPatternRegEx.Match(node.ToString()).Success)
             {
@@ -23,34 +42,6 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
             // TODO(crhodes)
             // VB version has more code
-
-            //// Verify we have the correct context for the Field Declaration
-
-            //var parent = node.Parent;
-
-            //switch (_declarationLocation)
-            //{
-            //    case VNC.CodeAnalysis.SyntaxNode.FieldDeclarationLocation.Class:
-            //        if (parent.Kind() != SyntaxKind.ClassBlock)
-            //        {
-            //            return;
-            //        }
-            //        break;
-
-            //    case VNC.CodeAnalysis.SyntaxNode.FieldDeclarationLocation.Module:
-            //        if (parent.Kind() != SyntaxKind.ModuleBlock)
-            //        {
-            //            return;
-            //        }
-            //        break;
-
-            //    case VNC.CodeAnalysis.SyntaxNode.FieldDeclarationLocation.Structure:
-            //        if (parent.Kind() != SyntaxKind.StructureBlock)
-            //        {
-            //            return;
-            //        }
-            //        break;
-            //}
 
             //foreach (var declarator in node.Declarators)
             //{
