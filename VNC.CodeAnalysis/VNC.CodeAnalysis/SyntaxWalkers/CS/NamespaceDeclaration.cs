@@ -10,7 +10,8 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
             if (_targetPatternRegEx.Match(node.Name.ToString()).Success)
             {
-                RecordMatchAndContext(node, BlockType.NamespaceBlock);
+                //RecordMatchAndContext(node, BlockType.NamespaceBlock);
+                RecordMatch(node, BlockType.NamespaceBlock);
             }
 
             base.VisitNamespaceDeclaration(node);
