@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.QualityMetrics.VB
 {
     public class HungarianVariableNames
@@ -8,6 +10,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+
 
             //        Func<string, string, bool> IsHungarian = (varName, typeName) =>
             //        {
@@ -43,6 +46,9 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //                result = true;
             //            return result;
             //        };
+
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
+
             //        var tree = CSharpSyntaxTree.ParseText(sourceCode);
             //        tree.GetRoot()
             //        .DescendantNodes()
@@ -62,7 +68,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //       fds.TypeName.ToString()))
             //        .Dump("Hungaranian Notations");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

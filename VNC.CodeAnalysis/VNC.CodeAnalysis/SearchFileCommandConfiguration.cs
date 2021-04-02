@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace VNC.CodeAnalysis
 {
@@ -11,10 +9,12 @@ namespace VNC.CodeAnalysis
         public string FilePath;
 
         public StringBuilder Results;
-        public Boolean UseRegEx;
-        public string RegEx;
 
-        public CodeAnalysisOptions ConfigurationOptions;
+        public WalkerPattern WalkerPattern;
+        //public Boolean UseRegEx;
+        //public string RegEx;
+
+        public CodeAnalysisOptions CodeAnalysisOptions;
 
         public Dictionary<string, Int32> Matches;
         public Dictionary<string, Int32> CRCMatchesToString;

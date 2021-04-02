@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.DesignMetrics.VB
 {
     public class EmptyInterfaces
@@ -9,6 +11,7 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //tree.GetRoot()
             //.DescendantNodes()
             //.OfType<InterfaceDeclarationSyntax>()//#1
@@ -21,7 +24,10 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
             //.Where(thisInterface => thisInterface.IsEmpty)//#3
             //.Dump("Empty Interfaces");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

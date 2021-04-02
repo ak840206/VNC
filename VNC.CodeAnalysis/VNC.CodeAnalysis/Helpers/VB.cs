@@ -237,9 +237,9 @@ namespace VNC.CodeAnalysis.Helpers
             walker.Messages = results;
 
             // Setting the TargetPattern will call InitializeRegEx()
-            walker.TargetPattern = commandConfiguration.UseRegEx ? commandConfiguration.RegEx : ".*";
+            walker.TargetPattern = commandConfiguration.WalkerPattern.UseRegEx ? commandConfiguration.WalkerPattern.RegEx : ".*";
 
-            walker._configurationOptions = commandConfiguration.ConfigurationOptions;
+            walker._configurationOptions = commandConfiguration.CodeAnalysisOptions;
 
             walker.Matches = commandConfiguration.Matches;
             walker.CRCMatchesToString = commandConfiguration.CRCMatchesToString;
@@ -249,7 +249,7 @@ namespace VNC.CodeAnalysis.Helpers
 
             if (results.Length > 0)
             {
-                if (commandConfiguration.ConfigurationOptions.DisplayCRC32)
+                if (commandConfiguration.CodeAnalysisOptions.DisplayCRC32)
                 {
                     results.AppendFormat("CRC32Node:            {0}\n", walker.CRC32Node);
                     results.AppendFormat("CRC32NodeKind:        {0}\n", walker.CRC32NodeKind);
@@ -275,8 +275,8 @@ namespace VNC.CodeAnalysis.Helpers
             //walker.Messages = commandConfiguration.Results;
             rewriter.Messages = results;
 
-            rewriter.TargetPattern = commandConfiguration.UseRegEx ? commandConfiguration.TargetPattern : ".*";
-            rewriter._configurationOptions = commandConfiguration.ConfigurationOptions;
+            rewriter.TargetPattern = commandConfiguration.WalkerPattern.UseRegEx ? commandConfiguration.TargetPattern : ".*";
+            rewriter._configurationOptions = commandConfiguration.CodeAnalysisOptions;
 
             rewriter._targetPatternRegEx = Common.InitializeRegEx(rewriter.TargetPattern, rewriter.Messages, RegexOptions.IgnoreCase);
             //walker.InitializeRegEx();
@@ -289,7 +289,7 @@ namespace VNC.CodeAnalysis.Helpers
 
             if (results.Length > 0)
             {
-                //if (commandConfiguration.ConfigurationOptions.ShowBlockCRC)
+                //if (commandConfiguration.CodeAnalysisOptions.ShowBlockCRC)
                 //{
                 //    results.AppendFormat("CRC32Node:            {0}\n", walker.CRC32Node);
                 //    results.AppendFormat("CRC32Token:           {0}\n", walker.CRC32Token);

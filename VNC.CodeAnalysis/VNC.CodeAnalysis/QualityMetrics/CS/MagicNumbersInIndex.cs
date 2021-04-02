@@ -1,5 +1,10 @@
-﻿using System.Reflection;
+﻿using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace VNC.CodeAnalysis.QualityMetrics.CS
 {
@@ -9,30 +14,40 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-            //var tree = CSharpSyntaxTree.ParseText(sourceCode);
-            //tree.GetRoot()
-            //.DescendantNodes()
-            //.OfType<BracketedArgumentListSyntax>()
-            //.Select(bals =>
-            //new
-            //{
-            //    Method = bals.Ancestors()
-            //.OfType<MethodDeclarationSyntax>()
-            //.First()
-            //.Identifier.ValueText,
-            //    Indices = bals.Arguments
-            //.Select(a => a.GetText()
-            //.Container
-            //.CurrentText
-            //.ToString())
-            //})
-            ////Find defaulter methods that use magic indices
-            //.Where(bals =>
-            //bals.Indices
-            //.Any(i => Regex.Match(i, "[0-9]+").Success))
+            var tree = CSharpSyntaxTree.ParseText(sourceCode);
+
+            var results = tree.GetRoot()
+            .DescendantNodes()
+            .OfType<BracketedArgumentListSyntax>()
+            .Select(bals =>
+            new
+            {
+                Method = bals.Ancestors()
+                    .OfType<MethodDeclarationSyntax>()
+                    .First()
+                    .Identifier.ValueText,
+                Indices = bals.Arguments
+                    .Select(a => a.GetText()
+                    .Container
+                    .CurrentText
+                    .ToString())
+                    })
+            //Find defaulter methods that use magic indices
+            .Where(bals => bals.Indices
+                .Any(i => Regex.Match(i, "[0-9]+").Success)
+            );
             //.Dump("Methods using magic indices");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            foreach (var item in results)
+            {
+                sb.AppendLine($"   {item.Method,-40}");
+
+                foreach (var index in item.Indices)
+                {
+                    sb.AppendLine($"   {index}");
+                }
+            }
+
             return sb;
         }
     }

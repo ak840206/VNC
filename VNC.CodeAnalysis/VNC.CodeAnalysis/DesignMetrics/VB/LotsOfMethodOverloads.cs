@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.DesignMetrics.VB
 {
     public class LotsOfMethodOverloads
@@ -8,8 +10,9 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+            
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
 
-            //        var tree = SyntaxTree.ParseText(code);
             //        tree.GetRoot()
             //        .DescendantNodes()
             //        .Where(t => t.Kind == SyntaxKind.ClassDeclaration)
@@ -30,7 +33,10 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
             //        })//#3
             //        .Dump("Overloaded Methods");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

@@ -18,7 +18,7 @@ namespace VNC.CodeAnalysis.SyntaxRewriters
             if (newNode != commandConfiguration.SyntaxTree.GetRoot())
             {
 
-                string fileSuffix = commandConfiguration.ConfigurationOptions.AddFileSuffix ? commandConfiguration.ConfigurationOptions.FileSuffix : "";
+                string fileSuffix = commandConfiguration.CodeAnalysisOptions.AddFileSuffix ? commandConfiguration.CodeAnalysisOptions.FileSuffix : "";
 
                 string newFilePath = commandConfiguration.FilePath + fileSuffix;
 

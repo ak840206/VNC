@@ -11,8 +11,6 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
         {
             long startTicks = Log.APPLICATIONSERVICES("Enter", Common.LOG_CATEGORY);
 
-            var ns = node.ToString();
-
             if (_targetPatternRegEx.Match(node.ToString()).Success)
             {
                 RecordMatchAndContext(node, BlockType.None);

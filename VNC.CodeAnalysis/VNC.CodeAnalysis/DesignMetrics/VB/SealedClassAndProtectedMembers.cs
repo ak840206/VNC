@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.DesignMetrics.VB
 {
     public class SealedClassAndProtectedMembers
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //var tree = CSharpSyntaxTree.ParseText(code);
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //tree.GetRoot()
             //.DescendantNodes()
             //.OfType<ClassDeclarationSyntax>()
@@ -35,7 +37,10 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
             //.Where(cds => cds.ProtectedMembers.Count() > 0)//#3
             //.Dump("CA1047 Defaulters");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

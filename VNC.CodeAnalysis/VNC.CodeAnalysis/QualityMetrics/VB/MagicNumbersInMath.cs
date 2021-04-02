@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.QualityMetrics.VB
 {
     public class MagicNumbersInMath
@@ -21,6 +23,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //        CS.SyntaxKind.DivideExpression // /
             //        };
 
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //        CS.CSharpSyntaxTree.ParseText(sourceCode)
             //        .GetRoot()
             //        .DescendantNodes()
@@ -45,7 +48,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //       s.Kind == SyntaxKind.NumericLiteralToken))
             //        }).Dump("Magic lines. Please avoid these");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

@@ -8,7 +8,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
         {
             if (_targetPatternRegEx.Match(node.Name.ToString()).Success)
             {
-                RecordMatch(node, BlockType.None);
+                RecordMatchAndContext(node, BlockType.None);
             }
 
             base.VisitNamespaceStatement(node);

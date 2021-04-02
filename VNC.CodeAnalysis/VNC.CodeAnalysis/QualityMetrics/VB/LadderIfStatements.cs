@@ -1,15 +1,17 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.QualityMetrics.VB
 {
     public class LadderIfStatements
     {
-        public static StringBuilder Check(string fileNameAsourceCodendPath)
+        public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(sourceCode);
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //            tree.GetRoot()
             //            .DescendantNodes()
             //            .Where(t => t.Kind() == SyntaxKind.MethodDeclaration)
@@ -33,7 +35,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //})
             //.Dump();
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.QualityMetrics.VB
 {
     public class MagicNumbersInCondition
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(sourceCode);
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //            var operators = new List<SyntaxKind>()
             //{
             //SyntaxKind.GreaterThanToken,
@@ -55,7 +57,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //           .Select(w => w.MethodName)
             //            }).Dump();
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.PerformanceMetrics.VB
 {
     public class AvoidUsingEmptyStringsToFindZeroLengthStrings
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(code);//#1
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //                                                        //Finding all instances of “string” in source code.
             //            var strings = tree
             //            .GetRoot()
@@ -36,7 +38,10 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
             //            if (results.Any())
             //                results.Dump();
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

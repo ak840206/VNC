@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.DesignMetrics.VB
 {
     public class DataClasses
@@ -8,8 +10,8 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
 
-            //            var tree = CSharpSyntaxTree.ParseText(code);
             //            var classes = tree
             //            .GetRoot()
             //            .DescendantNodes()
@@ -29,7 +31,10 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
             //            .Where(cds => cds.MemberCount == cds.PublicPropertyCount)//#3
             //            .Dump("Data Classes");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

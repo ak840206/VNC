@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="VNC.CodeAnalysis.Types">
+    <Position X="1" Y="9" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="VNC.CodeAnalysis.Types.SearchFileCommand">
+        <TypeIdentifier>
+          <NewMemberFileName>Types.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="VNC.CodeAnalysis.Types.SearchTreeCommand">
+        <TypeIdentifier>
+          <NewMemberFileName>Types.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="VNC.CodeAnalysis.Types.RewriteFileCommand">
+        <TypeIdentifier>
+          <NewMemberFileName>Types.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="VNC.CodeAnalysis.Types.RewriteTreeCommand">
+        <TypeIdentifier>
+          <NewMemberFileName>Types.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.Symbols">
+    <Position X="0.5" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Symbols.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.RewriteFileCommandConfiguration">
+    <Position X="5" Y="2.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEICBAAAAAAAAAAAQACEAAAAAAAARCAAAAAAE=</HashCode>
+      <FileName>RewriteFileCommandConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.RewriteTreeCommandConfiguration">
+    <Position X="9" Y="2.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEICAAAAAAAAAAAAQACEIAAAAAAARCAAAAAAE=</HashCode>
+      <FileName>RewriteTreeCommandConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.SearchFileCommandConfiguration">
+    <Position X="5" Y="6.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAEACAAAAAAAAAAAAAACEIAAAAAAABCAAAAAAA=</HashCode>
+      <FileName>SearchFileCommandConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.CodeAnalysisOptions">
+    <Position X="6" Y="9" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>EAQEEAEAhQIKACAJQATAAADEJBAgAgYhEEAACAQIAAA=</HashCode>
+      <FileName>CodeAnalysisOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.SearchTreeCommandConfiguration">
+    <Position X="9" Y="6" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAECCAAAAAAAAAAAAQACEIAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>SearchTreeCommandConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

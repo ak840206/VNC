@@ -1,6 +1,9 @@
-﻿using System.Reflection;
+﻿using System.Linq;
 using System.Text;
 
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace VNC.CodeAnalysis.DesignMetrics.CS
 {
     public class LotsOfMethodOverloads
@@ -9,28 +12,33 @@ namespace VNC.CodeAnalysis.DesignMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-            //        var tree = SyntaxTree.ParseText(code);
-            //        tree.GetRoot()
-            //        .DescendantNodes()
-            //        .Where(t => t.Kind == SyntaxKind.ClassDeclaration)
-            //        .Cast<ClassDeclarationSyntax>()
-            //        .Select(cds =>
-            //       new
-            //        {
-            //            ClassName = cds.Identifier.ValueText,//#1
-            //Methods = cds.Members.OfType < MethodDeclarationSy
-            //       ntax > ()//#2
-            //       .Select(mds => mds.Identifier.ValueText)
-            //        })
-            //        .Select(cds => new {
-            //            ClassName = cds.ClassName,
-            //            Overloads = cds.Methods
-            //       .ToLookup(m => m)
-            //       .ToDictionary(m => m.Key, m => m.Count())
-            //        })//#3
+            var tree = CSharpSyntaxTree.ParseText(sourceCode); // 1
+
+            var results = tree.GetRoot()
+            .DescendantNodes()
+            .Where(t => t.Kind() == SyntaxKind.ClassDeclaration)
+            .Cast<ClassDeclarationSyntax>()
+            .Select(cds =>
+           new
+           {
+               ClassName = cds.Identifier.ValueText,//#1
+               Methods = cds.Members.OfType<MethodDeclarationSyntax>() // 2
+           .Select(mds => mds.Identifier.ValueText)
+           })
+            .Select(cds => new
+            {
+                ClassName = cds.ClassName,
+                Overloads = cds.Methods
+           .ToLookup(m => m)
+           .ToDictionary(m => m.Key, m => m.Count())
+            }); // 3
             //        .Dump("Overloaded Methods");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            foreach (var item in results)
+            {
+                sb.AppendLine($"  {item}");
+            }
+
             return sb;
         }
     }

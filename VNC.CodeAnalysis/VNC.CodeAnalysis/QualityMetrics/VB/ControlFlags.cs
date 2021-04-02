@@ -1,10 +1,7 @@
-﻿
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.VisualBasic;
-using Microsoft.CodeAnalysis.VisualBasic.Syntax;
-
-using System.Linq;
+﻿using System.Reflection;
 using System.Text;
+
+using Microsoft.CodeAnalysis.VisualBasic;
 
 namespace VNC.CodeAnalysis.QualityMetrics.VB
 {
@@ -59,49 +56,49 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
 
 
 
-            var bools = tree.GetRoot().DescendantNodes()
-                .Where(syn => syn.IsKind(SyntaxKind.VariableDeclarator)
-                && ((VariableDeclaratorSyntax)syn).AsClause.Type().ToString() == "Boolean")
-                .Select(t =>
-                new
-                {
-                    VariableName = ((VariableDeclaratorSyntax)t).Names[0].ToString(),
-                    Class = t.Ancestors()
-                    .Where(x => x.IsKind(SyntaxKind.ClassBlock))
-                    .Cast<ClassBlockSyntax>().First()
-                }).Select(t => t.VariableName);
+            //var bools = tree.GetRoot().DescendantNodes()
+            //    .Where(syn => syn.IsKind(SyntaxKind.VariableDeclarator)
+            //    && ((VariableDeclaratorSyntax)syn).AsClause.Type().ToString() == "Boolean")
+            //    .Select(t =>
+            //    new
+            //    {
+            //        VariableName = ((VariableDeclaratorSyntax)t).Names[0].ToString(),
+            //        Class = t.Ancestors()
+            //        .Where(x => x.IsKind(SyntaxKind.ClassBlock))
+            //        .Cast<ClassBlockSyntax>().First()
+            //    }).Select(t => t.VariableName);
 
-            var ifconds = tree.GetRoot().DescendantNodes()
-                .Where(syn => syn.IsKind(SyntaxKind.IfStatement))
-                .Cast<IfStatementSyntax>()
-                .Select(ifs =>
-                new
-                {
-                    If = ifs.ToFullString(),
-                    Condition = ifs.Condition.ToFullString(),
-                    Line = ifs.SyntaxTree.GetLineSpan(ifs.FullSpan).StartLinePosition.Line + 1
-                });
+            //var ifconds = tree.GetRoot().DescendantNodes()
+            //    .Where(syn => syn.IsKind(SyntaxKind.IfStatement))
+            //    .Cast<IfStatementSyntax>()
+            //    .Select(ifs =>
+            //    new
+            //    {
+            //        If = ifs.ToFullString(),
+            //        Condition = ifs.Condition.ToFullString(),
+            //        Line = ifs.SyntaxTree.GetLineSpan(ifs.FullSpan).StartLinePosition.Line + 1
+            //    });
 
 
-            //.Where(ifs => ifs.Condition.Split(new string[] { "&&", "||", "==", "(", ")", "" }, StringSplitOptions.RemoveEmptyEntries)
-            //.Any(c => bools.Contains(c) || bools.Contains(c.Substring(1)))));
+            ////.Where(ifs => ifs.Condition.Split(new string[] { "&&", "||", "==", "(", ")", "" }, StringSplitOptions.RemoveEmptyEntries)
+            ////.Any(c => bools.Contains(c) || bools.Contains(c.Substring(1)))));
 
-            foreach (var item in bools)
-            {
-                var s = item.ToString();
-            }
             //foreach (var item in bools)
             //{
-            //    var c = item.Class;
-            //    var v = item.VariableName;
+            //    var s = item.ToString();
             //}
+            ////foreach (var item in bools)
+            ////{
+            ////    var c = item.Class;
+            ////    var v = item.VariableName;
+            ////}
 
-            foreach (var item in ifconds)
-            {
-                var i = item.If;
-                var c = item.Condition;
-                var l = item.Line;
-            }
+            //foreach (var item in ifconds)
+            //{
+            //    var i = item.If;
+            //    var c = item.Condition;
+            //    var l = item.Line;
+            //}
 
             //var bools = tree.GetRoot().DescendantNodes()
             //    .Where(syn => syn.IsKind(SyntaxKind.VariableDeclarator) && ((VariableDeclaratorSyntax)syn).AsClause.Type().IsKind(SyntaxKind.BooleanKeyword))
@@ -166,6 +163,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //}
 
             //sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
 
             return sb;
         }

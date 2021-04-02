@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.PerformanceMetrics.VB
 {
     public class AvoidExcessiveLocalVariables
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //var tree = CSharpSyntaxTree.ParseText(code);//#1
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //                                            //The recommended value is 64;
             //                                            //But for deomonstration purpose it is changed to 4
             //const int MAX_LOCALS_ALLOWED = 4; //#2
@@ -23,7 +25,10 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
             //.Select(mds => mds.Identifier.ValueText)//#5
             //.Dump("Methods with many local variable declarations");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

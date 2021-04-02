@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.QualityMetrics.VB
 {
     public class MultipleReturnStatements
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(sourceCode);
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
 
             //            tree.GetRoot()
             //            .DescendantNodes()
@@ -27,7 +29,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //            .Where(t => t.Returns > 1).Dump("Multiple return
             //            statements");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

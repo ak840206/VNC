@@ -1,5 +1,8 @@
-﻿using System.Reflection;
+﻿using System.Linq;
+using System.Reflection;
 using System.Text;
+
+using Microsoft.CodeAnalysis.VisualBasic;
 
 namespace VNC.CodeAnalysis.DesignMetrics.VB
 {
@@ -9,7 +12,8 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(code);
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
+
             //            var abstractTypes =
             //            tree.GetRoot()
             //            .DescendantNodes()
@@ -28,7 +32,10 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
             //            .Where(cds => cds.PublicConstructors)//#3
             //            .Dump("AbstractTypesShouldNotHaveConstructors Violators");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

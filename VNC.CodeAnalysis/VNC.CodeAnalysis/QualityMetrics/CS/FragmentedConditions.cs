@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Text;
+
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
@@ -11,13 +12,12 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
             var results = tree.GetRoot()
             .DescendantNodes()
             .Where(t => t.Kind() == SyntaxKind.MethodDeclaration)
-            .Cast<MethodDeclarationSyntax>()//#1
+            .Cast<MethodDeclarationSyntax>() // 1
             .Select(t => new
             {
                 Name = t.Identifier.ValueText,
@@ -25,26 +25,28 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                .Where(m => m.Kind() == SyntaxKind.IfStatement)
                .Cast<IfStatementSyntax>()
                .Select(iss =>
-                  //#2
+                  // 2
                   new
                   {
                       Statement = iss.Statement.ToFullString(),
-                      //#3
+                      // 3
                       IfStatement = iss.Condition.ToFullString()
                   })
-                //#4
-                //.ToLookup(iss => iss.Statement)
+                // 4
+                //.ToLookup(iss => iss.Statement) 
+                // NOTE(crhodes)
+                // What does .ToLookup do?
             });
             //        .Dump("Fragmented conditions");
 
-            foreach(var item in results)
+            foreach (var item in results)
             {
-                sb.AppendLine(item.Name);
+                sb.AppendLine($"{item.Name}");
 
                 foreach (var ifs in item.IfStatements)
                 {
-                    sb.AppendLine(ifs.Statement);
-                    sb.AppendLine(ifs.IfStatement);
+                    sb.AppendLine($"{ifs.Statement}");
+                    sb.AppendLine($"{ifs.IfStatement}");
                 }
             }
 

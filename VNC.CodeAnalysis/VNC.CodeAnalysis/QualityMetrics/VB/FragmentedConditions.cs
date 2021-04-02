@@ -15,29 +15,29 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
 
             var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
 
-            var results = tree.GetRoot()
-                .DescendantNodes()
-                .Where(t => t.Kind() == SyntaxKind.FunctionBlock || t.Kind() == SyntaxKind.SubBlock)
-                .Cast<MethodBlockSyntax>()
-                .Select(mb =>
-                new
-                {
-                    Name = mb.SubOrFunctionStatement.Identifier.ValueText,
-                    IfStatements = mb.Statements
-                    .Where(i => i.Kind() == SyntaxKind.IfStatement)
-                    .Cast<Microsoft.CodeAnalysis.VisualBasic.Syntax.IfStatementSyntax>()
-                    .Select(iss =>
-                    new
-                    {
-                        Statement = iss.ToFullString(),
-                        IfStatement = iss.Condition.ToFullString()
-                    })
-                }).ToLookup(iss => iss.ToString());
+            //var results = tree.GetRoot()
+            //    .DescendantNodes()
+            //    .Where(t => t.Kind() == SyntaxKind.FunctionBlock || t.Kind() == SyntaxKind.SubBlock)
+            //    .Cast<MethodBlockSyntax>()
+            //    .Select(mb =>
+            //    new
+            //    {
+            //        Name = mb.SubOrFunctionStatement.Identifier.ValueText,
+            //        IfStatements = mb.Statements
+            //        .Where(i => i.Kind() == SyntaxKind.IfStatement)
+            //        .Cast<Microsoft.CodeAnalysis.VisualBasic.Syntax.IfStatementSyntax>()
+            //        .Select(iss =>
+            //        new
+            //        {
+            //            Statement = iss.ToFullString(),
+            //            IfStatement = iss.Condition.ToFullString()
+            //        })
+            //    }).ToLookup(iss => iss.ToString());
 
-            foreach (var item in results)
-            {
+            //foreach (var item in results)
+            //{
 
-            }
+            //}
 
             //        var tree = CSharpSyntaxTree.ParseText(sourceCode);
             //        tree.GetRoot()
@@ -61,7 +61,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //        })
             //        .Dump("Fragmented conditions");
 
-            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

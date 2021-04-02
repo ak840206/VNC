@@ -181,22 +181,22 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
             switch (blockType)
             {
                 case BlockType.None:
-                    nodeValue = node.ToString();
-                    nodeKey = nodeValue;
+                    nodeValue = $"{node} ({node.Kind()}-{node.RawKind})";
+                    nodeKey = $"{node}";
                     break;
 
                 case BlockType.NamespaceBlock:
-                    nodeValue = ((NamespaceBlockSyntax)node).ToString();
+                    nodeValue = $"{(NamespaceBlockSyntax)node} ({node.Kind()}-{node.RawKind})";
                     // TODO(crhodes)
                     // May want to remove .Name
-                    nodeKey = ((NamespaceBlockSyntax)node).NamespaceStatement.Name.ToString();
+                    nodeKey = $"{((NamespaceBlockSyntax)node).NamespaceStatement.Name}";
                     break;
 
                 case BlockType.ClassBlock:
-                    nodeValue = ((ClassBlockSyntax)node).ToString();
+                    nodeValue = $"{((ClassBlockSyntax)node)} ({node.Kind()}-{node.RawKind})";
                     // TODO(crhodes)
                     // May want to remove .Identifier
-                    nodeKey = ((ClassBlockSyntax)node).ClassStatement.Identifier.ToString(); ;
+                    nodeKey = $"{((ClassBlockSyntax)node).ClassStatement.Identifier}";
                     break;
 
                 case BlockType.ModuleBlock:
@@ -211,6 +211,11 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                     }
                     else
                     {
+                        // TODO(crhodes)
+                        // Need to figure out how to handle this cleanly.
+                        // Go look at OBject Model and understand relationship amoung
+                        // MethodBlock, MethodStatement, SubStatement, SubBlock, FunctionBlock, FunctionStatement
+                        //nodeValue = node.Parent.ToString();
                         nodeValue = "<METHODBLOCK>";
                     }
 

@@ -1,5 +1,9 @@
-﻿using System.Reflection;
+﻿using System.Linq;
 using System.Text;
+
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace VNC.CodeAnalysis.PerformanceMetrics.CS
 {
@@ -9,16 +13,21 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-            //var tree = CSharpSyntaxTree.ParseText(code);//#1
-            //tree.GetRoot()
-            //.DescendantNodes()
-            //.OfType<VariableDeclarationSyntax>()//#2
-            //                                    //#3
-            //.Where(vds => vds.Type.ToFullString().Trim() == "dynamic")
-            //.Select(vds => vds.ToFullString())
+            var tree = CSharpSyntaxTree.ParseText(sourceCode);//#1
+
+            var results = tree.GetRoot()
+            .DescendantNodes()
+            .OfType<VariableDeclarationSyntax>()//#2
+                                                //#3
+            .Where(vds => vds.Type.ToFullString().Trim() == "dynamic")
+            .Select(vds => vds.ToFullString());
             //.Dump("All usages of dynamic. Some may not be required");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            foreach (var item in results)
+            {
+                sb.AppendLine($"  {item}");
+            }
+
             return sb;
         }
     }

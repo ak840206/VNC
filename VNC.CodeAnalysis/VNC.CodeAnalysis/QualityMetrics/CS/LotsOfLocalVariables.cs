@@ -1,5 +1,10 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace VNC.CodeAnalysis.QualityMetrics.CS
 {
@@ -9,27 +14,31 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-            //        SyntaxTree tree = CSharpSyntaxTree.ParseText(sourceCode);
-            //        List<MethodDeclarationSyntax> methods =
-            //        tree.GetRoot()
-            //        .DescendantNodes()
-            //        .Where(d => d.Kind() == SyntaxKind.MethodDeclaration)
-            //        .Cast<MethodDeclarationSyntax>()
-            //        .ToList();//#1
-            //        methods
-            //        .Select(z =>
-            //        new {
-            //            MethodName = z.Identifier.ValueText,//#2
-            //NBLocal = z.Body.Statements
-            //        //#3
-            //        .Count(x => x.Kind() == SyntaxKind.LocalDeclarationStatement)
-            //        })
-            //        .OrderByDescending(x => x.NBLocal)
-            //        .ToList()
-            //        .ForEach(x =>
-            //        Console.WriteLine(x.MethodName + " " + x.NBLocal));
+            SyntaxTree tree = CSharpSyntaxTree.ParseText(sourceCode);
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            List<MethodDeclarationSyntax> methods =
+            tree.GetRoot()
+            .DescendantNodes()
+            .Where(d => d.Kind() == SyntaxKind.MethodDeclaration)
+            .Cast<MethodDeclarationSyntax>()
+            .ToList();//#1
+
+            if (methods.Count() > 0)
+            {
+                methods.Select(z =>
+                new
+                {
+                    MethodName = z.Identifier.ValueText,//#2
+                    NBLocal = z.Body.Statements
+                //#3
+                .Count(x => x.Kind() == SyntaxKind.LocalDeclarationStatement)
+                })
+                .OrderByDescending(x => x.NBLocal)
+                .ToList()
+                .ForEach(x =>
+                    sb.AppendLine($"  {x.MethodName} Local Variables: {x.NBLocal}"));
+            }
+
             return sb;
         }
     }

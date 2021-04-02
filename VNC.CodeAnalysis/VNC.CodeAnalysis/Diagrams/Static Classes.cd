@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="VNC.CodeAnalysis.Helpers.Common">
-    <Position X="0.5" Y="9.5" Width="6.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
-      <FileName>Helpers\Common.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="VNC.CodeAnalysis.Helpers.CS">
     <Position X="0.5" Y="5.25" Width="8.5" />
     <TypeIdentifier>
@@ -21,36 +14,11 @@
       <FileName>Helpers\VB.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="VNC.CodeAnalysis.Types">
-    <Position X="2" Y="11" Width="4.25" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Delegate Name="VNC.CodeAnalysis.Types.SearchFileCommand">
-        <TypeIdentifier>
-          <NewMemberFileName>Types.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-      <Delegate Name="VNC.CodeAnalysis.Types.SearchTreeCommand">
-        <TypeIdentifier>
-          <NewMemberFileName>Types.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-      <Delegate Name="VNC.CodeAnalysis.Types.RewriteFileCommand">
-        <TypeIdentifier>
-          <NewMemberFileName>Types.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-      <Delegate Name="VNC.CodeAnalysis.Types.RewriteTreeCommand">
-        <TypeIdentifier>
-          <NewMemberFileName>Types.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-    </NestedTypes>
+  <Class Name="VNC.CodeAnalysis.Helpers.Common">
+    <Position X="0.5" Y="9.5" Width="6.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Types.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Common.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

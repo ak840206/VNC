@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 using Microsoft.CodeAnalysis;
 
@@ -15,14 +13,15 @@ namespace VNC.CodeAnalysis
 
         public StringBuilder Results;
 
-        public Boolean UseRegEx;
-        public string RegEx;
+        public WalkerPattern WalkerPattern;
+        //public Boolean UseRegEx;
+        //public string RegEx;
 
         public string TargetPattern;
         public string ReplacementPattern;
         public string Comment;
 
-        public CodeAnalysisOptions ConfigurationOptions;
+        public CodeAnalysisOptions CodeAnalysisOptions;
 
         public Dictionary<string, Int32> Replacements;
         public Dictionary<string, Int32> CRCMatchesToString;

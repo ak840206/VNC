@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.QualityMetrics.VB
 {
     public class LargeClass
@@ -9,7 +11,8 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(sourceCode);
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
+
             //            var classAndMembers = tree.GetRoot()
             //            .DescendantNodes()
             //            .Where(t => t.Kind() == SyntaxKind.ClassDeclaration)
@@ -19,15 +22,20 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //                ClassName = cds.Identifier.ValueText,//#2
             //    Size = cds.Members.Count//#3
             //});
+
             //            var averageLength =
             //            classAndMembers
             //            .Select(classDetails => classDetails.Size)
             //            .Average();//#4
+
             //            classAndMembers
             //            .Where(am => am.Size > averageLength)//#5
             //            .Dump("Large Class");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

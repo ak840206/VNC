@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.DesignMetrics.VB
 {
     public class DeeplyNestedIfBlocks
@@ -9,6 +11,7 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //            tree.GetRoot()
             //            .DescendantNodes()
             //            .Where(t => loopTypes.Any(l => t.Kind() == l))//#3
@@ -31,7 +34,9 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
             //            .Where(t => t.Nesting >= 3)//#6
             //            .Dump("Deeply nested if-statements");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
 
             return sb;
         }

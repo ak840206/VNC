@@ -1,5 +1,8 @@
-﻿using System.Reflection;
+﻿using System.Linq;
 using System.Text;
+
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace VNC.CodeAnalysis.DesignMetrics.CS
 {
@@ -9,17 +12,24 @@ namespace VNC.CodeAnalysis.DesignMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-            //tree.GetRoot()
-            //.DescendantNodes()
-            //.OfType<MethodDeclarationSyntax>()
-            //.Select(mds => new {
-            //    Name = mds.Identifier.ValueText,
-            //    Arity = mds.Arity
-            //})
-            //.Where(mds => mds.Arity > 2)
+            var tree = CSharpSyntaxTree.ParseText(sourceCode); // 1
+
+            var results = tree.GetRoot()
+            .DescendantNodes()
+            .OfType<MethodDeclarationSyntax>()
+            .Select(mds => new
+            {
+                Name = mds.Identifier.ValueText,
+                Arity = mds.Arity
+            })
+            .Where(mds => mds.Arity > 2);
             //.Dump("Generic Methods with lots of generic attribute");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            foreach (var item in results)
+            {
+                sb.AppendLine($"  {item.Name} {item.Arity}");
+            }
+
             return sb;
         }
     }

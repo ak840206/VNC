@@ -1,16 +1,8 @@
-﻿using System;
-
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+﻿using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Symbols;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace VNC.CodeAnalysis.QualityMetrics.CS
@@ -40,8 +32,8 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                             MethodName = mds.Identifier.ValueText,
                             HasGoto = CSharpSyntaxTree.ParseText(mds.ToString())
                                 .GetRoot()
-                                .DescendantTokens() 
-                                .Any (st => st.Kind() == SyntaxKind.GotoKeyword)
+                                .DescendantTokens()
+                                .Any(st => st.Kind() == SyntaxKind.GotoKeyword)
                         })
                         .Where(mds => mds.HasGoto)
                         .Select(mds => mds.MethodName)
@@ -49,11 +41,11 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             foreach (var item in results)
             {
-                sb.AppendLine(string.Format("Class >{0}<", item.ClassName));
+                sb.AppendLine($"Class >{item.ClassName}<");
 
                 foreach (var method in item.Methods)
                 {
-                    sb.AppendLine(string.Format("  Method >{0}<,", method.ToString()));
+                    sb.AppendLine($"  Method >{method}<,");
                 }
             }
 

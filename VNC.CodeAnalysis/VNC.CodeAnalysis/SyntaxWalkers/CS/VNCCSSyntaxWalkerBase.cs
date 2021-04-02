@@ -189,28 +189,34 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             switch (blockType)
             {
                 case BlockType.None:
-                    nodeValue = node.ToString();
-                    nodeKey = nodeValue;
+                    nodeValue = $"{node} ({node.Kind()}) ({node.RawKind})";
+                    nodeKey = $"{node}";
                     break;
 
                 case BlockType.NamespaceBlock:
-                    nodeValue = ((NamespaceDeclarationSyntax)node).Name.ToString();
-                    // TODO(crhodes)
-                    // May want to remove .Name
-                    nodeKey = ((NamespaceDeclarationSyntax)node).Name.ToString();
+                    // NOTE(crhodes)
+                    // No easy way to get namespace  Decide what to do with Key
+                    nodeValue = $"{node.GetFirstToken().Text} {((NamespaceDeclarationSyntax)node).Name} ({node.Kind()}-{node.RawKind})";
+                    //var gfd = node.GetFirstDirective();
+                    //var gft = node.GetFirstToken();
+                    //var cnat = node.ChildNodesAndTokens();
+                    //var dnat = node.DescendantNodesAndTokens();
+                    nodeKey =$"{((NamespaceDeclarationSyntax)node).Name}";
                     break;
 
                 case BlockType.ClassBlock:
-                    nodeValue = ((ClassDeclarationSyntax)node).Identifier.ToString();
+                    // NOTE(crhodes)
+                    // No easy way to get class  Decide what to do with Key
                     // TODO(crhodes)
-                    // May want to remove .Identifier
-                    nodeKey = ((ClassDeclarationSyntax)node).Identifier.ToString(); ;
+                    // Would be nice to get the stuff infront of Identifier, e.g. visibility, static
+                    var gfd = node.GetFirstDirective();
+                    var gft = node.GetFirstToken();
+                    var cnat = node.ChildNodesAndTokens();
+                    
+                    var dnat = node.DescendantNodesAndTokens();
+                    nodeValue = $"class {((ClassDeclarationSyntax)node).Identifier} ({node.Kind()}-{node.RawKind})";
+                    nodeKey = $"class {((ClassDeclarationSyntax)node).Identifier}";
                     break;
-
-                //case BlockType.ModuleBlock:
-                //    nodeValue = ((ModuleBlockSyntax)node).ToString();
-                //    nodeKey = ((ModuleBlockSyntax)node).ModuleStatement.ToString();
-                //    break;
 
                 case BlockType.MethodBlock:
                     if (_configurationOptions.DisplayStatementBlock)

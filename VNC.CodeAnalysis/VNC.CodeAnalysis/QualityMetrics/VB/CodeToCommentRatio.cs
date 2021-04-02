@@ -1,10 +1,9 @@
-﻿
+﻿using System.Linq;
+using System.Text;
+
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.VisualBasic;
 using Microsoft.CodeAnalysis.VisualBasic.Syntax;
-
-using System.Linq;
-using System.Text;
 
 namespace VNC.CodeAnalysis.QualityMetrics.VB
 {
@@ -51,10 +50,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
 
                 foreach (var detail in item.MethodDetails)
                 {
-                    sb.AppendLine(string.Format("   {0,-40}   Statements:{1,5}    Comments:{2,5}",
-                        detail.Name,
-                        detail.Lines.ToString(),
-                        detail.Comments.ToString()));
+                    sb.AppendLine($"   {detail.Name,-40}   Statements:{detail.Lines,5}    Comments:{detail.Comments,5}");
                 }
             }
 

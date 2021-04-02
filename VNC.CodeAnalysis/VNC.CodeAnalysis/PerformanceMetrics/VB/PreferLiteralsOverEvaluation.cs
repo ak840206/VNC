@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.PerformanceMetrics.VB
 {
     public class PreferLiteralsOverEvaluation
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(code); //#1
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //                                                         //Finding all the literals in the code.
             //            var literals = tree.GetRoot()
             //            .DescendantNodes()
@@ -39,7 +41,10 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
             //            })
             //            .Dump("Methods using ToUpper or ToLower on string literals");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

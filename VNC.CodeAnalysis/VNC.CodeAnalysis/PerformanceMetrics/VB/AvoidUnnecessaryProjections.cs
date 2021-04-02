@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.PerformanceMetrics.VB
 {
     public class AvoidUnnecessaryProjections
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(code);//#1
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //            var decls = tree
             //            .GetRoot()
             //            .DescendantNodes()
@@ -37,7 +39,11 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
             //if(defaulters.Count() > 0)
             //defaulters.Dump("Un-necessary projections");
             //}
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

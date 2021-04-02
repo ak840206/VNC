@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
+
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.PerformanceMetrics.VB
 {
     public class AvoidBoxing
@@ -8,9 +11,8 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-
-
-            //var tree = CSharpSyntaxTree.ParseText(code);//#1
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
+            //#1
             //                                            //There are couple of boxing calls in the provided code sample
             //                                            //These should have been avoided
             //                                            //x - Int
@@ -32,8 +34,11 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.VB
             //&& d.Type != "object") != null)
             //.Dump("Boxing calls");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
-            }
+        }
     }
 }

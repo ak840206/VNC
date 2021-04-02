@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.DesignMetrics.VB
 {
     public class RefusedBequest
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(code);
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //            var interfaces = tree.GetRoot()
             //            .DescendantNodes()
             //            .OfType<InterfaceDeclarationSyntax>()
@@ -85,7 +87,10 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
             //            })
             //            .Dump("Probable Refused Bequest Relationships");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

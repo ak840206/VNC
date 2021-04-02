@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.DesignMetrics.VB
 {
     public class DeeplyNestedLoops
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(code);//#1
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //            var loopTypes = new List<SyntaxKind>()
             //{
             //SyntaxKind.ForStatement,
@@ -36,7 +38,10 @@ namespace VNC.CodeAnalysis.DesignMetrics.VB
             //.Where(t => t.Nesting >= 3)//#7
             //.Dump("Deeply Nested Loops");
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

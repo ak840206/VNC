@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Text;
 
+using Microsoft.CodeAnalysis.VisualBasic;
+
 namespace VNC.CodeAnalysis.QualityMetrics.VB
 {
     public class LotsOfLocalVariables
@@ -9,7 +11,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
         {
             StringBuilder sb = new StringBuilder();
 
-            //        SyntaxTree tree = CSharpSyntaxTree.ParseText(sourceCode);
+            var tree = VisualBasicSyntaxTree.ParseText(sourceCode);
             //        List<MethodDeclarationSyntax> methods =
             //        tree.GetRoot()
             //        .DescendantNodes()
@@ -29,7 +31,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.VB
             //        .ForEach(x =>
             //        Console.WriteLine(x.MethodName + " " + x.NBLocal));
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType
+                + "." + MethodBase.GetCurrentMethod().Name
+                + " Not Implemented Yet");
+
             return sb;
         }
     }

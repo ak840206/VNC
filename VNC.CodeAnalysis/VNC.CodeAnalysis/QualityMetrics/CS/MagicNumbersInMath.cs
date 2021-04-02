@@ -1,5 +1,11 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace VNC.CodeAnalysis.QualityMetrics.CS
 {
@@ -9,43 +15,50 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-            //        List<CS.SyntaxKind> kinds = new List<CS.SyntaxKind>()
-            //        {
-            //        CS.SyntaxKind.AddAssignExpression,//+=
-            //        CS.SyntaxKind.SubtractAssignExpression,//-=
-            //        CS.SyntaxKind.MultiplyAssignExpression,//*=
-            //        CS.SyntaxKind.DivideAssignExpression, // /=
-            //        CS.SyntaxKind.AddExpression, // +
-            //        CS.SyntaxKind.SubtractExpression,// -
-            //        CS.SyntaxKind.MultiplyExpression,// *
-            //        CS.SyntaxKind.DivideExpression // /
-            //        };
+            List<SyntaxKind> kinds = new List<SyntaxKind>()
+            {
+                SyntaxKind.AddAssignmentExpression,
+                SyntaxKind.SubtractAssignmentExpression,
+                SyntaxKind.MultiplyAssignmentExpression,
+                SyntaxKind.DivideAssignmentExpression,
+                SyntaxKind.AddExpression,
+                SyntaxKind.SubtractExpression,
+                SyntaxKind.MultiplyExpression,
+                SyntaxKind.DivideExpression
+            };
 
-            //        CS.CSharpSyntaxTree.ParseText(sourceCode)
-            //        .GetRoot()
-            //        .DescendantNodes()
-            //        .Where(st => st.Kind == CS.SyntaxKind.MethodDeclaration)
-            //        .Cast<MethodDeclarationSyntax>()
-            //        .Select(st =>
-            //       new
-            //        {
-            //            MethodName = st.Identifier.ValueText,//#1
-            //MagicLines =
-            //       CS.CSharpSyntaxTree.ParseText(st.ToFullString())
-            //       .GetRoot()
-            //       .DescendantNodes()
-            //       .Where(z => kinds
-            //      .Any(k => k == z.Kind()))
-            //       .Select(q => q.ToFullString().Trim())
-            //       .Where(w => CS.CSharpSyntaxTree
-            //       .ParseText("void dummy(){" + w.ToString() + "}")
-            //       .GetRoot()
-            //       .DescendantTokens()
-            //       .Any(s => //#2
-            //       s.Kind == SyntaxKind.NumericLiteralToken))
-            //        }).Dump("Magic lines. Please avoid these");
+            var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            var results = tree.GetRoot()
+            .DescendantNodes()
+            .Where(st => st.Kind() == SyntaxKind.MethodDeclaration)
+            .Cast<MethodDeclarationSyntax>()
+            .Select(st =>
+           new
+           {
+               MethodName = st.Identifier.ValueText, // 1
+               MagicLines = CSharpSyntaxTree.ParseText(st.ToFullString())
+               .GetRoot()
+               .DescendantNodes()
+               .Where(z => kinds
+                  .Any(k => k == z.Kind())
+               )
+                .Select(q => q.ToFullString().Trim())
+                .Where(w => CSharpSyntaxTree
+                .ParseText("void dummy(){" + w.ToString() + "}")
+                .GetRoot()
+               .DescendantTokens()
+               .Any(s => // 2
+               s.Kind() == SyntaxKind.NumericLiteralToken))
+           });
+            //
+            //        .Dump("Magic lines. Please avoid these");
+
+            foreach (var item in results)
+            {
+                sb.AppendLine($"   {item.MethodName,-40}  MagicLines:{item.MagicLines}");
+            }
+
             return sb;
         }
     }

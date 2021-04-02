@@ -1,5 +1,9 @@
-﻿using System.Reflection;
+﻿using System.Linq;
 using System.Text;
+
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace VNC.CodeAnalysis.PerformanceMetrics.CS
 {
@@ -9,22 +13,27 @@ namespace VNC.CodeAnalysis.PerformanceMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-            //            var tree = CSharpSyntaxTree.ParseText(code);//#1
-            //            tree.GetRoot()
-            //            .DescendantNodes()
-            //            .OfType<FieldDeclarationSyntax>()//#2
-            //            .Where(vds => vds.Modifiers
-            //            .Any(m => m.ValueText == "volatile"))//#3
-            //            .Select(vds => new //#4
-            //{
-            //                ClassName = vds.Ancestors()
-            //            .OfType<ClassDeclarationSyntax>()
-            //            .First()?.Identifier.ValueText,
-            //                VolatileDeclaration = vds.ToFullString()
-            //            })
+            var tree = CSharpSyntaxTree.ParseText(sourceCode);//#1
+
+            var results = tree.GetRoot()
+            .DescendantNodes()
+            .OfType<FieldDeclarationSyntax>()//#2
+            .Where(vds => vds.Modifiers
+            .Any(m => m.ValueText == "volatile"))//#3
+            .Select(vds => new //#4
+            {
+                ClassName = vds.Ancestors()
+                    .OfType<ClassDeclarationSyntax>()
+                    .First()?.Identifier.ValueText,
+                VolatileDeclaration = vds.ToFullString()
+            });
             //            .Dump();
 
-                        sb.AppendLine(MethodBase.GetCurrentMethod().DeclaringType + "." + MethodBase.GetCurrentMethod().Name + " Not Implemented Yet");
+            foreach (var item in results)
+            {
+                sb.AppendLine($"  {item.ClassName}  {item.VolatileDeclaration}");
+            }
+
             return sb;
         }
     }
