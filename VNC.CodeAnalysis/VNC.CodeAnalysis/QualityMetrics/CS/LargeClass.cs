@@ -12,6 +12,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Is Large Clasee");
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 

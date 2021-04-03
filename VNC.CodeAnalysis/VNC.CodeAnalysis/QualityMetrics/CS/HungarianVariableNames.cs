@@ -13,6 +13,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Hungarian Variable Names");
 
             Func<string, string, bool> IsHungarian = (varName, typeName) =>
             {
@@ -58,21 +59,22 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             .Select(fds =>
            new
            {
-               //#2
+               // 2
                TypeName = fds.Declaration.Type.ToFullString().Trim(),
-               //#3
+               // 3
                VarName = fds.Declaration.Variables
            .Select(v => v.Identifier.Value).First()
            })
-            //#4
+            // 4
             .Where(fds => IsHungarian(fds.VarName.ToString(),
            fds.TypeName.ToString()));
             //        .Dump("Hungarian Notations");
 
             foreach (var item in results)
             {
-                sb.AppendLine($"  Type: {item.TypeName,-40}   Var:{item.VarName ,- 30}");
+                sb.AppendLine($"  Type: {item.TypeName,-40}  Var:{item.VarName ,- 30}");
             }
+
             return sb;
         }
     }

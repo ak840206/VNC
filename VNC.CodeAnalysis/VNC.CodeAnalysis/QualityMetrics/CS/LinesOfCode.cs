@@ -12,6 +12,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Lines of Code");
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
@@ -39,11 +40,11 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             foreach (var item in results)
             {
-                sb.AppendLine($" Class:{item.ClassName}");
+                sb.AppendLine($"  Class:{item.ClassName}");
 
                 foreach (var detail in item.Methods)
                 {
-                    sb.AppendLine($"   {detail.MethodName,-40}   LOC:{detail.LOC,4}");
+                    sb.AppendLine($"    MethodName: {detail.MethodName,-40}   LOC:{detail.LOC,4}");
                 }
             }
 

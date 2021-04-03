@@ -54,6 +54,7 @@ namespace VNC.CodeAnalysis
 
         public bool InIfBlock { get; set; } = false;
 
+
         public bool AllTypes { get; set; } = false;
 
         public bool Boolean { get; set; } = false;
@@ -72,11 +73,15 @@ namespace VNC.CodeAnalysis
 
         public bool Int64 { get; set; } = false;
 
+        public bool Short { get; set; } = false;
+
         public bool Integer { get; set; } = false;
 
         public bool Long { get; set; } = false;
 
         public bool Single { get; set; } = false;
+
+        public bool Double { get; set; } = false;
 
         public bool String { get; set; } = false;
 

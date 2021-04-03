@@ -11,6 +11,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Fragmented Conditions");
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 

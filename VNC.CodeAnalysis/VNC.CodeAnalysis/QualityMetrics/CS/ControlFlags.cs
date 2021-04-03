@@ -16,6 +16,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
+
             //Find all boolean variables in the class
             //Find all if statements that solely rely on those
             //Find the methods in which these if statements are
@@ -58,7 +59,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                     //it can also be used in a negative way. skipping "!"
                     bools.Contains(c.Substring(1))));    // 5
 
-            //           .Dump("if nodes with control flags");
+            // TODO(crhodes)
+            // Needs output control work
+
+            sb.AppendLine("Has ControlFlags");
 
             foreach (var item in bools)
             {

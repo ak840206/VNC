@@ -17,10 +17,10 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             SyntaxTree tree = CSharpSyntaxTree.ParseText(sourceCode);
 
-            List<MethodDeclarationSyntax> methods =
-            tree.GetRoot()
+            List<MethodDeclarationSyntax> methods = tree.GetRoot()
             .DescendantNodes()
             .OfType<MethodDeclarationSyntax>().ToList();
+
             methods.Select(z =>
             {
                 var parameters =
@@ -30,11 +30,9 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 return
                 new
                 {
-                    MethodName =
-                z.Identifier.ValueText,//#1
+                    MethodName = z.Identifier.ValueText,// 1
                                        //#2
-                                IsUsingAllParameter =
-                parameters.All
+                    IsUsingAllParameter = parameters.All
                 (x => z.Body.Statements.SelectMany(s => s.DescendantTokens()).Select(s =>
               s.ValueText).Distinct().Contains(x))
                 };
@@ -42,6 +40,21 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             .Where(x => !x.IsUsingAllParameter)
             .ToList()
             .ForEach(x => sb.AppendLine($"{x.MethodName} {x.IsUsingAllParameter}"));
+
+            //if (results.Count() > 0)
+            //{
+            //    sb.AppendLine("Has Unused Method Parameters");
+
+            //    foreach (var item in results)
+            //    {
+            //        sb.AppendLine($"  Method: {item.,-40}");
+
+            //            foreach (var line in item.MagicLines)
+            //            {
+            //                sb.AppendLine($"    {line}");
+            //            }
+            //    }
+            //}
 
             return sb;
         }

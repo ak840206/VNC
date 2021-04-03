@@ -11,6 +11,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Has Ladder If Statements");
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
@@ -35,7 +36,6 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             .ToLookup(i => i.Substring(0, i.IndexOf('=')))
             .Where(i => i.Count() >= 2)
             });
-            //.Dump();
 
             foreach (var item in results)
             {

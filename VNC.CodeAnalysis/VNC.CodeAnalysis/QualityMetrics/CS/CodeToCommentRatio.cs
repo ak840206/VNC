@@ -12,6 +12,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Code to Comment Ratio");
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
@@ -45,11 +46,11 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             foreach (var item in results)
             {
-                sb.AppendLine(item.ClassName);
+                sb.AppendLine($"  ClassName: {item.ClassName}");
 
                 foreach (var detail in item.MethodDetails)
                 {
-                    sb.AppendLine($"   {detail.Name,-40}   Statements:{detail.Lines,5}    Comments:{detail.Comments,5}");
+                    sb.AppendLine($"    Method: {detail.Name,-40}   Statements:{detail.Lines,5}  Comments:{detail.Comments,5}");
                 }
             }
 

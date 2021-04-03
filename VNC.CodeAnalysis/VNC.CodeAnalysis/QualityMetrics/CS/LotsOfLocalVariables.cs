@@ -16,27 +16,33 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             SyntaxTree tree = CSharpSyntaxTree.ParseText(sourceCode);
 
-            List<MethodDeclarationSyntax> methods =
-            tree.GetRoot()
+            List<MethodDeclarationSyntax> methods = tree.GetRoot()
             .DescendantNodes()
             .Where(d => d.Kind() == SyntaxKind.MethodDeclaration)
             .Cast<MethodDeclarationSyntax>()
-            .ToList();//#1
+            .ToList();//1
 
             if (methods.Count() > 0)
             {
-                methods.Select(z =>
+                var results = methods.Select(z =>
                 new
                 {
-                    MethodName = z.Identifier.ValueText,//#2
-                    NBLocal = z.Body.Statements
-                //#3
-                .Count(x => x.Kind() == SyntaxKind.LocalDeclarationStatement)
+                    MethodName = z.Identifier.ValueText, // 2
+                    NBLocal = z.Body.Statements 
+                    .Count(x => x.Kind() == SyntaxKind.LocalDeclarationStatement) // 3
                 })
                 .OrderByDescending(x => x.NBLocal)
-                .ToList()
-                .ForEach(x =>
-                    sb.AppendLine($"  {x.MethodName} Local Variables: {x.NBLocal}"));
+                .ToList();
+
+                if (results.Count() > 0)
+                {
+                    sb.AppendLine("Has Lots of Local Variables");
+
+                    foreach (var item in results)
+                    {
+                        sb.AppendLine($"  {item.MethodName} Local Variables: {item.NBLocal}");
+                    }
+                }
             }
 
             return sb;

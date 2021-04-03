@@ -36,15 +36,26 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             .Where(bals => bals.Indices
                 .Any(i => Regex.Match(i, "[0-9]+").Success)
             );
-            //.Dump("Methods using magic indices");
+
+            int resultCount = 0;
 
             foreach (var item in results)
             {
-                sb.AppendLine($"   {item.Method,-40}");
+                resultCount += item.Indices.Count();
+            }
 
-                foreach (var index in item.Indices)
+            if (resultCount > 0)
+            {
+                sb.AppendLine("Has Magic Numbers in Index");
+
+                foreach (var item in results)
                 {
-                    sb.AppendLine($"   {index}");
+                    sb.AppendLine($"  Method: {item.Method,-40}");
+
+                    foreach (var index in item.Indices)
+                    {
+                        sb.AppendLine($"    Index: {index}");
+                    }
                 }
             }
 

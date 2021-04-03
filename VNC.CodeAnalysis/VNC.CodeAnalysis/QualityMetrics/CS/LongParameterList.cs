@@ -18,24 +18,29 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             .DescendantNodes()
             .OfType<ClassDeclarationSyntax>()
             .Select(cds =>
-           new
-           {
-               ClassName = cds.Identifier.ValueText, // 1
-                           Methods = cds.Members.OfType<MethodDeclarationSyntax>()
-           .Select(mds => new
-           {
-               MethodName = mds.Identifier.ValueText, // 2
-               Parameters = mds.ParameterList.Parameters.Count // 3
-                       })
-           });
-
-            foreach (var item in results)
+            new
             {
-                sb.AppendLine($" Class:{item.ClassName}");
+               ClassName = cds.Identifier.ValueText, // 1
+               Methods = cds.Members.OfType<MethodDeclarationSyntax>()
+               .Select(mds => new
+               {
+                   MethodName = mds.Identifier.ValueText, // 2
+                   Parameters = mds.ParameterList.Parameters.Count // 3
+                })
+            });
 
-                foreach (var detail in item.Methods)
+            if (results.Count() > 0)
+            {
+                sb.AppendLine("Has Long Parameter List");
+
+                foreach (var item in results)
                 {
-                    sb.AppendLine($"   {detail.MethodName,-40}   Parameters:{detail.Parameters, 4}");
+                    sb.AppendLine($"  Class:{item.ClassName}");
+
+                    foreach (var method in item.Methods)
+                    {
+                        sb.AppendLine($"    {method.MethodName,-40}   Parameters:{method.Parameters,4}");
+                    }
                 }
             }
 

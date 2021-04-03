@@ -20,21 +20,29 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             .Where(t => t.Kind() == SyntaxKind.MethodDeclaration)
             .Cast<MethodDeclarationSyntax>()
             .Select(t =>
-           new
-           {
-               Name = t.Identifier.ValueText, // 1
-               Returns = t.Body.DescendantTokens()
-                .Count(st => st.Kind() == SyntaxKind.ReturnKeyword)// 2
-           })
-            //Method should ideally have one return statement
-            //That way it is easier to refactor them later.
+               new
+               {
+                   Name = t.Identifier.ValueText, // 1
+                   Returns = t.Body.DescendantTokens()
+                    .Count(st => st.Kind() == SyntaxKind.ReturnKeyword)// 2
+               })
             .Where(t => t.Returns > 1);
-            //.Dump("Multiple return statements");
 
+            int resultCount = 0;
 
             foreach (var item in results)
             {
-                sb.AppendLine($"   {item.Name,-40} {item.Returns}");
+                resultCount += item.Returns;
+            }
+
+            if (resultCount > 0)
+            {
+                sb.AppendLine("Has Multiple Return Statements");
+
+                foreach (var item in results)
+                {
+                    sb.AppendLine($"  Name: {item.Name,-40} {item.Returns}");
+                }
             }
 
             return sb;

@@ -38,37 +38,51 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                    MethodTokens = t.Members
                    .Where(m => m.Kind() == SyntaxKind.MethodDeclaration)
                    .Cast<MethodDeclarationSyntax>()
-                   .Select(
-                   mds =>
-                   new
-                   {
-                       MethodName = mds.Identifier.ValueText,
-                       Tokens = CSharpSyntaxTree.ParseText(mds.ToFullString())
-                           .GetRoot()
-                           .DescendantTokens()
-                           .Select(c => c.Kind())
-                   })
-           .Select(w =>
-          new
-          {
-              MethodName = w.MethodName, // 2
-              Toks = w.Tokens.Zip(w.Tokens.Skip(1), (a, b) =>
-               operators.Any(op => op == a) && b
-               == SyntaxKind.NumericLiteralToken) // 3
-          })
-           .Where(w => w.Toks.Any(to => to == true)) // 4
-           .Select(w => w.MethodName)
-           });
+                   .Select(mds =>
+                       new
+                       {
+                           MethodName = mds.Identifier.ValueText,
+                           Tokens = CSharpSyntaxTree.ParseText(mds.ToFullString())
+                               .GetRoot()
+                               .DescendantTokens()
+                               .Select(c => c.Kind())
+                       })
+                       .Select(w =>
+                          new
+                          {
+                              MethodName = w.MethodName, // 2
+                              Toks = w.Tokens.Zip(w.Tokens.Skip(1), (a, b) =>
+                               operators.Any(op => op == a) && b
+                               == SyntaxKind.NumericLiteralToken) // 3
+                          })
+                   .Where(w => w.Toks.Any(to => to == true)) // 4
+                   .Select(w => w.MethodName)
+                   });
 
-            //            }).Dump();
+            int resultCount = 0;
 
             foreach (var item in results)
             {
-                sb.AppendLine(item.ClassName);
+                resultCount += item.MethodTokens.Count();
+            }
 
-                // TODO(crhodes)
-                // Needs work.
+            if (resultCount > 0)
+            {
+                sb.AppendLine("Has Magic Numbers in Condition");
 
+                foreach (var item in results)
+                {
+                    sb.AppendLine($"  ClassName: {item.ClassName}");
+
+                    foreach (var token in item.MethodTokens)
+                    {
+                        sb.AppendLine($"    Token: {token}");
+                    }
+
+                    // TODO(crhodes)
+                    // Needs work.
+
+                }
             }
 
             return sb;

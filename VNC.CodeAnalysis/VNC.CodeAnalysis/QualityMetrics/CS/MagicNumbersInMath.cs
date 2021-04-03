@@ -51,12 +51,34 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                .Any(s => // 2
                s.Kind() == SyntaxKind.NumericLiteralToken))
            });
-            //
-            //        .Dump("Magic lines. Please avoid these");
+
+            // TODO(crhodes)
+            // Need to add up all the item.MagicLines.Count and display only if > 0
+            // There must be a cleaner way of doing this
+
+            int resultCount = 0;
 
             foreach (var item in results)
             {
-                sb.AppendLine($"   {item.MethodName,-40}  MagicLines:{item.MagicLines}");
+                resultCount += item.MagicLines.Count();
+            }
+
+            if (resultCount > 0)
+            {
+                sb.AppendLine("Has Magic Numbers in Math");
+
+                foreach (var item in results)
+                {
+                    if (item.MagicLines.Count() > 0)
+                    {
+                        sb.AppendLine($"  Method: {item.MethodName,-40}");
+
+                        foreach (var line in item.MagicLines)
+                        {
+                            sb.AppendLine($"    {line}");
+                        }
+                    }
+                }
             }
 
             return sb;

@@ -12,6 +12,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Has Goto Labels");
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
@@ -41,11 +42,11 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             foreach (var item in results)
             {
-                sb.AppendLine($"Class >{item.ClassName}<");
+                sb.AppendLine($"  Class: {item.ClassName}");
 
                 foreach (var method in item.Methods)
                 {
-                    sb.AppendLine($"  Method >{method}<,");
+                    sb.AppendLine($"    Method: {method},");
                 }
             }
 
