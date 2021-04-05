@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace VNC.CodeAnalysis.SyntaxWalkers.VB
+namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 {
-    public class SyntaxTrivia : VNCVBSyntaxWalkerBase
+    public class SyntaxTrivia : VNCCSSyntaxWalkerBase
     {
         public override void VisitTrivia(Microsoft.CodeAnalysis.SyntaxTrivia trivia)
         {

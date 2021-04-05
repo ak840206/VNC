@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace VNC.CodeAnalysis.SyntaxWalkers.VB
+namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 {
-    public class SyntaxToken : VNCVBSyntaxWalkerBase
+    public class SyntaxToken : VNCCSSyntaxWalkerBase
     {
         public override void VisitToken(Microsoft.CodeAnalysis.SyntaxToken token)
         {

@@ -27,5 +27,31 @@ namespace VNC.CodeAnalysis.Helpers
 
             return expression;
         }
+
+        public static StringBuilder InvokeVNCSyntaxWalker(
+            SyntaxWalkers.VNCSyntaxWalker walker,
+            SearchTreeCommandConfiguration commandConfiguration)
+        {
+            Int64 startTicks = Log.DOMAINSERVICES("Enter", CodeAnalysis.Common.LOG_CATEGORY);
+
+            StringBuilder results = new StringBuilder();
+
+            walker.Messages = results;
+
+            walker.TargetPattern = commandConfiguration.WalkerPattern.UseRegEx ? commandConfiguration.WalkerPattern.RegEx : ".*";
+
+            walker._configurationOptions = commandConfiguration.CodeAnalysisOptions;
+
+            walker.Visit(commandConfiguration.SyntaxTree.GetRoot());
+
+            if (results.Length > 0)
+            {
+                commandConfiguration.Results.AppendLine(results.ToString());
+            }
+
+            Log.DOMAINSERVICES("Exit", CodeAnalysis.Common.LOG_CATEGORY, startTicks);
+
+            return commandConfiguration.Results;
+        }
     }
 }

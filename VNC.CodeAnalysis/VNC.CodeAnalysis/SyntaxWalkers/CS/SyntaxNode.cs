@@ -1,17 +1,17 @@
 ﻿using System;
 
-using Microsoft.CodeAnalysis.VisualBasic;
+using Microsoft.CodeAnalysis.CSharp;
 
-namespace VNC.CodeAnalysis.SyntaxWalkers.VB
+namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 {
-    public class SyntaxNode : VNCVBSyntaxWalkerBase
+    public class SyntaxNode : VNCCSSyntaxWalkerBase
     {
         public override void Visit(Microsoft.CodeAnalysis.SyntaxNode node)
         {
             if (_targetPatternRegEx.Match(node.ToString()).Success)
             {
                 Messages.AppendLine(String.Format("{0} >{1}<",
-                    GetNodeContext((VisualBasicSyntaxNode)node),
+                    GetNodeContext((CSharpSyntaxNode)node),
                     node.ToString()));
             }
 
