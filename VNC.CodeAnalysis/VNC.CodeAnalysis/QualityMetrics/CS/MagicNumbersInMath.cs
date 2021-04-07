@@ -29,49 +29,34 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
-            var results = tree.GetRoot()
-            .DescendantNodes()
+            var results = tree.GetRoot().DescendantNodes()
             .Where(st => st.Kind() == SyntaxKind.MethodDeclaration)
             .Cast<MethodDeclarationSyntax>()
             .Select(st =>
-           new
-           {
-               MethodName = st.Identifier.ValueText, // 1
-               MagicLines = CSharpSyntaxTree.ParseText(st.ToFullString())
-               .GetRoot()
-               .DescendantNodes()
-               .Where(z => kinds
-                  .Any(k => k == z.Kind())
-               )
-                .Select(q => q.ToFullString().Trim())
-                .Where(w => CSharpSyntaxTree
-                .ParseText("void dummy(){" + w.ToString() + "}")
-                .GetRoot()
-               .DescendantTokens()
-               .Any(s => // 2
-               s.Kind() == SyntaxKind.NumericLiteralToken))
-           });
+                new
+                {
+                    Span = st.Span,
+                    MethodName = st.Identifier.ValueText, // 1
+                    MagicLines = CSharpSyntaxTree.ParseText(st.ToFullString())
+                   .GetRoot().DescendantNodes()
+                       .Where(z => kinds.Any(k => k == z.Kind()))
+                        .Select(q => q.ToFullString().Trim())
+                        .Where(w => CSharpSyntaxTree.ParseText("void dummy(){" + w.ToString() + "}")
+                        .GetRoot().DescendantTokens()
+                            .Any(s => s.Kind() == SyntaxKind.NumericLiteralToken)) // 2
+                });
 
-            // TODO(crhodes)
-            // Need to add up all the item.MagicLines.Count and display only if > 0
-            // There must be a cleaner way of doing this
-
-            int resultCount = 0;
-
-            foreach (var item in results)
-            {
-                resultCount += item.MagicLines.Count();
-            }
+            int resultCount = results.Select(r => r.MagicLines.Count()).Sum();
 
             if (resultCount > 0)
             {
-                sb.AppendLine("Has Magic Numbers in Math");
+                sb.AppendLine($"Has Magic Numbers in Math ({resultCount})");
 
                 foreach (var item in results)
                 {
                     if (item.MagicLines.Count() > 0)
                     {
-                        sb.AppendLine($"  Method: {item.MethodName,-40}");
+                        sb.AppendLine($"  ({item.Span.Start,4}-{item.Span.End,-4}) Method: {item.MethodName}");
 
                         foreach (var line in item.MagicLines)
                         {

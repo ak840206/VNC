@@ -25,7 +25,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                    ClassName = t.Identifier.ValueText,
                    Methods = t.Members.OfType<MethodDeclarationSyntax>()
                }
-            )//#1
+            )// 1
             .Select(t =>
                new
                {

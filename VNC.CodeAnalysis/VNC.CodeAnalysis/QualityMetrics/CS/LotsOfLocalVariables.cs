@@ -16,8 +16,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             SyntaxTree tree = CSharpSyntaxTree.ParseText(sourceCode);
 
-            List<MethodDeclarationSyntax> methods = tree.GetRoot()
-            .DescendantNodes()
+            List<MethodDeclarationSyntax> methods = tree.GetRoot().DescendantNodes()
             .Where(d => d.Kind() == SyntaxKind.MethodDeclaration)
             .Cast<MethodDeclarationSyntax>()
             .ToList();//1

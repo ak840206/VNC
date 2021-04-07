@@ -16,8 +16,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
-            var results = tree.GetRoot()
-            .DescendantNodes()
+            var results = tree.GetRoot().DescendantNodes()
             .OfType<BracketedArgumentListSyntax>()
             .Select(bals =>
             new
@@ -26,35 +25,33 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                     .OfType<MethodDeclarationSyntax>()
                     .First()
                     .Identifier.ValueText,
+                Span = bals.Span,
+                Code = bals.Parent,
                 Indices = bals.Arguments
                     .Select(a => a.GetText()
                     .Container
                     .CurrentText
                     .ToString())
-                    })
-            //Find defaulter methods that use magic indices
+            })
+            //Find methods that use magic indices
             .Where(bals => bals.Indices
                 .Any(i => Regex.Match(i, "[0-9]+").Success)
             );
 
-            int resultCount = 0;
-
-            foreach (var item in results)
-            {
-                resultCount += item.Indices.Count();
-            }
+            int resultCount = results.Select(r => r.Indices.Count()).Sum();
 
             if (resultCount > 0)
             {
-                sb.AppendLine("Has Magic Numbers in Index");
+                sb.AppendLine($"Has Magic Numbers in Index ({resultCount})");
 
                 foreach (var item in results)
                 {
-                    sb.AppendLine($"  Method: {item.Method,-40}");
+                    sb.AppendLine($"({item.Span.Start, 4}-{item.Span.End, -4}) Method: {item.Method}");
+                    sb.AppendLine($"    {item.Code}");
 
                     foreach (var index in item.Indices)
                     {
-                        sb.AppendLine($"    Index: {index}");
+                        sb.AppendLine($"      Index: {index}");
                     }
                 }
             }
