@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.MemberDeclarationSyntax">
+    <Position X="7.25" Y="19.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.BaseFieldDeclarationSyntax">
+    <Position X="1.75" Y="13.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.BaseTypeDeclarationSyntax">
+    <Position X="28.25" Y="17.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.BasePropertyDeclarationSyntax">
+    <Position X="18" Y="13" Width="2.25" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.MemberDeclarationSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="8.25" Y="19.25" />
+        <Point X="8.25" Y="17.76" />
+        <Point X="19.125" Y="17.76" />
+        <Point X="19.125" Y="16.8" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.BaseMethodDeclarationSyntax">
+    <Position X="5.5" Y="13.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.EventFieldDeclarationSyntax">
+    <Position X="0.5" Y="8.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.FieldDeclarationSyntax">
+    <Position X="3" Y="9.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ConstructorDeclarationSyntax">
+    <Position X="2.25" Y="0.5" Width="2.25" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.BaseMethodDeclarationSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="6.625" Y="13.75" />
+        <Point X="6.625" Y="8.607" />
+        <Point X="3.375" Y="8.607" />
+        <Point X="3.375" Y="6.223" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ConversionOperatorDeclarationSyntax">
+    <Position X="4.75" Y="0.5" Width="2.75" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.BaseMethodDeclarationSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="6.625" Y="13.75" />
+        <Point X="6.625" Y="8.628" />
+        <Point X="6.125" Y="8.628" />
+        <Point X="6.125" Y="6.607" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.DestructorDeclarationSyntax">
+    <Position X="7.75" Y="0.5" Width="2.25" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.BaseMethodDeclarationSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="6.625" Y="13.75" />
+        <Point X="6.625" Y="8.62" />
+        <Point X="8.875" Y="8.62" />
+        <Point X="8.875" Y="6.223" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax">
+    <Position X="10.25" Y="0.5" Width="2.5" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.BaseMethodDeclarationSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="6.625" Y="13.75" />
+        <Point X="6.625" Y="8.62" />
+        <Point X="11.5" Y="8.62" />
+        <Point X="11.5" Y="7.954" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.EventDeclarationSyntax">
+    <Position X="17.25" Y="2.25" Width="2.25" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.BasePropertyDeclarationSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="19.125" Y="13" />
+        <Point X="19.125" Y="8.007" />
+        <Point X="18.375" Y="8.007" />
+        <Point X="18.375" Y="7.588" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.IndexerDeclarationSyntax">
+    <Position X="19.75" Y="1.25" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.PropertyDeclarationSyntax">
+    <Position X="22.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.TypeDeclarationSyntax">
+    <Position X="27" Y="11" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.StructDeclarationSyntax">
+    <Position X="35" Y="1.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.RecordDeclarationSyntax">
+    <Position X="32.25" Y="1.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.InterfaceDeclarationSyntax">
+    <Position X="29.5" Y="1.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ClassDeclarationSyntax">
+    <Position X="27.25" Y="1.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.OperatorDeclarationSyntax">
+    <Position X="13.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.EnumDeclarationSyntax">
+    <Position X="25" Y="1.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.DelegateDeclarationSyntax">
+    <Position X="38.25" Y="1.25" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.EnumMemberDeclarationSyntax">
+    <Position X="40.75" Y="1.25" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.GlobalStatementSyntax">
+    <Position X="43.5" Y="1.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.IncompleteMemberSyntax">
+    <Position X="45.75" Y="1.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.NamespaceDeclarationSyntax">
+    <Position X="48" Y="1" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

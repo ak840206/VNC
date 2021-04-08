@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax">
+    <Position X="30.25" Y="23.25" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.BlockSyntax">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.BreakStatementSyntax">
+    <Position X="2.75" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.CheckedStatementSyntax">
+    <Position X="5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ForEachStatementSyntax">
+    <Position X="7.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ForEachVariableStatementSyntax">
+    <Position X="9.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.CommonForEachStatementSyntax">
+    <Position X="9" Y="8.25" Width="2.25" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="31.125" Y="23.25" />
+        <Point X="31.125" Y="22.921" />
+        <Point X="25.708" Y="22.921" Type="JumpStart" />
+        <Point X="25.542" Y="22.921" Type="JumpEnd" />
+        <Point X="23.333" Y="22.921" Type="JumpStart" />
+        <Point X="23.167" Y="22.921" Type="JumpEnd" />
+        <Point X="18.333" Y="22.921" Type="JumpStart" />
+        <Point X="18.167" Y="22.921" Type="JumpEnd" />
+        <Point X="10.125" Y="22.921" />
+        <Point X="10.125" Y="12.627" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ContinueStatementSyntax">
+    <Position X="12.75" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.DoStatementSyntax">
+    <Position X="15" Y="0.5" Width="2" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="31.125" Y="23.25" />
+        <Point X="31.125" Y="22.935" />
+        <Point X="25.708" Y="22.935" Type="JumpStart" />
+        <Point X="25.542" Y="22.935" Type="JumpEnd" />
+        <Point X="23.333" Y="22.935" Type="JumpStart" />
+        <Point X="23.167" Y="22.935" Type="JumpEnd" />
+        <Point X="18.333" Y="22.935" Type="JumpStart" />
+        <Point X="18.167" Y="22.935" Type="JumpEnd" />
+        <Point X="16" Y="22.935" />
+        <Point X="16" Y="5.454" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.EmptyStatementSyntax">
+    <Position X="17.25" Y="0.5" Width="2" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="31.125" Y="23.25" />
+        <Point X="31.125" Y="23.04" />
+        <Point X="18.25" Y="23.04" />
+        <Point X="18.25" Y="3.146" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionStatementSyntax">
+    <Position X="19.75" Y="0.5" Width="2.25" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="31.125" Y="23.25" />
+        <Point X="31.125" Y="22.903" />
+        <Point X="25.708" Y="22.903" Type="JumpStart" />
+        <Point X="25.542" Y="22.903" Type="JumpEnd" />
+        <Point X="23.333" Y="22.903" Type="JumpStart" />
+        <Point X="23.167" Y="22.903" Type="JumpEnd" />
+        <Point X="20.875" Y="22.903" />
+        <Point X="20.875" Y="3.723" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.FixedStatementSyntax">
+    <Position X="22.25" Y="0.5" Width="2" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="31.125" Y="23.25" />
+        <Point X="31.125" Y="23.046" />
+        <Point X="23.25" Y="23.046" />
+        <Point X="23.25" Y="4.877" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ForStatementSyntax">
+    <Position X="24.5" Y="0.5" Width="2.25" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="31.125" Y="23.25" />
+        <Point X="31.125" Y="23.085" />
+        <Point X="25.625" Y="23.085" />
+        <Point X="25.625" Y="6.992" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.GotoStatementSyntax">
+    <Position X="27" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.IfStatementSyntax">
+    <Position X="29.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.LabeledStatementSyntax">
+    <Position X="31.75" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.LocalDeclarationStatementSyntax">
+    <Position X="34.25" Y="0.5" Width="2.5" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="31.125" Y="23.25" />
+        <Point X="31.125" Y="22.857" />
+        <Point X="35.5" Y="22.857" />
+        <Point X="35.5" Y="5.261" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.LocalFunctionStatementSyntax">
+    <Position X="37.25" Y="0.5" Width="2.5" />
+    <InheritanceLine Type="Microsoft.CodeAnalysis.CSharp.Syntax.StatementSyntax" ManuallyRouted="true">
+      <Path>
+        <Point X="31.125" Y="23.25" />
+        <Point X="31.125" Y="22.842" />
+        <Point X="38.5" Y="22.842" />
+        <Point X="38.5" Y="7.377" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.LockStatementSyntax">
+    <Position X="40" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ReturnStatementSyntax">
+    <Position X="42.25" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.SwitchStatementSyntax">
+    <Position X="44.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ThrowStatementSyntax">
+    <Position X="47" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.TryStatementSyntax">
+    <Position X="49.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.UnsafeStatementSyntax">
+    <Position X="52" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.UsingStatementSyntax">
+    <Position X="54.25" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.WhileStatementSyntax">
+    <Position X="56.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.YieldStatementSyntax">
+    <Position X="58.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

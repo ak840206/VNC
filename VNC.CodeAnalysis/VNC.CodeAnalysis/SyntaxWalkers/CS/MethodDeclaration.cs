@@ -8,7 +8,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
         {
             if (_targetPatternRegEx.Match(node.Identifier.ToString()).Success)
             {
-                RecordMatchAndContext(node, BlockType.None);
+                RecordMatchAndContext(node, BlockType.MethodBlock);
             }
 
             base.VisitMethodDeclaration(node);

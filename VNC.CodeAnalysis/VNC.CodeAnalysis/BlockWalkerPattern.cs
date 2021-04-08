@@ -18,8 +18,16 @@ namespace VNC.CodeAnalysis
             DisplayBlockLabel = displayBlockLabel;
         }
 
-        public Boolean DisplayBlock { get; set; }
+        public Boolean DisplayBlock 
+        { 
+            get; 
+            set; 
+        }
 
-        public string DisplayBlockLabel { get; set; }
+        public string DisplayBlockLabel
+        { 
+            get; 
+            set; 
+        }
     }
 }

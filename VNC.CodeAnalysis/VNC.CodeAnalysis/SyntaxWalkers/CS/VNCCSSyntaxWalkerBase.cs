@@ -185,6 +185,9 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             // Don't want to use a long string
             //
             // Also handle display of full block for some SyntaxNodes
+                    
+            var attributes = "";
+            var modifiers = "";
 
             switch (blockType)
             {
@@ -207,29 +210,63 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                 case BlockType.ClassBlock:
                     // NOTE(crhodes)
                     // No easy way to get class  Decide what to do with Key
-                    // TODO(crhodes)
-                    // Would be nice to get the stuff infront of Identifier, e.g. visibility, static
-                    var gfd = node.GetFirstDirective();
-                    var gft = node.GetFirstToken();
-                    var cnat = node.ChildNodesAndTokens();
-                    
-                    var dnat = node.DescendantNodesAndTokens();
-                    nodeValue = $"class {((ClassDeclarationSyntax)node).Identifier} ({node.Kind()}-{node.RawKind})";
+
+                    foreach (var item in ((MemberDeclarationSyntax)node).AttributeLists)
+                    {
+                        attributes += $"{item} ";
+                    }
+
+                    foreach (var item in ((MemberDeclarationSyntax)node).Modifiers)
+                    {
+                        modifiers += $"{item.ValueText} ";
+                    }
+
+                    if (attributes.Length > 0)
+                    {
+                        nodeValue = $"{attributes}\n";
+                    }
+
+                    nodeValue = $"{modifiers}class {((ClassDeclarationSyntax)node).Identifier} ({node.Kind()}-{node.RawKind})";
+
+                    // Decide if want attributes in nodeKey
                     nodeKey = $"class {((ClassDeclarationSyntax)node).Identifier}";
                     break;
 
                 case BlockType.MethodBlock:
+                    foreach (var item in ((MemberDeclarationSyntax)node).AttributeLists)
+                    {
+                        attributes += $"{item} ";
+                    }
+
+                    foreach (var item in ((MemberDeclarationSyntax)node).Modifiers)
+                    {
+                        modifiers += $"{item.ValueText} ";
+                    }
+
+                    if (attributes.Length > 0)
+                    {
+                        nodeValue = $"{attributes}\n";
+                    }
+
+                    var returnType = ((MethodDeclarationSyntax)node).ReturnType.ToString();
+
+                    var parameterList = ((MethodDeclarationSyntax)node).ParameterList.ToString();
+
+
                     if (_configurationOptions.DisplayStatementBlock)
                     {
-                        nodeValue = ((MethodDeclarationSyntax)node).ToString();
+                        // Can skip modifiers, returnType and Parameters - Part of Block (node)
+                        nodeValue = $"{((MethodDeclarationSyntax)node)}  {node.Kind()}-{node.RawKind})";
                     }
                     else
                     {
-                        nodeValue = "<METHODBLOCK>";
+                        nodeValue = $"{modifiers}{returnType} {((MethodDeclarationSyntax)node).Identifier} {parameterList} ({node.Kind()}-{node.RawKind})";
                     }
 
-                    //nodeValue = ((MethodBlockSyntax)node).ToString();
-                    nodeKey = ((MethodDeclarationSyntax)node).ToString(); ;
+                    // TODO(crhodes)
+                    // Decide if want attributes in nodeKey
+
+                    nodeKey = ((MethodDeclarationSyntax)node).Identifier.ToString(); ;
                     break;
             }
 
