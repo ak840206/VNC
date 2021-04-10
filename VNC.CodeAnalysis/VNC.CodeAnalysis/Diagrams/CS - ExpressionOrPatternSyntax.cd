@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="What does this class do?">
-    <Position X="6.597" Y="6.826" Height="0.75" Width="1.7" />
+    <Position X="9.097" Y="16.576" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="What does this class do?">
-    <Position X="10.368" Y="3.493" Height="0.75" Width="1.7" />
+    <Position X="12.868" Y="13.243" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="What does this class do?">
-    <Position X="4.972" Y="3.979" Height="0.75" Width="1.7" />
+    <Position X="7.472" Y="13.729" Height="0.75" Width="1.7" />
   </Comment>
   <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionOrPatternSyntax">
-    <Position X="4.25" Y="6.75" Width="2" />
+    <Position X="6.75" Y="16.5" Width="2" />
     <TypeIdentifier />
   </Class>
   <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.ExpressionSyntax">
-    <Position X="3" Y="4" Width="1.75" />
+    <Position X="5.5" Y="13.75" Width="1.75" />
     <TypeIdentifier />
   </Class>
   <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.TypeSyntax">
-    <Position X="3" Y="1.25" Width="1.5" />
+    <Position X="5.5" Y="11" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="Microsoft.CodeAnalysis.CSharp.Syntax.PatternSyntax">
-    <Position X="8.5" Y="3.5" Width="1.75" />
+    <Position X="11" Y="13.25" Width="1.75" />
     <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -15,7 +15,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
         }
 
         // TODO(crhodes)
-        // Figure out wht CSharp equivaltent to AsClause
+        // Figure out wht CSharp equivalent to AsClause
 
         //internal bool FilterByType(AsClauseSyntax asClause)
         //{

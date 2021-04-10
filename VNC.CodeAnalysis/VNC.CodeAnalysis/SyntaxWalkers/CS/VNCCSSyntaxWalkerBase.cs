@@ -25,6 +25,9 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
         private string _targetPattern;
         internal Regex _targetPatternRegEx;
 
+        private string _targetPattern2;
+        internal Regex _targetPattern2RegEx;
+
         internal VNC.CodeAnalysis.SyntaxNode.FieldDeclarationLocation _declarationLocation;
 
         public Dictionary<string, Int32> Matches;
@@ -47,6 +50,17 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             {
                 _targetPattern = value;
                 _targetPatternRegEx = Helpers.Common.InitializeRegEx(_targetPattern, Messages, RegexOptions.IgnoreCase);
+            }
+        }
+
+        public string TargetPattern2
+        {
+            get => _targetPattern2;
+
+            set
+            {
+                _targetPattern2 = value;
+                _targetPattern2RegEx = Helpers.Common.InitializeRegEx(_targetPattern2, Messages, RegexOptions.IgnoreCase);
             }
         }
 
@@ -85,7 +99,8 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             NamespaceBlock = 1,
             ClassBlock = 2,
             ModuleBlock = 3,
-            MethodBlock = 4
+            MethodBlock = 4,
+            StructureBlock = 5
         }
 
         public void RecordMatch(CSharpSyntaxNode node, BlockType blockType)
@@ -115,6 +130,10 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
                 case BlockType.MethodBlock:
                     nodeValue = ((MethodDeclarationSyntax)node).Identifier.ToString();
+                    break;
+
+                case BlockType.StructureBlock:
+                    nodeValue = ((StructDeclarationSyntax)node).Identifier.ToString();
                     break;
             }
 
@@ -185,21 +204,27 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             // Don't want to use a long string
             //
             // Also handle display of full block for some SyntaxNodes
-                    
+
             var attributes = "";
             var modifiers = "";
 
             switch (blockType)
             {
                 case BlockType.None:
-                    nodeValue = $"{node} ({node.Kind()}) ({node.RawKind})";
+                    nodeValue = _configurationOptions.DisplayNodeKind 
+                        ? $"{node} ({node.Kind()}) ({node.RawKind})"
+                        : $"{node}";
+
                     nodeKey = $"{node}";
                     break;
 
                 case BlockType.NamespaceBlock:
                     // NOTE(crhodes)
                     // No easy way to get namespace  Decide what to do with Key
-                    nodeValue = $"{node.GetFirstToken().Text} {((NamespaceDeclarationSyntax)node).Name} ({node.Kind()}-{node.RawKind})";
+                    nodeValue = _configurationOptions.DisplayNodeKind
+                        ? $"{node.GetFirstToken().Text} {((NamespaceDeclarationSyntax)node).Name} ({node.Kind()}-{node.RawKind})"
+                        : $"{node.GetFirstToken().Text} {((NamespaceDeclarationSyntax)node).Name} ";
+
                     //var gfd = node.GetFirstDirective();
                     //var gft = node.GetFirstToken();
                     //var cnat = node.ChildNodesAndTokens();
@@ -226,7 +251,9 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                         nodeValue = $"{attributes}\n";
                     }
 
-                    nodeValue = $"{modifiers}class {((ClassDeclarationSyntax)node).Identifier} ({node.Kind()}-{node.RawKind})";
+                    nodeValue = _configurationOptions.DisplayNodeKind
+                        ? $"{modifiers}class {((ClassDeclarationSyntax)node).Identifier} ({node.Kind()}-{node.RawKind})"
+                        : $"{modifiers}class {((ClassDeclarationSyntax)node).Identifier}";
 
                     // Decide if want attributes in nodeKey
                     nodeKey = $"class {((ClassDeclarationSyntax)node).Identifier}";
@@ -243,15 +270,9 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                         modifiers += $"{item.ValueText} ";
                     }
 
-                    if (attributes.Length > 0)
-                    {
-                        nodeValue = $"{attributes}\n";
-                    }
-
                     var returnType = ((MethodDeclarationSyntax)node).ReturnType.ToString();
 
                     var parameterList = ((MethodDeclarationSyntax)node).ParameterList.ToString();
-
 
                     if (_configurationOptions.DisplayStatementBlock)
                     {
@@ -260,13 +281,55 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                     }
                     else
                     {
-                        nodeValue = $"{modifiers}{returnType} {((MethodDeclarationSyntax)node).Identifier} {parameterList} ({node.Kind()}-{node.RawKind})";
-                    }
+                        if (attributes.Length > 0)
+                        {
+                            nodeValue = $"{attributes}\n";
+                        }
+
+                        nodeValue += _configurationOptions.DisplayNodeKind
+                            ? $"{modifiers}{returnType} {((MethodDeclarationSyntax)node).Identifier} {parameterList} ({node.Kind()}-{node.RawKind})"
+                            : $"{modifiers}{returnType} {((MethodDeclarationSyntax)node).Identifier} {parameterList}";
+                     }
 
                     // TODO(crhodes)
                     // Decide if want attributes in nodeKey
 
                     nodeKey = ((MethodDeclarationSyntax)node).Identifier.ToString(); ;
+                    break;
+
+                case BlockType.StructureBlock:
+                    if (_configurationOptions.DisplayFields)
+                    {
+                        if (_targetPattern2.Equals(".*"))
+                        {
+                            // If the default regular expression was passed, just show the structure
+                            nodeValue = ((StructDeclarationSyntax)node).ToString();
+                        }
+                        else
+                        {
+                            nodeValue = ((StructDeclarationSyntax)node).Identifier.ToString();
+                            nodeValue += $" ({((StructDeclarationSyntax)node).Members.Count})";
+
+                            var fieldInfo = "";
+                            // Loop through the fields and only show if matches.
+                            foreach (var fld in ((StructDeclarationSyntax)node).Members)
+                            {
+                                if ( _targetPattern2RegEx.Match(fld.ToString()).Success)
+                                {
+                                        fieldInfo += $"\n{fld}";
+                                }                  
+                            }
+
+                            nodeValue +=  fieldInfo;
+                        }
+                    }
+                    else
+                    {
+                        nodeValue = _configurationOptions.DisplayNodeKind
+                            ? $"{((StructDeclarationSyntax)node).Identifier} ({node.Kind()}-{node.RawKind})"
+                            : $"{((StructDeclarationSyntax)node).Identifier}";
+                    }
+
                     break;
             }
 

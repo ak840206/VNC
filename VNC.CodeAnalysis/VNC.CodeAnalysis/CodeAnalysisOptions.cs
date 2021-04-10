@@ -42,9 +42,11 @@ namespace VNC.CodeAnalysis
 
         public bool DisplayMethodName { get; set; } = false;
 
-         public bool DisplayContainingMethodBlock { get; set; }    
+         public bool DisplayContainingMethodBlock { get; set; }
         
         public bool DisplayContainingBlock { get; set; }
+
+        public bool DisplayFields { get; set; } = false;
 
         public bool InTryBlock { get; set; } = false;
 

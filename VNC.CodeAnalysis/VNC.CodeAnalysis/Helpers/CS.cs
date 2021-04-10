@@ -238,6 +238,14 @@ namespace VNC.CodeAnalysis.Helpers
             // Setting the TargetPattern will call InitializeRegEx()
             walker.TargetPattern = commandConfiguration.WalkerPattern.UseRegEx ? commandConfiguration.WalkerPattern.RegEx : ".*";
 
+            var foo = commandConfiguration.WalkerPattern.GetType();
+
+            if (foo == typeof(WalkerPatternStruct))
+            {
+                walker.TargetPattern2 = ((WalkerPatternStruct)commandConfiguration.WalkerPattern).UseRegExFields ?
+                    ((WalkerPatternStruct)commandConfiguration.WalkerPattern).RegExFields : ".*";
+            }
+
             walker._configurationOptions = commandConfiguration.CodeAnalysisOptions;
 
             walker.Matches = commandConfiguration.Matches;
