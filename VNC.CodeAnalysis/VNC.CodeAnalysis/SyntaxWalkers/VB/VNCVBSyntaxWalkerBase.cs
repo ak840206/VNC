@@ -11,18 +11,52 @@ using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 
 namespace VNC.CodeAnalysis.SyntaxWalkers.VB
 {
+
     public class VNCVBSyntaxWalkerBase : VisualBasicSyntaxWalker
     {
+
+        #region Constructors, Initialization, and Load
+
+        public VNCVBSyntaxWalkerBase(SyntaxWalkerDepth depth = SyntaxWalkerDepth.Node) : base(depth)
+        {
+
+        }
+
+        #endregion
+
+        #region Enums
+
+        public enum BlockType : Int16
+        {
+            None = 0,
+            NamespaceBlock = 1,
+            ClassBlock = 2,
+            ModuleBlock = 3,
+            MethodBlock = 4
+        }
+
+        #endregion
+
+        #region Structures
+
+
+        #endregion
+
+        #region Fields and Properties
+
         public StringBuilder Messages;
         public StringBuilder WalkerNode = new StringBuilder();
         public StringBuilder WalkerToken = new StringBuilder();
         public StringBuilder WalkerTrivia = new StringBuilder();
         public StringBuilder WalkerStructuredTrivia = new StringBuilder();
- 
+
         public CodeAnalysisOptions _configurationOptions = new CodeAnalysisOptions();
 
         private string _targetPattern;
         internal Regex _targetPatternRegEx;
+
+        private string _targetPattern2;
+        internal Regex _targetPattern2RegEx;
 
         internal VNC.CodeAnalysis.SyntaxNode.FieldDeclarationLocation _declarationLocation;
 
@@ -37,7 +71,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
         public string CRC32StructuredTrivia;
 
         public ASCIIEncoding asciiEncoding = new System.Text.ASCIIEncoding();
-  
+
         public string TargetPattern
         {
             get => _targetPattern;
@@ -49,10 +83,25 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
             }
         }
 
-        public VNCVBSyntaxWalkerBase(SyntaxWalkerDepth depth = SyntaxWalkerDepth.Node) : base(depth)
+        public string TargetPattern2
         {
+            get => _targetPattern2;
 
+            set
+            {
+                _targetPattern2 = value;
+                _targetPattern2RegEx = Helpers.Common.InitializeRegEx(_targetPattern2, Messages, RegexOptions.IgnoreCase);
+            }
         }
+
+        #endregion
+
+        #region Event Handlers
+
+
+        #endregion
+
+        #region Public Methods
 
         public string GetNodeContext(VisualBasicSyntaxNode node)
         {
@@ -65,19 +114,10 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
 
             if (_configurationOptions.DisplayMethodName)
             {
-                messageContext += string.Format(" Method:({0, -35})", Helpers.VB.GetContainingMethodName(node));
+                messageContext += $" Method:({Helpers.VB.GetContainingMethodName(node),-35})";
             }
 
             return messageContext;
-        }
-
-        public enum BlockType : Int16
-        {
-            None = 0,
-            NamespaceBlock = 1,
-            ClassBlock = 2,
-            ModuleBlock = 3,
-            MethodBlock = 4
         }
 
         public void RecordMatch(VisualBasicSyntaxNode node, BlockType blockType)
@@ -94,19 +134,19 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                     break;
 
                 case BlockType.NamespaceBlock:
-                    nodeValue = ((NamespaceBlockSyntax)node).NamespaceStatement.Name.ToString();
+                    nodeValue = $"{((NamespaceBlockSyntax)node).NamespaceStatement.Name}";
                     break;
 
                 case BlockType.ClassBlock:
-                    nodeValue = ((ClassBlockSyntax)node).ClassStatement.Identifier.ToString();
+                    nodeValue = $"{((ClassBlockSyntax)node).ClassStatement.Identifier}";
                     break;
 
                 case BlockType.ModuleBlock:
-                    nodeValue = ((ModuleBlockSyntax)node).ModuleStatement.Identifier.ToString();
+                    nodeValue = $"{((ModuleBlockSyntax)node).ModuleStatement.Identifier}";
                     break;
 
                 case BlockType.MethodBlock:
-                    nodeValue = ((MethodBlockSyntax)node).SubOrFunctionStatement.Identifier.ToString();
+                    nodeValue = $"{((MethodBlockSyntax)node).SubOrFunctionStatement.Identifier}";
                     break;
             }
 
@@ -122,13 +162,10 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                 string toStringCRC = Crc32CAlgorithm.Compute(nodeToStringBytes).ToString();
                 string toFullStringCRC = Crc32CAlgorithm.Compute(nodeToFullStringBytes).ToString();
 
-                Messages.AppendLine(String.Format("{0, -35} CRC32:({1,10}) ({2,10})",
-                    nodeValue,
-                    toStringCRC,
-                    toFullStringCRC));
+                Messages.AppendLine($"{nodeValue,-35} CRC32:({toStringCRC,10}) ({toFullStringCRC,10})");
 
                 string toStringKey = nodeValue + ":" + toStringCRC;
-                string toFullStringKey = nodeValue+ ":" + toFullStringCRC;
+                string toFullStringKey = nodeValue + ":" + toFullStringCRC;
 
                 // The Node
 
@@ -181,19 +218,27 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
             switch (blockType)
             {
                 case BlockType.None:
-                    nodeValue = $"{node} ({node.Kind()}-{node.RawKind})";
+                    nodeValue = _configurationOptions.DisplayNodeKind
+                        ? $"{node} ({node.Kind()}) ({node.RawKind})"
+                        : $"{node}";
+
                     nodeKey = $"{node}";
                     break;
 
                 case BlockType.NamespaceBlock:
-                    nodeValue = $"{(NamespaceBlockSyntax)node} ({node.Kind()}-{node.RawKind})";
+                    nodeValue = _configurationOptions.DisplayNodeKind
+                        ? $"{(NamespaceBlockSyntax)node} ({node.Kind()}) ({node.RawKind})"
+                        : $"{(NamespaceBlockSyntax)node}";
+
                     // TODO(crhodes)
                     // May want to remove .Name
                     nodeKey = $"{((NamespaceBlockSyntax)node).NamespaceStatement.Name}";
                     break;
 
                 case BlockType.ClassBlock:
-                    nodeValue = $"{((ClassBlockSyntax)node)} ({node.Kind()}-{node.RawKind})";
+                    nodeValue = _configurationOptions.DisplayNodeKind
+                        ? $"{(ClassBlockSyntax)node} ({node.Kind()}) ({node.RawKind})"
+                        : $"{(ClassBlockSyntax)node}";
                     // TODO(crhodes)
                     // May want to remove .Identifier
                     nodeKey = $"{((ClassBlockSyntax)node).ClassStatement.Identifier}";
@@ -207,7 +252,9 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                 case BlockType.MethodBlock:
                     if (_configurationOptions.DisplayStatementBlock)
                     {
-                        nodeValue = ((MethodBlockSyntax)node).ToString();
+                        nodeValue = _configurationOptions.DisplayNodeKind
+                            ? $"{(MethodBlockSyntax)node} ({node.Kind()}) ({node.RawKind})"
+                            : $"{(MethodBlockSyntax)node}";
                     }
                     else
                     {
@@ -242,18 +289,11 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                 // TODO(crhodes)
                 // Decide if more useful to have CRC first or last.
 
-                //Messages.AppendLine(String.Format("{0} {1,-35} CRC32:({2,10}) ({3,10})",
-                Messages.AppendLine(String.Format("CRC32:({2,10}) ({3,10}) {0} {1,-35}",
-                    Helpers.VB.GetContainingContext(node, _configurationOptions),
-                    nodeValue,
-                    toStringCRC,
-                    toFullStringCRC));
+                Messages.AppendLine($"CRC32:({toStringCRC,10}) ({toFullStringCRC,10}) {Helpers.CS.GetContainingContext(node, _configurationOptions)} {nodeValue,-35}");
 
-                //string toStringKey = string.Format("{0}:({1,10})", nodeValue, toStringCRC);
-                //string toFullStringKey = string.Format("{0}:({1,10})", nodeValue, toFullStringCRC);
 
-                string toStringKey = string.Format("({0,10}):{1}", toStringCRC, nodeKey);
-                string toFullStringKey = string.Format("({0,10}):{1}", toFullStringCRC, nodeKey);
+                string toStringKey = $"({toStringCRC,10}):{nodeKey}";
+                string toFullStringKey = $"({toFullStringCRC,10}):{nodeKey}";
 
 
                 // The Node
@@ -573,5 +613,19 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                 Matches.Add(nodeValue, 1);
             }
         }
+        #endregion
+
+        #region Protected Methods
+
+
+        #endregion
+
+        #region Private Methods
+
+
+        #endregion
+
+
+
     }
 }

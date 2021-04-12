@@ -14,6 +14,41 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
     public class VNCCSSyntaxWalkerBase : CSharpSyntaxWalker
     {
+
+        #region Constructors, Initialization, and Load
+
+        public VNCCSSyntaxWalkerBase(SyntaxWalkerDepth depth = SyntaxWalkerDepth.Node) : base(depth)
+        {
+
+        }
+
+        #endregion
+
+        #region Enums
+
+        // NOTE(crhodes)
+        // CSharp does not have Module Blocks.
+        // In CSharp this is really Namespace, Class, Method, Block
+
+        public enum BlockType : Int16
+        {
+            None = 0,
+            NamespaceBlock = 1,
+            ClassBlock = 2,
+            ModuleBlock = 3,
+            MethodBlock = 4,
+            StructureBlock = 5
+        }
+
+        #endregion
+
+        #region Structures
+
+
+        #endregion
+
+        #region Fields and Properties
+
         public StringBuilder Messages;
         public StringBuilder WalkerNode = new StringBuilder();
         public StringBuilder WalkerToken = new StringBuilder();
@@ -64,10 +99,14 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             }
         }
 
-        public VNCCSSyntaxWalkerBase(SyntaxWalkerDepth depth = SyntaxWalkerDepth.Node) : base(depth)
-        {
+        #endregion
 
-        }
+        #region Event Handlers
+
+
+        #endregion
+
+        #region Public Methods
 
         public string GetNodeContext(CSharpSyntaxNode node)
         {
@@ -83,24 +122,10 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
             if (_configurationOptions.DisplayMethodName)
             {
-                messageContext += string.Format(" Method:({0, -35})", Helpers.CS.GetContainingMethodName(node));
+                messageContext += $" Method:({Helpers.CS.GetContainingMethodName(node), -35})";
             }
 
             return messageContext;
-        }
-
-        // NOTE(crhodes)
-        // CSharp does not have Module Blocks.
-        // In CSharp this is really Namespace, Class, Method, Block
-
-        public enum BlockType : Int16
-        {
-            None = 0,
-            NamespaceBlock = 1,
-            ClassBlock = 2,
-            ModuleBlock = 3,
-            MethodBlock = 4,
-            StructureBlock = 5
         }
 
         public void RecordMatch(CSharpSyntaxNode node, BlockType blockType)
@@ -113,15 +138,15 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             switch (blockType)
             {
                 case BlockType.None:
-                    nodeValue = node.ToString();
+                    nodeValue = $"{node}";
                     break;
 
                 case BlockType.NamespaceBlock:
-                    nodeValue = ((NamespaceDeclarationSyntax)node).Name.ToString();
+                    nodeValue = $"{((NamespaceDeclarationSyntax)node).Name}";
                     break;
 
                 case BlockType.ClassBlock:
-                    nodeValue = ((ClassDeclarationSyntax)node).Identifier.ToString();
+                    nodeValue = $"{((ClassDeclarationSyntax)node).Identifier}";
                     break;
 
                 //case BlockType.ModuleBlock:
@@ -129,11 +154,11 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                 //    break;
 
                 case BlockType.MethodBlock:
-                    nodeValue = ((MethodDeclarationSyntax)node).Identifier.ToString();
+                    nodeValue = $"{((MethodDeclarationSyntax)node).Identifier}";
                     break;
 
                 case BlockType.StructureBlock:
-                    nodeValue = ((StructDeclarationSyntax)node).Identifier.ToString();
+                    nodeValue = $"{((StructDeclarationSyntax)node).Identifier}";
                     break;
             }
 
@@ -149,10 +174,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                 string toStringCRC = Crc32CAlgorithm.Compute(nodeToStringBytes).ToString();
                 string toFullStringCRC = Crc32CAlgorithm.Compute(nodeToFullStringBytes).ToString();
 
-                Messages.AppendLine(String.Format("{0, -35} CRC32:({1,10}) ({2,10})",
-                    nodeValue,
-                    toStringCRC,
-                    toFullStringCRC));
+                Messages.AppendLine($"{nodeValue, -35} CRC32:({toStringCRC,10}) ({toFullStringCRC,10})");
 
                 string toStringKey = nodeValue + ":" + toStringCRC;
                 string toFullStringKey = nodeValue + ":" + toFullStringCRC;
@@ -211,7 +233,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
             switch (blockType)
             {
                 case BlockType.None:
-                    nodeValue = _configurationOptions.DisplayNodeKind 
+                    nodeValue = _configurationOptions.DisplayNodeKind
                         ? $"{node} ({node.Kind()}) ({node.RawKind})"
                         : $"{node}";
 
@@ -225,11 +247,9 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                         ? $"{node.GetFirstToken().Text} {((NamespaceDeclarationSyntax)node).Name} ({node.Kind()}-{node.RawKind})"
                         : $"{node.GetFirstToken().Text} {((NamespaceDeclarationSyntax)node).Name} ";
 
-                    //var gfd = node.GetFirstDirective();
-                    //var gft = node.GetFirstToken();
-                    //var cnat = node.ChildNodesAndTokens();
-                    //var dnat = node.DescendantNodesAndTokens();
-                    nodeKey =$"{((NamespaceDeclarationSyntax)node).Name}";
+                    // TODO(crhodes)
+                    // May want to remove .Name
+                    nodeKey = $"{((NamespaceDeclarationSyntax)node).Name}";
                     break;
 
                 case BlockType.ClassBlock:
@@ -289,7 +309,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                         nodeValue += _configurationOptions.DisplayNodeKind
                             ? $"{modifiers}{returnType} {((MethodDeclarationSyntax)node).Identifier} {parameterList} ({node.Kind()}-{node.RawKind})"
                             : $"{modifiers}{returnType} {((MethodDeclarationSyntax)node).Identifier} {parameterList}";
-                     }
+                    }
 
                     // TODO(crhodes)
                     // Decide if want attributes in nodeKey
@@ -314,13 +334,13 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                             // Loop through the fields and only show if matches.
                             foreach (var fld in ((StructDeclarationSyntax)node).Members)
                             {
-                                if ( _targetPattern2RegEx.Match(fld.ToString()).Success)
+                                if (_targetPattern2RegEx.Match(fld.ToString()).Success)
                                 {
-                                        fieldInfo += $"\n{fld}";
-                                }                  
+                                    fieldInfo += $"\n{fld}";
+                                }
                             }
 
-                            nodeValue +=  fieldInfo;
+                            nodeValue += fieldInfo;
                         }
                     }
                     else
@@ -351,19 +371,10 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                 // TODO(crhodes)
                 // Decide if more useful to have CRC first or last.
 
-                //Messages.AppendLine(String.Format("{0} {1,-35} CRC32:({2,10}) ({3,10})",
-                Messages.AppendLine(String.Format("CRC32:({2,10}) ({3,10}) {0} {1,-35}",
-                    Helpers.CS.GetContainingContext(node, _configurationOptions),
-                    nodeValue,
-                    toStringCRC,
-                    toFullStringCRC));
+                Messages.AppendLine($"CRC32:({toStringCRC,10}) ({toFullStringCRC,10}) {Helpers.CS.GetContainingContext(node, _configurationOptions)} {nodeValue,-35}");
 
-                //string toStringKey = string.Format("{0}:({1,10})", nodeValue, toStringCRC);
-                //string toFullStringKey = string.Format("{0}:({1,10})", nodeValue, toFullStringCRC);
-
-                string toStringKey = string.Format("({0,10}):{1}", toStringCRC, nodeKey);
-                string toFullStringKey = string.Format("({0,10}):{1}", toFullStringCRC, nodeKey);
-
+                string toStringKey = $"({toStringCRC,10}):{nodeKey}";
+                string toFullStringKey = $"({toFullStringCRC,10}):{nodeKey}";
 
                 // The Node
 
@@ -682,5 +693,17 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                 Matches.Add(nodeValue, 1);
             }
         }
+        #endregion
+
+        #region Protected Methods
+
+
+        #endregion
+
+        #region Private Methods
+
+
+        #endregion
+
     }
 }
