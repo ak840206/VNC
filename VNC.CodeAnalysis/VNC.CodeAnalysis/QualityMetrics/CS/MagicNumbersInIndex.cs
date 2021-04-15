@@ -46,7 +46,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
                 foreach (var item in results)
                 {
-                    sb.AppendLine($"({item.Span.Start, 4}-{item.Span.End, -4}) Method: {item.Method}");
+                    sb.AppendLine($"  Method: {item.Method}");
                     sb.AppendLine($"    {item.Code}");
 
                     foreach (var index in item.Indices)

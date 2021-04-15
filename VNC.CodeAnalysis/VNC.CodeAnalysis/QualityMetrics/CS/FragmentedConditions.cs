@@ -11,7 +11,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Fragmented Conditions");
+
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
@@ -33,21 +33,27 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                       // 3
                       IfStatement = iss.Condition.ToFullString()
                   })
-                // 4
-                //.ToLookup(iss => iss.Statement) 
+                //.ToLookup(iss => iss.Statement) // 4
                 // NOTE(crhodes)
                 // What does .ToLookup do?
             });
             //        .Dump("Fragmented conditions");
 
-            foreach (var item in results)
-            {
-                sb.AppendLine($"{item.Name}");
+            int resultCount = results.Select(r => r.IfStatements.Count()).Sum();
 
-                foreach (var ifs in item.IfStatements)
+            if (resultCount > 0)
+            {
+                sb.AppendLine($"Has Fragmented Conditions ({resultCount})");
+
+                foreach (var item in results)
                 {
-                    sb.AppendLine($"{ifs.Statement}");
-                    sb.AppendLine($"{ifs.IfStatement}");
+                    sb.AppendLine($"{item.Name}");
+
+                    foreach (var ifs in item.IfStatements)
+                    {
+                        sb.AppendLine($"{ifs.Statement}");
+                        sb.AppendLine($"{ifs.IfStatement}");
+                    }
                 }
             }
 

@@ -13,66 +13,74 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Hungarian Variable Names");
 
             Func<string, string, bool> IsHungarian = (varName, typeName) =>
             {
                 bool result = false;
                 string upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                 if (typeName == "bool"
-                && varName.StartsWith("b")
-                && upperCase.Contains(varName[1]))
+                        && varName.StartsWith("b")
+                        && upperCase.Contains(varName[1]))
                     result = true;
                 if (typeName == "char"
-                && varName.StartsWith("c")
-                && upperCase.Contains(varName[1]))
+                        && varName.StartsWith("c")
+                        && upperCase.Contains(varName[1]))
                     result = true;
                 if (typeName == "string"
-                && varName.StartsWith("str")
-                && upperCase.Contains(varName[1]))
+                        && varName.StartsWith("str")
+                        && upperCase.Contains(varName[3]))
                     result = true;
                 if (typeName == "int"
-                && varName.StartsWith("i")
-                && upperCase.Contains(varName[1]))
+                        && varName.StartsWith("int")
+                        && upperCase.Contains(varName[3]))
+                    result = true;
+                if (typeName == "int"
+                        && varName.StartsWith("i")
+                        && upperCase.Contains(varName[1]))
                     result = true;
                 if (typeName == "float"
-                && varName.StartsWith("f")
-                && upperCase.Contains(varName[1]))
+                        && varName.StartsWith("f")
+                        && upperCase.Contains(varName[1]))
                     result = true;
                 if (typeName == "short"
-                && varName.StartsWith("s")
-                && upperCase.Contains(varName[1]))
+                        && varName.StartsWith("s")
+                        && upperCase.Contains(varName[1]))
                     result = true;
                 if (typeName == "long"
-                && varName.StartsWith("l")
-                && upperCase.Contains(varName[1]))
+                        && varName.StartsWith("l")
+                        && upperCase.Contains(varName[1]))
                     result = true;
                 return result;
             };
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
-            var results = tree.GetRoot()
-            .DescendantNodes()
+            var results = tree.GetRoot().DescendantNodes()
             .Where(t => t.Kind() == SyntaxKind.FieldDeclaration)
             .Cast<FieldDeclarationSyntax>()
             .Select(fds =>
-           new
-           {
-               // 2
-               TypeName = fds.Declaration.Type.ToFullString().Trim(),
-               // 3
-               VarName = fds.Declaration.Variables
-           .Select(v => v.Identifier.Value).First()
-           })
-            // 4
-            .Where(fds => IsHungarian(fds.VarName.ToString(),
-           fds.TypeName.ToString()));
-            //        .Dump("Hungarian Notations");
+               new
+               {
+                   // 2
+                   TypeName = fds.Declaration.Type.ToFullString().Trim(),
+                   // 3
+                   VarName = fds.Declaration.Variables
+               .Select(v => v.Identifier.Value).First()
+               })
+                // 4
+                .Where(fds => IsHungarian(fds.VarName.ToString(),
+               fds.TypeName.ToString()));
 
-            foreach (var item in results)
+            int resultCount = results.Count();
+
+            if (resultCount > 0)
             {
-                sb.AppendLine($"  Type: {item.TypeName,-40}  Var:{item.VarName ,- 30}");
+                sb.AppendLine("Has Hungarian Variable Names");
+
+                foreach (var item in results)
+                {
+                    sb.AppendLine($"  Type: {item.TypeName,-40}  Var:{item.VarName,-30}");
+                }
             }
 
             return sb;

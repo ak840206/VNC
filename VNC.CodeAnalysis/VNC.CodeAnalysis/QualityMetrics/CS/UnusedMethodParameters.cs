@@ -21,7 +21,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             .DescendantNodes()
             .OfType<MethodDeclarationSyntax>().ToList();
 
-            methods.Select(z =>
+            var results = methods.Select(z =>
             {
                 var parameters =
                 z.ParameterList.Parameters
@@ -31,30 +31,25 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 new
                 {
                     MethodName = z.Identifier.ValueText,// 1
-                                       //#2
-                    IsUsingAllParameter = parameters.All
-                (x => z.Body.Statements.SelectMany(s => s.DescendantTokens()).Select(s =>
-              s.ValueText).Distinct().Contains(x))
+                    IsUsingAllParameter = parameters.All // 2
+                        (x => z.Body.Statements.SelectMany(s => s.DescendantTokens())
+                        .Select(s => s.ValueText).Distinct().Contains(x))
                 };
             })
-            .Where(x => !x.IsUsingAllParameter)
-            .ToList()
-            .ForEach(x => sb.AppendLine($"{x.MethodName} {x.IsUsingAllParameter}"));
+            .Where(x => !x.IsUsingAllParameter);
 
-            //if (results.Count() > 0)
-            //{
-            //    sb.AppendLine("Has Unused Method Parameters");
+            //.ToList()
+            //.ForEach(x => sb.AppendLine($"{x.MethodName} {x.IsUsingAllParameter}"));
 
-            //    foreach (var item in results)
-            //    {
-            //        sb.AppendLine($"  Method: {item.,-40}");
+            if (results.Count() > 0)
+            {
+                sb.AppendLine("Has Unused Method Parameters");
 
-            //            foreach (var line in item.MagicLines)
-            //            {
-            //                sb.AppendLine($"    {line}");
-            //            }
-            //    }
-            //}
+                foreach (var item in results)
+                {
+                    sb.AppendLine($"  Method: {item.MethodName,-40}  {! item.IsUsingAllParameter }");
+                }
+            }
 
             return sb;
         }

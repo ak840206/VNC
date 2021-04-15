@@ -260,7 +260,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                     {
                         // TODO(crhodes)
                         // Need to figure out how to handle this cleanly.
-                        // Go look at OBject Model and understand relationship amoung
+                        // Go look at OBject Model and understand relationship among
                         // MethodBlock, MethodStatement, SubStatement, SubBlock, FunctionBlock, FunctionStatement
                         //nodeValue = node.Parent.ToString();
                         nodeValue = "<METHODBLOCK>";
@@ -289,7 +289,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
                 // TODO(crhodes)
                 // Decide if more useful to have CRC first or last.
 
-                Messages.AppendLine($"CRC32:({toStringCRC,10}) ({toFullStringCRC,10}) {Helpers.CS.GetContainingContext(node, _configurationOptions)} {nodeValue,-35}");
+                Messages.AppendLine($"CRC32:({toStringCRC,10}) ({toFullStringCRC,10}) {Helpers.VB.GetContainingContext(node, _configurationOptions)} {nodeValue,-35}");
 
 
                 string toStringKey = $"({toStringCRC,10}):{nodeKey}";

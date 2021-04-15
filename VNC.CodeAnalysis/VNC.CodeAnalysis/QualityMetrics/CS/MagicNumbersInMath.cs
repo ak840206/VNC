@@ -37,6 +37,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 {
                     Span = st.Span,
                     MethodName = st.Identifier.ValueText, // 1
+                    //Line = st.SyntaxTree.GetLineSpan(st.FullSpan).StartLinePosition.Line,
                     MagicLines = CSharpSyntaxTree.ParseText(st.ToFullString())
                    .GetRoot().DescendantNodes()
                        .Where(z => kinds.Any(k => k == z.Kind()))
@@ -56,7 +57,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 {
                     if (item.MagicLines.Count() > 0)
                     {
-                        sb.AppendLine($"  ({item.Span.Start,4}-{item.Span.End,-4}) Method: {item.MethodName}");
+                        sb.AppendLine($"  ({item.Span.Start,4}-{item.Span.End,-4}) Method: {item.MethodName}");// Line:{item.Line}");
 
                         foreach (var line in item.MagicLines)
                         {

@@ -33,12 +33,12 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 .OrderByDescending(x => x.NBLocal)
                 .ToList();
 
-                if (results.Count() > 0)
+                foreach (var item in results)
                 {
-                    sb.AppendLine("Has Lots of Local Variables");
-
-                    foreach (var item in results)
+                    if (item.NBLocal > 3)
                     {
+                        sb.AppendLine($"Has Lots (> 3) of Local Variables ({results.Count()})");
+
                         sb.AppendLine($"  {item.MethodName} Local Variables: {item.NBLocal}");
                     }
                 }
