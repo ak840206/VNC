@@ -31,9 +31,9 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             {
                 Name = t.Name,
                 Ladders = t.IfStatements
-            .Select(i => i.Condition.ToFullString())
-            .ToLookup(i => i.Substring(0, i.IndexOf('=')))
-            .Where(i => i.Count() >= 2)
+                    .Select(i => i.Condition.ToFullString())
+                    .ToLookup(i => i.Substring(0, i.IndexOf('=')))
+                    .Where(i => i.Count() >= 2)
             });
 
             foreach (var item in results)

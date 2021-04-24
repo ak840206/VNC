@@ -12,7 +12,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Is Large Clasee");
+            //sb.AppendLine("Is Large Class");
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
@@ -35,7 +35,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
                 foreach (var item in largeClass)
                 {
-                    sb.AppendLine($"LARGE CLASS {item.ClassName} {item.Size} Average:{averageLength}");
+                    sb.AppendLine($"  LARGE CLASS {item.ClassName, -20} Members: {item.Size, 4} Average: {averageLength, 4}");
                 }
             }
 

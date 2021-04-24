@@ -55,6 +55,9 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
+            // TODO(crhodes)
+            // Look at Long Parameter List.  Is it useful to have class / method??
+
             var results = tree.GetRoot().DescendantNodes()
             .Where(t => t.Kind() == SyntaxKind.FieldDeclaration)
             .Cast<FieldDeclarationSyntax>()

@@ -77,7 +77,7 @@ namespace VNC.CodeAnalysis.Workspace
                         filesToProcess.Add(sourceFullPath);
                     }
                     else
-                    {                      
+                    {              
                         // TODO(crhodes)
                         // Handle errors.
 
@@ -104,12 +104,10 @@ namespace VNC.CodeAnalysis.Workspace
 
             List<String> filesToProcess = new List<string>();
 
-
             // This  method returns a list of files to process.
 
             // If a ProjectFile is available, use it to get the list of files
             // Otherwise return the files selected in cbeSourceFiles.
-
 
             try
             {

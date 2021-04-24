@@ -9,13 +9,16 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace VNC.CodeAnalysis.QualityMetrics.CS
 {
-    public class UnusedMethodParameters
+    public static class UnusedMethodParameters
     {
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
 
             SyntaxTree tree = CSharpSyntaxTree.ParseText(sourceCode);
+
+            // TODO(crhodes)
+            // Look at Long Parameter List.  Is it useful to have class??
 
             List<MethodDeclarationSyntax> methods = tree.GetRoot()
             .DescendantNodes()

@@ -42,7 +42,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
         #endregion
 
-        #region Structures
+        #region Structures (none)
 
 
         #endregion
@@ -101,7 +101,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
         #endregion
 
-        #region Event Handlers
+        #region Event Handlers (none)
 
 
         #endregion
@@ -695,12 +695,12 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
         }
         #endregion
 
-        #region Protected Methods
+        #region Protected Methods (none)
 
 
         #endregion
 
-        #region Private Methods
+        #region Private Methods (none)
 
 
         #endregion
