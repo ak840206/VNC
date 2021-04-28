@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
     <PropertyGroup>
-        <TargetFramework>net4.8</TargetFramework>
+        <TargetFramework>net48</TargetFramework>
         <UseWPF>true</UseWPF>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
@@ -12,7 +12,7 @@
         <PackageReference Include="DevExpress.Wpf.Layout" Version="19.2.6" />
         <PackageReference Include="DevExpress.Wpf.Navigation" Version="19.2.6" />
         <PackageReference Include="DevExpress.Wpf.Themes.MetropolisDark" Version="19.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisLight" Version="19.2.6" />    
+        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisLight" Version="19.2.6" />
         <PackageReference Include="VNC.Core" Version="1.0.0" />
     </ItemGroup>
 

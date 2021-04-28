@@ -1,19 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net4.8</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
-        <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+        <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
+        <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
         <PackageReference Include="Unity.Interception" Version="5.11.1" />
         <PackageReference Include="VNC.Core" Version="1.0.0" />
     </ItemGroup>
 
     <!--<ItemGroup>
-      <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj" />
+      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
     </ItemGroup>-->
 
     <ItemGroup>

@@ -33,7 +33,7 @@
     <ItemGroup>
       <None Remove="Execute-PostBuild.ps1" />
       <None Remove="Execute-PreBuild.ps1" />
-      <None Include="..\..\VNC.png">
+      <None Include="..\VNC.png">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>
@@ -47,11 +47,11 @@
     </ItemGroup>
     
     <ItemGroup>
-        <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
+        <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
         <PackageReference Include="EntityFramework" Version="6.4.4" />
-        <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+        <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
         <PackageReference Include="Unity.Interception" Version="5.11.1" />
-        <PackageReference Include="VNC.Logging" Version="1.0.0" />
+        <PackageReference Include="VNC.Logging" Version="1.0.1" />
     </ItemGroup>
 
     <ItemGroup>
