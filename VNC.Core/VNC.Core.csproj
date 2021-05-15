@@ -69,8 +69,4 @@
       </None>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Xaml\Presentation\UserContols\" />
-    </ItemGroup>
-
 </Project>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net4.8</TargetFramework>
+        <RootNameSpace>SignalRServerHub</RootNameSpace>
+        <UseWPF>true</UseWPF>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNet.Cors" Version="5.2.7" />
+      <PackageReference Include="Microsoft.AspNet.SignalR.SelfHost" Version="2.4.2" />
+      <PackageReference Include="VNC.AssemblyHelper" Version="1.0.0" />
+      <PackageReference Include="VNC.Core" Version="1.0.0" />
+    </ItemGroup>
+</Project>

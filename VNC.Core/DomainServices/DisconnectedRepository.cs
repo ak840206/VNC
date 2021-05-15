@@ -10,14 +10,14 @@ namespace VNC.Core.DomainServices
         public DisconnectedRepository(DbContext context)
         {
 #if LOGGING
-            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 #endif
 
             _context = context;
             _dbSet = context.Set<TEntity>();
 
 #if LOGGING
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 

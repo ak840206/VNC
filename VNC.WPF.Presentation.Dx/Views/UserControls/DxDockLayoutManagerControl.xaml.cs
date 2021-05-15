@@ -2,14 +2,15 @@
 
 namespace VNC.WPF.Presentation.Dx.Views
 {
-    /// <summary>
-    /// Interaction logic for DxTabbedUIA.xaml
-    /// </summary>
     public partial class DxDockLayoutManagerControl : UserControl
     {
         public DxDockLayoutManagerControl()
         {
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
+
             InitializeComponent();
+
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
         }
     }
 }

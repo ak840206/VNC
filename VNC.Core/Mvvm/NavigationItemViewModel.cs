@@ -26,7 +26,7 @@ namespace VNC.Core.Mvvm
             IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
 #if LOGGING
-            Int64 startTicks = Log.CONSTRUCTOR($"Enter id:({id}) displayMember:({displayMember}) detailViewModelName:({detailViewModelName})", Common.LOG_APPNAME);
+            Int64 startTicks = Log.CONSTRUCTOR($"Enter id:({id}) displayMember:({displayMember}) detailViewModelName:({detailViewModelName})", Common.LOG_CATEGORY);
 #endif
             Id = id;
             DisplayMember = displayMember;
@@ -34,7 +34,7 @@ namespace VNC.Core.Mvvm
 
             OpenDetailViewCommand = new DelegateCommand(OpenDetailViewExecute);
 #if LOGGING
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
@@ -60,20 +60,20 @@ namespace VNC.Core.Mvvm
         private void OpenDetailViewExecute()
         {
 #if LOGGING
-            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT_HANDLER("Enter", Common.LOG_CATEGORY);
 #endif
 
             PublishOpenDetailViewEvent();
 
 #if LOGGING
-            Log.EVENT_HANDLER("Exit", Common.LOG_APPNAME, startTicks);
+            Log.EVENT_HANDLER("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
         private void PublishOpenDetailViewEvent()
         {
 #if LOGGING
-            Int64 startTicks = Log.EVENT($"Enter Id:({Id})", Common.LOG_APPNAME);
+            Int64 startTicks = Log.EVENT($"Enter Id:({Id})", Common.LOG_CATEGORY);
 #endif
 
             EventAggregator.GetEvent<OpenDetailViewEvent>()
@@ -87,7 +87,7 @@ namespace VNC.Core.Mvvm
                 );
 
 #if LOGGING
-            Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+            Log.EVENT("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
     }

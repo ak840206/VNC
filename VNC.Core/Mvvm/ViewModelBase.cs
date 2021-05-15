@@ -48,12 +48,12 @@ namespace VNC.Core.Mvvm
             // TODO(crhodes)
             // Decide if we really want to log this.
 #if LOGGING
-            long startTicks = Log.VIEWMODEL_LOW($"Enter ({propertyName})", Common.LOG_APPNAME);
+            long startTicks = Log.VIEWMODEL_LOW($"Enter ({propertyName})", Common.LOG_CATEGORY);
 #endif
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 #if LOGGING
-            Log.VIEWMODEL_LOW("Exit", Common.LOG_APPNAME, startTicks);
+            Log.VIEWMODEL_LOW("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
     }

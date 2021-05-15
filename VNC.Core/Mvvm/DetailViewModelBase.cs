@@ -30,7 +30,7 @@ namespace VNC.Core.Mvvm
             IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
         {
 #if LOGGING
-            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 #endif
             SaveCommand = new DelegateCommand(
                 SaveExecute, SaveCanExecute);
@@ -41,14 +41,14 @@ namespace VNC.Core.Mvvm
             CloseDetailViewCommand = new DelegateCommand(
                 CloseDetailViewExecute);
 #if LOGGING
-            Log.CONSTRUCTOR("Exit", Common.LOG_APPNAME, startTicks);
+            Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
         protected virtual void PublishAfterCollectionSavedEvent()
         {
 #if LOGGING
-            long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.EVENT("Enter", Common.LOG_CATEGORY);
 #endif
 
             EventAggregator.GetEvent<AfterCollectionSavedEvent>()
@@ -57,14 +57,14 @@ namespace VNC.Core.Mvvm
                     ViewModelName = this.GetType().Name
                 });
 #if LOGGING
-            Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+            Log.EVENT("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
         protected virtual void CloseDetailViewExecute()
         {
 #if LOGGING
-            long startTicks = Log.VIEWMODEL("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.VIEWMODEL("Enter", Common.LOG_CATEGORY);
 #endif
 
             if (HasChanges)
@@ -80,14 +80,14 @@ namespace VNC.Core.Mvvm
 
             PublishAfterDetailClosedEvent();
 #if LOGGING
-            Log.VIEWMODEL("Exit", Common.LOG_APPNAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
         private void PublishAfterDetailClosedEvent()
         {
 #if LOGGING
-            long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.EVENT("Enter", Common.LOG_CATEGORY);
 #endif
 
             EventAggregator.GetEvent<AfterDetailClosedEvent>()
@@ -97,7 +97,7 @@ namespace VNC.Core.Mvvm
                     ViewModelName = this.GetType().Name
                 });
 #if LOGGING
-            Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+            Log.EVENT("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
@@ -152,7 +152,7 @@ namespace VNC.Core.Mvvm
         protected virtual void PublishAfterDetailDeletedEvent(int modelId)
         {
 #if LOGGING
-            long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.EVENT("Enter", Common.LOG_CATEGORY);
 #endif
 
             EventAggregator.GetEvent<AfterDetailDeletedEvent>()
@@ -165,14 +165,14 @@ namespace VNC.Core.Mvvm
                     }
                 );
 #if LOGGING
-            Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+            Log.EVENT("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
         protected virtual void PublishAfterDetailSavedEvent(int modelId, string displayMember)
         {
 #if LOGGING
-            long startTicks = Log.EVENT("Enter", Common.LOG_APPNAME);
+            long startTicks = Log.EVENT("Enter", Common.LOG_CATEGORY);
 #endif
 
             EventAggregator.GetEvent<AfterDetailSavedEvent>()
@@ -186,14 +186,14 @@ namespace VNC.Core.Mvvm
                     }
                 );
 #if LOGGING
-            Log.EVENT("Exit", Common.LOG_APPNAME, startTicks);
+            Log.EVENT("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
         protected virtual async Task SaveWithOptimisticConcurrencyAsync(Func<Task> saveFunc, Action afterSaveAction)
         {
 #if LOGGING
-            Int64 startTicks = Log.VIEWMODEL("Enter", Common.LOG_APPNAME);
+            Int64 startTicks = Log.VIEWMODEL("Enter", Common.LOG_CATEGORY);
 #endif
 
             try
@@ -236,7 +236,7 @@ namespace VNC.Core.Mvvm
 
             afterSaveAction();
 #if LOGGING
-            Log.VIEWMODEL("Exit", Common.LOG_APPNAME, startTicks);
+            Log.VIEWMODEL("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
     }

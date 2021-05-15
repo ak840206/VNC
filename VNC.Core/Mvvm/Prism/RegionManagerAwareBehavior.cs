@@ -14,21 +14,21 @@ namespace VNC.Core.Mvvm.Prism
         protected override void OnAttach()
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.Trace($"Enter", Common.LOG_CATEGORY);
 #endif
             // Attach to all regions.  But, can also pick and choose
 
             Region.ActiveViews.CollectionChanged += ActiveViews_CollectionChanged;
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.Trace($"Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
         void ActiveViews_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.Trace($"Enter", Common.LOG_CATEGORY);
 #endif
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
@@ -61,14 +61,14 @@ namespace VNC.Core.Mvvm.Prism
             }
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.Trace($"Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
 
         static void InvokeOnRegionManagerAwareElement(object item, Action<IRegionManagerAware> invocation)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.Trace($"Enter", Common.LOG_CATEGORY);
 #endif
 
             // Want to support View and/or ViewModel first approaches
@@ -121,7 +121,7 @@ namespace VNC.Core.Mvvm.Prism
                 }
             }
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.Trace($"Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
     }

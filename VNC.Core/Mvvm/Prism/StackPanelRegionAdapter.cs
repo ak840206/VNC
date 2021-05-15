@@ -10,11 +10,11 @@ namespace VNC.Core.Mvvm.Prism
             : base(regionBehaviorFactory)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.Trace($"Enter", Common.LOG_CATEGORY);
 #endif
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.Trace($"Exit", Common.LOG_CATEGORY, startTicks);
 #endif
 
         }
@@ -22,11 +22,11 @@ namespace VNC.Core.Mvvm.Prism
         protected override IRegion CreateRegion()
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.Trace($"Enter", Common.LOG_CATEGORY);
 #endif
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.Trace($"Exit", Common.LOG_CATEGORY, startTicks);
 #endif
             // Used for Content Controls.  One Active View.
             //return SingleActiveRegion();
@@ -41,7 +41,7 @@ namespace VNC.Core.Mvvm.Prism
         protected override void Adapt(IRegion region, StackPanel regionTarget)
         {
 #if LOGGING
-            long startTicks = Log.Trace($"Enter", Common.LOG_APPNAME);
+            long startTicks = Log.Trace($"Enter", Common.LOG_CATEGORY);
 #endif
             region.Views.CollectionChanged += (s, e) =>
                 {
@@ -57,7 +57,7 @@ namespace VNC.Core.Mvvm.Prism
                 };
 
 #if LOGGING
-            Log.Trace($"Exit", Common.LOG_APPNAME, startTicks);
+            Log.Trace($"Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
     }

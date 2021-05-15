@@ -3,8 +3,7 @@
     public class Common
     {
 
-        public const string PROJECT_NAME = "VNCPresentation";
-        public const string LOG_APPNAME = "VNCPresentation";
+        public const string LOG_CATEGORY = "VNCPresentation";
 
         internal const int DEFAULT_WINDOW_LARGE_WIDTH = 1800;
         internal const int DEFAULT_WINDOW_LARGE_HEIGHT = 1200;

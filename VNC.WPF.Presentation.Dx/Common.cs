@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-
-namespace VNC.WPF.Presentation.Dx
+﻿namespace VNC.WPF.Presentation.Dx
 {
     public class Common
     {
-
-        public new const string PROJECT_NAME = "VNCPresentationDx";
-        public const string LOG_APPNAME = "VNCPresentationDx";
+        public const string LOG_CATEGORY = "VNCPresentationDx";
 
         internal const int DEFAULT_WINDOW_LARGE_WIDTH = 1800;
         internal const int DEFAULT_WINDOW_LARGE_HEIGHT = 1200;
