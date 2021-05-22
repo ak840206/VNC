@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VNC")]
 [assembly: AssemblyProduct("VNC.SMOHelper")]
-[assembly: AssemblyCopyright("Copyright © 2012-2020")]
+[assembly: AssemblyCopyright("Copyright © VNC 2012-2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -45,11 +45,11 @@
         <Generator>TextTemplatingFileGenerator</Generator>
         <LastGenOutput>LogNamed.cs</LastGenOutput>
       </None>
-      <None Include="..\..\..\VNC.png">
+      <None Include="..\..\LICENSE">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>
-      <None Include="LICENSE">
+      <None Include="..\..\VNC.png">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>

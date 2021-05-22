@@ -3,11 +3,28 @@
   <PropertyGroup>
     <TargetFramework>net4.8</TargetFramework>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+      <Authors>Christopher Rhodes</Authors>
+      <PackageLicenseFile>LICENSE</PackageLicenseFile>
+      <PackageIcon>VNC.png</PackageIcon>
+      <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
+      <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="161.46041.41" />
         <PackageReference Include="VNC.Core" Version="1.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+      <None Include="..\VNC.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
     <!--<ItemGroup>

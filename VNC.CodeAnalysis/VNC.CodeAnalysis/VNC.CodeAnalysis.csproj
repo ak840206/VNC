@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+      <PackageLicenseFile>LICENSE</PackageLicenseFile>
+      <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
+      <PackageIcon>VNC.png</PackageIcon>
+      <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
     <ItemGroup>
@@ -15,6 +20,17 @@
         <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Features" Version="3.9.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="3.9.0" />
         <PackageReference Include="VNC.Core" Version="1.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+      <None Include="..\..\VNC.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
     <!--This is what we used to use.

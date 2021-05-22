@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Linq;
 
@@ -13,6 +14,7 @@ namespace VNC.Core.Xaml
         private Dictionary<string, List<string>> _errorsByPropertyName
          = new Dictionary<string, List<string>>();
 
+        [Display(AutoGenerateField = false)]
         public bool HasErrors => _errorsByPropertyName.Any();
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;

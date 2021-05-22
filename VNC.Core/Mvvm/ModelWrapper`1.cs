@@ -13,6 +13,7 @@ namespace VNC.Core.Mvvm
             Model = model;
         }
 
+        [Display(AutoGenerateField = false)]
         public T Model { get; }
 
         protected virtual void SetValue<TValue>(TValue value,

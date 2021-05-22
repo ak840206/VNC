@@ -1,10 +1,13 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
 namespace VNC.Core.Mvvm
 {
     public class ViewModelBase : IViewModel, INotifyPropertyChanged
     {
+
+        [Display(AutoGenerateField = false)]
         public IView View
         {
             get;
@@ -22,6 +25,7 @@ namespace VNC.Core.Mvvm
         }
 
         private bool _isBusy;
+        [Display(AutoGenerateField = false)]
         public bool IsBusy
         {
             get { return _isBusy; }

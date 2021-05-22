@@ -7,6 +7,10 @@
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
       <PackageIcon>VNC.png</PackageIcon>
+      <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
+      <RepositoryType>Git</RepositoryType>
+      <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
+      <Authors>Christopher Rhodes</Authors>
   </PropertyGroup>
 
     <ItemGroup>
@@ -16,11 +20,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="..\..\VNC.png">
+      <None Include="..\LICENSE">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>
-      <None Include="..\VNC.Core\LICENSE">
+      <None Include="..\VNC.png">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>

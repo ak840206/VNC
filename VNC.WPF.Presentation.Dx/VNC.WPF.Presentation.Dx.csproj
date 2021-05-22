@@ -4,6 +4,13 @@
         <TargetFramework>net48</TargetFramework>
         <UseWPF>true</UseWPF>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <Authors>Christopher Rhodes</Authors>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageIcon>VNC.png</PackageIcon>
+        <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>wpf</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
@@ -23,6 +30,17 @@
     <ItemGroup>
         <!-- Workaround for https://github.com/dotnet/wpf/issues/2648#issuecomment-635674683 -->
         <Reference Include="System.Web" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+      <None Include="..\VNC.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>    
    
 </Project>

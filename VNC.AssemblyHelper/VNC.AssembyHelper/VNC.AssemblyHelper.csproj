@@ -6,10 +6,27 @@
       <UseWinForms>true</UseWinForms>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
       <RootNamespace>VNC.AssemblyHelper</RootNamespace>
+      <Authors>Christopher Rhodes</Authors>
+      <PackageLicenseFile>LICENSE</PackageLicenseFile>
+      <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
+      <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
+      <PackageIcon>VNC.png</PackageIcon>
+      <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="VNC.Core" Version="1.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+      <None Include="..\..\VNC.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
     <!--<ItemGroup>
