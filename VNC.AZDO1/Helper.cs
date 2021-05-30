@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -129,6 +130,22 @@ namespace VNC.AZDO1
                 // Try taking fewer to get beyond exceptions and bad requests
                 //return await httpClient.GetWorkItemsAsync(ids.Take(200), fields, result.AsOf).ConfigureAwait(false);
             }
+        }
+
+        public static string GetOrganizationNameFromUrl(string url)
+        {
+            // HACK(crhodes)
+            // Use regular expressions
+            // Just get Organization
+            // Url
+            // https://dev.azure.com/VNC-Development/VNC%20Agile/_workitems/edit/44/
+            // Organization
+            // VNC-Development
+
+            Regex regEx = new Regex(@"(https://dev.azure.com/)([^/]*)(/.*$)", RegexOptions.IgnoreCase);
+            Match match = regEx.Match(url);
+
+            return match.Success ? match.Groups[2].Value : "???";
         }
 
         private static string[] GetFieldList()
