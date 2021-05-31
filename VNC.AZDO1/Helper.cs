@@ -76,6 +76,40 @@ namespace VNC.AZDO1
             }
         }
 
+        public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeam(string organization, string teamProject)
+        {
+            var uri = new Uri($"https://dev.azure.com/{organization}");
+            var credentials = GetVssCredentials();
+
+            //var project = "VNC Agile";
+
+            var wiql = new Wiql()
+            {
+                // NOTE: Even if other columns are specified, only the ID & URL are available in the WorkItemReference
+                Query = "Select [Id] " +
+                    "From WorkItems " +
+                    "Where [System.TeamProject] == " + $"{ teamProject.WrapInSngQuotes() }"
+            };
+
+            using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
+            {
+                // execute the query to get the list of work items in the results
+                var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
+                var ids = result.WorkItems.Select(item => item.Id).ToArray();
+
+                // some error handling
+                if (ids.Length == 0)
+                {
+                    return Array.Empty<WorkItem>();
+                }
+
+                string[] fields = GetFieldList();
+
+                // Get WorkItem details (fields) for the ids found in query
+                return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+            }
+        }
+
         public static async Task<IList<WorkItem>> QueryWorkItemLinks(string organization, int id, int relatedLinkCount)
         {
             var uri = new Uri($"https://dev.azure.com/{organization}");
