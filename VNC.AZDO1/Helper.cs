@@ -76,7 +76,35 @@ namespace VNC.AZDO1
             }
         }
 
-        public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeam(string organization, string teamProject)
+        public static async Task<int> QueryRelatedBugsById(string organization, int id)
+        {
+            var uri = new Uri($"https://dev.azure.com/{organization}");
+            var credentials = GetVssCredentials();
+
+            //var project = "VNC Agile";
+
+            var wiql = new Wiql()
+            {
+                // NOTE: Even if other columns are specified, only the ID & URL are available in the WorkItemReference
+                Query = "Select [Id]"
+                    + " FROM WorkItemLinks"
+                    + $" WHERE ([Source].[System.Id] = {id} )"
+                    + $" AND ([Target].[System.WorkItemType] = 'Bug' )"
+                    + " MODE (MustContain)"
+            };
+
+            using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
+            {
+                // execute the query to get the list of work items in the results
+                var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
+
+                int relatedBugs = result.WorkItemRelations.Count();
+
+                return relatedBugs > 0 ? relatedBugs - 1 : 0;
+            }
+        }
+
+        public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeam(string organization, string teamProject, string state = "")
         {
             var uri = new Uri($"https://dev.azure.com/{organization}");
             var credentials = GetVssCredentials();
@@ -90,6 +118,51 @@ namespace VNC.AZDO1
                     "From WorkItems " +
                     "Where [System.TeamProject] == " + $"{ teamProject.WrapInSngQuotes() }"
             };
+
+            if (state.Equals("NotClosed"))
+            {
+                wiql.Query += $" AND [System.State] <> 'Closed'";
+            }
+
+            using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
+            {
+                // execute the query to get the list of work items in the results
+                var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
+                var ids = result.WorkItems.Select(item => item.Id).ToArray();
+
+                // some error handling
+                if (ids.Length == 0)
+                {
+                    return Array.Empty<WorkItem>();
+                }
+
+                string[] fields = GetFieldList();
+
+                // Get WorkItem details (fields) for the ids found in query
+                return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+            }
+        }
+
+        public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeamAndWorkItemType(string organization, string teamProject, string workItemType, string state = "")
+        {
+            var uri = new Uri($"https://dev.azure.com/{organization}");
+            var credentials = GetVssCredentials();
+
+            //var project = "VNC Agile";
+
+            var wiql = new Wiql()
+            {
+                // NOTE: Even if other columns are specified, only the ID & URL are available in the WorkItemReference
+                Query = "Select [Id] "
+                    + "From WorkItems"
+                    + $" WHERE [System.TeamProject] = '{ teamProject }'"
+                    + $"AND [System.WorkItemType] = '{workItemType}'"
+            };
+
+            if (state.Equals("NotClosed"))
+            {
+                wiql.Query += $" AND [System.State] <> 'Closed'";
+            }
 
             using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
             {
@@ -127,11 +200,11 @@ namespace VNC.AZDO1
             };
 
 
-            if (relatedLinkCount > 250)
-            {
-                MessageBox.Show($"Great than 250 Links ({relatedLinkCount}), removing Test Cases");
-                wiql.Query += " AND Target.[System.WorkItemType] <> 'Test Case'";
-            }
+            //if (relatedLinkCount > 250)
+            //{
+            //    MessageBox.Show($"Great than 250 Links ({relatedLinkCount}), removing Test Cases");
+            //    wiql.Query += " AND Target.[System.WorkItemType] <> 'Test Case'";
+            //}
 
             // NOTE(crhodes)
             // This works but still get BadRequest Exception when trying to get Test Cases back
@@ -159,10 +232,29 @@ namespace VNC.AZDO1
                 string[] fields = GetFieldList();
 
                 // Get WorkItem details (fields) for the ids found in query
-                return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+                //return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
                 // HACK(crhodes)
                 // Try taking fewer to get beyond exceptions and bad requests
-                //return await httpClient.GetWorkItemsAsync(ids.Take(200), fields, result.AsOf).ConfigureAwait(false);
+
+                if (ids.Length < 200)
+                {
+                    return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+                }
+                else
+                {
+                    List<WorkItem> allResults = new List<WorkItem>();
+                    List<WorkItem> partialResults;
+
+                    for (int i = 0; i < ids.Length; i++)
+                    {
+                        partialResults = await httpClient.GetWorkItemsAsync(ids.Skip(i).Take(200), fields, result.AsOf).ConfigureAwait(false);
+                        allResults.AddRange(partialResults);
+                        i += 200;
+                    }
+
+                    return allResults;
+
+                }
             }
         }
 
