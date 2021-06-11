@@ -69,6 +69,9 @@ namespace VNC.AZDO1
                     return Array.Empty<WorkItem>();
                 }
 
+                // TODO(crhodes)
+                // How can we efficiently get more details depending on WorkItem Type
+
                 string[] fields = GetFieldList();
 
                 // Get WorkItem details (fields) for the ids found in query
@@ -104,46 +107,49 @@ namespace VNC.AZDO1
             }
         }
 
-        public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeam(string organization, string teamProject, string state = "")
-        {
-            var uri = new Uri($"https://dev.azure.com/{organization}");
-            var credentials = GetVssCredentials();
+        //public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeam(string organization, string teamProject, 
+        //    string state = "")
+        //{
+        //    var uri = new Uri($"https://dev.azure.com/{organization}");
+        //    var credentials = GetVssCredentials();
 
-            //var project = "VNC Agile";
+        //    //var project = "VNC Agile";
 
-            var wiql = new Wiql()
-            {
-                // NOTE: Even if other columns are specified, only the ID & URL are available in the WorkItemReference
-                Query = "Select [Id] " +
-                    "From WorkItems " +
-                    "Where [System.TeamProject] == " + $"{ teamProject.WrapInSngQuotes() }"
-            };
+        //    var wiql = new Wiql()
+        //    {
+        //        // NOTE: Even if other columns are specified, only the ID & URL are available in the WorkItemReference
+        //        Query = "Select [Id] " +
+        //            "From WorkItems " +
+        //            "Where [System.TeamProject] == " + $"{ teamProject.WrapInSngQuotes() }"
+        //    };
 
-            if (state.Equals("NotClosed"))
-            {
-                wiql.Query += $" AND [System.State] <> 'Closed'";
-            }
+        //    if (state.Equals("NotClosed"))
+        //    {
+        //        wiql.Query += $" AND [System.State] <> 'Closed'";
+        //    }
 
-            using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
-            {
-                // execute the query to get the list of work items in the results
-                var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
-                var ids = result.WorkItems.Select(item => item.Id).ToArray();
+        //    using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
+        //    {
+        //        // execute the query to get the list of work items in the results
+        //        var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
+        //        var ids = result.WorkItems.Select(item => item.Id).ToArray();
 
-                // some error handling
-                if (ids.Length == 0)
-                {
-                    return Array.Empty<WorkItem>();
-                }
+        //        // some error handling
+        //        if (ids.Length == 0)
+        //        {
+        //            return Array.Empty<WorkItem>();
+        //        }
 
-                string[] fields = GetFieldList();
+        //        string[] fields = GetFieldList();
 
-                // Get WorkItem details (fields) for the ids found in query
-                return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
-            }
-        }
+        //        // Get WorkItem details (fields) for the ids found in query
+        //        return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+        //    }
+        //}
 
-        public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeamAndWorkItemType(string organization, string teamProject, string workItemType, string state = "")
+        public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeam(string organization, string teamProject,
+            string workItemType, string state = "",
+            string areaPath = "", string iterationPath = "")
         {
             var uri = new Uri($"https://dev.azure.com/{organization}");
             var credentials = GetVssCredentials();
@@ -156,12 +162,33 @@ namespace VNC.AZDO1
                 Query = "Select [Id] "
                     + "From WorkItems"
                     + $" WHERE [System.TeamProject] = '{ teamProject }'"
-                    + $"AND [System.WorkItemType] = '{workItemType}'"
             };
 
-            if (state.Equals("NotClosed"))
+            if (!string.IsNullOrEmpty(workItemType))
             {
-                wiql.Query += $" AND [System.State] <> 'Closed'";
+                wiql.Query += $"AND [System.WorkItemType] = '{workItemType}'";
+            }
+
+            if (! string.IsNullOrEmpty(state))
+            {
+                if (state.Equals("NotClosed"))
+                {
+                    wiql.Query += " AND [System.State] <> 'Closed'";
+                }
+                else
+                {
+                    wiql.Query += $" AND [System.State] <> '{state}'";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(areaPath))
+            {
+                wiql.Query += $" AND [System.AreaPath] = '{areaPath}'";
+            }
+
+            if (!string.IsNullOrEmpty(iterationPath))
+            {
+                wiql.Query += $" AND [System.IterationPath] = '{iterationPath}'";
             }
 
             using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
@@ -253,7 +280,6 @@ namespace VNC.AZDO1
                     }
 
                     return allResults;
-
                 }
             }
         }
@@ -274,19 +300,54 @@ namespace VNC.AZDO1
             return match.Success ? match.Groups[2].Value : "???";
         }
 
-        private static string[] GetFieldList()
+        private static string[] GetFieldList(string workItemType = "")
         {
             //build a list of the fields we want to see
-            return new[]
+            switch (workItemType)
             {
-                "System.Id", "System.TeamProject"
-                , "System.WorkItemType"
-                , "System.Title", "System.State"
-                , "System.CreatedDate", "System.CreatedBy"
-                , "System.ChangedDate", "System.ChangedBy"
-                , "System.RelatedLinkCount", "System.ExternalLinkCount"
-                , "System.RemoteLinkCount", "System.HyperLinkCount"
-            };
+                case "Bug":
+                    return new[]
+                    {
+                        "System.Id", "System.TeamProject"
+                        , "System.WorkItemType"
+                        , "System.Title", "System.State"
+                        , "System.CreatedDate", "System.CreatedBy"
+                        , "System.ChangedDate", "System.ChangedBy"
+                        , "System.RelatedLinkCount", "System.ExternalLinkCount"
+                        , "System.RemoteLinkCount", "System.HyperLinkCount"
+                        , "System.AreaPath", "System.IterationPath"
+                        , "Cardinal.Defect.FieldIssue"
+                    };
+
+                case "User Story":
+                    return new[]
+                    {
+                        "System.Id", "System.TeamProject"
+                        , "System.WorkItemType"
+                        , "System.Title", "System.State"
+                        , "System.CreatedDate", "System.CreatedBy"
+                        , "System.ChangedDate", "System.ChangedBy"
+                        , "System.RelatedLinkCount", "System.ExternalLinkCount"
+                        , "System.RemoteLinkCount", "System.HyperLinkCount"
+                        , "System.AreaPath", "System.IterationPath"
+                    };
+                    break;
+
+                default:
+                    return new[]
+                    {
+                        "System.Id", "System.TeamProject"
+                        , "System.WorkItemType"
+                        , "System.Title", "System.State"
+                        , "System.CreatedDate", "System.CreatedBy"
+                        , "System.ChangedDate", "System.ChangedBy"
+                        , "System.RelatedLinkCount", "System.ExternalLinkCount"
+                        , "System.RemoteLinkCount", "System.HyperLinkCount"
+                        , "System.AreaPath", "System.IterationPath"
+                    };
+
+            }
+
 
             //return new[]
             //{
