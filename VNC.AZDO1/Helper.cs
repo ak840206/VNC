@@ -206,7 +206,25 @@ namespace VNC.AZDO1
                 string[] fields = GetFieldList();
 
                 // Get WorkItem details (fields) for the ids found in query
-                return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+
+                if (ids.Length < 200)
+                {
+                    return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+                }
+                else
+                {
+                    List<WorkItem> allResults = new List<WorkItem>();
+                    List<WorkItem> partialResults;
+
+                    for (int i = 0; i < ids.Length; i++)
+                    {
+                        partialResults = await httpClient.GetWorkItemsAsync(ids.Skip(i).Take(200), fields, result.AsOf).ConfigureAwait(false);
+                        allResults.AddRange(partialResults);
+                        i += 200;
+                    }
+
+                    return allResults;
+                }
             }
         }
 
@@ -303,56 +321,74 @@ namespace VNC.AZDO1
         private static string[] GetFieldList(string workItemType = "")
         {
             //build a list of the fields we want to see
-            switch (workItemType)
-            {
-                case "Bug":
-                    return new[]
-                    {
-                        "System.Id", "System.TeamProject"
-                        , "System.WorkItemType"
-                        , "System.Title", "System.State"
-                        , "System.CreatedDate", "System.CreatedBy"
-                        , "System.ChangedDate", "System.ChangedBy"
-                        , "System.RelatedLinkCount", "System.ExternalLinkCount"
-                        , "System.RemoteLinkCount", "System.HyperLinkCount"
-                        , "System.AreaPath", "System.IterationPath"
-                        , "Cardinal.Defect.FieldIssue"
-                    };
-
-                case "User Story":
-                    return new[]
-                    {
-                        "System.Id", "System.TeamProject"
-                        , "System.WorkItemType"
-                        , "System.Title", "System.State"
-                        , "System.CreatedDate", "System.CreatedBy"
-                        , "System.ChangedDate", "System.ChangedBy"
-                        , "System.RelatedLinkCount", "System.ExternalLinkCount"
-                        , "System.RemoteLinkCount", "System.HyperLinkCount"
-                        , "System.AreaPath", "System.IterationPath"
-                    };
-                    break;
-
-                default:
-                    return new[]
-                    {
-                        "System.Id", "System.TeamProject"
-                        , "System.WorkItemType"
-                        , "System.Title", "System.State"
-                        , "System.CreatedDate", "System.CreatedBy"
-                        , "System.ChangedDate", "System.ChangedBy"
-                        , "System.RelatedLinkCount", "System.ExternalLinkCount"
-                        , "System.RemoteLinkCount", "System.HyperLinkCount"
-                        , "System.AreaPath", "System.IterationPath"
-                    };
-
-            }
-
-
-            //return new[]
+            //switch (workItemType)
             //{
-            //    "System.Id"
-            //};
+            //    case "Bug":
+            //        return new[]
+            //        {
+            //            "System.Id", "System.TeamProject"
+            //            , "System.WorkItemType"
+            //            , "System.Title", "System.State"
+            //            , "System.CreatedDate", "System.CreatedBy"
+            //            , "System.ChangedDate", "System.ChangedBy"
+            //            , "System.RelatedLinkCount", "System.ExternalLinkCount"
+            //            , "System.RemoteLinkCount", "System.HyperLinkCount"
+            //            , "System.AreaPath", "System.IterationPath"
+            //            , "Cardinal.Defect.FieldIssue"
+            //        };
+
+            //    case "User Story":
+            //        return new[]
+            //        {
+            //            "System.Id", "System.TeamProject"
+            //            , "System.WorkItemType"
+            //            , "System.Title", "System.State"
+            //            , "System.CreatedDate", "System.CreatedBy"
+            //            , "System.ChangedDate", "System.ChangedBy"
+            //            , "System.RelatedLinkCount", "System.ExternalLinkCount"
+            //            , "System.RemoteLinkCount", "System.HyperLinkCount"
+            //            , "System.AreaPath", "System.IterationPath"
+            //        };
+            //        break;
+
+            //    default:
+            //        return new[]
+            //        {
+            //            "System.Id", "System.TeamProject"
+            //            , "System.WorkItemType"
+            //            , "System.Title", "System.State"
+            //            , "System.CreatedDate", "System.CreatedBy"
+            //            , "System.ChangedDate", "System.ChangedBy"
+            //            , "System.RelatedLinkCount", "System.ExternalLinkCount"
+            //            , "System.RemoteLinkCount", "System.HyperLinkCount"
+            //            , "System.AreaPath", "System.IterationPath"
+            //            , "Cardinal.Defect.FieldIssue"
+            //            , "Microsoft.VSTS.CMMI.TaskType"
+            //        };
+
+            //}
+
+            // NOTE(crhodes)
+            // It is ok to ask for fields that don't exist for a WorkItem.
+            // They are populated if there is data in the field, otherwise ignored.
+            // No need to figure out which fields to ask for based on WorkItemType
+
+            return new[]
+            {
+                // These are common across all WIT
+                "System.Id", "System.TeamProject"
+                , "System.WorkItemType"
+                , "System.Title", "System.State"
+                , "System.CreatedDate", "System.CreatedBy"
+                , "System.ChangedDate", "System.ChangedBy"
+                , "System.RelatedLinkCount", "System.ExternalLinkCount"
+                , "System.RemoteLinkCount", "System.HyperLinkCount"
+                , "System.AreaPath", "System.IterationPath"
+                // This is for Bug
+                , "Cardinal.Defect.FieldIssue"
+                // This is for User Story
+                , "Microsoft.VSTS.CMMI.TaskType"
+            };
         }
     }
 }
