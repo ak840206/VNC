@@ -15,9 +15,9 @@ using Microsoft.VisualStudio.Services.WebApi;
 using VNC;
 using VNC.Core;
 
-namespace VNC.AZDO1
+namespace VNC.AZDO
 {
-    public class Helper
+    public static class Helper
     {
         private static VssCredentials _vssCredentials = null;
 
@@ -57,10 +57,10 @@ namespace VNC.AZDO1
                     "Where Id = " + id
             };
 
-            using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
+            using (var witHttpClient = new WorkItemTrackingHttpClient(uri, credentials))
             {
                 // execute the query to get the list of work items in the results
-                var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
+                var result = await witHttpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
                 var ids = result.WorkItems.Select(item => item.Id).ToArray();
 
                 // some error handling
@@ -75,7 +75,54 @@ namespace VNC.AZDO1
                 string[] fields = GetFieldList();
 
                 // Get WorkItem details (fields) for the ids found in query
-                return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+                return await witHttpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+            }
+        }
+
+        public static async Task<IList<WorkItem>> QueryWorkItemRevisionsById(string organization, int id)
+        {
+            var uri = new Uri($"https://dev.azure.com/{organization}");
+            var credentials = GetVssCredentials();
+
+            //var project = "VNC Agile";
+
+            var wiql = new Wiql()
+            {
+                // NOTE: Even if other columns are specified, only the ID & URL are available in the WorkItemReference
+                Query = "Select [Id] " +
+                    "From WorkItems " +
+                    "Where Id = " + id
+            };
+
+            using (var witHttpClient = new WorkItemTrackingHttpClient(uri, credentials))
+            {
+                // execute the query to get the list of work item revisions
+
+                var revisions = await witHttpClient.GetRevisionsAsync(id, expand: WorkItemExpand.All);
+
+                //var result = await witHttpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
+                
+                var ids = revisions.Select(item => item.Id);
+
+                // some error handling
+                if (ids.Count() == 0)
+                {
+                    return Array.Empty<WorkItem>();
+                }
+
+                // TODO(crhodes)
+                // How can we efficiently get more details depending on WorkItem Type
+
+                string[] fields = GetFieldList();
+
+                //Get WorkItem details(fields) for the ids found in query
+                //return await witHttpClient.GetWorkItemsAsync(ids, fields, null, null, null, null);
+
+                //var foo = await witHttpClient.GetWorkItemsAsync(ids, fields).ConfigureAwait(false);
+                ////return await witHttpClient.GetWorkItemsAsync((IEnumerable<int>)ids, fields).ConfigureAwait(false);
+
+                //return foo;
+                return revisions;
             }
         }
 
@@ -96,56 +143,16 @@ namespace VNC.AZDO1
                     + " MODE (MustContain)"
             };
 
-            using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
+            using (var witHttpClient = new WorkItemTrackingHttpClient(uri, credentials))
             {
                 // execute the query to get the list of work items in the results
-                var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
+                var result = await witHttpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
 
                 int relatedBugs = result.WorkItemRelations.Count();
 
                 return relatedBugs > 0 ? relatedBugs - 1 : 0;
             }
         }
-
-        //public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeam(string organization, string teamProject, 
-        //    string state = "")
-        //{
-        //    var uri = new Uri($"https://dev.azure.com/{organization}");
-        //    var credentials = GetVssCredentials();
-
-        //    //var project = "VNC Agile";
-
-        //    var wiql = new Wiql()
-        //    {
-        //        // NOTE: Even if other columns are specified, only the ID & URL are available in the WorkItemReference
-        //        Query = "Select [Id] " +
-        //            "From WorkItems " +
-        //            "Where [System.TeamProject] == " + $"{ teamProject.WrapInSngQuotes() }"
-        //    };
-
-        //    if (state.Equals("NotClosed"))
-        //    {
-        //        wiql.Query += $" AND [System.State] <> 'Closed'";
-        //    }
-
-        //    using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
-        //    {
-        //        // execute the query to get the list of work items in the results
-        //        var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
-        //        var ids = result.WorkItems.Select(item => item.Id).ToArray();
-
-        //        // some error handling
-        //        if (ids.Length == 0)
-        //        {
-        //            return Array.Empty<WorkItem>();
-        //        }
-
-        //        string[] fields = GetFieldList();
-
-        //        // Get WorkItem details (fields) for the ids found in query
-        //        return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
-        //    }
-        //}
 
         public static async Task<IList<WorkItem>> QueryWorkItemInfoByTeam(string organization, string teamProject,
             string workItemType, string state = "",
@@ -191,10 +198,10 @@ namespace VNC.AZDO1
                 wiql.Query += $" AND [System.IterationPath] = '{iterationPath}'";
             }
 
-            using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
+            using (var witHttpClient = new WorkItemTrackingHttpClient(uri, credentials))
             {
                 // execute the query to get the list of work items in the results
-                var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
+                var result = await witHttpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
                 var ids = result.WorkItems.Select(item => item.Id).ToArray();
 
                 // some error handling
@@ -209,7 +216,7 @@ namespace VNC.AZDO1
 
                 if (ids.Length < 200)
                 {
-                    return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+                    return await witHttpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
                 }
                 else
                 {
@@ -218,7 +225,7 @@ namespace VNC.AZDO1
 
                     for (int i = 0; i < ids.Length; i++)
                     {
-                        partialResults = await httpClient.GetWorkItemsAsync(ids.Skip(i).Take(200), fields, result.AsOf).ConfigureAwait(false);
+                        partialResults = await witHttpClient.GetWorkItemsAsync(ids.Skip(i).Take(200), fields, result.AsOf).ConfigureAwait(false);
                         allResults.AddRange(partialResults);
                         i += 200;
                     }
@@ -257,10 +264,10 @@ namespace VNC.AZDO1
 
             // " AND Target.[System.WorkItemType] = 'Test Case'"
 
-            using (var httpClient = new WorkItemTrackingHttpClient(uri, credentials))
+            using (var witHttpClient = new WorkItemTrackingHttpClient(uri, credentials))
             {
                 // execute the query to get the list of work items in the results
-                var result = await httpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
+                var result = await witHttpClient.QueryByWiqlAsync(wiql).ConfigureAwait(false);
                 var ids = result.WorkItemRelations.Select(item => item.Target.Id).Distinct().ToArray();
 
                 // some error handling
@@ -283,7 +290,7 @@ namespace VNC.AZDO1
 
                 if (ids.Length < 200)
                 {
-                    return await httpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
+                    return await witHttpClient.GetWorkItemsAsync(ids, fields, result.AsOf).ConfigureAwait(false);
                 }
                 else
                 {
@@ -292,7 +299,7 @@ namespace VNC.AZDO1
 
                     for (int i = 0; i < ids.Length; i++)
                     {
-                        partialResults = await httpClient.GetWorkItemsAsync(ids.Skip(i).Take(200), fields, result.AsOf).ConfigureAwait(false);
+                        partialResults = await witHttpClient.GetWorkItemsAsync(ids.Skip(i).Take(200), fields, result.AsOf).ConfigureAwait(false);
                         allResults.AddRange(partialResults);
                         i += 200;
                     }
