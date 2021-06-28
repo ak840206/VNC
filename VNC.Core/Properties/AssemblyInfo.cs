@@ -76,7 +76,7 @@ using System.Windows;
 //  Version     Date        By
 //  1.0.0.0     01/09/2014   Christopher Rhodes
 //      Initial Version
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
 
 // AssemblyInformationalVersion History
 //
@@ -84,4 +84,4 @@ using System.Windows;
 //  1.0.0.0   mm/dd/yyyy    Developer
 //      Initial Version
 //[assembly: AssemblyInformationalVersion("1.0.0.0-2020.11.30A")]
-[assembly: AssemblyInformationalVersion("1.0.0")]
+[assembly: AssemblyInformationalVersion("1.1.0")]

@@ -3,9 +3,9 @@ using System.Windows.Input;
 
 using Prism.Commands;
 using Prism.Events;
+using Prism.Services.Dialogs;
 
 using VNC.Core.Events;
-using VNC.Core.Services;
 
 namespace VNC.Core.Mvvm
 {
@@ -14,16 +14,12 @@ namespace VNC.Core.Mvvm
         private string _displayMember;
         private string _detailViewModelName;
 
-        // TODO(crhodes)
-        // Decide if we will every need the messageDialogService.
-        // This was not in Claudius.
-
         public NavigationItemViewModel(
             int id,
             string displayMember,
             string detailViewModelName,
             IEventAggregator eventAggregator,
-            IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
+            IDialogService dialogService) : base(eventAggregator, dialogService)
         {
 #if LOGGING
             Int64 startTicks = Log.CONSTRUCTOR($"Enter id:({id}) displayMember:({displayMember}) detailViewModelName:({detailViewModelName})", Common.LOG_CATEGORY);

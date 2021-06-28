@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 using Prism.Events;
+using Prism.Services.Dialogs;
 
 using VNC.Core.Events;
 using VNC.Core.Services;
@@ -12,18 +13,18 @@ namespace VNC.Core.Mvvm
     public abstract class EventViewModelBase : ViewModelBase
     {
         public readonly IEventAggregator EventAggregator;
-        public readonly IMessageDialogService MessageDialogService;
+        public readonly IDialogService DialogService;
 
          public EventViewModelBase(
             IEventAggregator eventAggregator,
-            IMessageDialogService messageDialogService)
+            IDialogService dialogService)
         {
 #if LOGGING
             long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
 #endif
 
             EventAggregator = eventAggregator;
-            MessageDialogService = messageDialogService;
+            DialogService = dialogService;
 
 #if LOGGING
             Log.CONSTRUCTOR("Exit", Common.LOG_CATEGORY, startTicks);
@@ -43,7 +44,7 @@ namespace VNC.Core.Mvvm
             {
                 items.Add(new NavigationItemViewModel(args.Id, args.DisplayMember,
                     args.ViewModelName,
-                    EventAggregator, MessageDialogService));
+                    EventAggregator, DialogService));
             }
             else
             {

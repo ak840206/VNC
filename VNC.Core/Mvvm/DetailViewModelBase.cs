@@ -2,10 +2,12 @@
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 using Prism.Commands;
 using Prism.Events;
+using Prism.Services.Dialogs;
 
 using VNC.Core.Events;
 using VNC.Core.Services;
@@ -27,7 +29,7 @@ namespace VNC.Core.Mvvm
 
         public DetailViewModelBase(
             IEventAggregator eventAggregator,
-            IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
+            IDialogService dialogService) : base(eventAggregator, dialogService)
         {
 #if LOGGING
             long startTicks = Log.CONSTRUCTOR("Enter", Common.LOG_CATEGORY);
@@ -69,10 +71,10 @@ namespace VNC.Core.Mvvm
 
             if (HasChanges)
             {
-                var result = MessageDialogService.ShowOkCancelDialog(
-                    "You've made changes.  Close this item?", "Question");
+                var result = MessageBox.Show(
+                    "You've made changes.  Close this item?", "Question",MessageBoxButton.OKCancel);
 
-                if (result == MessageDialogResult.Cancel)
+                if (result == MessageBoxResult.Cancel)
                 {
                     return;
                 }
@@ -206,18 +208,18 @@ namespace VNC.Core.Mvvm
 
                 if (databaseValues == null)
                 {
-                    MessageDialogService.ShowInfoDialog(
-                        "The entity has been deleted by another user.  Cannot continue.");
+                    MessageBox.Show(
+                        "The entity has been deleted by another user.  Cannot continue.", "Error, Aborting");
                     PublishAfterDetailDeletedEvent(Id);
                     return;
                 }
 
-                var result = MessageDialogService.ShowOkCancelDialog(
+                var result = MessageBox.Show(
                     "The entity has been changed by someone else." +
                     " Click OK to save your changes anyway; Click Cancel" +
-                    " to reload the entity from the database.", "Question");
+                    " to reload the entity from the database.", "Question", MessageBoxButton.OKCancel);
 
-                if (result == MessageDialogResult.OK)   // Client Wins
+                if (result == MessageBoxResult.OK)   // Client Wins
                 {
                     // Update the original values with database-values
                     var entry = ex.Entries.Single();
