@@ -15,7 +15,7 @@
         <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
         <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
         <PackageReference Include="Unity.Interception" Version="5.11.1" />
-        <PackageReference Include="VNC.Core" Version="1.0.0" />
+        <PackageReference Include="VNC.Core" Version="1.1.0" />
     </ItemGroup>
 
     <!--<ItemGroup>

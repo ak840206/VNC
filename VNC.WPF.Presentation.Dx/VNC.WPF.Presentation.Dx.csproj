@@ -20,11 +20,11 @@
         <PackageReference Include="DevExpress.Wpf.Navigation" Version="19.2.6" />
         <PackageReference Include="DevExpress.Wpf.Themes.MetropolisDark" Version="19.2.6" />
         <PackageReference Include="DevExpress.Wpf.Themes.MetropolisLight" Version="19.2.6" />
-        <PackageReference Include="VNC.Core" Version="1.0.0" />
+        <PackageReference Include="VNC.Core" Version="1.1.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
+      <!--<ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />-->
     </ItemGroup>
 
     <ItemGroup>

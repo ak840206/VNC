@@ -1,11 +1,10 @@
 ﻿using System.Collections.ObjectModel;
-using System.Net;
 using System.Net.Http;
 
 using Prism.Events;
+using Prism.Services.Dialogs;
 
 using VNC.Core.Mvvm;
-using VNC.Core.Services;
 
 namespace VNC.HttpHelper
 {
@@ -13,7 +12,7 @@ namespace VNC.HttpHelper
     {
         public HTTPExchangeBase(
             IEventAggregator eventAggregator,
-            IMessageDialogService messageDialogService) : base(eventAggregator, messageDialogService)
+            IDialogService dialogService) : base(eventAggregator, dialogService)
         {
             InstanceCountVM++;
         }

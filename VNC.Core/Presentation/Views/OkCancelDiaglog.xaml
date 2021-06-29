@@ -23,10 +23,10 @@
         
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
 
-            <Button Command="{Binding CloseDialogCommand}" CommandParameter="false" Content="Cancel"
+            <Button Command="{Binding CloseDialogCommand}" CommandParameter="false" Content="{Binding CancelContent}"
                 Width="75" Height="25" HorizontalAlignment="Right" Margin="0,0,0,0" Grid.Row="1" IsDefault="False" />
             
-            <Button Command="{Binding CloseDialogCommand}" CommandParameter="true" Content="OK" 
+            <Button Command="{Binding CloseDialogCommand}" CommandParameter="true" Content="{Binding OKContent}" 
                 Width="100" Height="25" HorizontalAlignment="Right" Margin="10,0,0,0" Grid.Row="1" IsDefault="True" />
 
         </StackPanel>

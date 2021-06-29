@@ -58,6 +58,7 @@ namespace VNC.Core.Presentation.ViewModels
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
             Message = parameters.GetValue<string>("message");
+            Title = parameters.GetValue<string>("title");
         }
     }
 }
