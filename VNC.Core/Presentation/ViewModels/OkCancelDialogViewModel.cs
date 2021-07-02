@@ -25,7 +25,7 @@ namespace VNC.Core.Presentation.ViewModels
         }
 
         public DelegateCommand<string> CloseDialogCommand =>
-                                                    _closeDialogCommand ?? (_closeDialogCommand = new DelegateCommand<string>(CloseDialog));
+               _closeDialogCommand ?? (_closeDialogCommand = new DelegateCommand<string>(CloseDialog));
 
         public string Message
         {

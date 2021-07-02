@@ -20,14 +20,18 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="{Binding Message}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" TextWrapping="Wrap" />
-        
+
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
 
-            <Button Command="{Binding CloseDialogCommand}" CommandParameter="false" Content="{Binding CancelContent}"
-                Width="75" Height="25" HorizontalAlignment="Right" Margin="0,0,0,0" Grid.Row="1" IsDefault="False" />
-            
-            <Button Command="{Binding CloseDialogCommand}" CommandParameter="true" Content="{Binding OKContent}" 
-                Width="100" Height="25" HorizontalAlignment="Right" Margin="10,0,0,0" Grid.Row="1" IsDefault="True" />
+            <Button 
+                Command="{Binding CloseDialogCommand}" CommandParameter="false" 
+                Content="{Binding CancelContent, FallbackValue='Cancel'}"                    
+                Width="75" Height="25" Margin="0,0,0,0" IsDefault="False" />
+
+            <Button
+                Command="{Binding CloseDialogCommand}" CommandParameter="true" 
+                Content="{Binding OKContent, FallbackValue='OK'}"                     
+                Width="100" Height="25" Margin="10,0,0,0" IsDefault="True" />
 
         </StackPanel>
     </Grid>
