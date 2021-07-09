@@ -1,14 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+      <TargetFrameworks>net5.0-windows</TargetFrameworks>
+      <!--<TargetFrameworks>net4.8</TargetFrameworks>-->
       <OutputType>WinExe</OutputType>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
       <UseWPF>true</UseWPF>
   </PropertyGroup>
-    
   <ItemGroup>
-    <PackageReference Include="EnterpriseLibrary.Logging.Database" Version="6.0.1304" />
-    <PackageReference Include="VNC.Logging" Version="1.0.0" />
+    <ProjectReference Include="..\VNC.Logging\VNC.Logging.csproj" />
   </ItemGroup>
  
 </Project>
