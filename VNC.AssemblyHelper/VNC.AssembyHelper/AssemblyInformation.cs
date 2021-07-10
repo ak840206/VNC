@@ -9,7 +9,6 @@ namespace VNC.AssemblyHelper
     /// </summary>
     public class AssemblyInformation
     {
-
         #region "Enums, Fields, Properties, Structures"
 
         private Assembly _Assembly;
@@ -279,8 +278,6 @@ namespace VNC.AssemblyHelper
         }
         #endregion
 
-
-
         #region "Constructors, Initialization, and Load"
 
         /// <summary>
@@ -438,7 +435,6 @@ namespace VNC.AssemblyHelper
 
 
         #endregion
-
 
     }
 }

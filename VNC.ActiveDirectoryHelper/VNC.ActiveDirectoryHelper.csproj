@@ -1,22 +1,29 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+      <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
       <UseWPF>true</UseWPF>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+      <AssemblyName>VNC.ActiveDirectoryHelper</AssemblyName>
+      <RootNamespace>VNC.ActiveDirectoryHelper</RootNamespace>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+      <PackageVersion>1.1.0</PackageVersion>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
-      <PackageIcon>VNC.png</PackageIcon>
+      <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
       <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
       <RepositoryType>Git</RepositoryType>
-      <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
+      <PackageTags>AD</PackageTags>
+      <PackageIcon>VNC.png</PackageIcon>
       <Authors>Christopher Rhodes</Authors>
+      <Copyright>Copyright © VNC 2018-2021</Copyright>
+      <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+      <Description>Active Directory Helpers</Description>
   </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="System.DirectoryServices" Version="5.0.0" />
         <PackageReference Include="System.DirectoryServices.AccountManagement" Version="5.0.0" />
-        <PackageReference Include="VNC.Core" Version="1.0.0" />
+        <PackageReference Include="VNC.Core" Version="1.1.0" />
     </ItemGroup>
 
     <ItemGroup>

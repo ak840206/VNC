@@ -1,25 +1,32 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net48</TargetFramework>
+        <TargetFrameworks>net5.0-windows;net48</TargetFrameworks>
         <UseWPF>true</UseWPF>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-        <Authors>Christopher Rhodes</Authors>
+        <AssemblyName>VNC.WPF.Presentation.Dx</AssemblyName>
+        <RootNamespace>VNC.WPF.Presentation.Dx</RootNamespace>
+        <!--<SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>-->
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>1.1.0</PackageVersion>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <PackageIcon>VNC.png</PackageIcon>
-        <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
         <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>wpf</PackageTags>
+        <PackageIcon>VNC.png</PackageIcon>
+        <Authors>Christopher Rhodes</Authors>
+        <Copyright>Copyright © VNC 2018-2021</Copyright>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>WPF Helpers</Description>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DevExpress.Wpf.Core" Version="19.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Grid" Version="19.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Layout" Version="19.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Navigation" Version="19.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisDark" Version="19.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisLight" Version="19.2.6" />
+        <PackageReference Include="DevExpress.Wpf.Grid" Version="21.1.4" />
+        <PackageReference Include="DevExpress.Wpf.LayoutControl" Version="21.1.4" />
+        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisDark" Version="21.1.4" />
+        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisLight" Version="21.1.4" />
         <PackageReference Include="VNC.Core" Version="1.1.0" />
     </ItemGroup>
 
@@ -46,10 +53,3 @@
     </ItemGroup>    
    
 </Project>
-
-    <!-- <Reference Include="DevExpress.Xpf.Core.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
-    <!-- <Reference Include="DevExpress.Xpf.Docking.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
-    <!-- <Reference Include="DevExpress.Xpf.LayoutControl.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
-    <!-- <Reference Include="DevExpress.Xpf.Themes.MetropolisDark.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
-    <!-- <Reference Include="DevExpress.Xpf.Themes.MetropolisLight.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" /> -->
-

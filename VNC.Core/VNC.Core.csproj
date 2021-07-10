@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
+        <TargetFrameworks>net5.0-windows;net48</TargetFrameworks>
         <UseWPF>true</UseWPF>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AssemblyName>VNC.Core</AssemblyName>
@@ -49,9 +49,9 @@
     <ItemGroup>
         <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
         <PackageReference Include="EntityFramework" Version="6.4.4" />
-        <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
+        <PackageReference Include="Prism.Wpf" Version="8.1.97" />
         <PackageReference Include="Unity.Interception" Version="5.11.1" />
-        <PackageReference Include="VNC.Logging" Version="1.0.1" />
+        <PackageReference Include="VNC.Logging" Version="1.1.0" />
     </ItemGroup>
 
     <ItemGroup>
