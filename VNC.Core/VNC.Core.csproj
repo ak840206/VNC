@@ -22,30 +22,11 @@
         <Description>Base class for a variety of needs</Description>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DefineConstants>TRACE;LOGGING</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <DefineConstants>TRACE;LOGGING</DefineConstants>
-    </PropertyGroup>
-
     <ItemGroup>
       <None Remove="Execute-PostBuild.ps1" />
       <None Remove="Execute-PreBuild.ps1" />
-      <None Include="..\VNC.png">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-      </None>
     </ItemGroup>
-
-    <ItemGroup>
-      <None Include="..\LICENSE">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-      </None>
-    </ItemGroup>
-    
+   
     <ItemGroup>
         <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
         <PackageReference Include="EntityFramework" Version="6.4.4" />
@@ -69,11 +50,24 @@
       </None>
     </ItemGroup>
 
-    <!--<ItemGroup>
-      <Page Update="Presentation\Views\OkCancelDiaglog.xaml">
-        <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-        <SubType>Designer</SubType>
-      </Page>
-    </ItemGroup>-->
+    <ItemGroup>
+        <None Include="..\LICENSE">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+
+        <None Include="..\VNC.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>TRACE;LOGGING</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;LOGGING</DefineConstants>
+    </PropertyGroup>
 
 </Project>

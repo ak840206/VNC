@@ -43,11 +43,16 @@
         <Reference Include="System.Web" />
     </ItemGroup>
     
+    <!--<ItemGroup>
+      <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj" />
+    </ItemGroup>-->    
+    
     <ItemGroup>
       <None Include="..\..\LICENSE">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>
+        
       <None Include="..\..\VNC.png">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
@@ -62,8 +67,4 @@
         <DefineConstants>TRACE;LOGGING</DefineConstants>
     </PropertyGroup>
 
-    <!--<ItemGroup>
-      <ProjectReference Include="..\VNC.Core\VNC.CoreNF.csproj" />
-    </ItemGroup>-->
-   
 </Project>

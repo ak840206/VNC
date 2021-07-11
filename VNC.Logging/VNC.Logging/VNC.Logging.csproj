@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
+        <TargetFrameworks>net5.0-windows;net48</TargetFrameworks>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AssemblyName>VNC.Logging</AssemblyName>
         <RootNamespace>VNC.Logging</RootNamespace>
@@ -45,14 +45,6 @@
         <Generator>TextTemplatingFileGenerator</Generator>
         <LastGenOutput>LogNamed.cs</LastGenOutput>
       </None>
-      <None Include="..\..\LICENSE">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-      </None>
-      <None Include="..\..\VNC.png">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-      </None>
     </ItemGroup>
 
     <ItemGroup>
@@ -71,4 +63,17 @@
         <DependentUpon>LogNamed.tt</DependentUpon>
       </Compile>
     </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+
+        <None Include="..\..\VNC.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>   
+    
 </Project>

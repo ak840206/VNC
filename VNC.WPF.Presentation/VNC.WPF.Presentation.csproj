@@ -30,17 +30,26 @@
       <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
     </ItemGroup>-->
 
+        <ItemGroup>
+      <None Include="..\LICENSE">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
+    </ItemGroup>    
+    
     <ItemGroup>
       <None Include="..\VNC.png">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>
     </ItemGroup>
-    <ItemGroup>
-      <None Include="..\LICENSE">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-      </None>
-    </ItemGroup>    
-   
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>TRACE;LOGGING</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;LOGGING</DefineConstants>
+    </PropertyGroup>
+
 </Project>

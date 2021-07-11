@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-      <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
+      <TargetFrameworks>net5.0-windows;net48</TargetFrameworks>
       <UseWPF>true</UseWPF>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
       <AssemblyName>VNC.ActiveDirectoryHelper</AssemblyName>
       <RootNamespace>VNC.ActiveDirectoryHelper</RootNamespace>
+      <!--<SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>-->
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
       <PackageVersion>1.1.0</PackageVersion>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -26,11 +28,16 @@
         <PackageReference Include="VNC.Core" Version="1.1.0" />
     </ItemGroup>
 
+    <!--<ItemGroup>
+      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
+    </ItemGroup>-->
+    
     <ItemGroup>
       <None Include="..\LICENSE">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>
+        
       <None Include="..\VNC.png">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
@@ -44,9 +51,5 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <DefineConstants>TRACE;LOGGING</DefineConstants>
     </PropertyGroup>
-    
-    <!--<ItemGroup>
-      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
-    </ItemGroup>-->
     
 </Project>

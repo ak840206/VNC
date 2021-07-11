@@ -28,24 +28,33 @@
         <PackageReference Include="VNC.Core" Version="1.1.0" />
     </ItemGroup>
 
-    <!--<ItemGroup>
-      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
-    </ItemGroup>-->
-
     <ItemGroup>
         <!-- Workaround for https://github.com/dotnet/wpf/issues/2648#issuecomment-635674683 -->
         <Reference Include="System.Web" />
     </ItemGroup>
 
+    <!--<ItemGroup>
+      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
+    </ItemGroup>-->
+
     <ItemGroup>
-      <None Include="..\LICENSE">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-      </None>
-      <None Include="..\VNC.png">
-        <Pack>True</Pack>
-        <PackagePath></PackagePath>
-      </None>
+        <None Include="..\LICENSE">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+
+        <None Include="..\VNC.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
     </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DefineConstants>TRACE;LOGGING</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DefineConstants>TRACE;LOGGING</DefineConstants>
+    </PropertyGroup>
     
 </Project>
