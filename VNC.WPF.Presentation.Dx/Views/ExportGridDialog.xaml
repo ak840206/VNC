@@ -40,7 +40,7 @@
             
             <Label Content="Export to:" VerticalAlignment="Center" />
             
-            <dxe:TextEdit Text="{Binding FileNameAndPath}" />
+            <dxe:TextEdit Text="{Binding OutputFileNameAndPath}" />
 
             <dxlc:LayoutItem Label="Select FileFormats"
              	LabelPosition="Top">

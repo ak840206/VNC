@@ -4,7 +4,11 @@ namespace VNC.CodeAnalysis
 {
     public class WalkerPattern
     {
-        public WalkerPattern(string controlHeader, string buttonContent, string commandParameter, string regExLabel)
+        public WalkerPattern(
+            string controlHeader, 
+            string buttonContent, 
+            string commandParameter, 
+            string regExLabel)
         {
             ControlHeader = controlHeader;
             ButtonContent = buttonContent;
@@ -14,7 +18,13 @@ namespace VNC.CodeAnalysis
             RegEx = ".*";
         }
 
-        public WalkerPattern(string controlHeader, string buttonContent, string commandParameter, string regExLabel, bool useRegEx, string regEx)
+        public WalkerPattern(
+            string controlHeader, 
+            string buttonContent, 
+            string commandParameter, 
+            string regExLabel, 
+            bool useRegEx, 
+            string regEx)
         {
             ControlHeader = controlHeader;
             ButtonContent = buttonContent;

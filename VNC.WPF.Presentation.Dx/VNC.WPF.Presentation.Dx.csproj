@@ -23,10 +23,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="DevExpress.RichEdit.Export" Version="21.1.4" />
+        <PackageReference Include="DevExpress.Wpf.Core" Version="21.1.4" />
+        <PackageReference Include="DevExpress.Wpf.Core.Extensions" Version="21.1.4" />
         <PackageReference Include="DevExpress.Wpf.Grid" Version="21.1.4" />
         <PackageReference Include="DevExpress.Wpf.LayoutControl" Version="21.1.4" />
-        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisDark" Version="21.1.4" />
-        <PackageReference Include="DevExpress.Wpf.Themes.MetropolisLight" Version="21.1.4" />
+
         <PackageReference Include="VNC.Core" Version="1.1.0" />
     </ItemGroup>
 

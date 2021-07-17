@@ -42,7 +42,7 @@ namespace VNC.HttpHelper
             RequestResponseInfo exchange = new RequestResponseInfo();
 
             exchange.Uri = requestUri;
-            exchange.RequestHeadersX.AddRange(client.DefaultRequestHeaders);
+            exchange.RequestHeaders.AddRange(client.DefaultRequestHeaders);
 
             return exchange;
         }
@@ -56,7 +56,7 @@ namespace VNC.HttpHelper
             exchange.ResponseStatusCode = statusCode2;
 
             exchange.ResponseContentHeaders.AddRange(response.Content.Headers);
-            exchange.ResponseHeadersX.AddRange(response.Headers);
+            exchange.ResponseHeaders.AddRange(response.Headers);
 
             RequestResponseExchange.Add(exchange);
         }

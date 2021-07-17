@@ -15,7 +15,7 @@ namespace VNC.HttpHelper
             set => _uri = value;
         }
 
-        public ObservableCollection<KeyValuePair<string, IEnumerable<string>>> RequestHeadersX { get; set; }
+        public ObservableCollection<KeyValuePair<string, IEnumerable<string>>> RequestHeaders { get; set; }
             = new ObservableCollection<KeyValuePair<string, IEnumerable<string>>>();
 
         private HttpResponseMessage _Response;
@@ -34,7 +34,7 @@ namespace VNC.HttpHelper
             set => _ResponseStatusCode = value;
         }
 
-        public ObservableCollection<KeyValuePair<string, IEnumerable<string>>> ResponseHeadersX { get; set; }
+        public ObservableCollection<KeyValuePair<string, IEnumerable<string>>> ResponseHeaders { get; set; }
             = new ObservableCollection<KeyValuePair<string, IEnumerable<string>>>();
 
         public ObservableCollection<KeyValuePair<string, IEnumerable<string>>> ResponseContentHeaders { get; set; }

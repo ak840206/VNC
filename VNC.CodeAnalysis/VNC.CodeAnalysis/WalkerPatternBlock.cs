@@ -4,14 +4,24 @@ namespace VNC.CodeAnalysis
 {
     public class WalkerPatternBlock : WalkerPattern
     {
-        public WalkerPatternBlock(string controlHeader, string buttonContent, string commandParameter, string regExLabel,
+        public WalkerPatternBlock(
+            string controlHeader, 
+            string buttonContent, 
+            string commandParameter,
+            string regExLabel,
             string displayBlockLabel)
             : base(controlHeader, buttonContent, commandParameter, regExLabel)
         {
             DisplayBlockLabel = displayBlockLabel;
         }
 
-        public WalkerPatternBlock(string controlHeader, string buttonContent, string commandParameter, string regExLabel, bool useRegEx, string regEx,
+        public WalkerPatternBlock(
+            string controlHeader, 
+            string buttonContent, 
+            string commandParameter, 
+            string regExLabel, 
+            bool useRegEx, 
+            string regEx,
             string displayBlockLabel)
             : base(controlHeader, buttonContent, commandParameter, regExLabel, useRegEx, regEx)
         {

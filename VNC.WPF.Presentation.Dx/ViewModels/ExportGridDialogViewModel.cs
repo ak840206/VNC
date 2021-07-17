@@ -11,8 +11,7 @@ using Prism.Services.Dialogs;
 namespace VNC.Core.Presentation.ViewModels
 {
     public class ExportGridDialogViewModel : BindableBase, IDialogAware
-    {
-        
+    {     
 
         private DelegateCommand<string> _closeDialogCommand;
         public DelegateCommand<string> CloseDialogCommand =>
@@ -48,15 +47,15 @@ namespace VNC.Core.Presentation.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private string _fileNameAndPath = @"C:\temp\GridExport";
-        public string FileNameAndPath
+        private string _outputFileNameAndPath = @"C:\temp\GridExport";
+        public string OutputFileNameAndPath
         {
-            get => _fileNameAndPath;
+            get => _outputFileNameAndPath;
             set
             {
-                if (_fileNameAndPath == value)
+                if (_outputFileNameAndPath == value)
                     return;
-                _fileNameAndPath = value;
+                _outputFileNameAndPath = value;
                 RaisePropertyChanged();
             }
         }
@@ -88,20 +87,22 @@ namespace VNC.Core.Presentation.ViewModels
                 {
                     switch (fileFormat)
                     {
+                        // TODO(crhodes)
+                        // Figure out package dependencies to make this work.
                         case ".docx":
-                            _activeGridControl.View.ExportToDocx($"{FileNameAndPath}{fileFormat}");
+                            _activeGridControl.View.ExportToDocx($"{OutputFileNameAndPath}{fileFormat}");
                             break;
 
                         case ".html":
-                            _activeGridControl.View.ExportToHtml($"{FileNameAndPath}{fileFormat}");
+                            _activeGridControl.View.ExportToHtml($"{OutputFileNameAndPath}{fileFormat}");
                             break;
 
                         case ".pdf":
-                            _activeGridControl.View.ExportToPdf($"{FileNameAndPath}{fileFormat}");
+                            _activeGridControl.View.ExportToPdf($"{OutputFileNameAndPath}{fileFormat}");
                             break;
 
                         case ".xlsx":
-                            _activeGridControl.View.ExportToXlsx($"{FileNameAndPath}{fileFormat}");
+                            _activeGridControl.View.ExportToXlsx($"{OutputFileNameAndPath}{fileFormat}");
                             break;
                     }
                 }
@@ -129,9 +130,9 @@ namespace VNC.Core.Presentation.ViewModels
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
-            if (parameters.ContainsKey("filenameandpath"))
+            if (parameters.ContainsKey("outputfilenameandpath"))
             {
-                FileNameAndPath = parameters.GetValue<string>("filenameandpath");
+                OutputFileNameAndPath = parameters.GetValue<string>("outputfilenameandpath");
             }
 
             if (parameters.ContainsKey("gridcontrol"))
