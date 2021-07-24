@@ -277,28 +277,28 @@ namespace VNC.Core.DomainServices
         //        public void Update(TEntity entity)
         //        {
         //#if LOGGING
-        //            Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_APPNAME);
+        //            Int64 startTicks = Log.PERSISTENCE("Enter", Common.LOG_CATEGORY);
         //#endif
         //            _dbSet.Attach(entity);
         //            Context.Entry(entity).State = EntityState.Modified;
         //            Context.SaveChanges();
 
         //#if LOGGING
-        //            Log.PERSISTENCE("Exit", Common.LOG_APPNAME, startTicks);
+        //            Log.PERSISTENCE("Exit", Common.LOG_CATEGORY, startTicks);
         //#endif
         //        }
 
         //        public async Task UpdateAsync(TEntity entity)
         //        {
         //#if LOGGING
-        //            Int64 startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_APPNAME);
+        //            Int64 startTicks = Log.PERSISTENCE("(GenericEFRepository) Enter", Common.LOG_CATEGORY);
         //#endif
         //            _dbSet.Attach(entity);
         //            Context.Entry(entity).State = EntityState.Modified;
         //            await Context.SaveChangesAsync();
 
         //#if LOGGING
-        //            Log.PERSISTENCE("(GenericEFRepository) Exit", Common.LOG_APPNAME, startTicks);
+        //            Log.PERSISTENCE("(GenericEFRepository) Exit", Common.LOG_CATEGORY, startTicks);
         //#endif
         //        }
 

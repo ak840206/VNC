@@ -8,13 +8,13 @@ using VNC.Core.Mvvm;
 
 namespace VNC.HttpHelper
 {
-    public class HTTPExchangeBase : EventViewModelBase, IInstanceCountVM
+    public class HTTPExchangeBase : EventViewModelBase
     {
         public HTTPExchangeBase(
             IEventAggregator eventAggregator,
             IDialogService dialogService) : base(eventAggregator, dialogService)
         {
-            InstanceCountVM++;
+
         }
 
         public ObservableCollection<RequestResponseInfo> RequestResponseExchange { get; set; }
@@ -61,16 +61,5 @@ namespace VNC.HttpHelper
             RequestResponseExchange.Add(exchange);
         }
 
-        #region IInstanceCount
-
-        private static int _instanceCountVM;
-
-        public int InstanceCountVM
-        {
-            get => _instanceCountVM;
-            set => _instanceCountVM = value;
-        }
-
-        #endregion
     }
 }
