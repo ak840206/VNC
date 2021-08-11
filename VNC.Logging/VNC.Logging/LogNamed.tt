@@ -75,7 +75,7 @@ namespace VNC
 
 			"CLEAR_INITIALIZE",
 
-            //"CONSTRUCTOR",
+            //"CONSTRUCTOR", // Special handling for CONSTRUCTOR - Infra
             "APPLICATION_INITIALIZE",
             "EVENT",
             "MODULE",
@@ -92,6 +92,14 @@ namespace VNC
             "VIEW_LOW",
             "VIEWMODEL",
             "VIEWMODEL_LOW",
+
+            "LEXER",
+            "PARSER",
+            "BINDER",
+            "SYNTAX",
+            "EVALUATOR",
+            "COMPILER",
+            "DIAGNOSTIC",
             
 			"DEFAULT"
 
@@ -179,7 +187,6 @@ namespace VNC
 	<#
 		}
 	#>
-
         // NOTE(crhodes)
         //
         // Special handling for LOG.CONSTRUCTOR

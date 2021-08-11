@@ -74,147 +74,20 @@
 //      Passes several extended properties.
 //  </remarks>
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
+
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
+
 namespace VNC
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Reflection;
-
-    using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
-    using Microsoft.Practices.EnterpriseLibrary.Logging;
-
     [Serializable]
     public partial class Log
     {
         private const long NoElapsedTime = 0L;
-
-        public enum LoggingPriority : int
-        {
-			// Some priorities have been used consistently and are named for easier use.
-			// Keep this in sync with LogNamed.tt named_methods
-
-			APPLICATION_START = 100,
-			APPLICATION_END = 100,
-			LOADEASE = 100,
-
-			SQL_CALL = 1002,
-
-			PAGE_LOAD = 10000,
-			FORM_LOAD = 10000,
-
-			EVENT_HANDLER = 10001,
-            EVENT = 10021,
-
-			STATUS = 10002,
-            APPLICATION_INITIALIZE = 10002,
-
-			REDIRECT_TRANSFER = 10003,
-
-			POLLING = 10004,
-
-			ERROR_TRACE = 10005,
-			ERROR_TRACE_LOW = 10015,
-
-			EASESYS_IO = 10006,
-			EASESYS_IO_MED = 10016,
-			EASESYS_IO_LOW = 10026,
-            INFRASTRUCTURE = 10016,
-
-			UI_CONTROL = 10007,
-			UI_CONTROL_MED = 10017,
-			UI_CONTROL_LOW = 10027,
-
-            PRESENTATION = 10007,
-            VIEW = 10017,
-            VIEW_LOW = 10027,
-
-			UTILITY = 10008,
-			UTILITY_MED = 10018,
-			UTILITY_LOW = 10028,
-            VIEWMODEL = 10018,
-            VIEWMODEL_LOW = 10028,
-
-			OPERATION = 10009,
-			OPERATION_LOW = 10019,
-            CORE = 10009,
-            MODULE = 10019,
-            MODULE_INITIALIZE = 10029,
-
-			APPLICATION_SESSION = 10010,
-			APPLICATION_SESSION_LOW = 10020,
-
-            APPLICATION = 10010,
-            APPLICATIONSERVICES = 10020,
-
-			SYSTEM_CONFIG = 10011,
-			SYSTEM_CONFIG_LOW = 10021,
-
-			FILE_DIR_IO = 10012,
-			FILE_DIR_IO_LOW = 10022,
-
-            DOMAIN = 10012,
-            DOMAINSERVICES = 10022,
-
-			DATABASE_IO = 10013,
-			DATABASE_IO_LOW = 10023,
-
-            PERSISTENCE = 10013,
-            PERSISTENCE_LOW = 10023,
-
-			SECURITY = 10014,
-			SECURITY_LOW = 10024,
-
-			DEFAULT = 10019,
-
-			CLEAR_INITIALIZE = 10025,
-            CONSTRUCTOR = 10025,
-
-			// Below are the standard levels
-
-            Failure		= -10,
-            Error		= -1,
-            Warning		= 1,
-            Info		= 100,
-<#
-	for (int i = 1 ; i <= infoLevels ; i++)
-	{
-#>
-			Info<#= i #>		= 10<#= i #>,
-<#
-	}
-#>
-            Debug		= 1000,
-<#
-	for (int i = 1 ; i <= debugLevels ; i++)
-	{
-#>
-			Debug<#= i #>		= 100<#= i #>,
-<#
-	}
-#>
-            Trace		= 10000,
-<#
-	for (int i = 1 ; i <= traceLevels ; i++)
-	{
-		if (i < 10)
-		{ 
-			WriteLine(string.Format("\t\t\tTrace{0}\t\t= 1000{1},", i, i));
-		}
-		else
-		{ 
-			WriteLine(string.Format("\t\t\tTrace{0}\t\t= 100{1},", i, i));
-		}
-	}
-#>
-			Max			= 100<#= traceLevels #>
-        }
-
-        public enum ShowStack
-        {
-            No,
-            Yes
-        }
 
         static Log()
         {
@@ -223,7 +96,7 @@ namespace VNC
             Logger.SetLogWriter(logWriterFactory.Create());
         }
 
-    #region Public Write Methods
+        #region Public Write Methods
 
         [DebuggerStepThrough]
         public static void Write(Exception ex, TraceEventType severity, string category, LoggingPriority priority, string className, string methodName, bool showStack)
@@ -268,9 +141,9 @@ namespace VNC
             InternalWrite(message, severity, category, priority, className, methodName, "<unknown>", showStack, startTicks);
         }
 
-    #endregion
+        #endregion
 
-    #region Private Write Methods
+        #region Private Write Methods
 
         [DebuggerStepThrough]
         private static void InternalWrite(string message, TraceEventType severity, string category, LoggingPriority priority, string className, string methodName, string callingAssemblyName, bool showStack)
@@ -1237,109 +1110,22 @@ namespace VNC
 
         #endregion
 
-<#
-	}
-#>
+    <#
+	    }
+    #>
 
-	#endregion
+	    #endregion
 
-    public static double GetDuration(long startTicks)
-    {
-        return (double)(Stopwatch.GetTimestamp() - startTicks) / ((double)Stopwatch.Frequency);
-    }
-
-    public static double GetDuration(long startTicks, long endTicks)
-    {
-        return (double)(endTicks - startTicks) / ((double)Stopwatch.Frequency);
-    }
-
-    // TODO(crhodes)
-    // Dojie put this as an nested class.  Might want to pull out and put above.  Go see how these are used.
-
-	#region Helper Class
-
-        public static class Helpers
+        public static double GetDuration(long startTicks)
         {
-            [DebuggerStepThrough]
-            public static T ExecuteLogHandledOp<T>(Func<T> action, Log.LoggingPriority loggingPriority, string applicationCategory, string additionalStartMessage = null, string additionalEndMessage = null)
-            {
-                //StackTrace trace = new StackTrace();
-                MethodBase method = new StackFrame(1).GetMethod();
-                var startMethod = typeof(Log).GetMethod(loggingPriority.ToString(), new Type[] { typeof(string), typeof(string), typeof(MethodBase) });
-                long dbTicks = 0;
-                if (startMethod != null)
-                {
-				    try
-                    {
-						dbTicks = (long)startMethod.Invoke(null, new object[] { string.Format("Enter: {0}", additionalStartMessage), applicationCategory, method });                   
-                    }
-                    catch (Exception ex)
-                    {
-						Log.Error(string.Format("Exception: {0}", additionalStartMessage), applicationCategory);
-                        Log.Error(ex, applicationCategory);
-                    }
-                }
-
-                var result = action();
-
-                var endMethod = typeof(Log).GetMethod(loggingPriority.ToString(), new Type[] { typeof(string), typeof(string), typeof(long), typeof(MethodBase) });
-                if (endMethod != null)
-                {
-				    try
-                    {
-						endMethod.Invoke(null, new object[] { string.Format("Exit: result:({0}) {1}", result, additionalEndMessage), applicationCategory, dbTicks, method });                                    
-                    }
-                    catch (Exception ex)
-                    {
-						Log.Error(string.Format("Exception: {0}", additionalEndMessage), applicationCategory);
-                        Log.Error(ex, applicationCategory);
-                    }
-                }
-
-                return result;
-            }
-
-			[DebuggerStepThrough]
-            public static void ExecuteLogHandledOp(Action action, Log.LoggingPriority loggingPriority, string applicationCategory, string additionalStartMessage = null, string additionalEndMessage = null)
-            {
-                //StackTrace trace = new StackTrace();
-                MethodBase method = new StackFrame(1).GetMethod();
-                var startMethod = typeof(Log).GetMethod(loggingPriority.ToString(), new Type[] { typeof(string), typeof(string), typeof(MethodBase) });
-                long dbTicks = 0;
-                if (startMethod != null)
-                {
-                    try
-                    {
-						dbTicks = (long)startMethod.Invoke(null, new object[] { string.Format("Enter: {0}", additionalStartMessage), applicationCategory, method });                                   
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error(string.Format("Exception: {0}", additionalStartMessage), applicationCategory);
-						Log.Error(ex, applicationCategory);
-                    }
-				}
-
-                action();
-
-                var endMethod = typeof(Log).GetMethod(loggingPriority.ToString(), new Type[] { typeof(string), typeof(string), typeof(long), typeof(MethodBase) });
-                if (endMethod != null)
-                {
-					try
-                    {
-						endMethod.Invoke(null, new object[] { string.Format("Exit: {0}", additionalEndMessage), applicationCategory, dbTicks, method });
-				    }
-                    catch (Exception ex)
-                    {
-						Log.Error(string.Format("Exception: {0}", additionalEndMessage), applicationCategory);
-						Log.Error(ex, applicationCategory);
-					}
-				}
-            }
-
-
+            return (double)(Stopwatch.GetTimestamp() - startTicks) / ((double)Stopwatch.Frequency);
         }
 
-        #endregion 
+        public static double GetDuration(long startTicks, long endTicks)
+        {
+            return (double)(endTicks - startTicks) / ((double)Stopwatch.Frequency);
+        }
+
 
     }
 }

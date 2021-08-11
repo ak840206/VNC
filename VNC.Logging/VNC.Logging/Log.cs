@@ -80,158 +80,20 @@
 //      Passes several extended properties.
 //  </remarks>
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Reflection;
+
+using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
+
 namespace VNC
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Reflection;
-
-    using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
-    using Microsoft.Practices.EnterpriseLibrary.Logging;
-
     [Serializable]
     public partial class Log
     {
         private const long NoElapsedTime = 0L;
-
-        public enum LoggingPriority : int
-        {
-			// Some priorities have been used consistently and are named for easier use.
-			// Keep this in sync with LogNamed.tt named_methods
-
-			APPLICATION_START = 100,
-			APPLICATION_END = 100,
-			LOADEASE = 100,
-
-			SQL_CALL = 1002,
-
-			PAGE_LOAD = 10000,
-			FORM_LOAD = 10000,
-
-			EVENT_HANDLER = 10001,
-            EVENT = 10021,
-
-			STATUS = 10002,
-            APPLICATION_INITIALIZE = 10002,
-
-			REDIRECT_TRANSFER = 10003,
-
-			POLLING = 10004,
-
-			ERROR_TRACE = 10005,
-			ERROR_TRACE_LOW = 10015,
-
-			EASESYS_IO = 10006,
-			EASESYS_IO_MED = 10016,
-			EASESYS_IO_LOW = 10026,
-            INFRASTRUCTURE = 10016,
-
-			UI_CONTROL = 10007,
-			UI_CONTROL_MED = 10017,
-			UI_CONTROL_LOW = 10027,
-
-            PRESENTATION = 10007,
-            VIEW = 10017,
-            VIEW_LOW = 10027,
-
-			UTILITY = 10008,
-			UTILITY_MED = 10018,
-			UTILITY_LOW = 10028,
-            VIEWMODEL = 10018,
-            VIEWMODEL_LOW = 10028,
-
-			OPERATION = 10009,
-			OPERATION_LOW = 10019,
-            CORE = 10009,
-            MODULE = 10019,
-            MODULE_INITIALIZE = 10029,
-
-			APPLICATION_SESSION = 10010,
-			APPLICATION_SESSION_LOW = 10020,
-
-            APPLICATION = 10010,
-            APPLICATIONSERVICES = 10020,
-
-			SYSTEM_CONFIG = 10011,
-			SYSTEM_CONFIG_LOW = 10021,
-
-			FILE_DIR_IO = 10012,
-			FILE_DIR_IO_LOW = 10022,
-
-            DOMAIN = 10012,
-            DOMAINSERVICES = 10022,
-
-			DATABASE_IO = 10013,
-			DATABASE_IO_LOW = 10023,
-
-            PERSISTENCE = 10013,
-            PERSISTENCE_LOW = 10023,
-
-			SECURITY = 10014,
-			SECURITY_LOW = 10024,
-
-			DEFAULT = 10019,
-
-			CLEAR_INITIALIZE = 10025,
-            CONSTRUCTOR = 10025,
-
-			// Below are the standard levels
-
-            Failure		= -10,
-            Error		= -1,
-            Warning		= 1,
-            Info		= 100,
-			Info1		= 101,
-			Info2		= 102,
-			Info3		= 103,
-			Info4		= 104,
-			Info5		= 105,
-            Debug		= 1000,
-			Debug1		= 1001,
-			Debug2		= 1002,
-			Debug3		= 1003,
-			Debug4		= 1004,
-			Debug5		= 1005,
-            Trace		= 10000,
-			Trace1		= 10001,
-			Trace2		= 10002,
-			Trace3		= 10003,
-			Trace4		= 10004,
-			Trace5		= 10005,
-			Trace6		= 10006,
-			Trace7		= 10007,
-			Trace8		= 10008,
-			Trace9		= 10009,
-			Trace10		= 10010,
-			Trace11		= 10011,
-			Trace12		= 10012,
-			Trace13		= 10013,
-			Trace14		= 10014,
-			Trace15		= 10015,
-			Trace16		= 10016,
-			Trace17		= 10017,
-			Trace18		= 10018,
-			Trace19		= 10019,
-			Trace20		= 10020,
-			Trace21		= 10021,
-			Trace22		= 10022,
-			Trace23		= 10023,
-			Trace24		= 10024,
-			Trace25		= 10025,
-			Trace26		= 10026,
-			Trace27		= 10027,
-			Trace28		= 10028,
-			Trace29		= 10029,
-			Trace30		= 10030,
-			Max			= 10030
-        }
-
-        public enum ShowStack
-        {
-            No,
-            Yes
-        }
 
         static Log()
         {
@@ -240,7 +102,7 @@ namespace VNC
             Logger.SetLogWriter(logWriterFactory.Create());
         }
 
-    #region Public Write Methods
+        #region Public Write Methods
 
         [DebuggerStepThrough]
         public static void Write(Exception ex, TraceEventType severity, string category, LoggingPriority priority, string className, string methodName, bool showStack)
@@ -285,9 +147,9 @@ namespace VNC
             InternalWrite(message, severity, category, priority, className, methodName, "<unknown>", showStack, startTicks);
         }
 
-    #endregion
+        #endregion
 
-    #region Private Write Methods
+        #region Private Write Methods
 
         [DebuggerStepThrough]
         private static void InternalWrite(string message, TraceEventType severity, string category, LoggingPriority priority, string className, string methodName, string callingAssemblyName, bool showStack)
@@ -1983,7 +1845,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace1
+    		#region Trace1
 
         [DebuggerStepThrough]
         public static long Trace1(string message, string applicationCategory, MethodBase method = null)
@@ -2059,7 +1921,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace2
+    		#region Trace2
 
         [DebuggerStepThrough]
         public static long Trace2(string message, string applicationCategory, MethodBase method = null)
@@ -2135,7 +1997,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace3
+    		#region Trace3
 
         [DebuggerStepThrough]
         public static long Trace3(string message, string applicationCategory, MethodBase method = null)
@@ -2211,7 +2073,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace4
+    		#region Trace4
 
         [DebuggerStepThrough]
         public static long Trace4(string message, string applicationCategory, MethodBase method = null)
@@ -2287,7 +2149,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace5
+    		#region Trace5
 
         [DebuggerStepThrough]
         public static long Trace5(string message, string applicationCategory, MethodBase method = null)
@@ -2363,7 +2225,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace6
+    		#region Trace6
 
         [DebuggerStepThrough]
         public static long Trace6(string message, string applicationCategory, MethodBase method = null)
@@ -2439,7 +2301,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace7
+    		#region Trace7
 
         [DebuggerStepThrough]
         public static long Trace7(string message, string applicationCategory, MethodBase method = null)
@@ -2515,7 +2377,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace8
+    		#region Trace8
 
         [DebuggerStepThrough]
         public static long Trace8(string message, string applicationCategory, MethodBase method = null)
@@ -2591,7 +2453,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace9
+    		#region Trace9
 
         [DebuggerStepThrough]
         public static long Trace9(string message, string applicationCategory, MethodBase method = null)
@@ -2667,7 +2529,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace10
+    		#region Trace10
 
         [DebuggerStepThrough]
         public static long Trace10(string message, string applicationCategory, MethodBase method = null)
@@ -2743,7 +2605,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace11
+    		#region Trace11
 
         [DebuggerStepThrough]
         public static long Trace11(string message, string applicationCategory, MethodBase method = null)
@@ -2819,7 +2681,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace12
+    		#region Trace12
 
         [DebuggerStepThrough]
         public static long Trace12(string message, string applicationCategory, MethodBase method = null)
@@ -2895,7 +2757,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace13
+    		#region Trace13
 
         [DebuggerStepThrough]
         public static long Trace13(string message, string applicationCategory, MethodBase method = null)
@@ -2971,7 +2833,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace14
+    		#region Trace14
 
         [DebuggerStepThrough]
         public static long Trace14(string message, string applicationCategory, MethodBase method = null)
@@ -3047,7 +2909,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace15
+    		#region Trace15
 
         [DebuggerStepThrough]
         public static long Trace15(string message, string applicationCategory, MethodBase method = null)
@@ -3123,7 +2985,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace16
+    		#region Trace16
 
         [DebuggerStepThrough]
         public static long Trace16(string message, string applicationCategory, MethodBase method = null)
@@ -3199,7 +3061,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace17
+    		#region Trace17
 
         [DebuggerStepThrough]
         public static long Trace17(string message, string applicationCategory, MethodBase method = null)
@@ -3275,7 +3137,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace18
+    		#region Trace18
 
         [DebuggerStepThrough]
         public static long Trace18(string message, string applicationCategory, MethodBase method = null)
@@ -3351,7 +3213,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace19
+    		#region Trace19
 
         [DebuggerStepThrough]
         public static long Trace19(string message, string applicationCategory, MethodBase method = null)
@@ -3427,7 +3289,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace20
+    		#region Trace20
 
         [DebuggerStepThrough]
         public static long Trace20(string message, string applicationCategory, MethodBase method = null)
@@ -3503,7 +3365,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace21
+    		#region Trace21
 
         [DebuggerStepThrough]
         public static long Trace21(string message, string applicationCategory, MethodBase method = null)
@@ -3579,7 +3441,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace22
+    		#region Trace22
 
         [DebuggerStepThrough]
         public static long Trace22(string message, string applicationCategory, MethodBase method = null)
@@ -3655,7 +3517,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace23
+    		#region Trace23
 
         [DebuggerStepThrough]
         public static long Trace23(string message, string applicationCategory, MethodBase method = null)
@@ -3731,7 +3593,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace24
+    		#region Trace24
 
         [DebuggerStepThrough]
         public static long Trace24(string message, string applicationCategory, MethodBase method = null)
@@ -3807,7 +3669,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace25
+    		#region Trace25
 
         [DebuggerStepThrough]
         public static long Trace25(string message, string applicationCategory, MethodBase method = null)
@@ -3883,7 +3745,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace26
+    		#region Trace26
 
         [DebuggerStepThrough]
         public static long Trace26(string message, string applicationCategory, MethodBase method = null)
@@ -3959,7 +3821,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace27
+    		#region Trace27
 
         [DebuggerStepThrough]
         public static long Trace27(string message, string applicationCategory, MethodBase method = null)
@@ -4035,7 +3897,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace28
+    		#region Trace28
 
         [DebuggerStepThrough]
         public static long Trace28(string message, string applicationCategory, MethodBase method = null)
@@ -4111,7 +3973,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace29
+    		#region Trace29
 
         [DebuggerStepThrough]
         public static long Trace29(string message, string applicationCategory, MethodBase method = null)
@@ -4187,7 +4049,7 @@ namespace VNC
 
         #endregion
 
-		#region Trace30
+    		#region Trace30
 
         [DebuggerStepThrough]
         public static long Trace30(string message, string applicationCategory, MethodBase method = null)
@@ -4263,106 +4125,19 @@ namespace VNC
 
         #endregion
 
+    
+	    #endregion
 
-	#endregion
-
-    public static double GetDuration(long startTicks)
-    {
-        return (double)(Stopwatch.GetTimestamp() - startTicks) / ((double)Stopwatch.Frequency);
-    }
-
-    public static double GetDuration(long startTicks, long endTicks)
-    {
-        return (double)(endTicks - startTicks) / ((double)Stopwatch.Frequency);
-    }
-
-    // TODO(crhodes)
-    // Dojie put this as an nested class.  Might want to pull out and put above.  Go see how these are used.
-
-	#region Helper Class
-
-        public static class Helpers
+        public static double GetDuration(long startTicks)
         {
-            [DebuggerStepThrough]
-            public static T ExecuteLogHandledOp<T>(Func<T> action, Log.LoggingPriority loggingPriority, string applicationCategory, string additionalStartMessage = null, string additionalEndMessage = null)
-            {
-                //StackTrace trace = new StackTrace();
-                MethodBase method = new StackFrame(1).GetMethod();
-                var startMethod = typeof(Log).GetMethod(loggingPriority.ToString(), new Type[] { typeof(string), typeof(string), typeof(MethodBase) });
-                long dbTicks = 0;
-                if (startMethod != null)
-                {
-				    try
-                    {
-						dbTicks = (long)startMethod.Invoke(null, new object[] { string.Format("Enter: {0}", additionalStartMessage), applicationCategory, method });                   
-                    }
-                    catch (Exception ex)
-                    {
-						Log.Error(string.Format("Exception: {0}", additionalStartMessage), applicationCategory);
-                        Log.Error(ex, applicationCategory);
-                    }
-                }
-
-                var result = action();
-
-                var endMethod = typeof(Log).GetMethod(loggingPriority.ToString(), new Type[] { typeof(string), typeof(string), typeof(long), typeof(MethodBase) });
-                if (endMethod != null)
-                {
-				    try
-                    {
-						endMethod.Invoke(null, new object[] { string.Format("Exit: result:({0}) {1}", result, additionalEndMessage), applicationCategory, dbTicks, method });                                    
-                    }
-                    catch (Exception ex)
-                    {
-						Log.Error(string.Format("Exception: {0}", additionalEndMessage), applicationCategory);
-                        Log.Error(ex, applicationCategory);
-                    }
-                }
-
-                return result;
-            }
-
-			[DebuggerStepThrough]
-            public static void ExecuteLogHandledOp(Action action, Log.LoggingPriority loggingPriority, string applicationCategory, string additionalStartMessage = null, string additionalEndMessage = null)
-            {
-                //StackTrace trace = new StackTrace();
-                MethodBase method = new StackFrame(1).GetMethod();
-                var startMethod = typeof(Log).GetMethod(loggingPriority.ToString(), new Type[] { typeof(string), typeof(string), typeof(MethodBase) });
-                long dbTicks = 0;
-                if (startMethod != null)
-                {
-                    try
-                    {
-						dbTicks = (long)startMethod.Invoke(null, new object[] { string.Format("Enter: {0}", additionalStartMessage), applicationCategory, method });                                   
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Error(string.Format("Exception: {0}", additionalStartMessage), applicationCategory);
-						Log.Error(ex, applicationCategory);
-                    }
-				}
-
-                action();
-
-                var endMethod = typeof(Log).GetMethod(loggingPriority.ToString(), new Type[] { typeof(string), typeof(string), typeof(long), typeof(MethodBase) });
-                if (endMethod != null)
-                {
-					try
-                    {
-						endMethod.Invoke(null, new object[] { string.Format("Exit: {0}", additionalEndMessage), applicationCategory, dbTicks, method });
-				    }
-                    catch (Exception ex)
-                    {
-						Log.Error(string.Format("Exception: {0}", additionalEndMessage), applicationCategory);
-						Log.Error(ex, applicationCategory);
-					}
-				}
-            }
-
-
+            return (double)(Stopwatch.GetTimestamp() - startTicks) / ((double)Stopwatch.Frequency);
         }
 
-        #endregion 
+        public static double GetDuration(long startTicks, long endTicks)
+        {
+            return (double)(endTicks - startTicks) / ((double)Stopwatch.Frequency);
+        }
+
 
     }
 }

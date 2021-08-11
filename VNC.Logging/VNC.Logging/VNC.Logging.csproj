@@ -8,7 +8,7 @@
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>1.1.0</PackageVersion>
+        <PackageVersion>1.2.0</PackageVersion>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
         <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
@@ -41,6 +41,10 @@
         <Generator>TextTemplatingFileGenerator</Generator>
         <LastGenOutput>Log.cs</LastGenOutput>
       </None>
+      <None Update="LoggingPriority.tt">
+        <Generator>TextTemplatingFileGenerator</Generator>
+        <LastGenOutput>LoggingPriority.cs</LastGenOutput>
+      </None>
       <None Update="LogNamed.tt">
         <Generator>TextTemplatingFileGenerator</Generator>
         <LastGenOutput>LogNamed.cs</LastGenOutput>
@@ -56,6 +60,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>Log.tt</DependentUpon>
+      </Compile>
+      <Compile Update="LoggingPriority.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LoggingPriority.tt</DependentUpon>
       </Compile>
       <Compile Update="LogNamed.cs">
         <DesignTime>True</DesignTime>
@@ -73,6 +82,12 @@
         <None Include="..\..\VNC.png">
             <Pack>True</Pack>
             <PackagePath></PackagePath>
+        </None>
+
+        <None Include="LoggingPriority.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>LoggingPriority.tt</DependentUpon>
         </None>
     </ItemGroup>   
     

@@ -3739,6 +3739,538 @@ namespace VNC
 
         #endregion
 
+		#region LEXER
+
+        [DebuggerStepThrough]
+        public static long LEXER(string message, string applicationCategory, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LEXER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long LEXER(string message, string applicationCategory, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LEXER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long LEXER(string message, string applicationCategory, int EventId)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LEXER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long LEXER(string message, string applicationCategory, long startTicks, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LEXER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long LEXER(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LEXER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long LEXER(string message, string applicationCategory, int EventId, long startTicks)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LEXER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long LEXER(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LEXER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long LEXER(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.LEXER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        #endregion
+
+		#region PARSER
+
+        [DebuggerStepThrough]
+        public static long PARSER(string message, string applicationCategory, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PARSER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long PARSER(string message, string applicationCategory, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PARSER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long PARSER(string message, string applicationCategory, int EventId)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PARSER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long PARSER(string message, string applicationCategory, long startTicks, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PARSER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long PARSER(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PARSER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long PARSER(string message, string applicationCategory, int EventId, long startTicks)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PARSER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long PARSER(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PARSER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long PARSER(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.PARSER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        #endregion
+
+		#region BINDER
+
+        [DebuggerStepThrough]
+        public static long BINDER(string message, string applicationCategory, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.BINDER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long BINDER(string message, string applicationCategory, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.BINDER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long BINDER(string message, string applicationCategory, int EventId)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.BINDER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long BINDER(string message, string applicationCategory, long startTicks, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.BINDER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long BINDER(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.BINDER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long BINDER(string message, string applicationCategory, int EventId, long startTicks)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.BINDER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long BINDER(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.BINDER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long BINDER(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.BINDER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        #endregion
+
+		#region SYNTAX
+
+        [DebuggerStepThrough]
+        public static long SYNTAX(string message, string applicationCategory, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYNTAX,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long SYNTAX(string message, string applicationCategory, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYNTAX,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long SYNTAX(string message, string applicationCategory, int EventId)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYNTAX,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long SYNTAX(string message, string applicationCategory, long startTicks, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYNTAX,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long SYNTAX(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYNTAX,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long SYNTAX(string message, string applicationCategory, int EventId, long startTicks)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYNTAX,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long SYNTAX(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYNTAX,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long SYNTAX(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.SYNTAX,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        #endregion
+
+		#region EVALUATOR
+
+        [DebuggerStepThrough]
+        public static long EVALUATOR(string message, string applicationCategory, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVALUATOR,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long EVALUATOR(string message, string applicationCategory, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVALUATOR,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long EVALUATOR(string message, string applicationCategory, int EventId)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVALUATOR,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long EVALUATOR(string message, string applicationCategory, long startTicks, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVALUATOR,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long EVALUATOR(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVALUATOR,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long EVALUATOR(string message, string applicationCategory, int EventId, long startTicks)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVALUATOR,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long EVALUATOR(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVALUATOR,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long EVALUATOR(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.EVALUATOR,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        #endregion
+
+		#region COMPILER
+
+        [DebuggerStepThrough]
+        public static long COMPILER(string message, string applicationCategory, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.COMPILER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long COMPILER(string message, string applicationCategory, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.COMPILER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long COMPILER(string message, string applicationCategory, int EventId)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.COMPILER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long COMPILER(string message, string applicationCategory, long startTicks, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.COMPILER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long COMPILER(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.COMPILER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long COMPILER(string message, string applicationCategory, int EventId, long startTicks)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.COMPILER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long COMPILER(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.COMPILER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long COMPILER(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.COMPILER,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        #endregion
+
+		#region DIAGNOSTIC
+
+        [DebuggerStepThrough]
+        public static long DIAGNOSTIC(string message, string applicationCategory, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DIAGNOSTIC,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long DIAGNOSTIC(string message, string applicationCategory, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DIAGNOSTIC,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long DIAGNOSTIC(string message, string applicationCategory, int EventId)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DIAGNOSTIC,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long DIAGNOSTIC(string message, string applicationCategory, long startTicks, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DIAGNOSTIC,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long DIAGNOSTIC(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DIAGNOSTIC,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long DIAGNOSTIC(string message, string applicationCategory, int EventId, long startTicks)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DIAGNOSTIC,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long DIAGNOSTIC(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DIAGNOSTIC,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long DIAGNOSTIC(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.DIAGNOSTIC,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        #endregion
+
 		#region DEFAULT
 
         [DebuggerStepThrough]
@@ -3815,8 +4347,7 @@ namespace VNC
 
         #endregion
 
-	
-        // NOTE(crhodes)
+	        // NOTE(crhodes)
         //
         // Special handling for LOG.CONSTRUCTOR
         //
