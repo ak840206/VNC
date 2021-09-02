@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 
-namespace VNC.HttpHelper
+namespace VNC.Core.Net
 {
     public class RequestResponseInfo
     {

@@ -36,6 +36,8 @@ namespace VNC.Core.Mvvm
             }
         }
 
+        #region INotifyPropertyChanged
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         // This is the traditional approach - requires string name to be passed in
@@ -60,5 +62,7 @@ namespace VNC.Core.Mvvm
             Log.VIEWMODEL_LOW("Exit", Common.LOG_CATEGORY, startTicks);
 #endif
         }
+
+        #endregion
     }
 }
