@@ -1,4 +1,4 @@
-<p align="center">
+<p>
     <img src="Cylon EyeBall 128x128.png">
 </p>
 # VNC
