@@ -1,3 +1,6 @@
+<p align="center">
+    <img src="Cylon EyeBall 128x128.png">
+</p>
 # VNC
 Common code used by VNC Applications. 
 
