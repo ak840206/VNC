@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
+using Microsoft.Build.Locator;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.MSBuild;
 
 namespace VNC.CodeAnalysis.Workspace
@@ -111,10 +115,18 @@ namespace VNC.CodeAnalysis.Workspace
 
             try
             {
+                //MSBuildLocator.RegisterDefaults();
+
                 using (var workSpace = MSBuildWorkspace.Create())
                 {
                     var project = workSpace.OpenProjectAsync(projectFullPath).Result;
 
+                    ImmutableList<WorkspaceDiagnostic> diagnostics = workSpace.Diagnostics;
+
+                    foreach (var diagnostic in diagnostics)
+                    {
+                        Console.WriteLine(diagnostic.Message);
+                    }
                     //Microsoft.CodeAnalysis.Project project = null;
 
                     //Task.Run(async () => project = await workSpace.OpenProjectAsync(projectFullPath));
@@ -192,6 +204,7 @@ namespace VNC.CodeAnalysis.Workspace
         {
             Log.Trace1(string.Format("Enter: project.Path:({0})", project.FilePath), Common.LOG_CATEGORY);
 
+            var foo = project.GetSourceGeneratedDocumentsAsync().Result;
             foreach (var document in project.Documents)
             {
                 string filePath = document.FilePath;
