@@ -37,14 +37,14 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
 
         #endregion
 
-        #region Structures
+        #region Structures (none)
 
 
         #endregion
 
         #region Fields and Properties
 
-        public StringBuilder Messages;
+        public StringBuilder Messages = new StringBuilder();
         public StringBuilder WalkerNode = new StringBuilder();
         public StringBuilder WalkerToken = new StringBuilder();
         public StringBuilder WalkerTrivia = new StringBuilder();
@@ -96,7 +96,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
 
         #endregion
 
-        #region Event Handlers
+        #region Event Handlers (none)
 
 
         #endregion

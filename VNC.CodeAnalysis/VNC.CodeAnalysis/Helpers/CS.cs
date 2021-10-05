@@ -8,6 +8,8 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
+using VNC.CodeAnalysis.SyntaxWalkers;
+
 namespace VNC.CodeAnalysis.Helpers
 {
     public static class CS
