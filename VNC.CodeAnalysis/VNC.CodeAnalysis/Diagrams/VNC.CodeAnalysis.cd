@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="VNC.CodeAnalysis.Types">
+    <Position X="0.75" Y="1.75" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="VNC.CodeAnalysis.Types.RewriteFileCommand">
+        <TypeIdentifier>
+          <NewMemberFileName>Types.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="VNC.CodeAnalysis.Types.SearchFileCommand">
+        <TypeIdentifier>
+          <NewMemberFileName>Types.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="VNC.CodeAnalysis.Types.SearchTreeCommand">
+        <TypeIdentifier>
+          <NewMemberFileName>Types.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="VNC.CodeAnalysis.Types.RewriteTreeCommand">
+        <TypeIdentifier>
+          <NewMemberFileName>Types.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.CodeAnalysisOptions">
+    <Position X="2.75" Y="7.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>EAQEEAEAhQIKACCJQATBAADEJBAiAgYhEEAACAQIAAA=</HashCode>
+      <FileName>CodeAnalysisOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.CodeCheckBase">
+    <Position X="12.75" Y="8.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>CodeCheckBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.CodeCheckOptions">
+    <Position X="8.5" Y="7.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAIAABAAAAAAAAAAEIAAAAAAAAAAAA=</HashCode>
+      <FileName>CodeCheckOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.Common">
+    <Position X="8.75" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.ErrorNumbers">
+    <Position X="1" Y="16" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>GgUAQAAAIAQAAARDAoAAoDBQRgiAIIAZAIJBAACRgAA=</HashCode>
+      <FileName>ErrorNumbers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.RewriteFileCommandConfiguration">
+    <Position X="8.75" Y="14.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEICAAAAAAAAAAAAQACAIAAAAAAARCAAAQAAE=</HashCode>
+      <FileName>RewriteFileCommandConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.RewriteTreeCommandConfiguration">
+    <Position X="12.75" Y="14.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEICAAAAAAAAAAAAQACAIAAAAAAARCAAAQAAE=</HashCode>
+      <FileName>RewriteTreeCommandConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.SearchFileCommandConfiguration">
+    <Position X="8.75" Y="12" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAACAAAAAAAAAAAAAACAIAAAAAAABCAAAQAAA=</HashCode>
+      <FileName>SearchFileCommandConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.SearchTreeCommandConfiguration">
+    <Position X="12.75" Y="12" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAACCAAAAAAAAAAAAQACAIAAAAAAAACAAAQAAA=</HashCode>
+      <FileName>SearchTreeCommandConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.Symbols">
+    <Position X="12.75" Y="9.75" Width="8.75" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Symbols.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.WalkerPattern">
+    <Position X="12.5" Y="3.75" Width="8.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAKAAUIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WalkerPattern.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.WalkerPatternBlock">
+    <Position X="7.25" Y="0.5" Width="10" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAEAAAAAAAAAAAQAA=</HashCode>
+      <FileName>WalkerPatternBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VNC.CodeAnalysis.WalkerPatternStruct">
+    <Position X="18.25" Y="0.5" Width="8.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WalkerPatternStruct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="VNC.CodeAnalysis.SyntaxLanguage">
+    <Position X="0.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAA=</HashCode>
+      <FileName>SyntaxLanguage.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VNC.CodeAnalysis.InfoType">
+    <Position X="0.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CodeAnalysisOptions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

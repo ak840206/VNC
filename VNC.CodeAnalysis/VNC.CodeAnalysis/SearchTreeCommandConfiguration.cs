@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 using Microsoft.CodeAnalysis;
 
@@ -11,11 +10,9 @@ namespace VNC.CodeAnalysis
         public SyntaxTree SyntaxTree;
         public SyntaxLanguage Language;
 
-        public StringBuilder Results;
+        //public StringBuilder Results;
 
         public WalkerPattern WalkerPattern;
-        //public Boolean UseRegEx;
-        //public string RegEx;
 
         public CodeAnalysisOptions CodeAnalysisOptions;
 

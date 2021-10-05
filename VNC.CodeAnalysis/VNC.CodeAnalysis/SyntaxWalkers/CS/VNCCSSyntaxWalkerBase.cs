@@ -49,7 +49,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
         #region Fields and Properties
 
-        public StringBuilder Messages;
+        public StringBuilder Messages = new StringBuilder();
         public StringBuilder WalkerNode = new StringBuilder();
         public StringBuilder WalkerToken = new StringBuilder();
         public StringBuilder WalkerTrivia = new StringBuilder();

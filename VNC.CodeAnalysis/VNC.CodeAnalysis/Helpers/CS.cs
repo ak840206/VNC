@@ -230,10 +230,6 @@ namespace VNC.CodeAnalysis.Helpers
         {
             Int64 startTicks = Log.DOMAINSERVICES("Enter", CodeAnalysis.Common.LOG_CATEGORY);
 
-            StringBuilder results = new StringBuilder();
-
-            walker.Messages = results;
-
             // Setting the TargetPattern will call InitializeRegEx()
             walker.TargetPattern = commandConfiguration.WalkerPattern.UseRegEx ? commandConfiguration.WalkerPattern.RegEx : ".*";
 
@@ -253,24 +249,21 @@ namespace VNC.CodeAnalysis.Helpers
 
             walker.Visit(commandConfiguration.SyntaxTree.GetRoot());
 
-            if (results.Length > 0)
+            if (walker.Messages.Length > 0)
             {
                 if (commandConfiguration.CodeAnalysisOptions.DisplayCRC32)
                 {
-                    results.AppendFormat("CRC32Node:            {0}\n", walker.CRC32Node);
-                    results.AppendFormat("CRC32NodeKind:        {0}\n", walker.CRC32NodeKind);
+                    walker.Messages.AppendFormat("CRC32Node:            {0}\n", walker.CRC32Node);
+                    walker.Messages.AppendFormat("CRC32NodeKind:        {0}\n", walker.CRC32NodeKind);
                     //results.AppendFormat("CRC32Token:           {0}\n", walker.CRC32Token);
                     //results.AppendFormat("CRC32Trivia:          {0}\n", walker.CRC32Trivia);
                     //results.AppendFormat("CRC32StructuredTrivia:{0}\n", walker.CRC32StructuredTrivia);
                 }
-
-                //commandConfiguration.Results.AppendLine(results.ToString());
             }
 
             Log.DOMAINSERVICES("Exit", CodeAnalysis.Common.LOG_CATEGORY, startTicks);
 
-            return results;
-            //return commandConfiguration.Results;
+            return walker.Messages;
         }
 
         public static StringBuilder InvokeVNCSyntaxRewriter(

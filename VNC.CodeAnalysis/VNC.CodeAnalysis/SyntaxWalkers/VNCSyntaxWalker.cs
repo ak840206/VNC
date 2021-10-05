@@ -7,7 +7,7 @@ namespace VNC.CodeAnalysis.SyntaxWalkers
 {
     public class VNCSyntaxWalker : SyntaxWalker
     {
-        public StringBuilder Messages;
+        public StringBuilder Messages = new StringBuilder();
         public StringBuilder WalkerNode = new StringBuilder();
         public StringBuilder WalkerToken = new StringBuilder();
         public StringBuilder WalkerTrivia = new StringBuilder();
