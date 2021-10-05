@@ -233,7 +233,6 @@ namespace VNC.CodeAnalysis.Helpers
 
             StringBuilder results = new StringBuilder();
 
-            //walker.Messages = commandConfiguration.Results;
             walker.Messages = results;
 
             // Setting the TargetPattern will call InitializeRegEx()
@@ -258,12 +257,13 @@ namespace VNC.CodeAnalysis.Helpers
                     //results.AppendFormat("CRC32StructuredTrivia:{0}\n", walker.CRC32StructuredTrivia);
                 }
 
-                commandConfiguration.Results.AppendLine(results.ToString());
+                //commandConfiguration.Results.AppendLine(results.ToString());
             }
 
             Log.DOMAINSERVICES("Exit", CodeAnalysis.Common.LOG_CATEGORY, startTicks);
 
-            return commandConfiguration.Results;
+            return results;
+            //return commandConfiguration.Results;
         }
 
         public static StringBuilder InvokeVNCSyntaxRewriter(
