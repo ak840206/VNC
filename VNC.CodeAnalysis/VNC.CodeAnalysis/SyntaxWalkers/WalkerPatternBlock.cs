@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VNC.CodeAnalysis
+namespace VNC.CodeAnalysis.SyntaxWalkers
 {
     public class WalkerPatternBlock : WalkerPattern
     {

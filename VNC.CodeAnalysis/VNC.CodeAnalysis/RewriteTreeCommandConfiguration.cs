@@ -4,6 +4,8 @@ using System.Text;
 
 using Microsoft.CodeAnalysis;
 
+using VNC.CodeAnalysis.SyntaxWalkers;
+
 namespace VNC.CodeAnalysis
 {
     public class RewriteTreeCommandConfiguration
@@ -14,8 +16,6 @@ namespace VNC.CodeAnalysis
         public StringBuilder Results;
 
         public WalkerPattern WalkerPattern;
-        //public Boolean UseRegEx;
-        //public string RegEx;
 
         public string TargetPattern;
         public string ReplacementPattern;

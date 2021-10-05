@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 using Microsoft.CodeAnalysis;
 
+using VNC.CodeAnalysis.SyntaxWalkers;
+
 namespace VNC.CodeAnalysis
 {
     public class SearchTreeCommandConfiguration
     {
         public SyntaxTree SyntaxTree;
         public SyntaxLanguage Language;
-
-        //public StringBuilder Results;
 
         public WalkerPattern WalkerPattern;
 
