@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Text;
 
 namespace VNC.CodeAnalysis.QualityMetrics.CS
 {
@@ -30,7 +27,40 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 SyntaxKind.GreaterThanGreaterThanEqualsToken
             };
 
-            var results = tree.GetRoot().DescendantNodes()
+            var resultsA = tree.GetRoot().DescendantNodes()
+            .Where(t => t.Kind() == SyntaxKind.ClassDeclaration)
+            .Cast<ClassDeclarationSyntax>()
+            .Select(t =>
+            new
+            {
+                ClassName = t.Identifier.ValueText,//#1
+                MethodTokens
+            = t.Members
+            .Where(m => m.Kind() == SyntaxKind.MethodDeclaration)
+            .Cast<MethodDeclarationSyntax>()
+            .Select(
+            mds =>
+            new
+            {
+                MethodName = mds.Identifier.ValueText,
+                Tokens = CSharpSyntaxTree.ParseText(mds.ToFullString())
+            .GetRoot()
+            .DescendantTokens()
+            .Select(c => c.Kind())
+            })
+            .Select(w =>
+            new
+            {
+                MethodName = w.MethodName, //#2
+                Toks = w.Tokens.Zip(w.Tokens.Skip(1), (a, b) =>
+                    operators.Any(op => op == a) && b
+                    == SyntaxKind.NumericLiteralToken)//#3
+            })
+            .Where(w => w.Toks.Any(to => to == true))//#4
+            .Select(w => w.MethodName)
+            });
+
+            var resultsY = tree.GetRoot().DescendantNodes()
             .Where(t => t.Kind() == SyntaxKind.ClassDeclaration)
             .Cast<ClassDeclarationSyntax>()
             .Select(t =>
@@ -165,11 +195,11 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             //                   .Select(c => c.Kind())
             //           });
 
-            int resultCount = results.Select(r => r.MethodTokens.Count()).Sum();
+            int resultCount = resultsY.Select(r => r.MethodTokens.Count()).Sum();
 
             int tokensCount = 0;
 
-            foreach (var item in results)
+            foreach (var item in resultsY)
             {
                 foreach (var mt in item.MethodTokens)
                 {
@@ -182,7 +212,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             if (resultCount > 0)
             {
                 sb.AppendLine($"Has Magic Numbers in Condition ({resultCount})");
-                foreach (var item in results)
+                foreach (var item in resultsY)
                 {
                     //sb.AppendLine($"  ClassName: {item.ClassName, -30} ({item.Span.Start,4}-{item.Span.End,-4})");
 

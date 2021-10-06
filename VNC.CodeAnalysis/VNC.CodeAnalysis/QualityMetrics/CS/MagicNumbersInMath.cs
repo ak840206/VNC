@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -28,7 +27,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             };
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
-
+            
             var results = tree.GetRoot().DescendantNodes()
             .Where(st => st.Kind() == SyntaxKind.MethodDeclaration)
             .Cast<MethodDeclarationSyntax>()
@@ -37,12 +36,17 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 {
                     Span = st.Span,
                     MethodName = st.Identifier.ValueText, // 1
-                    //Line = st.SyntaxTree.GetLineSpan(st.FullSpan).StartLinePosition.Line,
+                    Line = tree.GetLineSpan(st.Span).StartLinePosition.Line + 1,    // Lines start at 0
                     MagicLines = CSharpSyntaxTree.ParseText(st.ToFullString())
                    .GetRoot().DescendantNodes()
                        .Where(z => kinds.Any(k => k == z.Kind()))
-                        .Select(q => q.ToFullString().Trim())
-                        .Where(w => CSharpSyntaxTree.ParseText("void dummy(){" + w.ToString() + "}")
+                        .Select(q =>
+                        new
+                        {
+                            Code = q.ToFullString().Trim(),
+                            CodeLine = tree.GetLineSpan(q.Span).StartLinePosition.Line + 1,    // Lines start at 0
+                        })
+                        .Where(w => CSharpSyntaxTree.ParseText("void dummy(){" + w.Code.ToString() + "}")
                         .GetRoot().DescendantTokens()
                             .Any(s => s.Kind() == SyntaxKind.NumericLiteralToken)) // 2
                 });
@@ -57,11 +61,11 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 {
                     if (item.MagicLines.Count() > 0)
                     {
-                        sb.AppendLine($"  ({item.Span.Start,4}-{item.Span.End,-4}) Method: {item.MethodName}");// Line:{item.Line}");
+                        sb.AppendLine($"  Method:{item.MethodName} at Line:{item.Line}");
 
                         foreach (var line in item.MagicLines)
                         {
-                            sb.AppendLine($"    {line}");
+                            sb.AppendLine($"    {line.Code} at Line:{line.CodeLine}");
                         }
                     }
                 }

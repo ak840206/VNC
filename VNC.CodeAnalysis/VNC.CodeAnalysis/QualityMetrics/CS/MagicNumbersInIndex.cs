@@ -26,6 +26,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                     .First()
                     .Identifier.ValueText,
                 Span = bals.Span,
+                Line = tree.GetLineSpan(bals.Span).StartLinePosition.Line + 1,    // Lines start at 0
                 Code = bals.Parent,
                 Indices = bals.Arguments
                     .Select(a => a.GetText()
@@ -46,8 +47,8 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
                 foreach (var item in results)
                 {
-                    sb.AppendLine($"  Method: {item.Method}");
-                    sb.AppendLine($"    {item.Code}");
+                    sb.AppendLine($"  Method: {item.Method} ");
+                    sb.AppendLine($"    {item.Code} at Line:{item.Line}");
 
                     foreach (var index in item.Indices)
                     {
