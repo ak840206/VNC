@@ -15,16 +15,15 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
-            // TODO(crhodes)
-            // Look at Long Parameter List.  Is it useful to have class??
-
             var results = tree.GetRoot().DescendantNodes()
             .Where(t => t.Kind() == SyntaxKind.MethodDeclaration)
-            .Cast<MethodDeclarationSyntax>()    // 1 - Get Methods
-                .Select(mds =>
+            .Cast<MethodDeclarationSyntax>()
+            .Select(mds =>
                 new
                 {
+                    ClassName = mds.Ancestors().OfType<ClassDeclarationSyntax>().First().Identifier.ValueText,
                     MethodName = mds.Identifier.ValueText,
+                    MethodLine = tree.GetLineSpan(mds.Span).StartLinePosition.Line + 1, // Lines start at 0
                     GoTos = mds.Body.DescendantNodes().Where(n => n.Kind() == SyntaxKind.GotoStatement 
                                                                 || n.Kind() == SyntaxKind.GotoCaseStatement),
                     HasGoto = CSharpSyntaxTree.ParseText(mds.ToString())
@@ -38,15 +37,15 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
             if (resultCount > 0)
             {
-                sb.AppendLine("Has Goto Labels");
+                sb.AppendLine($"Has Goto Labels ({resultCount})");
 
                 foreach (var item in results)
                 {
-                    sb.AppendLine($"  Method: {item.MethodName}");
+                    sb.AppendLine($"  {item.ClassName}.{item.MethodName}()    - Line:{item.MethodLine}");
 
                     foreach (var g in item.GoTos)
                     {
-                        sb.AppendLine($"    {g}");
+                        sb.AppendLine($"    {g} - Line: {g.GetLocation().GetLineSpan().StartLinePosition.Line + 1}");
                     }
                 }
             }

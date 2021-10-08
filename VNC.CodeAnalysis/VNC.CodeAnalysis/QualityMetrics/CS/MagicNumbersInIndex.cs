@@ -21,12 +21,20 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             .Select(bals =>
             new
             {
-                Method = bals.Ancestors()
+                ClassName = bals.Ancestors()
+                    .OfType<ClassDeclarationSyntax>().First()
+                    .Identifier.ValueText,
+                // TODO(crhodes)
+                // See if can just reach back once for Method
+                MethodName = bals.Ancestors()
                     .OfType<MethodDeclarationSyntax>()
                     .First()
                     .Identifier.ValueText,
+                MethodLine = tree.GetLineSpan(bals.Ancestors()
+                    .OfType<MethodDeclarationSyntax>().First().Span)
+                    .StartLinePosition.Line + 1,
                 Span = bals.Span,
-                Line = tree.GetLineSpan(bals.Span).StartLinePosition.Line + 1,    // Lines start at 0
+                CodeLine = tree.GetLineSpan(bals.Span).StartLinePosition.Line + 1,    // Lines start at 0
                 Code = bals.Parent,
                 Indices = bals.Arguments
                     .Select(a => a.GetText()
@@ -34,7 +42,6 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                     .CurrentText
                     .ToString())
             })
-            //Find methods that use magic indices
             .Where(bals => bals.Indices
                 .Any(i => Regex.Match(i, "[0-9]+").Success)
             );
@@ -47,8 +54,9 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
                 foreach (var item in results)
                 {
-                    sb.AppendLine($"  Method: {item.Method} ");
-                    sb.AppendLine($"    {item.Code} at Line:{item.Line}");
+                    sb.AppendLine($"  Line:{item.MethodLine,-5} - ClassName:{item.ClassName}  MethodName:{item.MethodName}()");
+
+                    sb.AppendLine($"    {item.Code}    - Line:{item.CodeLine}");
 
                     foreach (var index in item.Indices)
                     {

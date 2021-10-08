@@ -17,6 +17,12 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             Func<string, string, bool> IsHungarian = (varName, typeName) =>
             {
                 bool result = false;
+
+                if (varName.Length == 1)    // Single character variables
+                {
+                    return result;
+                }
+
                 string upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                 if (typeName == "bool"
                         && varName.StartsWith("b")
@@ -54,9 +60,6 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             };
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
-
-            // TODO(crhodes)
-            // Look at Long Parameter List.  Is it useful to have class / method??
 
             var results = tree.GetRoot().DescendantNodes()
             .Where(t => t.Kind() == SyntaxKind.FieldDeclaration)

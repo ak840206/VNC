@@ -29,26 +29,42 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
             
             var results = tree.GetRoot().DescendantNodes()
-            .Where(st => st.Kind() == SyntaxKind.MethodDeclaration)
+            .Where(mds => mds.Kind() == SyntaxKind.MethodDeclaration)
             .Cast<MethodDeclarationSyntax>()
+            // NOTE(crhodes)
+            // This does not get the correct span for the lines containing NumericLiterals
+            //.Select(st =>
+            //    new
+            //    {
+            //        Span = st.Span,
+            //        MethodName = st.Identifier.ValueText,
+            //        MethodLine = tree.GetLineSpan(st.Span).StartLinePosition.Line + 1, // Lines start at 0
+            //        MagicLines = CSharpSyntaxTree.ParseText(st.ToFullString()).GetRoot().DescendantNodes()
+            //            .Where(z => kinds.Any(k => k == z.Kind()))
+            //            .Select(q =>
+            //                new
+            //                {
+            //                    Span = q.Span,
+            //                    Code = q.ToFullString().Trim(),
+            //                    CodeLine = tree.GetLineSpan(q.Span).StartLinePosition.Line + 1,
+            //                })
+            //                .Where(w => CSharpSyntaxTree.ParseText("void dummy(){" + w.Code.ToString() + "}")
+            //                .GetRoot().DescendantTokens()
+            //                    .Any(s => s.Kind() == SyntaxKind.NumericLiteralToken)) // 2
+            //    });
             .Select(st =>
                 new
                 {
+                    ClassName = st.Ancestors().OfType<ClassDeclarationSyntax>().First().Identifier.ValueText,
                     Span = st.Span,
-                    MethodName = st.Identifier.ValueText, // 1
-                    Line = tree.GetLineSpan(st.Span).StartLinePosition.Line + 1,    // Lines start at 0
-                    MagicLines = CSharpSyntaxTree.ParseText(st.ToFullString())
-                   .GetRoot().DescendantNodes()
-                       .Where(z => kinds.Any(k => k == z.Kind()))
-                        .Select(q =>
-                        new
-                        {
-                            Code = q.ToFullString().Trim(),
-                            CodeLine = tree.GetLineSpan(q.Span).StartLinePosition.Line + 1,    // Lines start at 0
-                        })
-                        .Where(w => CSharpSyntaxTree.ParseText("void dummy(){" + w.Code.ToString() + "}")
-                        .GetRoot().DescendantTokens()
-                            .Any(s => s.Kind() == SyntaxKind.NumericLiteralToken)) // 2
+                    MethodName = st.Identifier.ValueText,
+                    MethodLine = tree.GetLineSpan(st.Span).StartLinePosition.Line + 1, // Lines start at 0
+                    MagicLines = CSharpSyntaxTree.ParseText(st.ToFullString()).GetRoot().DescendantNodes()
+                        .Where(z => kinds.Any(k => k == z.Kind()))
+                        .Select(q => q.ToFullString().Trim())
+                            .Where(w => CSharpSyntaxTree.ParseText("void dummy(){" + w.ToString() + "}")
+                            .GetRoot().DescendantTokens()
+                                .Any(s => s.Kind() == SyntaxKind.NumericLiteralToken))
                 });
 
             int resultCount = results.Select(r => r.MagicLines.Count()).Sum();
@@ -61,11 +77,14 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 {
                     if (item.MagicLines.Count() > 0)
                     {
-                        sb.AppendLine($"  Method:{item.MethodName} at Line:{item.Line}");
+                        sb.AppendLine($"  ClassName:{item.ClassName}  MethodName:{item.MethodName}()    - Line:{item.MethodLine}");
 
                         foreach (var line in item.MagicLines)
                         {
-                            sb.AppendLine($"    {line.Code} at Line:{line.CodeLine}");
+   
+                            sb.AppendLine($"    {line}");
+                            //sb.AppendLine($"    {line.Code}    - Line:{line.CodeLine}");
+                            //sb.AppendLine($"    Span:({item.Span.Start} - {item.Span.End})");
                         }
                     }
                 }

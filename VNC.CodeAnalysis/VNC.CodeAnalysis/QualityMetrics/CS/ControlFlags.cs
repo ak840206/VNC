@@ -38,13 +38,25 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 })
                     .Select(t => t.VariableName);// 1
 
-            var statements = tree.GetRoot().DescendantNodes()
+            var results = tree.GetRoot().DescendantNodes()
             .Where(t => t.Kind() == SyntaxKind.IfStatement)
             .Cast<IfStatementSyntax>()
             .Select(ifs =>
                new
                {
-                    If = ifs.ToFullString(), // 2
+                   ClassName = ifs.Ancestors()
+                    .OfType<ClassDeclarationSyntax>().First()
+                    .Identifier.ValueText,
+                   // TODO(crhodes)
+                   // See if can just reach back once for Method
+                   MethodName = ifs.Ancestors()
+                    .OfType<MethodDeclarationSyntax>()
+                    .First()
+                    .Identifier.ValueText,
+                   MethodLine = tree.GetLineSpan(ifs.Ancestors()
+                    .OfType<MethodDeclarationSyntax>().First().Span)
+                    .StartLinePosition.Line + 1,
+                   If = ifs.ToFullString(), // 2
                     Condition = ifs.Condition.ToFullString(),// 3
                     Line = ifs.SyntaxTree
                        .GetLineSpan(ifs.FullSpan)
@@ -53,23 +65,32 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                 .Where(ifs => ifs.Condition.Split(
                     new string[] { "&&", "||", "==", "(", ")", " " }, StringSplitOptions.RemoveEmptyEntries)
                     //If a control flag is used,
-                    .Any(c => bools.Contains(c) ||
+                    .Any(c => bools.Contains(c)
                     //it can also be used in a negative way. skipping "!"
-                    bools.Contains(c.Substring(1))));    // 5
+                    || bools.Contains(c.Substring(1))));    // 5
 
             // TODO(crhodes)
             // Needs output control work
 
-            sb.AppendLine("Has ControlFlags");
+            int resultCount = results.Count();
 
-            foreach (var item in bools)
+            if (resultCount > 0)
             {
-                sb.AppendLine($"{item}");
-            }
+                sb.AppendLine($"Has ControlFlags ({resultCount})");
 
-            foreach (var item in statements)
-            {
-                sb.AppendLine($" {item.If}  Condition:{item.Condition}  Line:{item.Line}");
+                //foreach (var item in bools)
+                //{
+                //    sb.AppendLine($"{item}");
+                //}
+
+                foreach (var item in results)
+                {
+                    sb.AppendLine($"  Line:{item.MethodLine,-5} - ClassName:{item.ClassName}  MethodName:{item.MethodName}()");
+
+                    sb.AppendLine($"   Condition: {item.Condition}  Line:{item.Line}");
+
+                    sb.AppendLine($"     {item.If}");
+                }
             }
 
             return sb;

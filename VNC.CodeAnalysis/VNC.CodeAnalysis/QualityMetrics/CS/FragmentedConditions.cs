@@ -12,31 +12,33 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
             var results = tree.GetRoot()
             .DescendantNodes()
             .Where(t => t.Kind() == SyntaxKind.MethodDeclaration)
             .Cast<MethodDeclarationSyntax>() // 1
-            .Select(t => new
-            {
-                Name = t.Identifier.ValueText,
-                IfStatements = t.Body.Statements
-               .Where(m => m.Kind() == SyntaxKind.IfStatement)
-               .Cast<IfStatementSyntax>()
-               .Select(iss =>
-                  // 2
-                  new
-                  {
-                      Statement = iss.Statement.ToFullString(),
-                      // 3
-                      IfStatement = iss.Condition.ToFullString()
-                  })
-                //.ToLookup(iss => iss.Statement) // 4
-                // NOTE(crhodes)
-                // What does .ToLookup do?
-            });
+            .Select(mds => 
+                new
+                {
+                    ClassName = mds.Ancestors()
+                        .OfType<ClassDeclarationSyntax>().First()
+                        .Identifier.ValueText,
+                    MethodName = mds.Identifier.ValueText,
+                    MethodLine = tree.GetLineSpan(mds.Span).StartLinePosition.Line + 1,
+                    IfStatements = mds.Body.Statements
+                   .Where(m => m.Kind() == SyntaxKind.IfStatement)
+                   .Cast<IfStatementSyntax>()
+                   .Select(iss =>
+                      new
+                      {
+                          Statement = iss.Statement.ToFullString(),
+                          IfStatement = iss.Condition.ToFullString()
+                      })
+                    //.ToLookup(iss => iss.Statement) // 4
+                    // NOTE(crhodes)
+                    // What does .ToLookup do?
+                });
             //        .Dump("Fragmented conditions");
 
             int resultCount = results.Select(r => r.IfStatements.Count()).Sum();
@@ -47,12 +49,17 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
 
                 foreach (var item in results)
                 {
-                    sb.AppendLine($"{item.Name}");
+                    sb.AppendLine($"  Line:{item.MethodLine,-5} - {item.ClassName}.{item.MethodName}()");
+
+                    if (item.IfStatements.Count() > 0)
+                    {
+                        sb.AppendLine($"    Statement: {item.IfStatements.First().Statement}");
+                    }
 
                     foreach (var ifs in item.IfStatements)
                     {
-                        sb.AppendLine($"{ifs.Statement}");
-                        sb.AppendLine($"{ifs.IfStatement}");
+                        sb.AppendLine($"    if({ifs.IfStatement})");
+                        sb.AppendLine($"       {item.IfStatements.First().Statement}");
                     }
                 }
             }
