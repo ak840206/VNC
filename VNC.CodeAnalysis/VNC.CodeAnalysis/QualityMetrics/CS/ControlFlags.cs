@@ -16,7 +16,6 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         {
             StringBuilder sb = new StringBuilder();
 
-
             //Find all boolean variables in the class
             //Find all if statements that solely rely on those
             //Find the methods in which these if statements are
@@ -36,7 +35,12 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                        .Cast<ClassDeclarationSyntax>()
                        .First().Identifier.ValueText
                 })
-                    .Select(t => t.VariableName);// 1
+                .Select(t => t.VariableName);// 1
+
+            if (bools is null || bools.Count() == 0)
+            {
+                return sb;
+            }
 
             var results = tree.GetRoot().DescendantNodes()
             .Where(t => t.Kind() == SyntaxKind.IfStatement)
@@ -50,8 +54,7 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                    // TODO(crhodes)
                    // See if can just reach back once for Method
                    MethodName = ifs.Ancestors()
-                    .OfType<MethodDeclarationSyntax>()
-                    .First()
+                    .OfType<MethodDeclarationSyntax>().First()
                     .Identifier.ValueText,
                    MethodLine = tree.GetLineSpan(ifs.Ancestors()
                     .OfType<MethodDeclarationSyntax>().First().Span)

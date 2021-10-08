@@ -12,7 +12,6 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
         public static StringBuilder Check(string sourceCode)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Code to Comment Ratio");
 
             var tree = CSharpSyntaxTree.ParseText(sourceCode);
 
@@ -24,33 +23,38 @@ namespace VNC.CodeAnalysis.QualityMetrics.CS
                {
                    ClassName = t.Identifier.ValueText,
                    Methods = t.Members.OfType<MethodDeclarationSyntax>()
-               }
-            )// 1
-            .Select(t =>
-               new
-               {
-                   ClassName = t.ClassName,
-                   MethodDetails = t.Methods
-                   .Select(m => 
-                       new
-                       {
-                           Name = m.Identifier.ValueText,
-                           Lines = m.Body.Statements.Count, //#2
-                           Comments = m.Body.DescendantTrivia()
-                            .Count(b => b.Kind() == SyntaxKind.SingleLineCommentTrivia
-                            || b.Kind() == SyntaxKind.MultiLineCommentTrivia) //#3
-                       }
-                   )
-               }
-            );
+               })
+               .Select(t =>
+                   new
+                   {
+                       ClassName = t.ClassName,
+                       MethodDetails = t.Methods
+                       .Select(m =>
+                           new
+                           {
+                               Name = m.Identifier.ValueText,
+                               Lines = m.Body.Statements.Count,
+                               Comments = m.Body.DescendantTrivia()
+                                .Count(b => b.Kind() == SyntaxKind.SingleLineCommentTrivia
+                                || b.Kind() == SyntaxKind.MultiLineCommentTrivia)
+                           }
+                       )
+                   });
 
-            foreach (var item in results)
+            int resultCount = results.Count();
+
+            if (resultCount > 0)
             {
-                sb.AppendLine($"  ClassName: {item.ClassName}");
+                sb.AppendLine("Code to Comment Ratio");
 
-                foreach (var detail in item.MethodDetails)
+                foreach (var item in results)
                 {
-                    sb.AppendLine($"    Method: {detail.Name,-40}   Statements:{detail.Lines,5}  Comments:{detail.Comments,5}");
+                    sb.AppendLine($"  ClassName: {item.ClassName}");
+
+                    foreach (var detail in item.MethodDetails)
+                    {
+                        sb.AppendLine($"    Method: {detail.Name,-40}   Statements:{detail.Lines,5}  Comments:{detail.Comments,5}");
+                    }
                 }
             }
 

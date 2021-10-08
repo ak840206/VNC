@@ -12,7 +12,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 {
 
-    public class VNCCSSyntaxWalkerBase : CSharpSyntaxWalker
+    public partial class VNCCSSyntaxWalkerBase : CSharpSyntaxWalker
     {
 
         #region Constructors, Initialization, and Load
@@ -22,23 +22,8 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
         }
 
-        #endregion
-
-        #region Enums
-
-        // NOTE(crhodes)
-        // CSharp does not have Module Blocks.
-        // In CSharp this is really Namespace, Class, Method, Block
-
-        public enum BlockType : Int16
-        {
-            None = 0,
-            NamespaceBlock = 1,
-            ClassBlock = 2,
-            ModuleBlock = 3,
-            MethodBlock = 4,
-            StructureBlock = 5
-        }
+#endregion
+#region Enums
 
         #endregion
 
@@ -219,13 +204,18 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
         public void RecordMatchAndContext(CSharpSyntaxNode node, BlockType blockType)
         {
+            // What we return when we match something.
+            // In some cases we add some info.
             string nodeValue = "";
-            string nodeKey = "";
 
-            // Produce a useful string to use for the Matches dictionary
+
+            // Produce a useful Key to use for the Matches dictionary
             // Don't want to use a long string
+
+            string nodeKey = "";
             //
-            // Also handle display of full block for some SyntaxNodes
+            // Also handle _configurationOptions.DisplayStatementBlock
+            // for some SyntaxNodes - typically the shorter ones.
 
             var attributes = "";
             var modifiers = "";
@@ -297,7 +287,9 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                     if (_configurationOptions.DisplayStatementBlock)
                     {
                         // Can skip modifiers, returnType and Parameters - Part of Block (node)
-                        nodeValue = $"{((MethodDeclarationSyntax)node)}  {node.Kind()}-{node.RawKind})";
+                        nodeValue += _configurationOptions.DisplayNodeKind
+                            ? $"{((MethodDeclarationSyntax)node)}  {node.Kind()}-{node.RawKind})"
+                            : $"{((MethodDeclarationSyntax)node)}";
                     }
                     else
                     {
@@ -349,6 +341,24 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
                             ? $"{((StructDeclarationSyntax)node).Identifier} ({node.Kind()}-{node.RawKind})"
                             : $"{((StructDeclarationSyntax)node).Identifier}";
                     }
+
+                    break;
+
+                case BlockType.IfBlock:
+                    if (_configurationOptions.DisplayStatementBlock)
+                    {
+                        nodeValue = _configurationOptions.DisplayNodeKind
+                        ? $"{((IfStatementSyntax)node)}  {node.Kind()}-{node.RawKind})"
+                        : $"{((IfStatementSyntax)node)}";
+                    }
+                    else
+                    {
+                        nodeValue = _configurationOptions.DisplayNodeKind
+                            ? $"if ({((IfStatementSyntax)node).Condition}) ({node.Kind()}-{node.RawKind})"
+                            : $"if ({((IfStatementSyntax)node).Condition})";
+                    }
+
+                    nodeKey = $"{((IfStatementSyntax)node).Condition}";
 
                     break;
             }
