@@ -23,6 +23,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Diagrams\VNC.Core.Netcd" />
       <None Remove="Execute-PostBuild.ps1" />
       <None Remove="Execute-PreBuild.ps1" />
     </ItemGroup>
@@ -60,6 +61,10 @@
             <Pack>True</Pack>
             <PackagePath></PackagePath>
         </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Diagrams\NewFolder\" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

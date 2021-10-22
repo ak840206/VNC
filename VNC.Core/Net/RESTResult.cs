@@ -80,6 +80,25 @@ namespace VNC.Core.Net
             //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("NTLM");
         }
 
+        //public void InitializeHttpClient2(HttpClient client, string tenantId, string clientId)
+        //{
+        //    client.DefaultRequestHeaders.Accept.Add(
+        //        new MediaTypeWithQualityHeaderValue("application/json"));
+
+        //    //var username = @"Christopher.Rhodes@bd.com";
+        //    //var password = @"xxxxxxxx";
+
+        //    //string base64PAT = Convert.ToBase64String(
+        //    //        ASCIIEncoding.ASCII.GetBytes($"{username}:{password}"));
+
+        //    string base64PAT = Convert.ToBase64String(
+        //            ASCIIEncoding.ASCII.GetBytes(
+        //                string.Format("{0}:{1}", "", personalAccessToken)));
+
+        //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64PAT);
+        //    //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("NTLM");
+        //}
+
         public RequestResponseInfo InitializeExchange(HttpClient client, string requestUri)
         {
             RequestResponseInfo exchange = new RequestResponseInfo();
