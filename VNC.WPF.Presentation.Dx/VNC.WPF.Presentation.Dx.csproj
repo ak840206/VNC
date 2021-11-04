@@ -28,8 +28,11 @@
         <PackageReference Include="DevExpress.Wpf.Core.Extensions" Version="21.1.4" />
         <PackageReference Include="DevExpress.Wpf.Grid" Version="21.1.4" />
         <PackageReference Include="DevExpress.Wpf.LayoutControl" Version="21.1.4" />
+        <!--<PackageReference Include="VNC.Core" Version="1.2.0" />-->
+    </ItemGroup>
 
-        <PackageReference Include="VNC.Core" Version="1.2.0" />
+    <ItemGroup>
+        <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -47,6 +50,7 @@
         <PackagePath></PackagePath>
       </None>
     </ItemGroup>
+
 
     <ItemGroup>
       <Page Update="Views\ExportGridDialog.xaml">

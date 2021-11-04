@@ -7,12 +7,12 @@ using System.Text;
 
 namespace VNC.Core.Net
 {
-    public class RESTResult<T> : INotifyPropertyChanged where T : class
+    public class RESTResult<T> : INotifyPropertyChanged where T : class, new()
     {
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         private int _count;
-
+         
         public int Count
         {
             get => _count;
@@ -38,6 +38,20 @@ namespace VNC.Core.Net
                 _selectedItem = value;
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedItem)));
+            }
+        }
+
+        private T _item;
+
+        public T ResultItem
+        {
+            get => _item;
+            set
+            {
+                if (_item == value)
+                    return;
+                _item = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ResultItem)));
             }
         }
 
