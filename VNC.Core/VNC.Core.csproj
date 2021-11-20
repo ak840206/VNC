@@ -31,6 +31,7 @@
     <ItemGroup>
         <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
         <PackageReference Include="EntityFramework" Version="6.4.4" />
+        <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.11.0" />
         <PackageReference Include="Prism.Wpf" Version="8.1.97" />
         <PackageReference Include="Unity.Interception" Version="5.11.1" />
         <PackageReference Include="VNC.Logging" Version="1.2.0" />
@@ -52,6 +53,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <AdditionalFiles Include="..\..\AZDORestApiExplorer\DependencyValidation1\DependencyValidation1.layerdiagram" Link="DependencyValidation1.layerdiagram">
+          <Visible>False</Visible>
+        </AdditionalFiles>
         <None Include="..\LICENSE">
             <Pack>True</Pack>
             <PackagePath></PackagePath>

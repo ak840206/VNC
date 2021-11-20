@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net5.0-windows;net5.0;net48</TargetFrameworks>
+        <TargetFrameworks>net6.0;net48</TargetFrameworks>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AssemblyName>VNC.Logging</AssemblyName>
         <RootNamespace>VNC.Logging</RootNamespace>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>1.2.0</PackageVersion>
+        <PackageVersion>2.0.0</PackageVersion>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
         <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
@@ -24,7 +24,7 @@
     <ItemGroup>
         <PackageReference Include="EnterpriseLibrary.Common.NetCore" Version="6.3.0" />
         <PackageReference Include="EnterpriseLibrary.Logging.NetCore" Version="6.3.2" />
-        <PackageReference Include="Microsoft.AspNet.Cors" Version="5.2.7" />
+        <!--<PackageReference Include="Microsoft.AspNet.Cors" Version="5.2.7" />
         <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.2" />
         <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.2" />
         <PackageReference Include="Microsoft.Owin.Cors" Version="4.2.0" />
@@ -33,7 +33,7 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
         <PackageReference Include="Unity" Version="5.11.10" />
-        <PackageReference Include="Unity.Interception" Version="5.11.1" />
+        <PackageReference Include="Unity.Interception" Version="5.11.1" />-->
     </ItemGroup>
 
     <ItemGroup>
