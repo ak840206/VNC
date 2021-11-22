@@ -1,4 +1,5 @@
-﻿
+﻿using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.SignalR;
 
 namespace SignalRCoreServerHubConsole
@@ -16,19 +17,7 @@ namespace SignalRCoreServerHubConsole
             else
             {
                 await Clients.All.SendAsync("AddUserMessage", userName, message);
-            }
-            
+            }            
         }
-
-        //public async Task AddUserMessage(string userName, string message)
-        //{
-        //    await Clients.All.SendAsync("AddUserMessage", userName, message);
-        //    await Clients.All.SendAsync("AddMessage", message);
-        //}
-
-        //public async Task AddMessage(string message)
-        //{
-        //    await Clients.All.SendAsync("AddMessage", message);
-        //}
     }
 }
