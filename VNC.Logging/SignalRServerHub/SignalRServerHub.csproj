@@ -1,11 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+<<<<<<< HEAD
         <OutputType>WinExe</OutputType>
         <TargetFrameworks>net5-windows10.0.17763.08</TargetFrameworks>
         <UseWPF>true</UseWPF>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <ApplicationIcon>Resources\Icons\application.ico</ApplicationIcon>
+=======
+    <OutputType>WinExe</OutputType>
+      <TargetFrameworks>net48</TargetFrameworks>
+      <!--<TargetFrameworks>net5.0-windows;net48</TargetFrameworks>-->
+      <UseWPF>true</UseWPF>
+>>>>>>> 0c5ac4faa23cca3e1506e1f371807a9bff1c1655
   </PropertyGroup>
     
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -32,6 +39,14 @@
       <PackageReference Include="Unity" Version="5.11.10" />
       <PackageReference Include="Unity.Interception" Version="5.11.1" />      
         <PackageReference Include="VNC.AssemblyHelper" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.SignalR.Owin" Version="1.2.2" />
+    <PackageReference Include="Microsoft.AspNet.SignalR.SelfHost" Version="2.4.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.OwinSelfHost" Version="5.2.7" />
+    <PackageReference Include="Microsoft.Owin.Cors" Version="4.2.0" />
+    <PackageReference Include="Microsoft.Owin.Hosting" Version="4.2.0" />
   </ItemGroup>
 
 </Project>

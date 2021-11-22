@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net6.0</TargetFrameworks>
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <AssemblyName>VNC.Logging.TraceListeners.SignalRCoreListener</AssemblyName>
+        <RootNamespace>VNC.Logging.TraceListeners</RootNamespace>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>1.0.0</PackageVersion>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>logging</PackageTags>
+        <PackageIcon>VNC.png</PackageIcon>
+        <Authors>Christopher Rhodes</Authors>
+        <Copyright>Copyright © VNC 2010-2021</Copyright>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>        
+        <Description>SignalRCore TraceListener for EnterpriseLibrary Logging</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EnterpriseLibrary.Logging" Version="6.0.1304" />
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="LICENSE">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+
+        <None Include="VNC.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+
+    </ItemGroup>   
+    
+</Project>

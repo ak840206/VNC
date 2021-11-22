@@ -2,13 +2,21 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
+<<<<<<< HEAD
       <TargetFrameworks>net5.0-windows</TargetFrameworks>
+=======
+      <TargetFrameworks>net5.0-windows;net48</TargetFrameworks>
+>>>>>>> 0c5ac4faa23cca3e1506e1f371807a9bff1c1655
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
       <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
+=======
+    <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.2" />
+>>>>>>> 0c5ac4faa23cca3e1506e1f371807a9bff1c1655
   </ItemGroup>
 
 </Project>

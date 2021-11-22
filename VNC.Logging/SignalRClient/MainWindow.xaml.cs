@@ -123,11 +123,19 @@ namespace SignalRClient
 
         private void btnLog_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             long startTicks = VNC.AppLog.Info("Enter", "SignalRClient");
 
             Thread.Sleep(int.Parse(tbDelayMS.Text));
 
             VNC.AppLog.Info("Exit", "SignalRClient", startTicks);
+=======
+            //long startTicks = VNC.AppLog.Info("Enter", "SignalRClient");
+
+            Thread.Sleep(int.Parse(tbDelayMS.Text));
+
+            //VNC.AppLog.Info("Exit", "SignalRClient", startTicks);
+>>>>>>> 0c5ac4faa23cca3e1506e1f371807a9bff1c1655
         }
     }
 }

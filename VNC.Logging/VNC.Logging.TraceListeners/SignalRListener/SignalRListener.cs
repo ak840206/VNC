@@ -6,25 +6,17 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 
-using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Client;
-using Microsoft.Owin.Cors;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using Microsoft.Practices.EnterpriseLibrary.Logging.Configuration;
-//using Microsoft.Owin.Hosting;
-using Owin;
-
-//using VNC.Logging.CustomTraceListeners.ServiceReference1;
 
 namespace VNC.Logging.TraceListeners
 {
     [ConfigurationElementType(typeof(CustomTraceListenerData))]
     public class SignalRListener : Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners.CustomTraceListener
     {
-        //private const Int32 BASE_ERRORNUMBER = EaseCore.ErrorNumbers.EASECLASS;
-        //private const string LOG_APPNAME = "SIGNALRLISTENER";
-        private const string LOG_APPNAME = "EASECORE";
+        private const string LOG_APPNAME = "VNCLoggingListener";
 
         private string sLoggingDbConString = string.Empty;
         private int iSQLCommandTimeoutInSecs = 300;
@@ -49,27 +41,17 @@ namespace VNC.Logging.TraceListeners
             "maxDuration", "MaxDuration", "maxduration",
             "suppressEnter", "SuppressEnter", "suppressenter" };
 
-        //private LiveViewClient client = null;
-
         public IDisposable SignalR { get; set; }
 
-        /// <summary>
-        /// default constructor
-        /// </summary>
         public SignalRListener()
         {
-            //Log.Info("SignalRListener()", LOG_APPNAME);
-
-            //client = new LiveViewClient();
             ConnectAsync();
         }
 
         public SignalRListener(string duration)
         {
             maxDuration = double.Parse(duration);
-            //Log.Info("SignalRListener()", LOG_APPNAME);
 
-            //client = new LiveViewClient();
             ConnectAsync();
         }
 
@@ -123,10 +105,7 @@ namespace VNC.Logging.TraceListeners
                 return (bool)suppressEnter;
             }
         }
-        /// <summary>
-        /// This name is simply added to sent messages to identify the user; this 
-        /// sample does not include authentication.
-        /// </summary>
+
         public String UserName { get; set; }
         public IHubProxy HubProxy { get; set; }
         const string ServerURI = "http://localhost:8095/signalr";
@@ -134,23 +113,11 @@ namespace VNC.Logging.TraceListeners
 
         public HubConnection Connection { get; set; }
 
-        /// <summary>
-        /// List of Attributes allowed
-        /// </summary>
-        /// <returns></returns>
-        //protected override string[] GetSupportedAttributes()
-        //{
-        //    return new string[] { "LoggingDbConString", "SQLCommandTimeout" };
-        //    //return base.GetSupportedAttributes();
-        //}
         public override void Write(string message)
         {
             try
             {
-                //message = message + "*W*";
-                //client.DisplayLogEntry(message);  // Named pipes
-                //HubProxy.Invoke("Send", SignalRListenerUser, message);
-                HubProxy.Invoke("SendPriority", message, iPriority);
+                HubProxy.Invoke("SendPriorityMessage", message, iPriority);
             }
             catch (InvalidOperationException)
             {
@@ -161,13 +128,11 @@ namespace VNC.Logging.TraceListeners
 
                 // Send the message so it doesn't get lost
 
-                HubProxy.Invoke("SendPriority", message, iPriority);
+                HubProxy.Invoke("SendPriorityMessage", message, iPriority);
             }
             catch (Exception ex)
             {
-                //Log.Error(ex, LOG_APPNAME);
                 var errorMessage = ex.ToString();
-                //client.DisplayLogEntry(string.Format("SRLWex: {0}", ex.ToString()));
             }
         }
 
@@ -175,10 +140,7 @@ namespace VNC.Logging.TraceListeners
         {
             try
             {
-                //message = message + "*WL*";
-                //client.DisplayLogEntry(message); named pipes
-                //HubProxy.Invoke("Send", SignalRListenerUser, message);
-                HubProxy.Invoke("SendPriority", message, iPriority);
+                HubProxy.Invoke("SendPriorityMessage", message, iPriority);
             }
             catch (System.InvalidOperationException)
             {
@@ -195,7 +157,7 @@ namespace VNC.Logging.TraceListeners
                 switch (Connection.State)
                 {
                     case Microsoft.AspNet.SignalR.Client.ConnectionState.Connected:
-                        HubProxy.Invoke("SendPriority", message, iPriority);
+                        HubProxy.Invoke("SendPriorityMessage", message, iPriority);
                         break;
 
                     case Microsoft.AspNet.SignalR.Client.ConnectionState.Connecting:
@@ -213,17 +175,10 @@ namespace VNC.Logging.TraceListeners
             }
             catch (Exception ex)
             {
-                //Log.Error(ex, LOG_APPNAME);
                 var errorMessage = ex.ToString();
-                //client.DisplayLogEntry(string.Format("SRLWLex: {0}", ex.ToString()));
-                //ConnectAsync();
             }
         }
 
-        /// <summary>
-        /// Creates and connects the hub connection and hub proxy. This method
-        /// is called asynchronously from SignInButton_Click.
-        /// </summary>
         private async void ConnectAsync()
         {
             Connection = new HubConnection(ServerURI);
@@ -237,39 +192,19 @@ namespace VNC.Logging.TraceListeners
 
             HubProxy = Connection.CreateHubProxy("MyHub");
 
-            //Handle incoming event from server: use Invoke to write to console from SignalR's thread
-
-            //HubProxy.On<string, string>("AddMessage", (name, message) =>
-            //    this.Dispatcher.Invoke(() =>
-            //        RichTextBoxConsole.AppendText(String.Format("{0}: {1}\r", name, message))
-            //    )
-            //);
-
             try
             {
-                //Connection.Start().RunSynchronously();
                 await Connection.Start();
             }
             catch (HttpRequestException ex)
             {
                 var errorMessage = ex.ToString();
-                //Log.Error(string.Format("SRLCAex: {0}", ex.ToString()), LOG_APPNAME);
-                //client.DisplayLogEntry(string.Format("SRLCAex: {0}", ex.ToString()));
-                //StatusText.Content = "Unable to connect to server: Start server before connecting clients.";
-                //No connection: Don't enable Send button or show chat UI
                 return;
             }
             catch (Exception ex)
             {
                 var errorMessage = ex.ToString();
             }
-
-            //Show chat UI; hide login UI
-            //SignInPanel.Visibility = Visibility.Collapsed;
-            //ChatPanel.Visibility = Visibility.Visible;
-            //ButtonSend.IsEnabled = true;
-            //TextBoxMessage.Focus();
-            //RichTextBoxConsole.AppendText("Connected to server at " + ServerURI + "\r");
         }
 
         #region Connection Events
@@ -277,60 +212,34 @@ namespace VNC.Logging.TraceListeners
         void Connection_Reconnected()
         {
             var info = Connection;
-            //var dispatcher = Application.Current.Dispatcher;
-
-            //dispatcher.Invoke(() => teLogStream.Text += "Connection_Reconnected\n");
         }
 
         void Connection_Reconnecting()
         {
             var info = Connection;
-            //var dispatcher = Application.Current.Dispatcher;
-
-            //dispatcher.Invoke(() => teLogStream.Text += "Connection_Reconnecting\n");
         }
 
         void Connection_StateChanged(StateChange obj)
         {
             var info = Connection;
-            //var dispatcher = Application.Current.Dispatcher;
-            //var message = string.Format("Connection_StateChanged {0,15} -> {1,-15}\n", obj.OldState, obj.NewState);
-
-            //dispatcher.Invoke(() => teLogStream.Text += message);
         }
 
         private void Connection_Received(string obj)
         {
             var info = Connection;
-            //var dispatcher = Application.Current.Dispatcher;
-
-            //dispatcher.Invoke(() => teLogStream.Text += "Connection_Received");
         }
 
         private void Connection_Error(Exception obj)
         {
             var info = Connection;
-            //var dispatcher = Application.Current.Dispatcher;
 
-            //var message = string.Format("Connection_Error >{0}<\n", obj.GetBaseException().ToString());
-            //dispatcher.Invoke(() => teLogStream.Text += message);
         }
 
-        /// <summary>
-        /// If the server is stopped, the connection will time out after 30 seconds (default), and the 
-        /// Closed event will fire.
-        /// </summary>
         void Connection_Closed()
         {
             var info = Connection;
-            ////Hide chat UI; show login UI
-            //var dispatcher = Application.Current.Dispatcher;
-            //dispatcher.Invoke(() => ChatPanel.Visibility = Visibility.Collapsed);
-            //dispatcher.Invoke(() => btnSendPriority.IsEnabled = false);
-            //dispatcher.Invoke(() => btnSend.IsEnabled = false);
-            //dispatcher.Invoke(() => teLogStream.Text += "You have been disconnected.\n");
-            //dispatcher.Invoke(() => SignInPanel.Visibility = Visibility.Visible);
         }
+
         #endregion
 
         public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
@@ -356,6 +265,7 @@ namespace VNC.Logging.TraceListeners
             //    //use default value
             //    iSQLCommandTimeoutInSecs = 300;
             //}
+
             if (data is LogEntry && this.Formatter != null)
             {
                 try
@@ -571,54 +481,8 @@ namespace VNC.Logging.TraceListeners
                 }
 
             }
+
             return bRetVal;
-
         }
-    }
-
-    /// <summary>
-    /// Used by OWIN's startup process. 
-    /// </summary>
-    public class Startup
-    {
-        public void Configuration(IAppBuilder app)
-        {
-            app.UseCors(CorsOptions.AllowAll);
-            app.MapSignalR();
-        }
-    }
-
-    public class MyHub : Hub
-    {
-        public void Send(string name, string message)
-        {
-            Clients.All.addUserMessage(name, message);
-        }
-
-        public void Send(string message)
-        {
-            Clients.All.addMessage(message);
-        }
-        public void SendPriority(string message, Int32 priority)
-        {
-            Clients.All.addPriorityMessage(message, priority);
-        }
-
-        //public override Task OnConnected()
-        //{
-        //    //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
-        //    Application.Current.Dispatcher.Invoke(() =>
-        //        ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client connected: " + Context.ConnectionId));
-
-        //    return base.OnConnected();
-        //}
-        //public override Task OnDisconnected()
-        //{
-        //    //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
-        //    Application.Current.Dispatcher.Invoke(() =>
-        //        ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client disconnected: " + Context.ConnectionId));
-
-        //    return base.OnDisconnected();
-        //}
     }
 }
