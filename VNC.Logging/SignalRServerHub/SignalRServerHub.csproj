@@ -1,9 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-      <TargetFrameworks>net48;net5.0-windows</TargetFrameworks>
-    <UseWPF>true</UseWPF>
+        <OutputType>WinExe</OutputType>
+        <TargetFrameworks>net5-windows10.0.17763.08</TargetFrameworks>
+        <UseWPF>true</UseWPF>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <ApplicationIcon>Resources\Icons\application.ico</ApplicationIcon>
   </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+    </PropertyGroup>    
+
+  <ItemGroup>
+      <PackageReference Include="EnterpriseLibrary.Common.NetCore" Version="6.3.0" />
+      <PackageReference Include="EnterpriseLibrary.Logging.NetCore" Version="6.3.2" />
+      <PackageReference Include="Microsoft.AspNet.Cors" Version="5.2.7" />
+      <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.2" />
+      <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.2" />
+      <PackageReference Include="Microsoft.Owin.Cors" Version="4.2.0" />
+      <PackageReference Include="Microsoft.Owin.Host.HttpListener" Version="4.2.0" />
+      <PackageReference Include="Microsoft.Owin.Hosting" Version="4.2.0" />
+      <PackageReference Include="Microsoft.Owin.Security" Version="4.2.0" />
+      <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+      <PackageReference Include="Unity" Version="5.11.10" />
+      <PackageReference Include="Unity.Interception" Version="5.11.1" />      
+        <PackageReference Include="VNC.AssemblyHelper" Version="1.1.0" />
+  </ItemGroup>
 
 </Project>
