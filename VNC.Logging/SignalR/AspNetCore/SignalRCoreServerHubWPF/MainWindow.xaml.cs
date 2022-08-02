@@ -21,7 +21,7 @@ namespace SignalRCoreServerHubWPF
     public partial class MainWindow : Window
     {
         public IDisposable SignalR { get; set; }
-        string ServerURI = "http://localhost:8095";
+        string ServerURI = "http://localhost:8195";
 
         private IHost _host;
 
@@ -48,7 +48,7 @@ namespace SignalRCoreServerHubWPF
         /// </summary>
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
-            SignalR.Dispose();
+            SignalR?.Dispose();
             Close();
         }
 

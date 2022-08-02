@@ -23,11 +23,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DevExpress.RichEdit.Export" Version="21.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Core" Version="21.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Core.Extensions" Version="21.2.6" />
-        <PackageReference Include="DevExpress.Wpf.Grid" Version="21.2.6" />
-        <PackageReference Include="DevExpress.Wpf.LayoutControl" Version="21.2.6" />
+        <PackageReference Include="DevExpress.RichEdit.Export" Version="21.2.7" />
+        <PackageReference Include="DevExpress.Wpf.Core" Version="21.2.7" />
+        <PackageReference Include="DevExpress.Wpf.Core.Extensions" Version="21.2.7" />
+        <PackageReference Include="DevExpress.Wpf.Grid" Version="21.2.7" />
+        <PackageReference Include="DevExpress.Wpf.LayoutControl" Version="21.2.7" />
         <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.11.0" />
         <PackageReference Include="VNC.Core" Version="1.2.0" />
     </ItemGroup>
