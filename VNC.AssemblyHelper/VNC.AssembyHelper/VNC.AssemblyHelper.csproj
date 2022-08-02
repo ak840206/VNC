@@ -18,13 +18,13 @@
       <PackageTags>mvvm</PackageTags>
       <PackageIcon>VNC.png</PackageIcon>
       <Authors>Christopher Rhodes</Authors>
-      <Copyright>Copyright © VNC 2018-2021</Copyright>
+      <Copyright>Copyright © VNC 2018-2022</Copyright>
       <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
       <Description>Assembly Helper</Description>
   </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="VNC.Core" Version="1.1.0" />
+        <PackageReference Include="VNC.Core" Version="1.2.0" />
     </ItemGroup>
 
     <!--<ItemGroup>

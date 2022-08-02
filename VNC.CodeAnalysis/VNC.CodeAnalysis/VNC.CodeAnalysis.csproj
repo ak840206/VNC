@@ -16,7 +16,7 @@
       <PackageTags>mvvm</PackageTags>
       <PackageIcon>VNC.png</PackageIcon>
       <Authors>Christopher Rhodes</Authors>
-      <Copyright>Copyright © VNC 2018-2021</Copyright>
+      <Copyright>Copyright © VNC 2018-2022</Copyright>
       <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
       <Description>Base class for a variety of needs</Description>
       <RepositoryType>Git</RepositoryType>
@@ -38,7 +38,7 @@
         <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Features" Version="3.11.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces" Version="3.11.0" />
         <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="3.11.0" />
-        <PackageReference Include="VNC.Core" Version="1.1.0" />
+        <PackageReference Include="VNC.Core" Version="1.2.0" />
     </ItemGroup>
     
     <!--<ItemGroup>

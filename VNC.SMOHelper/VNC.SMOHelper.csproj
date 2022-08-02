@@ -16,14 +16,14 @@
       <PackageTags>mvvm</PackageTags>
       <PackageIcon>VNC.png</PackageIcon>
       <Authors>Christopher Rhodes</Authors>
-      <Copyright>Copyright © VNC 2018-2021</Copyright>
+      <Copyright>Copyright © VNC 2018-2022</Copyright>
       <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
       <Description>SQL Management Objects Helper</Description>
   </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="161.46041.41" />
-        <PackageReference Include="VNC.Core" Version="1.1.0" />
+        <PackageReference Include="VNC.Core" Version="1.2.0" />
     </ItemGroup>
 
     <!--<ItemGroup>

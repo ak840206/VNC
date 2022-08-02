@@ -17,10 +17,17 @@
         <PackageTags>mvvm</PackageTags>
         <PackageIcon>VNC.png</PackageIcon>
         <Authors>Christopher Rhodes</Authors>
-        <Copyright>Copyright © VNC 2018-2021</Copyright>
+        <Copyright>Copyright © VNC 2018-2022</Copyright>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <Description>Base class for a variety of needs</Description>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Diagrams\NewFolder\**" />
+      <EmbeddedResource Remove="Diagrams\NewFolder\**" />
+      <None Remove="Diagrams\NewFolder\**" />
+      <Page Remove="Diagrams\NewFolder\**" />
+    </ItemGroup>
 
     <ItemGroup>
       <None Remove="Diagrams\VNC.Core.Netcd" />
@@ -53,9 +60,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <AdditionalFiles Include="..\..\AZDORestApiExplorer\DependencyValidation1\DependencyValidation1.layerdiagram" Link="DependencyValidation1.layerdiagram">
-          <Visible>False</Visible>
-        </AdditionalFiles>
         <None Include="..\LICENSE">
             <Pack>True</Pack>
             <PackagePath></PackagePath>
@@ -65,10 +69,6 @@
             <Pack>True</Pack>
             <PackagePath></PackagePath>
         </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Diagrams\NewFolder\" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

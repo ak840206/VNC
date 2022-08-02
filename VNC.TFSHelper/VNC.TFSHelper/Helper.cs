@@ -8,6 +8,7 @@ using Microsoft.TeamFoundation.WorkItemTracking.Client;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using VNC;
 
 namespace VNC.TFS
 {

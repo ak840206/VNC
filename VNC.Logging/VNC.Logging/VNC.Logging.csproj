@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net48</TargetFrameworks>
+        <TargetFrameworks>net5.0;net48</TargetFrameworks>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AssemblyName>VNC.Logging</AssemblyName>
         <RootNamespace>VNC.Logging</RootNamespace>
@@ -16,7 +16,7 @@
         <PackageTags>logging</PackageTags>
         <PackageIcon>VNC.png</PackageIcon>
         <Authors>Christopher Rhodes</Authors>
-        <Copyright>Copyright © VNC 2010-2021</Copyright>
+        <Copyright>Copyright © VNC 2010-2022</Copyright>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>        
         <Description>Logging Wrapper on top of EnterpriseLibrary.Logging</Description>
     </PropertyGroup>

@@ -76,6 +76,7 @@ param
     [string] $Configuration, 
     [string] $Platform,
 	[string] $TargetName,
+	[string] $OutputPath,
     [switch] $Contents,
     [switch] $Verbose
 )
@@ -105,6 +106,7 @@ function Main
         "Configuration      = $Configuration"
         "Platform           = $Platform"
         "TargetName         = $TargetName"
+		"OutputPath         = $OutputPath"
         "`$Verbose           = $Verbose"
     }
     
