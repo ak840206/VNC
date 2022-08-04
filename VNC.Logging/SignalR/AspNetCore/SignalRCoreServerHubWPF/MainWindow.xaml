@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SignalRCoreServerHubWPF"
         mc:Ignorable="d"
-        Title="SignalRCore Server Hub" Height="450" Width="800">
+        Title="AspNetCore SignalRHub" Height="450" Width="600">
     <Grid>
         <StackPanel >
             <TextBox x:Name="tbServerURI" Text="http://localhost:8195" VerticalAlignment="Top" TextChanged="tbServerURI_TextChanged" />
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Left" Width="100" Click="ButtonStart_Click"/>
                 <Button x:Name="ButtonStop" Content="Stop" HorizontalAlignment="Right" Width="100" Click="ButtonStop_Click" IsEnabled="False"/>
-
             </StackPanel>
             <RichTextBox x:Name="RichTextBoxConsole" HorizontalAlignment="Left" Margin="10,35,10,10" VerticalAlignment="Stretch" >
                 <FlowDocument>

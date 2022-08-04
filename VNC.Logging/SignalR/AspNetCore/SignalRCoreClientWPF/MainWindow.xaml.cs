@@ -5,6 +5,8 @@ using System.Windows;
 
 using Microsoft.AspNetCore.SignalR.Client;
 
+using VNC;
+
 namespace SignalRCoreClientWPF
 {
     /// <summary>
@@ -16,6 +18,8 @@ namespace SignalRCoreClientWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        const string LOG_APPNAME = "SIMPLE";
+
         /// <summary>
         /// This name is simply added to sent messages to identify the user; this 
         /// sample does not include authentication.
@@ -179,11 +183,19 @@ namespace SignalRCoreClientWPF
 
         private void btnLog_Click(object sender, RoutedEventArgs e)
         {
-            //long startTicks = VNC.AppLog.Info("Enter", "SignalRClient");
+            Log.Info("SignalR Delay", LOG_APPNAME, 0);
+            Thread.Sleep(125);
 
-            Thread.Sleep(int.Parse(tbDelayMS.Text));
+            long startTicks;
 
-            //VNC.AppLog.Info("Exit", "SignalRClient", startTicks);
+            Log.Info("Good Everything", LOG_APPNAME, 0);
+            Log.EVENT_HANDLER("High Five", LOG_APPNAME, 0);
+
+            startTicks = Log.Trace("Start", LOG_APPNAME);
+
+            Thread.Sleep(750);
+
+            Log.Trace("End", LOG_APPNAME, startTicks);
         }
     }
 }

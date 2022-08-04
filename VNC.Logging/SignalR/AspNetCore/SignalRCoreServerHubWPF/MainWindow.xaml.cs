@@ -5,7 +5,6 @@ using System.Windows;
 
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
 
 namespace SignalRCoreServerHubWPF

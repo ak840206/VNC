@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR;
+
+using System;
 using System.Threading.Tasks;
 using System.Windows;
-
-using Microsoft.AspNet.SignalR;
 
 namespace SignalRServerHub
 {
@@ -18,14 +18,14 @@ namespace SignalRServerHub
             Clients.All.addMessage(message);
         }
 
-        public void SendUserMessage(string name, string message)
-        {
-            Clients.All.addUserMessage(name, message);
-        }
-
         public void SendPriorityMessage(string message, Int32 priority)
         {
             Clients.All.addPriorityMessage(message, priority);
+        }
+
+        public void SendUserMessage(string name, string message)
+        {
+            Clients.All.addUserMessage(name, message);
         }
 
         public override Task OnConnected()
@@ -45,5 +45,12 @@ namespace SignalRServerHub
 
             return base.OnDisconnected(stopCalled);
         }
+        //public override Task OnDisconnected()
+        //{
+
+
+        //    return base.OnDisconnected();
+        //}
+
     }
 }

@@ -2,11 +2,12 @@
 using System.Net.Http;
 using System.Threading;
 using System.Windows;
-
 using Microsoft.AspNet.SignalR.Client;
 
+using VNC;
+
 namespace SignalRClient
-{
+{   
     /// <summary>
     /// SignalR client hosted in a WPF application. The client
     /// lets the user pick a user name, connect to the server asynchronously
@@ -16,6 +17,8 @@ namespace SignalRClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        const string LOG_APPNAME = "SIMPLE";
+
         /// <summary>
         /// This name is simply added to sent messages to identify the user; this 
         /// sample does not include authentication.
@@ -28,20 +31,49 @@ namespace SignalRClient
         public MainWindow()
         {
             InitializeComponent();
+            tbServerURI.Text = ServerURI;
         }
 
-        private void ButtonSend_Click(object sender, RoutedEventArgs e)
+        private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            HubProxy.Invoke("Send", UserName, TextBoxMessage.Text);
-            TextBoxMessage.Text = String.Empty;
-            TextBoxMessage.Focus();
+            try
+            {
+                HubProxy.Invoke("SendUserMessage", UserName, TextBoxMessage.Text);
+                TextBoxMessage.Text = String.Empty;
+                TextBoxMessage.Focus();
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
         private void btnSendAnoymous_Click(object sender, RoutedEventArgs e)
         {
-            HubProxy.Invoke("Send", TextBoxMessage.Text);
-            TextBoxMessage.Text = String.Empty;
-            TextBoxMessage.Focus();
+            try
+            {
+                HubProxy.Invoke("SendMessage", TextBoxMessage.Text);
+                TextBoxMessage.Text = String.Empty;
+                TextBoxMessage.Focus();
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+        private void btnSendPriority_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HubProxy.Invoke("SendPriorityMessage", TextBoxMessage.Text, Int32.Parse(Priority.Text));
+                TextBoxMessage.Text = String.Empty;
+                TextBoxMessage.Focus();
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
         /// <summary>
@@ -52,19 +84,28 @@ namespace SignalRClient
         {
             Connection = new HubConnection(ServerURI);
             Connection.Closed += Connection_Closed;
-            HubProxy = Connection.CreateHubProxy("MyHub");
+            HubProxy = Connection.CreateHubProxy("SignalRHub");
+
             //Handle incoming event from server: use Invoke to write to console from SignalR's thread
-            HubProxy.On<string, string>("AddUserMessage", (name, message) =>
-                this.Dispatcher.Invoke(() =>
-                    RichTextBoxConsole.AppendText(String.Format("{0}: {1}\r", name, message))
-                )
-            );
 
             HubProxy.On<string>("AddMessage", (message) =>
                 this.Dispatcher.Invoke(() =>
                     RichTextBoxConsole.AppendText(String.Format("{0}\r", message))
                 )
             );
+
+            HubProxy.On<string, string>("AddUserMessage", (name, message) =>
+                this.Dispatcher.Invoke(() =>
+                    RichTextBoxConsole.AppendText(String.Format("{0}: {1}\r", name, message))
+                )
+            );
+
+            HubProxy.On<string, Int32>("AddPriorityMessage", (message, priority) =>
+                this.Dispatcher.Invoke(() =>
+                    RichTextBoxConsole.AppendText($"P{priority}: {message}\r")
+                )
+            );
+
             try
             {
                 await Connection.Start();
@@ -77,11 +118,16 @@ namespace SignalRClient
             }
 
             //Show chat UI; hide login UI
+
             SignInPanel.Visibility = Visibility.Collapsed;
             ChatPanel.Visibility = Visibility.Visible;
+
             ButtonSend.IsEnabled = true;
             ButtonSendAnoymous.IsEnabled = true;
+            ButtonSendPriority.IsEnabled = true;
+
             TextBoxMessage.Focus();
+
             RichTextBoxConsole.AppendText("Connected to server at " + ServerURI + "\r");
         }
 
@@ -104,9 +150,10 @@ namespace SignalRClient
             UserName = UserNameTextBox.Text;
             //Connect to server (use async method to avoid blocking UI thread)
             if (!String.IsNullOrEmpty(UserName))
-            {
+            {     
                 StatusText.Visibility = Visibility.Visible;
                 StatusText.Content = "Connecting to server...";
+
                 ConnectAsync();
             }
         }
@@ -120,23 +167,21 @@ namespace SignalRClient
             }
         }
 
-
         private void btnLog_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
-            long startTicks = VNC.AppLog.Info("Enter", "SignalRClient");
+            Log.Info("SignalR Delay", LOG_APPNAME, 0);
+            Thread.Sleep(125);
 
-            Thread.Sleep(int.Parse(tbDelayMS.Text));
+            long startTicks;
 
-            VNC.AppLog.Info("Exit", "SignalRClient", startTicks);
-=======
-            //long startTicks = VNC.AppLog.Info("Enter", "SignalRClient");
+            Log.Info("Good Everything", LOG_APPNAME, 0);
+            Log.EVENT_HANDLER("High Five", LOG_APPNAME, 0);
 
-            Thread.Sleep(int.Parse(tbDelayMS.Text));
+            startTicks = Log.Trace("Start", LOG_APPNAME);
 
-            //VNC.AppLog.Info("Exit", "SignalRClient", startTicks);
->>>>>>> 0c5ac4faa23cca3e1506e1f371807a9bff1c1655
+            Thread.Sleep(750);
+
+            Log.Trace("End", LOG_APPNAME, startTicks);
         }
     }
 }
-
