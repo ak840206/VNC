@@ -1,5 +1,7 @@
 # Ignore Folders until ready to commit
 
-[Dd]ebug/
-# *.dll
-# *.pdb
+![Dd]ebug/
+![Rr]elease/
+
+
+
