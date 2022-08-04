@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net5.0-windows;net48</TargetFrameworks>
+        <TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
         <UseWPF>true</UseWPF>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <AssemblyName>VNC.Core</AssemblyName>
@@ -9,7 +9,7 @@
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>1.2.0</PackageVersion>
+        <PackageVersion>2.0.0</PackageVersion>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
         <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
@@ -41,7 +41,7 @@
         <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.11.0" />
         <PackageReference Include="Prism.Wpf" Version="8.1.97" />
         <PackageReference Include="Unity.Interception" Version="5.11.1" />
-        <PackageReference Include="VNC.Logging" Version="1.2.0" />
+        <PackageReference Include="VNC.Logging" Version="2.0.0" />
     </ItemGroup>
 
     <ItemGroup>

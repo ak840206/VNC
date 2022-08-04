@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestLoggingSimple.Properties {
+namespace DemoLoggingSimple.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

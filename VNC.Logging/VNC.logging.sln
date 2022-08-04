@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.Logging.TraceListeners.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.Logging.TraceListeners.SignalRCoreListener", "VNC.Logging.TraceListeners\SignalRCoreListener\VNC.Logging.TraceListeners.SignalRCoreListener.csproj", "{339391FB-C715-41BB-AC23-6BFEAAAB12F7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRServerHub", "SignalR\AspNet\SignalRServerHub\SignalRServerHub.csproj", "{2F315BEC-40B6-4B4B-878D-75A9F459811E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRClient", "SignalR\AspNet\SignalRClient\SignalRClient.csproj", "{1EC0EE20-0953-4967-9BAA-DF8811157B08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{339391FB-C715-41BB-AC23-6BFEAAAB12F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{339391FB-C715-41BB-AC23-6BFEAAAB12F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{339391FB-C715-41BB-AC23-6BFEAAAB12F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F315BEC-40B6-4B4B-878D-75A9F459811E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F315BEC-40B6-4B4B-878D-75A9F459811E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F315BEC-40B6-4B4B-878D-75A9F459811E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F315BEC-40B6-4B4B-878D-75A9F459811E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EC0EE20-0953-4967-9BAA-DF8811157B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EC0EE20-0953-4967-9BAA-DF8811157B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EC0EE20-0953-4967-9BAA-DF8811157B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EC0EE20-0953-4967-9BAA-DF8811157B08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

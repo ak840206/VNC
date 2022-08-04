@@ -97,7 +97,7 @@ namespace VNC
 
         static Log()
         {
-            IConfigurationSource configurationSource = ConfigurationSourceFactory.Create();
+            HIConfigurationSource configurationSource = ConfigurationSourceFactory.Create();
             LogWriterFactory logWriterFactory = new LogWriterFactory(configurationSource);
             Logger.SetLogWriter(logWriterFactory.Create());
         }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net48;net6.0</TargetFrameworks>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
         <AssemblyName>VNC.Logging.TraceListeners.SignalRListener</AssemblyName>
         <RootNamespace>VNC.Logging.TraceListeners</RootNamespace>
@@ -16,7 +16,7 @@
         <PackageTags>logging</PackageTags>
         <PackageIcon>VNC.png</PackageIcon>
         <Authors>Christopher Rhodes</Authors>
-        <Copyright>Copyright © VNC 2010-2021</Copyright>
+        <Copyright>Copyright © VNC 2010-2022</Copyright>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>        
         <Description>SignalRCore TraceListener for EnterpriseLibrary Logging</Description>
     </PropertyGroup>

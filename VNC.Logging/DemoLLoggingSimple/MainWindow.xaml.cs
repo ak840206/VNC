@@ -5,7 +5,7 @@ using System.Windows;
 
 using VNC;
 
-namespace TestLoggingSimple
+namespace DemoLoggingSimple
 {
     public partial class MainWindow : Window
     {
