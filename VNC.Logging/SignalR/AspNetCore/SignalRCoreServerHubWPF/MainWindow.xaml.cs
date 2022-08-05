@@ -20,7 +20,7 @@ namespace SignalRCoreServerHubWPF
     public partial class MainWindow : Window
     {
         public IDisposable SignalR { get; set; }
-        string ServerURI = "http://localhost:8195";
+        string ServerURI = "http://localhost:58195";
 
         private IHost _host;
 

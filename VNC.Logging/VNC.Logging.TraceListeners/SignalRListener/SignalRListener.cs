@@ -108,7 +108,7 @@ namespace VNC.Logging.TraceListeners
 
         public String UserName { get; set; }
         public IHubProxy HubProxy { get; set; }
-        const string ServerURI = "http://localhost:8095/signalr";
+        const string ServerURI = "http://localhost:58095/signalr";
         const string SignalRListenerUser = "SRL";   // This identifies this user to the Hub
 
         public HubConnection Connection { get; set; }
@@ -190,7 +190,7 @@ namespace VNC.Logging.TraceListeners
             Connection.Reconnecting += Connection_Reconnecting;
             Connection.StateChanged += Connection_StateChanged;
 
-            HubProxy = Connection.CreateHubProxy("MyHub");
+            HubProxy = Connection.CreateHubProxy("SignalRHub");
 
             try
             {

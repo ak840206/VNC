@@ -31,7 +31,7 @@ namespace SignalRCoreClientWPF
 
         //public IHubProxy HubProxy { get; set; }
         //const string ServerURI = "https://localhost:5001/chatHub";
-        const string ServerURI = "http://localhost:8195/signalR";
+        const string ServerURI = "http://localhost:58195/signalR";
         public HubConnection Connection { get; set; }
 
         public MainWindow()

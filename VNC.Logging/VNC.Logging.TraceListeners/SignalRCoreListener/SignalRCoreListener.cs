@@ -110,7 +110,7 @@ namespace VNC.Logging.TraceListeners
 
         public String UserName { get; set; }
 
-        const string ServerURI = "http://localhost:8195/signalr";
+        const string ServerURI = "http://localhost:58195/signalr";
 
         public HubConnection Connection { get; set; }
 

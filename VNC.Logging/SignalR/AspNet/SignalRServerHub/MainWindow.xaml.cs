@@ -20,7 +20,7 @@ namespace SignalRServerHub
     public partial class MainWindow : Window
     {
         public IDisposable SignalR { get; set; }
-        string ServerURI = "http://localhost:8095";
+        string ServerURI = "http://localhost:58095";
 
         public MainWindow()
         {

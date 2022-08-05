@@ -4,7 +4,7 @@
         Title="AspNet SignalRHub" Height="450" Width="600  ">
     <Grid>
         <StackPanel>
-            <TextBox x:Name="tbServerURI" Text="http://localhost:8095" VerticalAlignment="Top" TextChanged="tbServerURI_TextChanged" />
+            <TextBox x:Name="tbServerURI" Text="http://localhost:58095" VerticalAlignment="Top" TextChanged="tbServerURI_TextChanged" />
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Left" Width="100" Click="ButtonStart_Click"/>
                 <Button x:Name="ButtonStop" Content="Stop" HorizontalAlignment="Right" Width="100" Click="ButtonStop_Click" IsEnabled="False"/>
