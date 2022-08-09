@@ -208,14 +208,14 @@ namespace VNC.AssemblyHelper
                             byte[] methodBodyBytes = methodBody.GetILAsByteArray();
                             methodInformation.MD5 = GetMd5Hash(_md5Hash, methodBodyBytes);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             methodInformation.MD5 = "???";
                         }
                         
                         results.Add(methodInformation);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         
                     }

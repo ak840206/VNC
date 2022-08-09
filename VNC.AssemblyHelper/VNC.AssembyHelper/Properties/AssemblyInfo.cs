@@ -1,16 +1,16 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VNC.AZDO")]
+[assembly: AssemblyTitle("VNC.AssemblyHelper")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VNC")]
-[assembly: AssemblyProduct("VNC.AZDO")]
-[assembly: AssemblyCopyright("Copyright © 2021-2022")]
+[assembly: AssemblyProduct("VNC.AssemblyHelper")]
+[assembly: AssemblyCopyright("Copyright  � 2014-2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,8 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("DC219831-5ECB-480F-B6FA-AD48641D943A")]
+[assembly: Guid("ff52bf88-abcb-4197-98ed-4e5c62ffeaa9")]
+
 
 // Version information for an assembly consists of three attributes:
 //
@@ -31,7 +32,7 @@ using System.Runtime.InteropServices;
 // AssemblyVersion is required.
 // If AssemblyFileVersion is not provided it is loaded from AssemblyVersion.
 // If AssemblyInformationalVersion is not provided it is loaded from AssemblyFileVersion if provided
-// otherwise from AssemblyVersion.  It can be an arbitrary string.
+// otherwise from AssemblyVersion
 //
 // Each attribute takes a version number consisting of four parts:
 //
@@ -48,6 +49,8 @@ using System.Runtime.InteropServices;
 // AssemblyVersion History
 //
 //  Version     Date        By
+//  1.1.0.0     9/30/2010
+//      Breaking updates to AssemblyInformation.cs
 //  1.0.0.0                 Christopher Rhodes
 //      Initial Version
 [assembly: AssemblyVersion("2.0.0.0")]
@@ -55,7 +58,7 @@ using System.Runtime.InteropServices;
 // AssemblyFileVersion History
 //
 //  Version     Date        By
-//  1.0.0.0     01/09/2014   Christopher Rhodes
+//  1.1.0.0     9/30/2010   Christopher Rhodes
 //      Initial Version
 [assembly: AssemblyFileVersion("2.0.0.0")]
 

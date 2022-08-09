@@ -625,7 +625,5 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.VB
 
         #endregion
 
-
-
     }
 }

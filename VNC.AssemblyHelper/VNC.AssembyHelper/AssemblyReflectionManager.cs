@@ -83,7 +83,7 @@ namespace VNC.AssemblyHelper
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // 
             }
@@ -130,7 +130,7 @@ namespace VNC.AssemblyHelper
 
                         return true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         // 
                     }
@@ -190,7 +190,7 @@ namespace VNC.AssemblyHelper
 
                         return true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         // 
                     }

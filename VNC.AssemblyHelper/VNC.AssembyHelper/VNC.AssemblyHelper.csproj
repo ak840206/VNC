@@ -10,7 +10,7 @@
       <!--<SignAssembly>true</SignAssembly>
       <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>-->
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-      <PackageVersion>1.1.0</PackageVersion>
+      <PackageVersion>2.0.0</PackageVersion>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
       <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
       <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
@@ -24,14 +24,6 @@
   </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="VNC.Core" Version="1.2.0" />
-    </ItemGroup>
-
-    <!--<ItemGroup>
-      <ProjectReference Include="..\VNC.Core\VNC.Core.csproj" />
-    </ItemGroup>-->
-
-    <ItemGroup>
         <None Include="..\..\LICENSE">
             <Pack>True</Pack>
             <PackagePath></PackagePath>
@@ -41,6 +33,8 @@
             <Pack>True</Pack>
             <PackagePath></PackagePath>
         </None>
+
+        <None Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -22,8 +22,9 @@ namespace VNC.CodeAnalysis.SyntaxWalkers.CS
 
         }
 
-#endregion
-#region Enums
+        #endregion
+
+        #region Enums
 
         #endregion
 

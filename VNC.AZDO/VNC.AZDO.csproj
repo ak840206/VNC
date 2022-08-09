@@ -9,7 +9,7 @@
       <!--<SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>-->      
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-      <PackageVersion>1.1.0</PackageVersion>
+      <PackageVersion>2.0.0</PackageVersion>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
       <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
       <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
@@ -26,7 +26,7 @@
         <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="16.170.0" />
         <PackageReference Include="Microsoft.TeamFoundationServer.ExtendedClient" Version="16.170.0" />
         <PackageReference Include="Microsoft.VisualStudio.Services.Client" Version="16.170.0" />
-        <PackageReference Include="VNC.Core" Version="1.2.0" />
+        <PackageReference Include="VNC.Core" Version="2.0.0" />
     </ItemGroup>
 
     <!--<ItemGroup>

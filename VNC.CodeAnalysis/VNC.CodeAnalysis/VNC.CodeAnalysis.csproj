@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-        <TargetFrameworks>net5.0-windows;net48</TargetFrameworks>
+        <TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
       <AssemblyName>VNC.CodeAnalysis</AssemblyName>
       <RootNamespace>VNC.CodeAnalysis</RootNamespace> 
       <!--<SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>-->      
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-      <PackageVersion>1.1.0</PackageVersion>
+      <PackageVersion>2.0.0</PackageVersion>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
       <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
       <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
@@ -24,21 +24,21 @@
 
     <ItemGroup>
         <PackageReference Include="Crc32C.NET" Version="1.0.5" />
-        <PackageReference Include="Microsoft.Build" Version="16.11.0" ExcludeAssets="runtime"/>
-        <PackageReference Include="Microsoft.Build.Framework" Version="16.11.0" ExcludeAssets="runtime"/>
+        <PackageReference Include="Microsoft.Build" Version="17.2.0" ExcludeAssets="runtime" />
+        <PackageReference Include="Microsoft.Build.Framework" Version="17.2.0" ExcludeAssets="runtime" />
         <PackageReference Include="Microsoft.Build.Locator" Version="1.4.1" />
-        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="16.11.0" ExcludeAssets="runtime"/>
-        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.11.0" ExcludeAssets="runtime"/>
-        <PackageReference Include="Microsoft.CodeAnalysis" Version="3.11.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.11.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" Version="3.11.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.11.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.Features" Version="3.11.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" Version="3.11.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Features" Version="3.11.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces" Version="3.11.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="3.11.0" />
-        <PackageReference Include="VNC.Core" Version="1.2.0" />
+        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.2.0" ExcludeAssets="runtime" />
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.2.0" ExcludeAssets="runtime" />
+        <PackageReference Include="Microsoft.CodeAnalysis" Version="4.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" Version="4.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Features" Version="4.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" Version="4.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Features" Version="4.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces" Version="4.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.2.0" />
+        <PackageReference Include="VNC.Core" Version="2.0.0" />
     </ItemGroup>
     
     <!--<ItemGroup>

@@ -20,21 +20,21 @@ namespace VNC.AssemblyHelper
             ReflectionOnlyLoadFrom
         }
 
-        public string AlgorithmIdAttribute
-        {
-            get
-            {
-                try
-                {
-                    return ((AssemblyAlgorithmIdAttribute)AssemblyAlgorithmIdAttribute.GetCustomAttribute(_Assembly, typeof(AssemblyAlgorithmIdAttribute))).AlgorithmId.ToString();
+        //public string AlgorithmIdAttribute
+        //{
+        //    get
+        //    {
+        //        try
+        //        {
+        //            return ((AssemblyAlgorithmIdAttribute)AssemblyAlgorithmIdAttribute.GetCustomAttribute(_Assembly, typeof(AssemblyAlgorithmIdAttribute))).AlgorithmId.ToString();
 
-                }
-                catch (Exception)
-                {
-                    return "";
-                }
-            }
-        }
+        //        }
+        //        catch (Exception)
+        //        {
+        //            return "";
+        //        }
+        //    }
+        //}
 
         public string CompanyAttribute
         {
@@ -397,7 +397,7 @@ namespace VNC.AssemblyHelper
         {
             StringBuilder appInfo = new StringBuilder(256);
 
-            appInfo.AppendLine(string.Format("{0} {1}", "AlgorithmIdAttribute:", AlgorithmIdAttribute));
+            //appInfo.AppendLine(string.Format("{0} {1}", "AlgorithmIdAttribute:", AlgorithmIdAttribute));
             appInfo.AppendLine(string.Format("{0} {1}", "CompanyAttribute:", CompanyAttribute));
             appInfo.AppendLine(string.Format("{0} {1}", "ConfigurationAttribute:", ConfigurationAttribute));
             appInfo.AppendLine(string.Format("{0} {1}", "CopyRightAttribute:", CopyRightAttribute));            

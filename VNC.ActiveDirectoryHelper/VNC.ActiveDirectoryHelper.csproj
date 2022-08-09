@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-      <TargetFrameworks>net5.0-windows;net48</TargetFrameworks>
+      <TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
       <UseWPF>true</UseWPF>
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
       <AssemblyName>VNC.ActiveDirectoryHelper</AssemblyName>
@@ -9,7 +9,7 @@
       <!--<SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>-->
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-      <PackageVersion>1.1.0</PackageVersion>
+      <PackageVersion>2.0.0</PackageVersion>
       <PackageLicenseFile>LICENSE</PackageLicenseFile>
       <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
       <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
@@ -25,7 +25,7 @@
     <ItemGroup>
         <PackageReference Include="System.DirectoryServices" Version="5.0.0" />
         <PackageReference Include="System.DirectoryServices.AccountManagement" Version="5.0.0" />
-        <PackageReference Include="VNC.Core" Version="1.2.0" />
+        <PackageReference Include="VNC.Core" Version="2.0.0" />
     </ItemGroup>
 
     <!--<ItemGroup>

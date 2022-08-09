@@ -23,9 +23,8 @@ namespace VNC.AZDO
 
         public static VssCredentials GetVssCredentials()
         {
-            VssCredentials credentials = null;
-            string userName = default;
-            string password = default;
+            //string userName = default;
+            //string password = default;
 
             if (_vssCredentials is null)
             {

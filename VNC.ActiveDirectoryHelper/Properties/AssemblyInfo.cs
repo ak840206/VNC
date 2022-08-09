@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("VNC")]
 [assembly: AssemblyProduct("VNC.ActiveDirectory")]
-[assembly: AssemblyCopyright("Copyright © VNC 2014-2021")]
+[assembly: AssemblyCopyright("Copyright © VNC 2014-2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -50,18 +50,18 @@ using System.Runtime.InteropServices;
 //  Version     Date        By
 //  1.0.0.0                 Christopher Rhodes
 //      Initial Version
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
 
 // AssemblyFileVersion History
 //
 //  Version     Date        By
 //  1.0.0.0     01/09/2014   Christopher Rhodes
 //      Initial Version
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
 
 // AssemblyInformationalVersion History
 //
 //  Version   Date        By
 //  1.0.0.0   mm/dd/yyyy    Developer
 //      Initial Version
-[assembly: AssemblyInformationalVersion("1.0.0.2021.05.21A")]
+[assembly: AssemblyInformationalVersion("2.0.0.2022.08.09A")]
