@@ -3,18 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AspNet SignalRHub" Height="450" Width="600  ">
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
             <TextBox x:Name="tbServerURI" Text="http://localhost:58095" VerticalAlignment="Top" TextChanged="tbServerURI_TextChanged" />
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Left" Width="100" Click="ButtonStart_Click"/>
                 <Button x:Name="ButtonStop" Content="Stop" HorizontalAlignment="Right" Width="100" Click="ButtonStop_Click" IsEnabled="False"/>
             </StackPanel>
-            <RichTextBox x:Name="RichTextBoxConsole" HorizontalAlignment="Left" Margin="10,35,10,10" VerticalAlignment="Stretch">
-                <FlowDocument>
-                    <Paragraph>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
         </StackPanel>
+        <RichTextBox x:Name="RichTextBoxConsole" HorizontalAlignment="Left" Margin="10,5,10,10" Grid.Row="1">
+            <FlowDocument>
+                <Paragraph>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
     </Grid>
 </Window>

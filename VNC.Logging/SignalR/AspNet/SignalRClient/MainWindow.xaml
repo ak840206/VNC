@@ -49,7 +49,8 @@
 
                 <RichTextBox x:Name="RichTextBoxConsole" Height="400"
                              Grid.Row="1" Grid.ColumnSpan="2"
-                             ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,10" IsReadOnly="True" />
+                             ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                             Margin="0,10" IsReadOnly="True" />
             </Grid>
         </StackPanel>
 
