@@ -82,7 +82,7 @@ namespace SignalRClient
         /// </summary>
         private async void ConnectAsync()
         {
-            Connection = new HubConnection(ServerURI);
+            Connection = new HubConnection(tbServerURI.Text);
             Connection.Closed += Connection_Closed;
             HubProxy = Connection.CreateHubProxy("SignalRHub");
 
@@ -128,7 +128,7 @@ namespace SignalRClient
 
             TextBoxMessage.Focus();
 
-            RichTextBoxConsole.AppendText("Connected to server at " + ServerURI + "\r");
+            RichTextBoxConsole.AppendText("Connected to server at " + tbServerURI.Text + "\r");
         }
 
         /// <summary>
