@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 using Microsoft.AspNetCore.SignalR.Client;
 
@@ -94,6 +96,8 @@ namespace SignalRCoreClientWPF
                 .Build();
 
             Connection.Closed += Connection_Closed;
+            Connection.Reconnecting += Connection_Reconnecting;
+            Connection.Reconnected += Connection_Reconnected;
 
             //Handle incoming event from server: use Invoke to write to console from SignalR's thread
 
@@ -119,9 +123,15 @@ namespace SignalRCoreClientWPF
             {
                 await Connection.StartAsync();
             }
+            catch (HttpRequestException hre)
+            {
+                StatusText.Text = $"Unable to connect to server: Start server before connecting clients. {hre.Message}";
+                //No connection: Don't enable Send button or show chat UI
+                return;
+            }
             catch (Exception ex)
             {
-                StatusText.Content = "Unable to connect to server: Start server before connecting clients.";
+                StatusText.Text = $"Unable to connect to server, ex: {ex.Message}";
                 //No connection: Don't enable Send button or show chat UI
                 return;
             }
@@ -140,9 +150,25 @@ namespace SignalRCoreClientWPF
             RichTextBoxConsole.AppendText("Connected to server at " + ServerURI + "\r");
         }
 
+        private Task Connection_Reconnecting(Exception? arg)
+        {
+            var dispatcher = Application.Current.Dispatcher;
+            dispatcher.Invoke(() => StatusText.Text = $"Reconnecting {(arg is null ? "" : arg.Message)}.");
+
+            return null;
+        }
+
+        private Task Connection_Reconnected(string? arg)
+        {
+            var dispatcher = Application.Current.Dispatcher;
+            dispatcher.Invoke(() => StatusText.Text = $"Reconnected {arg}");
+
+            return null;
+        }
+
         /// <summary>
-        /// If the server is stopped, the connection will time out after 30 seconds (default), and the 
-        /// Closed event will fire.
+        /// If the server is stopped, the connection will time out after 30 seconds (default), 
+        /// and the Closed event will fire.
         /// </summary>
         Task Connection_Closed(Exception? arg)
         {
@@ -151,7 +177,7 @@ namespace SignalRCoreClientWPF
 
             dispatcher.Invoke(() => ChatPanel.Visibility = Visibility.Collapsed);
             dispatcher.Invoke(() => ButtonSend.IsEnabled = false);
-            dispatcher.Invoke(() => StatusText.Content = "You have been disconnected.");
+            dispatcher.Invoke(() => StatusText.Text = $"Connection Closed {(arg is null ? "" : arg.Message)}.");
             dispatcher.Invoke(() => SignInPanel.Visibility = Visibility.Visible);
 
             return null;
@@ -164,7 +190,7 @@ namespace SignalRCoreClientWPF
             if (!String.IsNullOrEmpty(UserName))
             {
                 StatusText.Visibility = Visibility.Visible;
-                StatusText.Content = "Connecting to server...";
+                StatusText.Text = "Connecting to server...";
 
                 ConnectAsync();
             }
