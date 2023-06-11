@@ -75,11 +75,11 @@ namespace SignalRCoreServerHubWPF
             catch (TargetInvocationException ex)
             {
                 WriteToConsole("A server is already running at " + ServerURI);
-                this.Dispatcher.Invoke(() => ButtonStart.IsEnabled = true);
+                this.Dispatcher.InvokeAsync(() => ButtonStart.IsEnabled = true);
                 return;
             }
 
-            this.Dispatcher.Invoke(() => ButtonStop.IsEnabled = true);
+            this.Dispatcher.InvokeAsync(() => ButtonStop.IsEnabled = true);
             WriteToConsole("Server started at " + ServerURI);
         }
 
@@ -89,7 +89,7 @@ namespace SignalRCoreServerHubWPF
         {
             if (!(RichTextBoxConsole.CheckAccess()))
             {
-                this.Dispatcher.Invoke(() =>
+                this.Dispatcher.InvokeAsync(() =>
                     WriteToConsole(message)
                 );
                 return;
