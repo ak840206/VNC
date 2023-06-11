@@ -102,19 +102,19 @@ namespace SignalRCoreClientWPF
             //Handle incoming event from server: use Invoke to write to console from SignalR's thread
 
             Connection.On<string>("AddMessage", (message) =>
-                this.Dispatcher.Invoke(() =>
+                this.Dispatcher.InvokeAsync(() =>
                     RichTextBoxConsole.AppendText($"{message}\r")
                 )
             );
 
             Connection.On<string, string>("AddUserMessage", (name, message) =>
-                this.Dispatcher.Invoke(() =>
+                this.Dispatcher.InvokeAsync(() =>
                     RichTextBoxConsole.AppendText($"{name}: {message}\r")
                 )
             );
 
             Connection.On<string, Int32>("AddPriorityMessage", (message, priority) =>
-                this.Dispatcher.Invoke(() =>
+                this.Dispatcher.InvokeAsync(() =>
                     RichTextBoxConsole.AppendText($"P{priority}: {message}\r")
                 )
             );
@@ -153,7 +153,7 @@ namespace SignalRCoreClientWPF
         private Task Connection_Reconnecting(Exception? arg)
         {
             var dispatcher = Application.Current.Dispatcher;
-            dispatcher.Invoke(() => StatusText.Text = $"Reconnecting {(arg is null ? "" : arg.Message)}.");
+            dispatcher.InvokeAsync(() => StatusText.Text = $"Reconnecting {(arg is null ? "" : arg.Message)}.");
 
             return null;
         }
@@ -161,7 +161,7 @@ namespace SignalRCoreClientWPF
         private Task Connection_Reconnected(string? arg)
         {
             var dispatcher = Application.Current.Dispatcher;
-            dispatcher.Invoke(() => StatusText.Text = $"Reconnected {arg}");
+            dispatcher.InvokeAsync(() => StatusText.Text = $"Reconnected {arg}");
 
             return null;
         }
@@ -175,10 +175,10 @@ namespace SignalRCoreClientWPF
             //Hide chat UI; show login UI
             var dispatcher = Application.Current.Dispatcher;
 
-            dispatcher.Invoke(() => ChatPanel.Visibility = Visibility.Collapsed);
-            dispatcher.Invoke(() => ButtonSend.IsEnabled = false);
-            dispatcher.Invoke(() => StatusText.Text = $"Connection Closed {(arg is null ? "" : arg.Message)}.");
-            dispatcher.Invoke(() => SignInPanel.Visibility = Visibility.Visible);
+            dispatcher.InvokeAsync(() => ChatPanel.Visibility = Visibility.Collapsed);
+            dispatcher.InvokeAsync(() => ButtonSend.IsEnabled = false);
+            dispatcher.InvokeAsync(() => StatusText.Text = $"Connection Closed {(arg is null ? "" : arg.Message)}.");
+            dispatcher.InvokeAsync(() => SignInPanel.Visibility = Visibility.Visible);
 
             return null;
         }
