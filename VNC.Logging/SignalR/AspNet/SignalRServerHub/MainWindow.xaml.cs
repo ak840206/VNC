@@ -62,11 +62,11 @@ namespace SignalRServerHub
             catch (TargetInvocationException ex)
             {
                 WriteToConsole("A server is already running at " + ServerURI);
-                this.Dispatcher.Invoke(() => ButtonStart.IsEnabled = true);
+                this.dispatcher.InvokeAsync(() => ButtonStart.IsEnabled = true);
                 return;
             }
 
-            this.Dispatcher.Invoke(() => ButtonStop.IsEnabled = true);
+            this.dispatcher.InvokeAsync(() => ButtonStop.IsEnabled = true);
             WriteToConsole("Server started at " + ServerURI);
         }
 
@@ -76,7 +76,7 @@ namespace SignalRServerHub
         {
             if (!(RichTextBoxConsole.CheckAccess()))
             {
-                this.Dispatcher.Invoke(() =>
+                this.dispatcher.InvokeAsync(() =>
                     WriteToConsole(message)
                 );
                 return;

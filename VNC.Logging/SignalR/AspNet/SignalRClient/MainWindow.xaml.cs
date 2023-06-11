@@ -89,19 +89,19 @@ namespace SignalRClient
             //Handle incoming event from server: use Invoke to write to console from SignalR's thread
 
             HubProxy.On<string>("AddMessage", (message) =>
-                this.Dispatcher.Invoke(() =>
+                this.dispatcher.InvokeAsync(() =>
                     RichTextBoxConsole.AppendText(String.Format("{0}\r", message))
                 )
             );
 
             HubProxy.On<string, string>("AddUserMessage", (name, message) =>
-                this.Dispatcher.Invoke(() =>
+                this.dispatcher.InvokeAsync(() =>
                     RichTextBoxConsole.AppendText(String.Format("{0}: {1}\r", name, message))
                 )
             );
 
             HubProxy.On<string, Int32>("AddPriorityMessage", (message, priority) =>
-                this.Dispatcher.Invoke(() =>
+                this.dispatcher.InvokeAsync(() =>
                     RichTextBoxConsole.AppendText($"P{priority}: {message}\r")
                 )
             );
@@ -139,10 +139,10 @@ namespace SignalRClient
         {
             //Hide chat UI; show login UI
             var dispatcher = Application.Current.Dispatcher;
-            dispatcher.Invoke(() => ChatPanel.Visibility = Visibility.Collapsed);
-            dispatcher.Invoke(() => ButtonSend.IsEnabled = false);
-            dispatcher.Invoke(() => StatusText.Content = "You have been disconnected.");
-            dispatcher.Invoke(() => SignInPanel.Visibility = Visibility.Visible);
+            dispatcher.InvokeAsync(() => ChatPanel.Visibility = Visibility.Collapsed);
+            dispatcher.InvokeAsync(() => ButtonSend.IsEnabled = false);
+            dispatcher.InvokeAsync(() => StatusText.Content = "You have been disconnected.");
+            dispatcher.InvokeAsync(() => SignInPanel.Visibility = Visibility.Visible);
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
