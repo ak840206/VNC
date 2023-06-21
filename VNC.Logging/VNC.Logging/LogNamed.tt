@@ -93,13 +93,21 @@ namespace VNC
             "VIEWMODEL",
             "VIEWMODEL_LOW",
 
-            "LEXER",
-            "PARSER",
-            "BINDER",
             "SYNTAX",
+            "SYNTAX_LOW",
+            "LEXER",
+            "LEXER_LOW",
+            "PARSER",
+            "PARSER_LOW",
+            "BINDER",
+            "BINDER_LOW",
+            "TEXT",
+            "TEXT_LOW",
+
             "EVALUATOR",
             "COMPILER",
             "DIAGNOSTIC",
+            "TEST",
             
 			"DEFAULT"
 
