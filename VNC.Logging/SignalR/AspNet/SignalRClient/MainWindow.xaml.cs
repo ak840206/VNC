@@ -89,19 +89,19 @@ namespace SignalRClient
             //Handle incoming event from server: use Invoke to write to console from SignalR's thread
 
             HubProxy.On<string>("AddMessage", (message) =>
-                this.dispatcher.InvokeAsync(() =>
+                this.Dispatcher.InvokeAsync(() =>
                     RichTextBoxConsole.AppendText(String.Format("{0}\r", message))
                 )
             );
 
             HubProxy.On<string, string>("AddUserMessage", (name, message) =>
-                this.dispatcher.InvokeAsync(() =>
+                this.Dispatcher.InvokeAsync(() =>
                     RichTextBoxConsole.AppendText(String.Format("{0}: {1}\r", name, message))
                 )
             );
 
             HubProxy.On<string, Int32>("AddPriorityMessage", (message, priority) =>
-                this.dispatcher.InvokeAsync(() =>
+                this.Dispatcher.InvokeAsync(() =>
                     RichTextBoxConsole.AppendText($"P{priority}: {message}\r")
                 )
             );

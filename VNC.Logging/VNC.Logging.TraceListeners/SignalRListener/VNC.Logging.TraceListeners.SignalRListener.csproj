@@ -16,7 +16,7 @@
         <PackageTags>logging</PackageTags>
         <PackageIcon>VNC.png</PackageIcon>
         <Authors>Christopher Rhodes</Authors>
-        <Copyright>Copyright © VNC 2010-2022</Copyright>
+        <Copyright>Copyright © VNC 2010-2023</Copyright>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>        
         <Description>SignalRCore TraceListener for EnterpriseLibrary Logging</Description>
     </PropertyGroup>

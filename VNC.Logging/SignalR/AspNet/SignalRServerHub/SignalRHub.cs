@@ -31,7 +31,7 @@ namespace SignalRServerHub
         public override Task OnConnected()
         {
             //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
-            Application.Current.dispatcher.InvokeAsync(() =>
+            Application.Current.Dispatcher.InvokeAsync(() =>
                 ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client connected: " + Context.ConnectionId));
 
             return base.OnConnected();
@@ -40,7 +40,7 @@ namespace SignalRServerHub
         public override Task OnDisconnected(bool stopCalled)
         {
             //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
-            Application.Current.dispatcher.InvokeAsync(() =>
+            Application.Current.Dispatcher.InvokeAsync(() =>
                 ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client disconnected: " + Context.ConnectionId));
 
             return base.OnDisconnected(stopCalled);

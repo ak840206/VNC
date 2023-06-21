@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNet.SignalR;
-using Microsoft.Owin.Cors;
-using Microsoft.Owin.Hosting;
-using Owin;
-using System;
+﻿using System;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+
+using Microsoft.Owin.Hosting;
 
 namespace SignalRServerHub
 {
@@ -62,11 +60,11 @@ namespace SignalRServerHub
             catch (TargetInvocationException ex)
             {
                 WriteToConsole("A server is already running at " + ServerURI);
-                this.dispatcher.InvokeAsync(() => ButtonStart.IsEnabled = true);
+                this.Dispatcher.InvokeAsync(() => ButtonStart.IsEnabled = true);
                 return;
             }
 
-            this.dispatcher.InvokeAsync(() => ButtonStop.IsEnabled = true);
+            this.Dispatcher.InvokeAsync(() => ButtonStop.IsEnabled = true);
             WriteToConsole("Server started at " + ServerURI);
         }
 
@@ -76,7 +74,7 @@ namespace SignalRServerHub
         {
             if (!(RichTextBoxConsole.CheckAccess()))
             {
-                this.dispatcher.InvokeAsync(() =>
+                this.Dispatcher.InvokeAsync(() =>
                     WriteToConsole(message)
                 );
                 return;

@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRServerHub", "SignalR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRClient", "SignalR\AspNet\SignalRClient\SignalRClient.csproj", "{1EC0EE20-0953-4967-9BAA-DF8811157B08}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreClientWPF", "SignalR\AspNetCore\SignalRCoreClientWPF\SignalRCoreClientWPF.csproj", "{8BAF684E-3F38-47A3-AFB9-18388163B32F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreServerHubWPF", "SignalR\AspNetCore\SignalRCoreServerHubWPF\SignalRCoreServerHubWPF.csproj", "{E2850176-15A2-4543-A0D8-5A154FD18064}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{1EC0EE20-0953-4967-9BAA-DF8811157B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EC0EE20-0953-4967-9BAA-DF8811157B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EC0EE20-0953-4967-9BAA-DF8811157B08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BAF684E-3F38-47A3-AFB9-18388163B32F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BAF684E-3F38-47A3-AFB9-18388163B32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BAF684E-3F38-47A3-AFB9-18388163B32F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BAF684E-3F38-47A3-AFB9-18388163B32F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2850176-15A2-4543-A0D8-5A154FD18064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2850176-15A2-4543-A0D8-5A154FD18064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2850176-15A2-4543-A0D8-5A154FD18064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2850176-15A2-4543-A0D8-5A154FD18064}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
