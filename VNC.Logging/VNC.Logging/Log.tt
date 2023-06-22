@@ -19,9 +19,10 @@
 <#
 	int infoLevels = 5;
 	int debugLevels = 5;
+    int archLevels = 10;
 	int traceLevels = 30;
 
-	for (int i = 1 ; i <= infoLevels ; i++)
+	for (int i = 1 ; i < infoLevels ; i++)
 	{
 #>
 //'																										  Info<#= i #>				Log.Info<#= i #>		(10<#= i #>)
@@ -30,16 +31,25 @@
 #>
 //'       Verbose         Debugging trace                     16                                          Debug				Log.Debug		(1000)
 <#
-	for (int i = 1 ; i <= debugLevels ; i++)
+	for (int i = 1 ; i < debugLevels ; i++)
 	{
 #>
 //'																										  Debug<#= i #>			Log.Debug<#= i #>		(100<#= i #>)
 <#
 	}
 #>
-//'                                                                                                       Trace				Log.Trace       (10000)
+//'                                                                                                       Arch              Log.Arch        (9000)
 <#
-	for (int i = 1 ; i <= traceLevels ; i++)
+	for (int i = 1 ; i < archLevels ; i++)
+	{
+#>
+//'                                                                                                       Arch<#= i #>             Log.Arch<#= i #>       (900<#= i #>)
+<#
+	}
+#>
+//'                                                                                                       Trace                 Log.Trace               (10000)
+<#
+	for (int i = 1 ; i < traceLevels ; i++)
 	{
 #>
 //'                                                                                                       Trace<#= i #>			Log.Trace<#= i #>		(1000<#= i #>)
@@ -1025,12 +1035,103 @@ namespace VNC
 
     #endregion
 
-	#region Trace Log Methods
+	#region Log Arch Methods
 
 <#
 	level = "";
 
-	for (int i = 0 ; i <= traceLevels ; i++)
+	for (int i = 0 ; i < archLevels ; i++)
+	{
+		if (i > 0) level = i.ToString();
+#>
+		#region Arch<#= level #>
+
+        [DebuggerStepThrough]
+        public static long Arch<#= level #>(string message, string applicationCategory, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.Arch<#= level #>,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long Arch<#= level #>(string message, string applicationCategory, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.Arch<#= level #>,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, false, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long Arch<#= level #>(string message, string applicationCategory, int EventId)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.Arch<#= level #>,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long Arch<#= level #>(string message, string applicationCategory, long startTicks, MethodBase method = null)
+        {
+            if (method == null) method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.Arch<#= level #>,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long Arch<#= level #>(string message, string applicationCategory, int EventId, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.Arch<#= level #>,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long Arch<#= level #>(string message, string applicationCategory, int EventId, long startTicks)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.Arch<#= level #>,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long Arch<#= level #>(string message, string applicationCategory, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.Arch<#= level #>,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        [DebuggerStepThrough]
+        public static long Arch<#= level #>(string message, string applicationCategory, int EventId, long startTicks, Dictionary<string, string> props)
+        {
+            MethodBase method = new StackFrame(1).GetMethod();
+            InternalWrite(message, TraceEventType.Verbose, applicationCategory, LoggingPriority.Arch<#= level #>,
+                method.ReflectedType.Name, method.Name, Assembly.GetCallingAssembly().GetName().Name, Convert.ToBoolean(0), EventId, startTicks, props);
+            return Stopwatch.GetTimestamp();
+        }
+
+        #endregion
+
+    <#
+	    }
+    #>
+
+	    #endregion
+
+	#region Log Trace Methods
+
+<#
+	level = "";
+
+	for (int i = 0 ; i < traceLevels ; i++)
 	{
 		if (i > 0) level = i.ToString();
 #>

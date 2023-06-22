@@ -119,6 +119,17 @@
 		Debug4		= 1004,
 		Debug5		= 1005,
 
+        Arch		= 9000,
+		Arch1		= 9001,
+		Arch2		= 9002,
+		Arch3		= 9003,
+		Arch4		= 9004,
+		Arch5		= 9005,
+		Arch6		= 9006,
+		Arch7		= 9007,
+		Arch8		= 9008,
+		Arch9		= 9009,
+
         Trace		= 10000,
 		Trace1		= 10001,
 		Trace2		= 10002,
@@ -149,7 +160,6 @@
 		Trace27		= 10027,
 		Trace28		= 10028,
 		Trace29		= 10029,
-		Trace30		= 10030,
 		Max			= 10030
     }
 }

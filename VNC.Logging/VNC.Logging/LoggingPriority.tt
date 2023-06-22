@@ -7,6 +7,7 @@
 <#
 	int infoLevels = 5;
 	int debugLevels = 5;
+	int archLevels = 10;
 	int traceLevels = 30;
 #>
 namespace VNC
@@ -136,9 +137,24 @@ namespace VNC
 	}
 #>
 
+        Arch		= 9000,
+<#
+	for (int i = 1 ; i < archLevels ; i++)
+	{
+		if (i < 10)
+		{ 
+			WriteLine(string.Format("\t\tArch{0}\t\t= 900{1},", i, i));
+		}
+		else
+		{ 
+			WriteLine(string.Format("\t\tArch{0}\t\t= 90{1},", i, i));
+		}
+	}
+#>
+
         Trace		= 10000,
 <#
-	for (int i = 1 ; i <= traceLevels ; i++)
+	for (int i = 1 ; i < traceLevels ; i++)
 	{
 		if (i < 10)
 		{ 
