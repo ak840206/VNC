@@ -23,6 +23,9 @@ namespace VNC
     {
 	<#
 		string[] named_methods = {
+        
+        #region These came from EASE days
+
 			"APPLICATION_START",
 			"APPLICATION_END",
 			"LOADEASE",
@@ -32,7 +35,7 @@ namespace VNC
 			"PAGE_LOAD",
 			"FORM_LOAD",
 
-			"EVENT_HANDLER",
+			// "EVENT_HANDLER", - Use Architecture infra
 
 			"STATUS",
 
@@ -75,9 +78,16 @@ namespace VNC
 
 			"CLEAR_INITIALIZE",
 
+        #endregion
+
+        #region These are from Architecture visualization
+
             //"CONSTRUCTOR", // Special handling for CONSTRUCTOR - Infra
-            "APPLICATION_INITIALIZE",
+
             "EVENT",
+            "EVENT_HANDLER",
+            "APPLICATION_INITIALIZE",
+            "CORE",
             "MODULE",
             "MODULE_INITIALIZE",
 
@@ -85,13 +95,21 @@ namespace VNC
             "APPLICATIONSERVICES",
             "DOMAIN",
             "DOMAINSERVICES",
-            "CORE",
+
             "PERSISTENCE",
+            "PERSISTENCE_LOW",
+
+            "INFRASTRUCTURE",
+
             "PRESENTATION",
             "VIEW",
             "VIEW_LOW",
             "VIEWMODEL",
             "VIEWMODEL_LOW",
+
+            #endregion
+
+            #region These are from Minsk
 
             "SYNTAX",
             "SYNTAX_LOW",
@@ -101,14 +119,18 @@ namespace VNC
             "PARSER_LOW",
             "BINDER",
             "BINDER_LOW",
+            "EVALUATOR",
+
             "TEXT",
             "TEXT_LOW",
 
-            "EVALUATOR",
             "COMPILER",
             "DIAGNOSTIC",
+
             "TEST",
             
+            #endregion
+
 			"DEFAULT"
 
 			};

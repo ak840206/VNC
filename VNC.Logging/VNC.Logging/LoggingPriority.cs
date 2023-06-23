@@ -1,9 +1,11 @@
 ﻿namespace VNC
 {
+	// Some priorities have been used consistently and are named for easier use.
+	// Keep this in sync with LogNamed.tt named_methods
+
 	public enum LoggingPriority : int
     {
-		// Some priorities have been used consistently and are named for easier use.
-		// Keep this in sync with LogNamed.tt named_methods
+		#region  These came from EASE days
 
 		APPLICATION_START = 100,
 		APPLICATION_END = 100,
@@ -14,13 +16,9 @@
 		PAGE_LOAD = 10000,
 		FORM_LOAD = 10000,
 
-		EVENT_HANDLER = 10001,
-        EVENT = 10021,
-
-		DIAGNOSTIC = 10001,
+		// EVENT_HANDLER = 10001, - Use Architecture Below
 
 		STATUS = 10002,
-        APPLICATION_INITIALIZE = 10002,
 
 		REDIRECT_TRANSFER = 10003,
 
@@ -33,7 +31,70 @@
 		EASESYS_IO_MED = 10016,
 		EASESYS_IO_LOW = 10026,
 
-        INFRASTRUCTURE = 10016,
+		UI_CONTROL = 10007,
+		UI_CONTROL_MED = 10017,
+		UI_CONTROL_LOW = 10027,
+
+		UTILITY = 10008,
+		UTILITY_MED = 10018,
+		UTILITY_LOW = 10028,
+
+		OPERATION = 10009,
+		OPERATION_LOW = 10019,
+
+		APPLICATION_SESSION = 10010,
+		APPLICATION_SESSION_LOW = 10020,
+
+		SYSTEM_CONFIG = 10011,
+		SYSTEM_CONFIG_LOW = 10021,
+
+		FILE_DIR_IO = 10012,
+		FILE_DIR_IO_LOW = 10022,
+
+		DATABASE_IO = 10013,
+		DATABASE_IO_LOW = 10023,
+
+		SECURITY = 10014,
+		SECURITY_LOW = 10024,
+
+		CLEAR_INITIALIZE = 10025,
+
+		#endregion
+
+		#region These are from Architecture visualization
+
+		CONSTRUCTOR = 9000,
+		EVENT = 9001,
+		EVENT_HANDLER = 9002,
+		APPLICATION_INITIALIZE = 9003,
+        CORE = 9004,
+        MODULE = 9005,
+        MODULE_INITIALIZE = 9006,
+
+        APPLICATION = 9007,
+        APPLICATIONSERVICES = 9008,
+        DOMAIN = 9009,
+        DOMAINSERVICES = 9010,
+
+        PERSISTENCE = 9011,
+        PERSISTENCE_LOW = 9012,
+
+		INFRASTRUCTURE = 9013,
+
+        PRESENTATION = 9014,
+        VIEW = 9015,
+        VIEW_LOW = 9016,
+        VIEWMODEL = 9017,
+        VIEWMODEL_LOW = 9018,
+
+		#endregion
+
+		#region These came from Minsk days
+
+		COMPILER = 10000,
+		DIAGNOSTIC = 10001,
+
+		TEST = 10002,
 
 		SYNTAX = 10010,
 		SYNTAX_LOW = 10020,
@@ -47,57 +108,9 @@
 		TEXT = 10015,
 		TEXT_LOW = 10025,
 
-		COMPILER = 10000,
-		TEST = 10002,
-
-		UI_CONTROL = 10007,
-		UI_CONTROL_MED = 10017,
-		UI_CONTROL_LOW = 10027,
-
-        PRESENTATION = 10007,
-        VIEW = 10017,
-        VIEW_LOW = 10027,
-
-		UTILITY = 10008,
-		UTILITY_MED = 10018,
-		UTILITY_LOW = 10028,
-        VIEWMODEL = 10018,
-        VIEWMODEL_LOW = 10028,
-
-		OPERATION = 10009,
-		OPERATION_LOW = 10019,
-        CORE = 10009,
-        MODULE = 10019,
-        MODULE_INITIALIZE = 10029,
-
-		APPLICATION_SESSION = 10010,
-		APPLICATION_SESSION_LOW = 10020,
-
-        APPLICATION = 10010,
-        APPLICATIONSERVICES = 10020,
-
-		SYSTEM_CONFIG = 10011,
-		SYSTEM_CONFIG_LOW = 10021,
-
-		FILE_DIR_IO = 10012,
-		FILE_DIR_IO_LOW = 10022,
-
-        DOMAIN = 10012,
-        DOMAINSERVICES = 10022,
-
-		DATABASE_IO = 10013,
-		DATABASE_IO_LOW = 10023,
-
-        PERSISTENCE = 10013,
-        PERSISTENCE_LOW = 10023,
-
-		SECURITY = 10014,
-		SECURITY_LOW = 10024,
-
+		#endregion
+	
 		DEFAULT = 10019,
-
-		CLEAR_INITIALIZE = 10025,
-        CONSTRUCTOR = 10025,
 
 		// Below are the standard levels
 
@@ -129,6 +142,16 @@
 		Arch7		= 9007,
 		Arch8		= 9008,
 		Arch9		= 9009,
+		Arch10		= 9010,
+		Arch11		= 9011,
+		Arch12		= 9012,
+		Arch13		= 9013,
+		Arch14		= 9014,
+		Arch15		= 9015,
+		Arch16		= 9016,
+		Arch17		= 9017,
+		Arch18		= 9018,
+		Arch19		= 9019,
 
         Trace		= 10000,
 		Trace1		= 10001,

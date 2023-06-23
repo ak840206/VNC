@@ -19,7 +19,7 @@
 <#
 	int infoLevels = 5;
 	int debugLevels = 5;
-    int archLevels = 10;
+    int archLevels = 20;
 	int traceLevels = 30;
 
 	for (int i = 1 ; i < infoLevels ; i++)
@@ -47,7 +47,7 @@
 <#
 	}
 #>
-//'                                                                                                       Trace                 Log.Trace               (10000)
+//'                                                                                                       Trace             Log.Trace       (10000)
 <#
 	for (int i = 1 ; i < traceLevels ; i++)
 	{
@@ -946,7 +946,6 @@ namespace VNC
 	#endregion
 
     #region Log Debug Methods
-
 <#
 	level = "";
 
@@ -1226,7 +1225,5 @@ namespace VNC
         {
             return (double)(endTicks - startTicks) / ((double)Stopwatch.Frequency);
         }
-
-
     }
 }
