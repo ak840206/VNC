@@ -19,10 +19,12 @@ namespace SignalRCoreServerHubWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public IDisposable SignalR { get; set; }
+        //public IDisposable SignalR { get; set; }
         string ServerURI = "http://localhost:58195";
 
         private IHost _host;
+
+        private IWebHost _webHost;
 
         public MainWindow()
         {
@@ -47,7 +49,9 @@ namespace SignalRCoreServerHubWPF
         /// </summary>
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
-            SignalR?.Dispose();
+            _webHost.StopAsync();
+            
+
             WriteToConsole("Server Stopped");
             ButtonStart.IsEnabled = true;
             ButtonStop.IsEnabled = false;
@@ -62,18 +66,17 @@ namespace SignalRCoreServerHubWPF
         {
             try
             {
-                WebHost.CreateDefaultBuilder()
+                _webHost =  WebHost.CreateDefaultBuilder()
                     .UseUrls(new string[] {ServerURI})
                     .UseStartup<Startup>()
-                    .Build().RunAsync();
+                    .Build();
 
-                //_host = Host.CreateDefaultBuilder()
-                //    .ConfigureWebHostDefaults(webBuilder => webBuilder
-                //    .UseSetting(
-                //        .ConfigureServices(services => services.AddSignalR())
-                //        .Configure()
-                //        ).Build();
-                //SignalR = WebApp.Start(ServerURI);
+                _webHost.RunAsync();
+
+                //WebHost.CreateDefaultBuilder()
+                //    .UseUrls(new string[] { ServerURI })
+                //    .UseStartup<Startup>()
+                //    .Build().RunAsync();
             }
             catch (TargetInvocationException ex)
             {
@@ -82,7 +85,6 @@ namespace SignalRCoreServerHubWPF
                 return;
             }
 
-            this.Dispatcher.InvokeAsync(() => ButtonStop.IsEnabled = true);
             WriteToConsole("Server started at " + ServerURI);
 
             this.Dispatcher.InvokeAsync(() => ButtonStop.IsEnabled = true);
