@@ -43,7 +43,7 @@ namespace SignalRCoreServerHubWPF
         public override Task OnDisconnectedAsync(Exception? exception)
         {
             //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
-            Application.Current.Dispatcher.Invoke(() =>
+            Application.Current?.Dispatcher.Invoke(() =>
                 ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client disconnected: " + Context.ConnectionId));
 
             return base.OnDisconnectedAsync(exception);

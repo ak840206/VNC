@@ -48,7 +48,10 @@ namespace SignalRCoreServerHubWPF
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
             SignalR?.Dispose();
-            Close();
+            WriteToConsole("Server Stopped");
+            ButtonStart.IsEnabled = true;
+            ButtonStop.IsEnabled = false;
+            //Close();
         }
 
         /// <summary>
@@ -81,13 +84,15 @@ namespace SignalRCoreServerHubWPF
 
             this.Dispatcher.InvokeAsync(() => ButtonStop.IsEnabled = true);
             WriteToConsole("Server started at " + ServerURI);
+
+            this.Dispatcher.InvokeAsync(() => ButtonStop.IsEnabled = true);
         }
 
         ///This method adds a line to the RichTextBoxConsole control, using Dispatcher.Invoke if used
         /// from a SignalR hub thread rather than the UI thread.
         public void WriteToConsole(String message)
         {
-            if (!(RichTextBoxConsole.CheckAccess()))
+            if (!(rtbConsole.CheckAccess()))
             {
                 this.Dispatcher.InvokeAsync(() =>
                     WriteToConsole(message)
@@ -95,12 +100,17 @@ namespace SignalRCoreServerHubWPF
                 return;
             }
 
-            RichTextBoxConsole.AppendText(message + "\r");
+            rtbConsole.AppendText(message + "\r");
         }
 
         private void tbServerURI_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             ServerURI = tbServerURI.Text;
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            rtbConsole.Document.Blocks.Clear();
         }
     }
 }

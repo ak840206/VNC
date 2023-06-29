@@ -7,18 +7,25 @@
         mc:Ignorable="d"
         Title="AspNetCore SignalRHub" Height="450" Width="600">
     <Grid>
-        <StackPanel >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <!--<RowDefinition SharedGroupSize="GridRow1" />-->
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
             <TextBox x:Name="tbServerURI" Text="http://localhost:58195" VerticalAlignment="Top" TextChanged="tbServerURI_TextChanged" />
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Left" Width="100" Click="ButtonStart_Click"/>
-                <Button x:Name="ButtonStop" Content="Stop" HorizontalAlignment="Right" Width="100" Click="ButtonStop_Click" IsEnabled="False"/>
+                <Button x:Name="ButtonStop" Content="Stop" HorizontalAlignment="Left" Width="100" Click="ButtonStop_Click" IsEnabled="False"/>
+                <Button x:Name="btnClear" Content="Clear Console" HorizontalAlignment="Right" Click="btnClear_Click" Foreground="Red" />
             </StackPanel>
-            <RichTextBox x:Name="RichTextBoxConsole" HorizontalAlignment="Left" Margin="10,35,10,10" VerticalAlignment="Stretch" >
-                <FlowDocument>
-                    <Paragraph>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
+
         </StackPanel>
+        <RichTextBox x:Name="rtbConsole" Grid.Row="1" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Stretch" >
+            <FlowDocument>
+                <Paragraph>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
     </Grid>
 </Window>
