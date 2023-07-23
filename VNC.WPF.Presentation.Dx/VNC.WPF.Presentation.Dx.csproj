@@ -17,7 +17,7 @@
         <PackageTags>wpf</PackageTags>
         <PackageIcon>VNC.png</PackageIcon>
         <Authors>Christopher Rhodes</Authors>
-        <Copyright>Copyright © VNC 2018-2022</Copyright>
+        <Copyright>Copyright © VNC 2018-2023</Copyright>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <Description>WPF Helpers</Description>
     </PropertyGroup>
@@ -29,7 +29,7 @@
         <PackageReference Include="DevExpress.Wpf.Grid" Version="21.2.7" />
         <PackageReference Include="DevExpress.Wpf.LayoutControl" Version="21.2.7" />
         <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.11.0" />
-        <PackageReference Include="VNC.Core" Version="2.0.0" />
+        <PackageReference Include="VNC.Core" Version="2.1.0" />
     </ItemGroup>
 
     <ItemGroup>
