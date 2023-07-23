@@ -21,7 +21,10 @@
             </StackPanel>
 
         </StackPanel>
-        <RichTextBox x:Name="rtbConsole" Grid.Row="1" HorizontalAlignment="Left" Margin="5" VerticalAlignment="Stretch" >
+        <RichTextBox x:Name="rtbConsole" Grid.Row="1" 
+                     HorizontalAlignment="Left" Margin="5" 
+                     VerticalAlignment="Stretch" 
+                     VerticalScrollBarVisibility="Visible">
             <FlowDocument>
                 <Paragraph>
                 </Paragraph>
