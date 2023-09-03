@@ -31,6 +31,8 @@ namespace SignalRCoreServerHubWPF
         {
             try
             {
+                signalRTime.HubReceivedTime = DateTime.Now;
+                signalRTime.HubReceivedTicks = 33;
                 await Clients.All.SendAsync("AddTimedMessage", message, signalRTime);
             }
             catch (Exception ex)

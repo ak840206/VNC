@@ -100,10 +100,17 @@ namespace SignalRCoreClientWPF
         private void btnSendTimed_Click(object sender, RoutedEventArgs e)
         {
             SignalRTime signalRTime = new SignalRTime();
-            signalRTime.SendTime = 1;
-            signalRTime.HubReceivedTime = 2;
-            signalRTime.ClientReceivedTime = 3;
-            signalRTime.ClientMessageTime = 4;
+            //signalRTime.SendTime = DateTime.Now;
+            //signalRTime.SendTicks = 1;
+
+            //signalRTime.HubReceivedTime = DateTime.Now;
+            //signalRTime.HubReceivedTicks = 2;
+
+            //signalRTime.ClientReceivedTime = DateTime.Now;
+            //signalRTime.ClientReceivedTicks = 3;
+
+            //signalRTime.ClientMessageTime = DateTime.Now;
+            //signalRTime.ClientMessageTicks = 4;
 
             try
             {
@@ -179,9 +186,28 @@ namespace SignalRCoreClientWPF
             );
 
             Connection.On<string, SignalRTime>("AddTimedMessage", (message, signalrtime) =>
+            {
+                signalrtime.ClientReceivedTime = DateTime.Now;
+                signalrtime.ClientReceivedTicks = 44;
+                //this.Dispatcher.InvokeAsync(() =>
+                //    rtbConsole.AppendText($"SendT:{signalrtime.SendTime:yyyy/MM/dd HH:mm:ss.ffff} Send:{signalrtime.SendTicks} HubRT:{signalrtime.HubReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} HubR:{signalrtime.HubReceivedTicks} ClientRT:{signalrtime.ClientReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} ClientR:{signalrtime.ClientReceivedTicks} ClientMT:{signalrtime.ClientMessageTime:yyyy/MM/dd HH:mm:ss.ffff} ClientM:{signalrtime.ClientMessageTicks} : {message}\r")
+                //);
                 this.Dispatcher.InvokeAsync(() =>
-                    rtbConsole.AppendText($"Send:{signalrtime.SendTime} HubR:{signalrtime.HubReceivedTime} ClientR:{signalrtime.ClientReceivedTime} ClientM:{signalrtime.ClientMessageTime} : {message}\r")
-                )
+                    rtbConsole.AppendText($"{message}\r")
+);
+                this.Dispatcher.InvokeAsync(() =>
+                    rtbConsole.AppendText($"SendT:{signalrtime.SendTime:yyyy/MM/dd HH:mm:ss.ffff} Send:{signalrtime.SendTicks}\r")
+);
+                this.Dispatcher.InvokeAsync(() =>
+                    rtbConsole.AppendText($"HubRT:{signalrtime.HubReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} HubR:{signalrtime.HubReceivedTicks} \r")
+);
+                this.Dispatcher.InvokeAsync(() =>
+                    rtbConsole.AppendText($"ClientRT:{signalrtime.ClientReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} ClientR:{signalrtime.ClientReceivedTicks}\r")
+);
+                this.Dispatcher.InvokeAsync(() =>
+                    rtbConsole.AppendText($"ClientMT:{signalrtime.ClientMessageTime:yyyy/MM/dd HH:mm:ss.ffff} ClientM:{signalrtime.ClientMessageTicks}\r")
+);
+            }
             );
 
             try

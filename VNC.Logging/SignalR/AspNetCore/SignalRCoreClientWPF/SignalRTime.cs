@@ -4,15 +4,27 @@ namespace SignalRCoreServerHubWPF
 {
     public class SignalRTime
     {
+        public SignalRTime()
+        {
+            SendTime = DateTime.Now;
 
-        //public SignalRTime()
-        //{
+            SendTicks = 1;
+            //HubReceivedTicks = 0;
+            //ClientReceivedTicks = 0;
+            //ClientMessageTicks = 4;
+        }
 
-        //}
+        public double SendTicks { get; set; }
+        public DateTime SendTime { get; set; }
 
-        public double SendTime { get; set; }
-        public double HubReceivedTime { get; set; }
-        public double ClientReceivedTime { get; set; }
-        public double ClientMessageTime { get; set; }
+        public double HubReceivedTicks { get; set; }
+        public DateTime HubReceivedTime { get; set; }
+
+        public double ClientReceivedTicks { get; set; }
+        public DateTime ClientReceivedTime { get; set; }
+
+        public double ClientMessageTicks { get; set; }
+        public DateTime ClientMessageTime { get; set; }
+
     }
 }
