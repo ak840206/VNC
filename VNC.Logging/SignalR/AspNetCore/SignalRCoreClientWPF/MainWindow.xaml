@@ -51,26 +51,38 @@
 
         <StackPanel x:Name="MessagePanel"
             Grid.Row="0" Grid.Column="1"
-            Orientation="Horizontal">
+            Orientation="Horizontal" >
 
-            <StackPanel Orientation="Vertical" Width="300">
-                <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal" >
                     <Label Content="Message:" Width="75" />
                     <TextBox x:Name="TextBoxMessage" Height="20" Width="200"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Priority:" Width="75"/>
-                    <TextBox x:Name="Priority" Height="20" Text="1" />
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Priority:" Width="75"/>
+                        <TextBox x:Name="Priority" Height="20" Width="50" Text="10000" HorizontalContentAlignment="Right" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Count:" Width="75"/>
+                        <TextBox x:Name="Count" Height="20" Width="25" Text="1" HorizontalContentAlignment="Right" />
+                    </StackPanel>
                 </StackPanel>
+
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-                <Button x:Name="ButtonSend" Content="Send" Height="20" Click="btnSend_Click" IsDefault="True" IsEnabled="False" />
-                <Button x:Name="ButtonSendAnoymous" Content="Send Annoymous" Height="20" Click="btnSendAnoymous_Click" IsDefault="True" IsEnabled="False" />
-                <Button x:Name="ButtonSendPriority" Content="Send Priority" Height="20" Click="btnSendPriority_Click" IsDefault="True" IsEnabled="False" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Orientation="Vertical" >
+                    <Button x:Name="ButtonSend" Content="Send" Height="20" Click="btnSend_Click" IsEnabled="False" />
+                    <Button x:Name="ButtonSendAnoymous" Content="Send Annoymous" Height="20" Click="btnSendAnoymous_Click" IsEnabled="False" />
+                    <Button x:Name="ButtonSendPriority" Content="Send Priority" Height="20" Click="btnSendPriority_Click" IsEnabled="False" />
+                    <Button x:Name="ButtonSendTimed" Content="Send Timed" Height="20" Click="btnSendTimed_Click" IsEnabled="False" />                    
+                    <Button x:Name="ButtonLoggingPriorities" Content="Send Logging Priorities" Height="20" Click="btnSendLoggingPriorities_Click" IsEnabled="False" />                    
+                </StackPanel>
+
+                <Button x:Name="btnClear" Content="Clear Console" Click="btnClear_Click" Foreground="Red" />
             </StackPanel>
 
-            <Button x:Name="btnClear" Content="Clear Console" Click="btnClear_Click" Foreground="Red" />
         </StackPanel>
 
         <RichTextBox x:Name="rtbConsole" 

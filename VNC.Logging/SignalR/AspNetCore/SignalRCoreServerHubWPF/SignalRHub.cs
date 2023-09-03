@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace SignalRCoreServerHubWPF
 {
+
     public class SignalRHub : Hub
     {
         public async Task SendMessage(string message)
@@ -13,11 +14,24 @@ namespace SignalRCoreServerHubWPF
             await Clients.All.SendAsync("AddMessage", message);
         }
 
-        public void SendPriorityMessage(string message, Int32 priority)
+        public async void SendPriorityMessage(string message, Int32 priority)
         {
             try
             {
-                Clients.All.SendAsync("AddPriorityMessage", message, priority);
+                await Clients.All.SendAsync("AddPriorityMessage", message, priority);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                    ((MainWindow)Application.Current.MainWindow).WriteToConsole(ex.ToString()));
+            }
+        }
+
+        public async void SendTimedMessage(string message, SignalRTime signalRTime)
+        {
+            try
+            {
+                await Clients.All.SendAsync("AddTimedMessage", message, signalRTime);
             }
             catch (Exception ex)
             {

@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreClientWPF", "Sig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreServerHubWPF", "SignalRCoreServerHubWPF\SignalRCoreServerHubWPF.csproj", "{5A45B0F0-F409-42AB-B1BB-BAD7FAF72FDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{8D91868A-089F-47CB-AAE3-958B7E473120}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{8D91868A-089F-47CB-AAE3-958B7E473120}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

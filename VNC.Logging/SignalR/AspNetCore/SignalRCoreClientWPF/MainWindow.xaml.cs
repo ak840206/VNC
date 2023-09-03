@@ -3,10 +3,10 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls.Primitives;
-using System.Windows.Threading;
 
 using Microsoft.AspNetCore.SignalR.Client;
+
+using SignalRCoreServerHubWPF;
 
 using VNC;
 
@@ -43,11 +43,15 @@ namespace SignalRCoreClientWPF
             tbServerURI.Text = ServerURI;
         }
 
-        private async void btnSend_Click(object sender, RoutedEventArgs e)
+        private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                await Connection.InvokeAsync("SendUserMessage", UserName, TextBoxMessage.Text);
+                for (int i = 0; i < Int32.Parse(Count.Text); i++)
+                {
+                    Connection.InvokeAsync("SendUserMessage", UserName, TextBoxMessage.Text);
+                }
+                
                 TextBoxMessage.Text = String.Empty;
                 TextBoxMessage.Focus();
             }
@@ -57,11 +61,15 @@ namespace SignalRCoreClientWPF
             }
         }
 
-        private async void btnSendAnoymous_Click(object sender, RoutedEventArgs e)
+        private void btnSendAnoymous_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                await Connection.InvokeAsync("SendMessage", TextBoxMessage.Text);
+                for (int i = 0; i < Int32.Parse(Count.Text); i++)
+                {
+                    Connection.InvokeAsync("SendMessage", TextBoxMessage.Text);
+                }
+
                 TextBoxMessage.Text = String.Empty;
                 TextBoxMessage.Focus();
             }
@@ -71,17 +79,67 @@ namespace SignalRCoreClientWPF
             }
         }
 
-        private async void btnSendPriority_Click(object sender, RoutedEventArgs e)
+        private void btnSendPriority_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                await Connection.InvokeAsync("SendPriorityMessage", TextBoxMessage.Text, Int32.Parse(Priority.Text));
+                for (int i = 0; i < Int32.Parse(Count.Text); i++)
+                {
+                    Connection.InvokeAsync("SendPriorityMessage", TextBoxMessage.Text, Int32.Parse(Priority.Text));
+                }
+                
                 TextBoxMessage.Text = String.Empty;
                 TextBoxMessage.Focus();
             }
             catch (Exception ex)
             {
 
+            }
+        }
+
+        private void btnSendTimed_Click(object sender, RoutedEventArgs e)
+        {
+            SignalRTime signalRTime = new SignalRTime();
+            signalRTime.SendTime = 1;
+            signalRTime.HubReceivedTime = 2;
+            signalRTime.ClientReceivedTime = 3;
+            signalRTime.ClientMessageTime = 4;
+
+            try
+            {
+                Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
+
+                TextBoxMessage.Text = String.Empty;
+                TextBoxMessage.Focus();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btnSendLoggingPriorities_Click(object sender, RoutedEventArgs e)
+        {
+             Connection.InvokeAsync("SendPriorityMessage", "Error", -1);
+
+            for (int i = 0; i < 5; i++)
+            {
+                 Connection.InvokeAsync("SendPriorityMessage", $"Info{i}", i);
+            }
+
+            for (int i = 1000; i < 1005; i++)
+            {
+                 Connection.InvokeAsync("SendPriorityMessage", $"Debug{i}", i);
+            }
+
+            for (int i = 9000; i < 9020; i++)
+            {
+                 Connection.InvokeAsync("SendPriorityMessage", $"Arch{i}", i);
+            }
+
+            for (int i = 10000; i < 10030; i++)
+            {
+                Connection.InvokeAsync("SendPriorityMessage", $"Trace{i}", i);
             }
         }
 
@@ -120,6 +178,12 @@ namespace SignalRCoreClientWPF
                 )
             );
 
+            Connection.On<string, SignalRTime>("AddTimedMessage", (message, signalrtime) =>
+                this.Dispatcher.InvokeAsync(() =>
+                    rtbConsole.AppendText($"Send:{signalrtime.SendTime} HubR:{signalrtime.HubReceivedTime} ClientR:{signalrtime.ClientReceivedTime} ClientM:{signalrtime.ClientMessageTime} : {message}\r")
+                )
+            );
+
             try
             {
                 await Connection.StartAsync();
@@ -145,6 +209,8 @@ namespace SignalRCoreClientWPF
             ButtonSend.IsEnabled = true;
             ButtonSendAnoymous.IsEnabled = true;
             ButtonSendPriority.IsEnabled = true;
+            ButtonSendTimed.IsEnabled = true;
+            ButtonLoggingPriorities.IsEnabled = true;
 
             TextBoxMessage.Focus();
 
@@ -181,6 +247,8 @@ namespace SignalRCoreClientWPF
             dispatcher.InvokeAsync(() => ButtonSend.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonSendAnoymous.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonSendPriority.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendTimed.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonLoggingPriorities.IsEnabled = false);
 
             dispatcher.InvokeAsync(() => Status.Text = $"Connection Closed {(arg is null ? "" : arg.Message)}.");
             //dispatcher.InvokeAsync(() => SignInPanel.Visibility = Visibility.Visible);
@@ -258,5 +326,6 @@ namespace SignalRCoreClientWPF
             SignOutButton.IsEnabled = false;
             SignInButton.IsEnabled = true;
         }
+
     }
 }
