@@ -53,9 +53,12 @@ namespace SignalRCoreClientWPF
                 {
                     Connection.InvokeAsync("SendUserMessage", UserName, TextBoxMessage.Text);
                 }
-                
-                TextBoxMessage.Text = String.Empty;
-                TextBoxMessage.Focus();
+
+                if ((bool)cbClearMessage.IsChecked)
+                {
+                    TextBoxMessage.Text = String.Empty;
+                    TextBoxMessage.Focus();
+                }
             }
             catch (Exception ex)
             {
@@ -76,8 +79,11 @@ namespace SignalRCoreClientWPF
 
                 Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
 
-                TextBoxMessage.Text = String.Empty;
-                TextBoxMessage.Focus();
+                if ((bool)cbClearMessage.IsChecked)
+                {
+                    TextBoxMessage.Text = String.Empty;
+                    TextBoxMessage.Focus();
+                }
             }
             catch (Exception ex)
             {
@@ -94,8 +100,11 @@ namespace SignalRCoreClientWPF
                     Connection.InvokeAsync("SendMessage", TextBoxMessage.Text);
                 }
 
-                TextBoxMessage.Text = String.Empty;
-                TextBoxMessage.Focus();
+                if ((bool)cbClearMessage.IsChecked)
+                {
+                    TextBoxMessage.Text = String.Empty;
+                    TextBoxMessage.Focus();
+                }
             }
             catch (Exception ex)
             {
@@ -111,9 +120,12 @@ namespace SignalRCoreClientWPF
                 {
                     Connection.InvokeAsync("SendPriorityMessage", TextBoxMessage.Text, Int32.Parse(Priority.Text));
                 }
-                
-                TextBoxMessage.Text = String.Empty;
-                TextBoxMessage.Focus();
+
+                if ((bool)cbClearMessage.IsChecked)
+                {
+                    TextBoxMessage.Text = String.Empty;
+                    TextBoxMessage.Focus();
+                }
             }
             catch (Exception ex)
             {
@@ -134,8 +146,11 @@ namespace SignalRCoreClientWPF
 
                 Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
 
-                TextBoxMessage.Text = String.Empty;
-                TextBoxMessage.Focus();
+                if ((bool)cbClearMessage.IsChecked)
+                {
+                    TextBoxMessage.Text = String.Empty;
+                    TextBoxMessage.Focus();
+                }
             }
             catch (Exception ex)
             {
@@ -237,8 +252,7 @@ namespace SignalRCoreClientWPF
                 this.Dispatcher.InvokeAsync(() =>
                     rtbConsole.AppendText($"Duration: {(signalrtime.ClientMessageTicks - signalrtime.SendTicks) / (double)Stopwatch.Frequency}\r"));
 
-            }
-            );
+            });
 
             try
             {

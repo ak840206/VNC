@@ -54,10 +54,15 @@
             Orientation="Horizontal" >
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                
                 <StackPanel Orientation="Horizontal" >
                     <Label Content="Message:" Width="75" />
                     <TextBox x:Name="TextBoxMessage" Height="20" Width="200"/>
                 </StackPanel>
+                
+                <CheckBox x:Name="cbClearMessage"
+                          Content="Clear Message after sending" />
+
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Priority:" Width="75"/>
@@ -67,6 +72,7 @@
                         <Label Content="Count:" Width="75"/>
                         <TextBox x:Name="Count" Height="20" Width="25" Text="1" HorizontalContentAlignment="Right" />
                     </StackPanel>
+                    
                 </StackPanel>
 
             </StackPanel>
