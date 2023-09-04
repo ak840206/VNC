@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace SignalRCoreServerHubWPF
 {
@@ -8,7 +9,7 @@ namespace SignalRCoreServerHubWPF
         {
             SendTime = DateTime.Now;
 
-            SendTicks = 1;
+            SendTicks = Stopwatch.GetTimestamp();
             //HubReceivedTicks = 0;
             //ClientReceivedTicks = 0;
             //ClientMessageTicks = 4;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -32,7 +33,7 @@ namespace SignalRCoreServerHubWPF
             try
             {
                 signalRTime.HubReceivedTime = DateTime.Now;
-                signalRTime.HubReceivedTicks = 33;
+                signalRTime.HubReceivedTicks = Stopwatch.GetTimestamp();
                 await Clients.All.SendAsync("AddTimedMessage", message, signalRTime);
             }
             catch (Exception ex)

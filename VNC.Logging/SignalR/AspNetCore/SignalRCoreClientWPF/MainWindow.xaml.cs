@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Common;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -61,6 +63,28 @@ namespace SignalRCoreClientWPF
             }
         }
 
+        private void btnSendTimed_Click(object sender, RoutedEventArgs e)
+        {
+            SignalRTime signalRTime = new SignalRTime();
+
+            try
+            {
+                for (int i = 0; i < Int32.Parse(Count.Text); i++)
+                {
+                    Connection.InvokeAsync("SendUserMessage", UserName, TextBoxMessage.Text);
+                }
+
+                Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
+
+                TextBoxMessage.Text = String.Empty;
+                TextBoxMessage.Focus();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         private void btnSendAnoymous_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -97,23 +121,17 @@ namespace SignalRCoreClientWPF
             }
         }
 
-        private void btnSendTimed_Click(object sender, RoutedEventArgs e)
+        private void btnSendPriorityTimed_Click(object sender, RoutedEventArgs e)
         {
             SignalRTime signalRTime = new SignalRTime();
-            //signalRTime.SendTime = DateTime.Now;
-            //signalRTime.SendTicks = 1;
-
-            //signalRTime.HubReceivedTime = DateTime.Now;
-            //signalRTime.HubReceivedTicks = 2;
-
-            //signalRTime.ClientReceivedTime = DateTime.Now;
-            //signalRTime.ClientReceivedTicks = 3;
-
-            //signalRTime.ClientMessageTime = DateTime.Now;
-            //signalRTime.ClientMessageTicks = 4;
 
             try
             {
+                for (int i = 0; i < Int32.Parse(Count.Text); i++)
+                {
+                    Connection.InvokeAsync("SendPriorityMessage", TextBoxMessage.Text, Int32.Parse(Priority.Text));
+                }
+
                 Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
 
                 TextBoxMessage.Text = String.Empty;
@@ -127,9 +145,13 @@ namespace SignalRCoreClientWPF
 
         private void btnSendLoggingPriorities_Click(object sender, RoutedEventArgs e)
         {
-             Connection.InvokeAsync("SendPriorityMessage", "Error", -1);
+            SignalRTime signalRTime = new SignalRTime();
 
-            for (int i = 0; i < 5; i++)
+            Connection.InvokeAsync("SendPriorityMessage", "Critical", -10);
+            Connection.InvokeAsync("SendPriorityMessage", "Error", -1);
+            Connection.InvokeAsync("SendPriorityMessage", "Warning", 1);
+
+            for (int i = 100; i < 105; i++)
             {
                  Connection.InvokeAsync("SendPriorityMessage", $"Info{i}", i);
             }
@@ -148,6 +170,8 @@ namespace SignalRCoreClientWPF
             {
                 Connection.InvokeAsync("SendPriorityMessage", $"Trace{i}", i);
             }
+
+            Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
         }
 
         /// <summary>
@@ -188,25 +212,31 @@ namespace SignalRCoreClientWPF
             Connection.On<string, SignalRTime>("AddTimedMessage", (message, signalrtime) =>
             {
                 signalrtime.ClientReceivedTime = DateTime.Now;
-                signalrtime.ClientReceivedTicks = 44;
+                signalrtime.ClientReceivedTicks = Stopwatch.GetTimestamp();
                 //this.Dispatcher.InvokeAsync(() =>
                 //    rtbConsole.AppendText($"SendT:{signalrtime.SendTime:yyyy/MM/dd HH:mm:ss.ffff} Send:{signalrtime.SendTicks} HubRT:{signalrtime.HubReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} HubR:{signalrtime.HubReceivedTicks} ClientRT:{signalrtime.ClientReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} ClientR:{signalrtime.ClientReceivedTicks} ClientMT:{signalrtime.ClientMessageTime:yyyy/MM/dd HH:mm:ss.ffff} ClientM:{signalrtime.ClientMessageTicks} : {message}\r")
                 //);
                 this.Dispatcher.InvokeAsync(() =>
-                    rtbConsole.AppendText($"{message}\r")
-);
+                    rtbConsole.AppendText($"{message}\r"));
+
+                signalrtime.ClientMessageTime = DateTime.Now;
+                signalrtime.ClientMessageTicks = Stopwatch.GetTimestamp();
+
                 this.Dispatcher.InvokeAsync(() =>
-                    rtbConsole.AppendText($"SendT:{signalrtime.SendTime:yyyy/MM/dd HH:mm:ss.ffff} Send:{signalrtime.SendTicks}\r")
-);
+                    rtbConsole.AppendText($"SendT:    {signalrtime.SendTime:yyyy/MM/dd HH:mm:ss.ffff} Send:{signalrtime.SendTicks}\r"));
+
                 this.Dispatcher.InvokeAsync(() =>
-                    rtbConsole.AppendText($"HubRT:{signalrtime.HubReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} HubR:{signalrtime.HubReceivedTicks} \r")
-);
+                    rtbConsole.AppendText($"HubRT:    {signalrtime.HubReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} - Duration:{(signalrtime.HubReceivedTicks - signalrtime.SendTicks) / (double)Stopwatch.Frequency}\r"));
+                
                 this.Dispatcher.InvokeAsync(() =>
-                    rtbConsole.AppendText($"ClientRT:{signalrtime.ClientReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} ClientR:{signalrtime.ClientReceivedTicks}\r")
-);
+                    rtbConsole.AppendText($"ClientRT: {signalrtime.ClientReceivedTime:yyyy/MM/dd HH:mm:ss.ffff} - Duration:{(signalrtime.ClientReceivedTicks - signalrtime.HubReceivedTicks) / (double)Stopwatch.Frequency}\r"));
+                
                 this.Dispatcher.InvokeAsync(() =>
-                    rtbConsole.AppendText($"ClientMT:{signalrtime.ClientMessageTime:yyyy/MM/dd HH:mm:ss.ffff} ClientM:{signalrtime.ClientMessageTicks}\r")
-);
+                    rtbConsole.AppendText($"ClientMT: {signalrtime.ClientMessageTime:yyyy/MM/dd HH:mm:ss.ffff} - Duration:{(signalrtime.ClientMessageTicks - signalrtime.ClientReceivedTicks) / (double)Stopwatch.Frequency}\r"));
+                
+                this.Dispatcher.InvokeAsync(() =>
+                    rtbConsole.AppendText($"Duration: {(signalrtime.ClientMessageTicks - signalrtime.SendTicks) / (double)Stopwatch.Frequency}\r"));
+
             }
             );
 
@@ -233,9 +263,10 @@ namespace SignalRCoreClientWPF
             //ChatPanel.Visibility = Visibility.Visible;
 
             ButtonSend.IsEnabled = true;
+            ButtonSendTimed.IsEnabled = true;
             ButtonSendAnoymous.IsEnabled = true;
             ButtonSendPriority.IsEnabled = true;
-            ButtonSendTimed.IsEnabled = true;
+            ButtonSendPriorityTimed.IsEnabled = true;
             ButtonLoggingPriorities.IsEnabled = true;
 
             TextBoxMessage.Focus();
@@ -271,9 +302,10 @@ namespace SignalRCoreClientWPF
 
             //dispatcher.InvokeAsync(() => ChatPanel.Visibility = Visibility.Collapsed);
             dispatcher.InvokeAsync(() => ButtonSend.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendTimed.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonSendAnoymous.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonSendPriority.IsEnabled = false);
-            dispatcher.InvokeAsync(() => ButtonSendTimed.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendPriorityTimed.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonLoggingPriorities.IsEnabled = false);
 
             dispatcher.InvokeAsync(() => Status.Text = $"Connection Closed {(arg is null ? "" : arg.Message)}.");

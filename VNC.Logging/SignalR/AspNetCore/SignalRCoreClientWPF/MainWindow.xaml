@@ -74,9 +74,10 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <StackPanel Orientation="Vertical" >
                     <Button x:Name="ButtonSend" Content="Send" Height="20" Click="btnSend_Click" IsEnabled="False" />
+                    <Button x:Name="ButtonSendTimed" Content="Send Timed" Height="20" Click="btnSendTimed_Click" IsEnabled="False" />
                     <Button x:Name="ButtonSendAnoymous" Content="Send Annoymous" Height="20" Click="btnSendAnoymous_Click" IsEnabled="False" />
                     <Button x:Name="ButtonSendPriority" Content="Send Priority" Height="20" Click="btnSendPriority_Click" IsEnabled="False" />
-                    <Button x:Name="ButtonSendTimed" Content="Send Timed" Height="20" Click="btnSendTimed_Click" IsEnabled="False" />                    
+                    <Button x:Name="ButtonSendPriorityTimed" Content="Send Priority Timed" Height="20" Click="btnSendPriorityTimed_Click" IsEnabled="False" />                    
                     <Button x:Name="ButtonLoggingPriorities" Content="Send Logging Priorities" Height="20" Click="btnSendLoggingPriorities_Click" IsEnabled="False" />                    
                 </StackPanel>
 
@@ -85,7 +86,7 @@
 
         </StackPanel>
 
-        <RichTextBox x:Name="rtbConsole" 
+        <RichTextBox x:Name="rtbConsole" FontFamily="Consolas"
             Grid.Row="1" Grid.ColumnSpan="2" Margin="5" VerticalScrollBarVisibility="Visible" >
             <FlowDocument>
                 <Paragraph>
