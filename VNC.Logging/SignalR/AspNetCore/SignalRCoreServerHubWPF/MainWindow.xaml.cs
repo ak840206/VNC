@@ -29,7 +29,13 @@ namespace SignalRCoreServerHubWPF
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
         }
+
+        public string RuntimeVersion { get => Common.RuntimeVersion; }
+        public string FileVersion { get => Common.FileVersion; }
+        public string ProductVersion { get => Common.ProductVersion; }
+        public string ProductName { get => Common.ProductName; }
 
         /// <summary>
         /// Calls the StartServer method with Task.Run 

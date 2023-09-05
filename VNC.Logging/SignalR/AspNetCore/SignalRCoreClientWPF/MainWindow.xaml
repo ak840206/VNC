@@ -4,37 +4,41 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="AspNetCore SignalR Client"
+        Title="{Binding ProductName}"
         Height="600" Width="800"
         MinWidth="400" MinHeight="400"
-        ResizeMode="CanResizeWithGrip">
+        ResizeMode="CanResizeWithGrip"
+>
+    <Window.Resources>
+        <SolidColorBrush x:Key="RedText" Color="#c70000" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition />
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>-->
         
         <StackPanel x:Name="SignInPanel"
-                    Grid.Row="0" Grid.Column="0"
-                    Margin="10,0">
+                    Grid.Row="0" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
                 <Label Content="ServerHub URI:" />
                 <TextBox x:Name="tbServerURI" Text="" Width="170"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Enter user name:" VerticalAlignment="Center" />
-                    <TextBox x:Name="UserNameTextBox" Height="20" Width="50"/>        
+                    <TextBox x:Name="UserNameTextBox"  Width="50"/>        
                 </StackPanel>
 
-                <StackPanel Margin="10,0,0,0">
+                <StackPanel Orientation="Horizontal">
                     <Button x:Name="SignInButton" 
                             Content="Sign In" 
                             Width="75" HorizontalAlignment="Right" IsEnabled="True"
@@ -63,22 +67,25 @@
                 <CheckBox x:Name="cbClearMessage"
                           Content="Clear Message after sending" />
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Priority:" Width="75"/>
                         <TextBox x:Name="Priority" Height="20" Width="50" Text="10000" HorizontalContentAlignment="Right" />
                     </StackPanel>
+                    
                     <StackPanel Orientation="Horizontal" >
                         <Label Content="Count:" Width="75"/>
-                        <TextBox x:Name="Count" Height="20" Width="25" Text="1" HorizontalContentAlignment="Right" />
+                        <TextBox x:Name="Count" Height="20" Width="35" Text="1" HorizontalContentAlignment="Right" />
                     </StackPanel>
-                    
+                    <Button x:Name="btnClear" Content="Clear Console" Click="btnClear_Click" Foreground="Red" />
+
                 </StackPanel>
 
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <StackPanel Orientation="Vertical" >
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
                     <Button x:Name="ButtonSend" Content="Send" Height="20" Click="btnSend_Click" IsEnabled="False" />
                     <Button x:Name="ButtonSendTimed" Content="Send Timed" Height="20" Click="btnSendTimed_Click" IsEnabled="False" />
                     <Button x:Name="ButtonSendAnoymous" Content="Send Annoymous" Height="20" Click="btnSendAnoymous_Click" IsEnabled="False" />
@@ -87,8 +94,7 @@
                     <Button x:Name="ButtonLoggingPriorities" Content="Send Logging Priorities" Height="20" Click="btnSendLoggingPriorities_Click" IsEnabled="False" />                    
                 </StackPanel>
 
-                <Button x:Name="btnClear" Content="Clear Console" Click="btnClear_Click" Foreground="Red" />
-            </StackPanel>
+           </StackPanel>
 
         </StackPanel>
 
@@ -112,12 +118,16 @@
 
         </StackPanel>
 
-        <StatusBar Grid.Row="3" Grid.ColumnSpan="2" Height="20" >
-            <StatusBarItem>
-                <TextBlock Name="Status" />
-            </StatusBarItem>
-        </StatusBar>
-        
+        <WrapPanel Orientation="Horizontal" Grid.Row="3" >
+            <!--<Label Content="Product Name: " />
+            <Label Content="{Binding ProductName}" Foreground="{StaticResource RedText}" />-->
+            <Label Content="Product Version: " Margin="10,0,0,0" />
+            <Label Content="{Binding ProductVersion}" Foreground="{StaticResource RedText}" />
+            <Label Content="File Version: " Margin="10,0,0,0"/>
+            <Label Content="{Binding FileVersion}" Foreground="{StaticResource RedText}" />
+            <Label Content=".NET Runtime: " Margin="10,0,0,0" />
+            <Label Content="{Binding RuntimeVersion}" Foreground="{StaticResource RedText}"/>
+        </WrapPanel>
     </Grid>
     
 </Window>

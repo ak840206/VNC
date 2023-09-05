@@ -42,8 +42,14 @@ namespace SignalRCoreClientWPF
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
             tbServerURI.Text = ServerURI;
         }
+
+        public string RuntimeVersion { get => Common.RuntimeVersion; }
+        public string FileVersion { get => Common.FileVersion; }
+        public string ProductVersion { get => Common.ProductVersion; }
+        public string ProductName { get => Common.ProductName; }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
@@ -260,13 +266,13 @@ namespace SignalRCoreClientWPF
             }
             catch (HttpRequestException hre)
             {
-                Status.Text = $"Unable to connect to server: Start server before connecting clients. {hre.Message}";
+                rtbConsole.AppendText( $"Unable to connect to server: Start server before connecting clients. {hre.Message}");
                 //No connection: Don't enable Send button or show chat UI
                 return;
             }
             catch (Exception ex)
             {
-                Status.Text = $"Unable to connect to server, ex: {ex.Message}";
+                rtbConsole.AppendText($"Unable to connect to server, ex: {ex.Message}");
                 //No connection: Don't enable Send button or show chat UI
                 return;
             }
@@ -286,13 +292,12 @@ namespace SignalRCoreClientWPF
             TextBoxMessage.Focus();
 
             rtbConsole.AppendText("Connected to server at " + ServerURI + "\r");
-            Status.Text = $"Connected to server at {ServerURI}";
         }
 
         private Task Connection_Reconnecting(Exception? arg)
         {
             var dispatcher = Application.Current.Dispatcher;
-            dispatcher.InvokeAsync(() => StatusText.Text = $"Reconnecting {(arg is null ? "" : arg.Message)}.");
+            rtbConsole.AppendText($"Reconnecting {(arg is null ? "" : arg.Message)}.");
 
             return null;
         }
@@ -300,7 +305,7 @@ namespace SignalRCoreClientWPF
         private Task Connection_Reconnected(string? arg)
         {
             var dispatcher = Application.Current.Dispatcher;
-            dispatcher.InvokeAsync(() => StatusText.Text = $"Reconnected {arg}");
+            rtbConsole.AppendText($"Reconnected {arg}");
 
             return null;
         }
@@ -322,7 +327,7 @@ namespace SignalRCoreClientWPF
             dispatcher.InvokeAsync(() => ButtonSendPriorityTimed.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonLoggingPriorities.IsEnabled = false);
 
-            dispatcher.InvokeAsync(() => Status.Text = $"Connection Closed {(arg is null ? "" : arg.Message)}.");
+            rtbConsole.AppendText($"Connection Closed {(arg is null ? "" : arg.Message)}.");
             //dispatcher.InvokeAsync(() => SignInPanel.Visibility = Visibility.Visible);
 
             return null;
@@ -334,7 +339,7 @@ namespace SignalRCoreClientWPF
 
             if (!String.IsNullOrEmpty(UserName))
             {
-                Status.Text = "Connecting to server...";
+                rtbConsole.AppendText("Connecting to server...");
 
                 //StatusText.Visibility = Visibility.Visible;
                 //StatusText.Text = "Connecting to server...";
@@ -346,7 +351,7 @@ namespace SignalRCoreClientWPF
             }
             else
             {
-                Status.Text = "Must enter UserName";
+                rtbConsole.AppendText("Must enter UserName");
             }
         }
 
@@ -392,7 +397,7 @@ namespace SignalRCoreClientWPF
                 await Connection.DisposeAsync();
                 //Connection.Dispose();
 
-                Status.Text = "Signed out of Server";
+                rtbConsole.AppendText("Signed out of Server");
             }
 
             SignOutButton.IsEnabled = false;

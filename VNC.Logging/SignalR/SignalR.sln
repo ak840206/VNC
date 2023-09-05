@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreClientWPF", "Asp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreServerHubWPF", "AspNetCore\SignalRCoreServerHubWPF\SignalRCoreServerHubWPF.csproj", "{F67CE3D1-F330-4E5D-B858-EE2BF28BC630}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreClientWPF_RTB", "AspNetCore\SignalRCoreClientWPF_RTB\SignalRCoreClientWPF_RTB.csproj", "{41B6C387-F2D6-4FCE-B8D6-F14AEF1B1BB4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

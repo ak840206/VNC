@@ -5,8 +5,10 @@
     <TargetFrameworks>net6.0-windows</TargetFrameworks>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <!--<FileVersion>1.0.0</FileVersion>
-    <VersionSuffix>2023.07.22A</VersionSuffix>-->
+    <FileVersion>2023.09.04A</FileVersion>
+      <!--<ProductName>MyProduct</ProductName>-->
+      <!--<ProductVersion>1.0.1</ProductVersion>-->
+    <!--<VersionSuffix>2023.07.22A</VersionSuffix>-->
   </PropertyGroup>
 
   <ItemGroup>
