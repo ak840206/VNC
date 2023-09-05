@@ -15,6 +15,7 @@
     <DockPanel>
 
         <StackPanel DockPanel.Dock="Top" Margin="2">
+            
             <StackPanel Orientation="Horizontal">
                 <Label Content="ServerHub URI:" />
                 <TextBox x:Name="tbServerURI" Text="http://localhost:58195" VerticalContentAlignment="Center" />
