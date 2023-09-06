@@ -11,6 +11,9 @@
 >
     <Window.Resources>
         <SolidColorBrush x:Key="RedText" Color="#c70000" />
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Margin" Value="2" />
+        </Style>
     </Window.Resources>
     
     <DockPanel>
@@ -20,30 +23,28 @@
             
             <StackPanel Orientation="Horizontal">
                 <Label Content="ServerHub URI:" />
-                <TextBox x:Name="tbServerURI" Text="http://localhost:58195" VerticalContentAlignment="Center" />
+                <TextBox x:Name="tbServerURI" Text="http://localhost:58195" Height="20" VerticalContentAlignment="Center" />
                 <Label Content="Enter user name:" VerticalAlignment="Center" />
-                <TextBox x:Name="UserNameTextBox"  Width="50"/>
+                <TextBox x:Name="UserNameTextBox" Height="20" Width="50"/>
             </StackPanel>
-
 
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SignInButton" 
                             Content="Sign In" 
-                            Width="75" HorizontalAlignment="Right" IsEnabled="True"
+                            Width="75" Style="{StaticResource Button}" HorizontalAlignment="Right" IsEnabled="True"
                             Click="SignInButton_Click"  />
                     <Button x:Name="SignOutButton" 
                             Content="Sign Out" 
-                            Width="75" HorizontalAlignment="Right" IsEnabled="False"
+                            Width="75" Style="{StaticResource Button}" HorizontalAlignment="Right" IsEnabled="False"
                             Click="SignOutButton_Click"  />
                 </StackPanel>
                 
         </DockPanel>
 
-        <StackPanel x:Name="MessagePanel"
-            DockPanel.Dock="Top"
-            Orientation="Horizontal" >
+        <DockPanel x:Name="MessagePanel"
+            DockPanel.Dock="Top" Margin="5,0,5,0">
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Left" >
                 
                 <StackPanel Orientation="Horizontal" >
                     <Label Content="Message:" Width="75" />
@@ -53,36 +54,49 @@
                 <CheckBox x:Name="cbClearMessage"
                           Content="Clear Message after sending" />
 
-                <StackPanel Orientation="Vertical">
-                    
+                <StackPanel Orientation="Horizontal">
+
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Priority:" Width="75"/>
                         <TextBox x:Name="Priority" Height="20" Width="50" Text="10000" HorizontalContentAlignment="Right" />
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Horizontal" >
                         <Label Content="Count:" Width="75"/>
                         <TextBox x:Name="Count" Height="20" Width="35" Text="1" HorizontalContentAlignment="Right" />
                     </StackPanel>
-                    <Button x:Name="btnClear" Content="Clear Console" Click="btnClear_Click" Foreground="Red" />
 
                 </StackPanel>
 
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                
                 <StackPanel Orientation="Vertical">
-                    <Button x:Name="ButtonSend" Content="Send" Height="20" Click="btnSend_Click" IsEnabled="False" />
-                    <Button x:Name="ButtonSendTimed" Content="Send Timed" Height="20" Click="btnSendTimed_Click" IsEnabled="False" />
-                    <Button x:Name="ButtonSendAnoymous" Content="Send Annoymous" Height="20" Click="btnSendAnoymous_Click" IsEnabled="False" />
-                    <Button x:Name="ButtonSendPriority" Content="Send Priority" Height="20" Click="btnSendPriority_Click" IsEnabled="False" />
-                    <Button x:Name="ButtonSendPriorityTimed" Content="Send Priority Timed" Height="20" Click="btnSendPriorityTimed_Click" IsEnabled="False" />                    
-                    <Button x:Name="ButtonLoggingPriorities" Content="Send Logging Priorities" Height="20" Click="btnSendLoggingPriorities_Click" IsEnabled="False" />                    
+                    <Button x:Name="ButtonSend" Content="Send" Click="btnSend_Click" IsEnabled="False" Style="{StaticResource Button}" />
+                    <!--<Button x:Name="ButtonSendTimed" Content="Send Timed" Height="20" Click="btnSendTimed_Click" IsEnabled="False" />-->
+
+                    <Button x:Name="ButtonSendPriority" Content="Send Priority"  Click="btnSendPriority_Click" IsEnabled="False" Style="{StaticResource Button}" />
+                    <Button x:Name="ButtonSendAnoymous" Content="Send Annoymous" Click="btnSendAnoymous_Click" IsEnabled="False" Style="{StaticResource Button}" />
+                    <!--<Button x:Name="ButtonSendPriorityTimed" Content="Send Priority Timed" Height="20" Click="btnSendPriorityTimed_Click" IsEnabled="False" />-->                    
+                    <!--<Button x:Name="ButtonLoggingPriorities" Content="Send Logging Priorities" Height="20" Click="btnSendLoggingPriorities_Click" IsEnabled="False" />-->                    
                 </StackPanel>
 
-           </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <!--<Button x:Name="ButtonSend" Content="Send" Height="20" Click="btnSend_Click" IsEnabled="False" />-->
+                    <Button x:Name="ButtonSendTimed" Content="Send Timed"  Click="btnSendTimed_Click" IsEnabled="False" Style="{StaticResource Button}" />
+                    <!--<Button x:Name="ButtonSendAnoymous" Content="Send Annoymous" Height="20" Click="btnSendAnoymous_Click" IsEnabled="False" />
+                    <Button x:Name="ButtonSendPriority" Content="Send Priority" Height="20" Click="btnSendPriority_Click" IsEnabled="False" />-->
+                    <Button x:Name="ButtonSendPriorityTimed" Content="Send Priority Timed"  Click="btnSendPriorityTimed_Click" IsEnabled="False" Style="{StaticResource Button}"/>
+                    <Button x:Name="ButtonLoggingPriorities" Content="Send Logging Priorities" Click="btnSendLoggingPriorities_Click" IsEnabled="False" Style="{StaticResource Button}"/>
+                </StackPanel>
 
-        </StackPanel>
+                <Button x:Name="btnClear" Content="Clear Console" Margin="5,2,0,2"
+                        Click="btnClear_Click" Foreground="Red" />
+                
+            </StackPanel>            
+
+        </DockPanel>
         
         <WrapPanel Orientation="Horizontal"  DockPanel.Dock="Bottom" >
 
@@ -98,7 +112,7 @@
         </WrapPanel>
         
         <RichTextBox x:Name="rtbConsole" FontFamily="Consolas"
-            Grid.Row="1" Grid.ColumnSpan="2" Margin="5" VerticalScrollBarVisibility="Visible" >
+            Grid.Row="1" Grid.ColumnSpan="2" Margin="5,0,5,0" VerticalScrollBarVisibility="Visible" >
             <FlowDocument>
                 <Paragraph>
                 </Paragraph>
