@@ -25,7 +25,7 @@
                 <Label Content="ServerHub URI:" />
                 <TextBox x:Name="tbServerURI" Text="http://localhost:58195" Height="20" VerticalContentAlignment="Center" />
                 <Label Content="Enter user name:" VerticalAlignment="Center" />
-                <TextBox x:Name="UserNameTextBox" Height="20" Width="50"/>
+                <TextBox x:Name="UserNameTextBox" Text="SCC" Height="20" Width="50"/>
             </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
