@@ -284,7 +284,7 @@ namespace SignalRCoreClientWPF
 
             ButtonSend.IsEnabled = true;
             ButtonSendTimed.IsEnabled = true;
-            ButtonSendAnoymous.IsEnabled = true;
+            ButtonSendAnnoymous.IsEnabled = true;
             ButtonSendPriority.IsEnabled = true;
             ButtonSendPriorityTimed.IsEnabled = true;
             ButtonLoggingPriorities.IsEnabled = true;
@@ -322,12 +322,12 @@ namespace SignalRCoreClientWPF
             //dispatcher.InvokeAsync(() => ChatPanel.Visibility = Visibility.Collapsed);
             dispatcher.InvokeAsync(() => ButtonSend.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonSendTimed.IsEnabled = false);
-            dispatcher.InvokeAsync(() => ButtonSendAnoymous.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendAnnoymous.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonSendPriority.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonSendPriorityTimed.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonLoggingPriorities.IsEnabled = false);
 
-            rtbConsole.AppendText($"Connection Closed {(arg is null ? "" : arg.Message)}.");
+            dispatcher.InvokeAsync(() => rtbConsole.AppendText($"Connection Closed {(arg is null ? "" : arg.Message)}."));
             //dispatcher.InvokeAsync(() => SignInPanel.Visibility = Visibility.Visible);
 
             return null;

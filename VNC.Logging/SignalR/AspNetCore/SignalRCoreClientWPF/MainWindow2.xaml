@@ -77,7 +77,7 @@
                     <!--<Button x:Name="ButtonSendTimed" Content="Send Timed" Height="20" Click="btnSendTimed_Click" IsEnabled="False" />-->
 
                     <Button x:Name="ButtonSendPriority" Content="Send Priority"  Click="btnSendPriority_Click" IsEnabled="False" Style="{StaticResource Button}" />
-                    <Button x:Name="ButtonSendAnoymous" Content="Send Annoymous" Click="btnSendAnoymous_Click" IsEnabled="False" Style="{StaticResource Button}" />
+                    <Button x:Name="ButtonSendAnnoymous" Content="Send Annoymous" Click="btnSendAnoymous_Click" IsEnabled="False" Style="{StaticResource Button}" />
                     <!--<Button x:Name="ButtonSendPriorityTimed" Content="Send Priority Timed" Height="20" Click="btnSendPriorityTimed_Click" IsEnabled="False" />-->                    
                     <!--<Button x:Name="ButtonLoggingPriorities" Content="Send Logging Priorities" Height="20" Click="btnSendLoggingPriorities_Click" IsEnabled="False" />-->                    
                 </StackPanel>

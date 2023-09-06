@@ -24,7 +24,7 @@ namespace SignalRCoreServerHubWPF
             catch (Exception ex)
             {
                 Application.Current.Dispatcher.Invoke(() =>
-                    ((MainWindow)Application.Current.MainWindow).WriteToConsole(ex.ToString()));
+                    ((MainWindow2)Application.Current.MainWindow).WriteToConsole(ex.ToString()));
             }
         }
 
@@ -39,7 +39,7 @@ namespace SignalRCoreServerHubWPF
             catch (Exception ex)
             {
                 Application.Current.Dispatcher.Invoke(() =>
-                    ((MainWindow)Application.Current.MainWindow).WriteToConsole(ex.ToString()));
+                    ((MainWindow2)Application.Current.MainWindow).WriteToConsole(ex.ToString()));
             }
         }
 
@@ -52,7 +52,7 @@ namespace SignalRCoreServerHubWPF
         {
             //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
             Application.Current.Dispatcher.Invoke(() =>
-                ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client connected: " + Context.ConnectionId));
+                ((MainWindow2)Application.Current.MainWindow).WriteToConsole("Client connected: " + Context.ConnectionId));
 
             return base.OnConnectedAsync();
         }
@@ -61,7 +61,7 @@ namespace SignalRCoreServerHubWPF
         {
             //Use Application.Current.Dispatcher to access UI thread from outside the MainWindow class
             Application.Current?.Dispatcher.Invoke(() =>
-                ((MainWindow)Application.Current.MainWindow).WriteToConsole("Client disconnected: " + Context.ConnectionId));
+                ((MainWindow2)Application.Current.MainWindow).WriteToConsole("Client disconnected: " + Context.ConnectionId));
 
             return base.OnDisconnectedAsync(exception);
         }
