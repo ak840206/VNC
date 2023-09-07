@@ -55,9 +55,19 @@ namespace SignalRCoreClientWPF
         {
             try
             {
+                Boolean sendAsync = (bool)cbSendAsync.IsChecked;
+                string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
-                    Connection.InvokeAsync("SendUserMessage", UserName, TextBoxMessage.Text);
+                    if (sendAsync)
+                    {
+                        Connection.SendAsync("SendUserMessage", UserName, message);
+                    }
+                    else
+                    {
+                        Connection.InvokeAsync("SendUserMessage", UserName, message);
+                    }                    
                 }
 
                 if ((bool)cbClearMessage.IsChecked)
@@ -78,12 +88,29 @@ namespace SignalRCoreClientWPF
 
             try
             {
+                Boolean sendAsync = (bool)cbSendAsync.IsChecked;
+                string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
-                    Connection.InvokeAsync("SendUserMessage", UserName, TextBoxMessage.Text);
+                    if (sendAsync)
+                    {
+                        Connection.SendAsync("SendUserMessage", UserName, message);
+                    }
+                    else
+                    {
+                        Connection.InvokeAsync("SendUserMessage", UserName, message);
+                    }                    
                 }
 
-                Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
+                if (sendAsync)
+                {
+                    Connection.SendAsync("SendTimedMessage", "TimingInfo", signalRTime);
+                }
+                else
+                {
+                    Connection.InvokeAsync("SendTimedMessage", "TimingInfo", signalRTime);
+                }
 
                 if ((bool)cbClearMessage.IsChecked)
                 {
@@ -93,17 +120,27 @@ namespace SignalRCoreClientWPF
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
-        private void btnSendAnoymous_Click(object sender, RoutedEventArgs e)
+        private void btnSendAnnoymous_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                Boolean sendAsync = (bool)cbSendAsync.IsChecked;
+                string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
-                    Connection.InvokeAsync("SendMessage", TextBoxMessage.Text);
+                    if (sendAsync)
+                    {
+                        Connection.SendAsync("SendMessage", message);
+                    }
+                    else
+                    {
+                        Connection.InvokeAsync("SendMessage", message);
+                    }                   
                 }
 
                 if ((bool)cbClearMessage.IsChecked)
@@ -114,7 +151,7 @@ namespace SignalRCoreClientWPF
             }
             catch (Exception ex)
             {
-                
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -122,9 +159,21 @@ namespace SignalRCoreClientWPF
         {
             try
             {
+                Boolean sendAsync = (bool)cbSendAsync.IsChecked;
+
+                string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+                Int32 priority = Int32.Parse(Priority.Text);
+
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
-                    Connection.InvokeAsync("SendPriorityMessage", TextBoxMessage.Text, Int32.Parse(Priority.Text));
+                    if (sendAsync)
+                    {
+                        Connection.SendAsync("SendPriorityMessage", message, priority);
+                    }
+                    else
+                    {
+                        Connection.InvokeAsync("SendPriorityMessage", message, priority);
+                    }                   
                 }
 
                 if ((bool)cbClearMessage.IsChecked)
@@ -135,7 +184,7 @@ namespace SignalRCoreClientWPF
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -145,12 +194,31 @@ namespace SignalRCoreClientWPF
 
             try
             {
+                Boolean sendAsync = (bool)cbSendAsync.IsChecked;
+
+                string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+                Int32 priority = Int32.Parse(Priority.Text);
+
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
-                    Connection.InvokeAsync("SendPriorityMessage", TextBoxMessage.Text, Int32.Parse(Priority.Text));
+                    if (sendAsync)
+                    {
+                        Connection.SendAsync("SendPriorityMessage", message, priority);
+                    }
+                    else
+                    {
+                        Connection.InvokeAsync("SendPriorityMessage", message, priority);
+                    }
                 }
 
-                Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
+                if (sendAsync)
+                {
+                    Connection.SendAsync("SendTimedMessage", "TimingInfo", signalRTime);
+                }
+                else
+                {
+                    Connection.InvokeAsync("SendTimedMessage", "TimingInfo", signalRTime);
+                }
 
                 if ((bool)cbClearMessage.IsChecked)
                 {
@@ -160,7 +228,7 @@ namespace SignalRCoreClientWPF
             }
             catch (Exception ex)
             {
-
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -168,101 +236,148 @@ namespace SignalRCoreClientWPF
         {
             SignalRTime signalRTime = new SignalRTime();
 
-            Connection.InvokeAsync("SendPriorityMessage", "Critical", -10);
-            Connection.InvokeAsync("SendPriorityMessage", "Error", -1);
-            Connection.InvokeAsync("SendPriorityMessage", "Warning", 1);
+            Boolean sendAsync = (bool)cbSendAsync.IsChecked;
 
-            for (int i = 100; i < 105; i++)
+            try
             {
-                 Connection.InvokeAsync("SendPriorityMessage", $"Info{i}", i);
-            }
+                if (sendAsync)
+                {
+                    Connection.SendAsync("SendPriorityMessage", "Critical SA", -10);
+                    Connection.SendAsync("SendPriorityMessage", "Error SA", -1);
+                    Connection.SendAsync("SendPriorityMessage", "Warning SA", 1);
+                }
+                else
+                {
+                    Connection.InvokeAsync("SendPriorityMessage", "Critical IA", -10);
+                    Connection.InvokeAsync("SendPriorityMessage", "Error IA", -1);
+                    Connection.InvokeAsync("SendPriorityMessage", "Warning IA", 1);
+                }
 
-            for (int i = 1000; i < 1005; i++)
+                for (int i = 100; i < 105; i++)
+                {
+                    if (sendAsync)
+                    {
+                        Connection.SendAsync("SendPriorityMessage", $"Info{i} SA", i);
+                    }
+                    else
+                    {
+                        Connection.InvokeAsync("SendPriorityMessage", $"Info{i} IA", i);
+                    }                   
+                }
+
+                for (int i = 1000; i < 1005; i++)
+                {
+                    if (sendAsync)
+                    {
+                        Connection.SendAsync("SendPriorityMessage", $"Debug{i} SA", i);
+                    }
+                    else
+                    {
+                        Connection.InvokeAsync("SendPriorityMessage", $"Debug{i} IA", i);
+                    }
+                }
+
+                for (int i = 9000; i < 9020; i++)
+                {
+                    if (sendAsync)
+                    {
+                        Connection.SendAsync("SendPriorityMessage", $"Arch{i} SA", i);
+                    }
+                    else
+                    {
+                        Connection.InvokeAsync("SendPriorityMessage", $"Arch{i} IA", i);
+                    }
+                }
+
+                for (int i = 10000; i < 10030; i++)
+                {
+                    if (sendAsync)
+                    {
+                        Connection.SendAsync("SendPriorityMessage", $"Trace{i} SA", i);
+                    }
+                    else
+                    {
+                        Connection.InvokeAsync("SendPriorityMessage", $"Trace{i} IA", i);
+                    }
+                }
+
+                Log.Error("Error", Common.LOG_CATEGORY);
+                Log.Warning("Warning", Common.LOG_CATEGORY);
+
+                Log.Info("Info", Common.LOG_CATEGORY);
+                Log.Info1("Info1", Common.LOG_CATEGORY);
+                Log.Info2("Info2", Common.LOG_CATEGORY);
+                Log.Info3("Info3", Common.LOG_CATEGORY);
+                Log.Info4("Info4", Common.LOG_CATEGORY);
+
+                Log.Debug("Debug", Common.LOG_CATEGORY);
+                Log.Debug1("Debug1", Common.LOG_CATEGORY);
+                Log.Debug2("Debug2", Common.LOG_CATEGORY);
+                Log.Debug3("Debug3", Common.LOG_CATEGORY);
+                Log.Debug4("Debug4", Common.LOG_CATEGORY);
+
+                Log.Arch("Arch", Common.LOG_CATEGORY);
+                Log.Arch1("Arch1", Common.LOG_CATEGORY);
+                Log.Arch2("Arch2", Common.LOG_CATEGORY);
+                Log.Arch3("Arch3", Common.LOG_CATEGORY);
+                Log.Arch4("Arch4", Common.LOG_CATEGORY);
+                Log.Arch5("Arch5", Common.LOG_CATEGORY);
+                Log.Arch6("Arch6", Common.LOG_CATEGORY);
+                Log.Arch7("Arch7", Common.LOG_CATEGORY);
+                Log.Arch8("Arch8", Common.LOG_CATEGORY);
+                Log.Arch9("Arch9", Common.LOG_CATEGORY);
+
+                Log.Arch10("Arch10", Common.LOG_CATEGORY);
+                Log.Arch11("Arch11", Common.LOG_CATEGORY);
+                Log.Arch12("Arch12", Common.LOG_CATEGORY);
+                Log.Arch13("Arch13", Common.LOG_CATEGORY);
+                Log.Arch14("Arch14", Common.LOG_CATEGORY);
+                Log.Arch15("Arch15", Common.LOG_CATEGORY);
+                Log.Arch16("Arch16", Common.LOG_CATEGORY);
+                Log.Arch17("Arch17", Common.LOG_CATEGORY);
+                Log.Arch18("Arch18", Common.LOG_CATEGORY);
+                Log.Arch19("Arch19", Common.LOG_CATEGORY);
+
+                Log.Trace("Trace", Common.LOG_CATEGORY);
+                Log.Trace1("Trace1", Common.LOG_CATEGORY);
+                Log.Trace2("Trace2", Common.LOG_CATEGORY);
+                Log.Trace3("Trace3", Common.LOG_CATEGORY);
+                Log.Trace4("Trace4", Common.LOG_CATEGORY);
+                Log.Trace5("Trace5", Common.LOG_CATEGORY);
+                Log.Trace6("Trace6", Common.LOG_CATEGORY);
+                Log.Trace7("Trace7", Common.LOG_CATEGORY);
+                Log.Trace8("Trace8", Common.LOG_CATEGORY);
+                Log.Trace9("Trace9", Common.LOG_CATEGORY);
+
+                Log.Trace10("Trace10", Common.LOG_CATEGORY);
+                Log.Trace11("Trace11", Common.LOG_CATEGORY);
+                Log.Trace12("Trace12", Common.LOG_CATEGORY);
+                Log.Trace13("Trace13", Common.LOG_CATEGORY);
+                Log.Trace14("Trace14", Common.LOG_CATEGORY);
+                Log.Trace15("Trace15", Common.LOG_CATEGORY);
+                Log.Trace16("Trace16", Common.LOG_CATEGORY);
+                Log.Trace17("Trace17", Common.LOG_CATEGORY);
+                Log.Trace18("Trace18", Common.LOG_CATEGORY);
+                Log.Trace19("Trace19", Common.LOG_CATEGORY);
+
+                Log.Trace20("Trace20", Common.LOG_CATEGORY);
+                Log.Trace21("Trace21", Common.LOG_CATEGORY);
+                Log.Trace22("Trace22", Common.LOG_CATEGORY);
+                Log.Trace23("Trace23", Common.LOG_CATEGORY);
+                Log.Trace24("Trace24", Common.LOG_CATEGORY);
+                Log.Trace25("Trace25", Common.LOG_CATEGORY);
+                Log.Trace26("Trace26", Common.LOG_CATEGORY);
+                Log.Trace27("Trace27", Common.LOG_CATEGORY);
+                Log.Trace28("Trace28", Common.LOG_CATEGORY);
+                Log.Trace29("Trace29", Common.LOG_CATEGORY);
+
+                Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
+                //Connection.SendAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
+            }
+            catch (Exception ex)
             {
-                 Connection.InvokeAsync("SendPriorityMessage", $"Debug{i}", i);
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
-
-            for (int i = 9000; i < 9020; i++)
-            {
-                 Connection.InvokeAsync("SendPriorityMessage", $"Arch{i}", i);
-            }
-
-            for (int i = 10000; i < 10030; i++)
-            {
-                Connection.InvokeAsync("SendPriorityMessage", $"Trace{i}", i);
-            }
-
-            Log.Error("Error", Common.LOG_CATEGORY);
-            Log.Warning("Warning", Common.LOG_CATEGORY);
-
-            Log.Info("Info", Common.LOG_CATEGORY);
-            Log.Info1("Info1", Common.LOG_CATEGORY);
-            Log.Info2("Info2", Common.LOG_CATEGORY);
-            Log.Info3("Info3", Common.LOG_CATEGORY);
-            Log.Info4("Info4", Common.LOG_CATEGORY);
-
-            Log.Debug("Debug", Common.LOG_CATEGORY);
-            Log.Debug1("Debug1", Common.LOG_CATEGORY);
-            Log.Debug2("Debug2", Common.LOG_CATEGORY);
-            Log.Debug3("Debug3", Common.LOG_CATEGORY);
-            Log.Debug4("Debug4", Common.LOG_CATEGORY);
-
-            Log.Arch("Arch", Common.LOG_CATEGORY);
-            Log.Arch1("Arch1", Common.LOG_CATEGORY);
-            Log.Arch2("Arch2", Common.LOG_CATEGORY);
-            Log.Arch3("Arch3", Common.LOG_CATEGORY);
-            Log.Arch4("Arch4", Common.LOG_CATEGORY);
-            Log.Arch5("Arch5", Common.LOG_CATEGORY);
-            Log.Arch6("Arch6", Common.LOG_CATEGORY);
-            Log.Arch7("Arch7", Common.LOG_CATEGORY);
-            Log.Arch8("Arch8", Common.LOG_CATEGORY);
-            Log.Arch9("Arch9", Common.LOG_CATEGORY);
-
-            Log.Arch10("Arch10", Common.LOG_CATEGORY);
-            Log.Arch11("Arch11", Common.LOG_CATEGORY);
-            Log.Arch12("Arch12", Common.LOG_CATEGORY);
-            Log.Arch13("Arch13", Common.LOG_CATEGORY);
-            Log.Arch14("Arch14", Common.LOG_CATEGORY);
-            Log.Arch15("Arch15", Common.LOG_CATEGORY);
-            Log.Arch16("Arch16", Common.LOG_CATEGORY);
-            Log.Arch17("Arch17", Common.LOG_CATEGORY);
-            Log.Arch18("Arch18", Common.LOG_CATEGORY);
-            Log.Arch19("Arch19", Common.LOG_CATEGORY);
-
-            Log.Trace("Trace", Common.LOG_CATEGORY);
-            Log.Trace1("Trace1", Common.LOG_CATEGORY);
-            Log.Trace2("Trace2", Common.LOG_CATEGORY);
-            Log.Trace3("Trace3", Common.LOG_CATEGORY);
-            Log.Trace4("Trace4", Common.LOG_CATEGORY);
-            Log.Trace5("Trace5", Common.LOG_CATEGORY);
-            Log.Trace6("Trace6", Common.LOG_CATEGORY);
-            Log.Trace7("Trace7", Common.LOG_CATEGORY);
-            Log.Trace8("Trace8", Common.LOG_CATEGORY);
-            Log.Trace9("Trace9", Common.LOG_CATEGORY);
-
-            Log.Trace10("Trace10", Common.LOG_CATEGORY);
-            Log.Trace11("Trace11", Common.LOG_CATEGORY);
-            Log.Trace12("Trace12", Common.LOG_CATEGORY);
-            Log.Trace13("Trace13", Common.LOG_CATEGORY);
-            Log.Trace14("Trace14", Common.LOG_CATEGORY);
-            Log.Trace15("Trace15", Common.LOG_CATEGORY);
-            Log.Trace16("Trace16", Common.LOG_CATEGORY);
-            Log.Trace17("Trace17", Common.LOG_CATEGORY);
-            Log.Trace18("Trace18", Common.LOG_CATEGORY);
-            Log.Trace19("Trace19", Common.LOG_CATEGORY);
-
-            Log.Trace20("Trace20", Common.LOG_CATEGORY);
-            Log.Trace21("Trace21", Common.LOG_CATEGORY);
-            Log.Trace22("Trace22", Common.LOG_CATEGORY);
-            Log.Trace23("Trace23", Common.LOG_CATEGORY);
-            Log.Trace24("Trace24", Common.LOG_CATEGORY);
-            Log.Trace25("Trace25", Common.LOG_CATEGORY);
-            Log.Trace26("Trace26", Common.LOG_CATEGORY);
-            Log.Trace27("Trace27", Common.LOG_CATEGORY);
-            Log.Trace28("Trace28", Common.LOG_CATEGORY);
-            Log.Trace29("Trace29", Common.LOG_CATEGORY);
-
-            Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
         }
 
         /// <summary>

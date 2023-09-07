@@ -55,8 +55,7 @@ namespace SignalRCoreServerHubWPF
         /// </summary>
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
-            _webHost.StopAsync();
-            
+            _webHost.StopAsync();            
 
             WriteToConsole("Server Stopped");
             ButtonStart.IsEnabled = true;

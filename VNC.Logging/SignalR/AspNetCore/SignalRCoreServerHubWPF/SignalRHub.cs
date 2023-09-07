@@ -45,7 +45,7 @@ namespace SignalRCoreServerHubWPF
 
         public async Task SendUserMessage(string userName, string message)
         {
-            await Clients.All.SendAsync("AddUserMessage", userName, message);          
+            await Clients.All.SendAsync("AddUserMessage", userName, message);   
         }
 
         public override Task OnConnectedAsync()
