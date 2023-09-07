@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoLoggingSimple", "DemoLL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.Logging.TraceListeners.SignalRListener", "VNC.Logging.TraceListeners\SignalRListener\VNC.Logging.TraceListeners.SignalRListener.csproj", "{DB5CD995-4336-4F58-B238-54AA3782B1EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.Logging.TraceListeners.SignalRCoreListener", "VNC.Logging.TraceListeners\SignalRCoreListener\VNC.Logging.TraceListeners.SignalRCoreListener.csproj", "{339391FB-C715-41BB-AC23-6BFEAAAB12F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNC.Logging.TraceListeners.SignalRCoreListeners", "VNC.Logging.TraceListeners\SignalRCoreListener\VNC.Logging.TraceListeners.SignalRCoreListeners.csproj", "{339391FB-C715-41BB-AC23-6BFEAAAB12F7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRServerHub", "SignalR\AspNet\SignalRServerHub\SignalRServerHub.csproj", "{2F315BEC-40B6-4B4B-878D-75A9F459811E}"
 EndProject

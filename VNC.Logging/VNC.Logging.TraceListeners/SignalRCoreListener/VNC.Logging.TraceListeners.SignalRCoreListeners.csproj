@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFrameworks>net6.0</TargetFrameworks>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-        <AssemblyName>VNC.Logging.TraceListeners.SignalRCoreListener</AssemblyName>
+        <AssemblyName>VNC.Logging.TraceListeners.SignalRCoreListeners</AssemblyName>
         <RootNamespace>VNC.Logging.TraceListeners</RootNamespace>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>

@@ -16,7 +16,7 @@ using Microsoft.Practices.EnterpriseLibrary.Logging.Configuration;
 namespace VNC.Logging.TraceListeners
 {
     [ConfigurationElementType(typeof(CustomTraceListenerData))]
-    public class SignalRCoreListener : Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners.CustomTraceListener
+    public class SignalRCoreListenerSendAsync : Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners.CustomTraceListener
     {
         private const string LOG_APPNAME = "VNCLoggingListener";
 
@@ -45,12 +45,12 @@ namespace VNC.Logging.TraceListeners
 
         public IDisposable SignalR { get; set; }
 
-        public SignalRCoreListener()
+        public SignalRCoreListenerSendAsync()
         {
             ConnectAsync();
         }
 
-        public SignalRCoreListener(string duration)
+        public SignalRCoreListenerSendAsync(string duration)
         {
             maxDuration = double.Parse(duration);
 
@@ -118,7 +118,7 @@ namespace VNC.Logging.TraceListeners
         {
             try
             {
-                Connection.InvokeAsync("SendPriorityMessage", message, iPriority);
+                Connection.SendAsync("SendPriorityMessage", message, iPriority);
             }
             catch (InvalidOperationException)
             {
@@ -129,7 +129,7 @@ namespace VNC.Logging.TraceListeners
 
                 // Send the message so it doesn't get lost
 
-                Connection.InvokeAsync("SendPriorityMessage", message, iPriority);
+                Connection.SendAsync("SendPriorityMessage", message, iPriority);
             }
             catch (Exception ex)
             {
@@ -143,7 +143,7 @@ namespace VNC.Logging.TraceListeners
         {
             try
             {
-                Connection.InvokeAsync("SendPriorityMessage", message, iPriority);
+                Connection.SendAsync("SendPriorityMessage", message, iPriority);
             }
             catch (System.InvalidOperationException)
             {
@@ -160,7 +160,7 @@ namespace VNC.Logging.TraceListeners
                 switch (Connection.State)
                 {
                     case HubConnectionState.Connected:
-                        Connection.InvokeAsync("SendPriorityMessage", message, iPriority);
+                        Connection.SendAsync("SendPriorityMessage", message, iPriority);
                         break;
 
                     case HubConnectionState.Connecting:
