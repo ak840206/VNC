@@ -191,7 +191,7 @@
       <Version>6.0.1304</Version>
     </PackageReference>
     <PackageReference Include="NuGet.CommandLine">
-      <Version>4.9.3</Version>
+      <Version>6.7.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

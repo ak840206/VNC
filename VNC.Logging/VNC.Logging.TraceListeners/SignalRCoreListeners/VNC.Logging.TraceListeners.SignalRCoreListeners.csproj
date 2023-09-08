@@ -18,12 +18,12 @@
         <Authors>Christopher Rhodes</Authors>
         <Copyright>Copyright © VNC 2010-2023</Copyright>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>        
-        <Description>SignalRCore TraceListener for EnterpriseLibrary Logging</Description>
+        <Description>SignalRCore TraceListeners for EnterpriseLibrary Logging</Description>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="EnterpriseLibrary.Logging" Version="6.0.1304" />
-        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.10" />
     </ItemGroup>
 
     <ItemGroup>

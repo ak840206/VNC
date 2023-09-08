@@ -29,9 +29,9 @@
         <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.2" />
         <PackageReference Include="Microsoft.Owin.Cors" Version="4.2.0" />
         <PackageReference Include="Microsoft.Owin.Security" Version="4.2.0" />
-        <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.4" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
         <PackageReference Include="Unity" Version="5.11.10" />
         <PackageReference Include="Unity.Interception" Version="5.11.1" />
     </ItemGroup>
