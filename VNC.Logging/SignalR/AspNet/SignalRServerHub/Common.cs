@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace SignalRCoreServerHub
+namespace SignalRServerHub
 {
     public static class Common
     {
@@ -9,10 +9,10 @@ namespace SignalRCoreServerHub
         private static string _productVersion = "<productVersion>";
         private static string _runtimeVersion = "<RuntimeVersion>";
 
-        public const string PROJECT_NAME = "SignalRCoreServerHub";
-        public const string LOG_CATEGORY = "SignalRCoreServerHub";
+        public const string PROJECT_NAME = "SignalRServerHub";
+        public const string LOG_CATEGORY = "SignalRServerHub";
 
-        public const string cCONFIG_FILE = @"C:\temp\SignalRCoreServerHub_Config.xml";
+        public const string cCONFIG_FILE = @"C:\temp\SignalRServerHub_Config.xml";
 
 
         public static string RuntimeVersion

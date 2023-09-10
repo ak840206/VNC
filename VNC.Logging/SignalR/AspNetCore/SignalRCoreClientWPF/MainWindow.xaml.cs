@@ -8,7 +8,7 @@ using System.Windows;
 
 using Microsoft.AspNetCore.SignalR.Client;
 
-using SignalRCoreServerHubWPF;
+using SignalRCoreServerHub;
 
 using VNC;
 

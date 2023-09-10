@@ -5,7 +5,7 @@
     <TargetFrameworks>net6.0-windows</TargetFrameworks>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <FileVersion>2023.09.05A</FileVersion>
+    <FileVersion>2023.09.09A</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

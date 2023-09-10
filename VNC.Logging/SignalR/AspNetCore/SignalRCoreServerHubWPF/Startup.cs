@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace SignalRCoreServerHubWPF
+namespace SignalRCoreServerHub
 { 
     public class Startup
     {

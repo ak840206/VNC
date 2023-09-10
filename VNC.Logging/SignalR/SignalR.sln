@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRServerHub", "AspNet\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreClientWPF", "AspNetCore\SignalRCoreClientWPF\SignalRCoreClientWPF.csproj", "{62C80D67-0C5F-403A-B10F-68E2650DD30E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreServerHubWPF", "AspNetCore\SignalRCoreServerHubWPF\SignalRCoreServerHubWPF.csproj", "{F67CE3D1-F330-4E5D-B858-EE2BF28BC630}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreServerHub", "AspNetCore\SignalRCoreServerHubWPF\SignalRCoreServerHub.csproj", "{F67CE3D1-F330-4E5D-B858-EE2BF28BC630}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		{F67CE3D1-F330-4E5D-B858-EE2BF28BC630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F67CE3D1-F330-4E5D-B858-EE2BF28BC630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F67CE3D1-F330-4E5D-B858-EE2BF28BC630}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41B6C387-F2D6-4FCE-B8D6-F14AEF1B1BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41B6C387-F2D6-4FCE-B8D6-F14AEF1B1BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41B6C387-F2D6-4FCE-B8D6-F14AEF1B1BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41B6C387-F2D6-4FCE-B8D6-F14AEF1B1BB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,7 +46,6 @@ Global
 		{F7750E03-E4FA-44B8-8882-BE3D865146F0} = {975FD63F-1077-4663-A788-849E0E9B0F09}
 		{62C80D67-0C5F-403A-B10F-68E2650DD30E} = {99428029-8270-4D02-AAF9-8D587ADCC4B6}
 		{F67CE3D1-F330-4E5D-B858-EE2BF28BC630} = {99428029-8270-4D02-AAF9-8D587ADCC4B6}
-		{41B6C387-F2D6-4FCE-B8D6-F14AEF1B1BB4} = {99428029-8270-4D02-AAF9-8D587ADCC4B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DA541557-AC61-4CA8-BF5E-E100A1374A5E}

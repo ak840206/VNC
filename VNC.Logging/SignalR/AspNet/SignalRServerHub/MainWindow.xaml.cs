@@ -23,7 +23,13 @@ namespace SignalRServerHub
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
         }
+
+        public string RuntimeVersion { get => Common.RuntimeVersion; }
+        public string FileVersion { get => Common.FileVersion; }
+        public string ProductVersion { get => Common.ProductVersion; }
+        public string ProductName { get => Common.ProductName; }
 
         /// <summary>
         /// Calls the StartServer method with Task.Run to not
@@ -33,7 +39,8 @@ namespace SignalRServerHub
         {
             WriteToConsole("Starting server...");
             ServerURI = tbServerURI.Text;
-            ButtonStart.IsEnabled = false;            
+            ButtonStart.IsEnabled = false; 
+            
             Task.Run(() => StartServer());
         }
 
@@ -44,7 +51,10 @@ namespace SignalRServerHub
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
             SignalR.Dispose();
-            Close();
+
+            WriteToConsole("Server Stopped");
+            ButtonStart.IsEnabled = true;
+            ButtonStop.IsEnabled = false;
         }
 
         /// <summary>
@@ -72,7 +82,7 @@ namespace SignalRServerHub
         /// from a SignalR hub thread rather than the UI thread.
         public void WriteToConsole(String message)
         {
-            if (!(RichTextBoxConsole.CheckAccess()))
+            if (!(rtbConsole.CheckAccess()))
             {
                 this.Dispatcher.InvokeAsync(() =>
                     WriteToConsole(message)
@@ -80,12 +90,17 @@ namespace SignalRServerHub
                 return;
             }
 
-            RichTextBoxConsole.AppendText(message + "\r");
+            rtbConsole.AppendText(message + "\r");
         }
 
         private void tbServerURI_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             ServerURI = tbServerURI.Text;
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            rtbConsole.Document.Blocks.Clear();
         }
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace SignalRCoreServerHubWPF
+namespace SignalRCoreServerHub
 {
     /// <summary>
     /// WPF host for a SignalR server. The host can stop and start the SignalR
@@ -19,7 +19,6 @@ namespace SignalRCoreServerHubWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public IDisposable SignalR { get; set; }
         string ServerURI = "http://localhost:58195";
 
         private IHost _host;
@@ -46,6 +45,7 @@ namespace SignalRCoreServerHubWPF
             WriteToConsole("Starting server...");
             ServerURI = tbServerURI.Text;
             ButtonStart.IsEnabled = false;
+
             Task.Run(() => StartServer());
         }
 
@@ -55,8 +55,7 @@ namespace SignalRCoreServerHubWPF
         /// </summary>
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
-            _webHost.StopAsync();
-            
+            _webHost.StopAsync();            
 
             WriteToConsole("Server Stopped");
             ButtonStart.IsEnabled = true;

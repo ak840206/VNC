@@ -2,23 +2,52 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AspNet SignalRHub" Height="450" Width="600  ">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <TextBox x:Name="tbServerURI" Text="http://localhost:58095" VerticalAlignment="Top" TextChanged="tbServerURI_TextChanged" />
+    <Window.Resources>
+        <SolidColorBrush x:Key="RedText" Color="#c70000" />
+    </Window.Resources>
+
+    <DockPanel>
+
+        <StackPanel DockPanel.Dock="Top" Margin="2">
+
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Left" Width="100" Click="ButtonStart_Click"/>
-                <Button x:Name="ButtonStop" Content="Stop" HorizontalAlignment="Right" Width="100" Click="ButtonStop_Click" IsEnabled="False"/>
+                <Label Content="ServerHub URI:" />
+                <TextBox x:Name="tbServerURI" Text="http://localhost:58095" 
+                         VerticalContentAlignment="Center" Margin="2" />
             </StackPanel>
+
+            <DockPanel>
+                <Button x:Name="ButtonStart" Content="Start" HorizontalAlignment="Left" Width="100" Margin="2"
+                        Click="ButtonStart_Click"/>
+                <Button x:Name="ButtonStop" Content="Stop" HorizontalAlignment="Left" Width="100" Margin="2"
+                        Click="ButtonStop_Click" IsEnabled="False"/>
+                <Button x:Name="btnClear" Content="Clear Console" HorizontalAlignment="Right" Width="100" Margin="2"
+                        Click="btnClear_Click" Foreground="Red" />
+            </DockPanel>
+
         </StackPanel>
-        <RichTextBox x:Name="RichTextBoxConsole" HorizontalAlignment="Left" Margin="10,5,10,10" Grid.Row="1">
+
+        <WrapPanel Orientation="Horizontal"  DockPanel.Dock="Bottom" >
+
+            <!--<Label Content="Product Name:" />
+            <Label Content="{Binding ProductName}" Foreground="{StaticResource RedText}" />-->
+
+            <Label Content="Product Version:" Margin="0,0,0,0" />
+            <Label Content="{Binding ProductVersion}" Foreground="{StaticResource RedText}" />
+            <Label Content="File Version:" Margin="10,0,0,0"/>
+            <Label Content="{Binding FileVersion}" Foreground="{StaticResource RedText}" />
+            <Label Content=".NET Runtime:" Margin="10,0,0,0" />
+            <Label Content="{Binding RuntimeVersion}" Foreground="{StaticResource RedText}"/>
+        </WrapPanel>
+
+        <RichTextBox x:Name="rtbConsole" 
+                     Margin="2,0,2,2"                      
+                     VerticalScrollBarVisibility="Visible">
             <FlowDocument>
                 <Paragraph>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-    </Grid>
+
+    </DockPanel>
 </Window>

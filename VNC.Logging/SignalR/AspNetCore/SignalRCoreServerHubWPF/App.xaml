@@ -1,8 +1,8 @@
-﻿<Application x:Class="SignalRCoreServerHubWPF.App"
+﻿<Application x:Class="SignalRCoreServerHub.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:SignalRCoreServerHubWPF"
-             StartupUri="MainWindow2.xaml">
+             xmlns:local="clr-namespace:SignalRCoreServerHub"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>

@@ -1,9 +1,6 @@
-﻿using System.IO;
-using System.Threading;
-using System;
-using System.Windows;
+﻿using System.Windows;
 
-namespace SignalRCoreServerHubWPF
+namespace SignalRCoreServerHub
 {
     public partial class App : Application
     {

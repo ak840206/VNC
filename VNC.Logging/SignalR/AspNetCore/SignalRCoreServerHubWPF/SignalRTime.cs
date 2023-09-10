@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SignalRCoreServerHubWPF
+namespace SignalRCoreServerHub
 {
     public class SignalRTime
     {
