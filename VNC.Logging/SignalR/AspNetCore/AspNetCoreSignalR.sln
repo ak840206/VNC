@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreClientConsole", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreServerHubConsole", "SignalRCoreServerHubConsole\SignalRCoreServerHubConsole.csproj", "{6B1B92DA-D673-4E91-80C4-2E47B7317D55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreClientWPF", "SignalRCoreClientWPF\SignalRCoreClientWPF.csproj", "{5E33EC02-DD64-4A1D-B127-C268C5C351CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreClient", "SignalRCoreClientWPF\SignalRCoreClientWPF.csproj", "{5E33EC02-DD64-4A1D-B127-C268C5C351CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreServerHubWPF", "SignalRCoreServerHubWPF\SignalRCoreServerHubWPF.csproj", "{5A45B0F0-F409-42AB-B1BB-BAD7FAF72FDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRCoreServerHub", "SignalRCoreServerHubWPF\SignalRCoreServerHubWPF.csproj", "{5A45B0F0-F409-42AB-B1BB-BAD7FAF72FDF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{8D91868A-089F-47CB-AAE3-958B7E473120}"
 EndProject

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SignalRCoreClientWPF
+namespace SignalRCoreClient
 {
     public partial class App : Application
     {

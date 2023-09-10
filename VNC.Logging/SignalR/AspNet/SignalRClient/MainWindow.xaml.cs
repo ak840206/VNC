@@ -17,7 +17,6 @@ namespace SignalRClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string LOG_APPNAME = "SIMPLE";
 
         /// <summary>
         /// This name is simply added to sent messages to identify the user; this 
@@ -31,20 +30,35 @@ namespace SignalRClient
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
             tbServerURI.Text = ServerURI;
         }
+
+        public string RuntimeVersion { get => Common.RuntimeVersion; }
+        public string FileVersion { get => Common.FileVersion; }
+        public string ProductVersion { get => Common.ProductVersion; }
+        public string ProductName { get => Common.ProductName; }
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                HubProxy.Invoke("SendUserMessage", UserName, TextBoxMessage.Text);
-                TextBoxMessage.Text = String.Empty;
-                TextBoxMessage.Focus();
+                string message = TextBoxMessage.Text;
+
+                for (int i = 0; i < Int32.Parse(Count.Text); i++)
+                {
+                    HubProxy.Invoke("SendUserMessage", UserName, message);
+                }                
+
+                if ((bool)cbClearMessage.IsChecked)
+                {
+                    TextBoxMessage.Text = String.Empty;
+                    TextBoxMessage.Focus();
+                }
             }
             catch (Exception ex)
             {
-                
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -52,13 +66,22 @@ namespace SignalRClient
         {
             try
             {
-                HubProxy.Invoke("SendMessage", TextBoxMessage.Text);
-                TextBoxMessage.Text = String.Empty;
-                TextBoxMessage.Focus();
+                string message = TextBoxMessage.Text;
+
+                for (int i = 0; i < Int32.Parse(Count.Text); i++)
+                {
+                    HubProxy.Invoke("SendMessage", message);
+                }
+
+                if ((bool)cbClearMessage.IsChecked)
+                {
+                    TextBoxMessage.Text = String.Empty;
+                    TextBoxMessage.Focus();
+                }
             }
             catch (Exception ex)
             {
-                
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -66,13 +89,23 @@ namespace SignalRClient
         {
             try
             {
-                HubProxy.Invoke("SendPriorityMessage", TextBoxMessage.Text, Int32.Parse(Priority.Text));
-                TextBoxMessage.Text = String.Empty;
-                TextBoxMessage.Focus();
+                string message = TextBoxMessage.Text;
+                Int32 priority = Int32.Parse(Priority.Text);
+
+                for (int i = 0; i < Int32.Parse(Count.Text); i++)
+                {
+                    HubProxy.Invoke("SendPriorityMessage", message, priority);
+                }
+
+                if ((bool)cbClearMessage.IsChecked)
+                {
+                    TextBoxMessage.Text = String.Empty;
+                    TextBoxMessage.Focus();
+                }
             }
             catch (Exception ex)
             {
-                
+                Log.Error(ex, Common.LOG_CATEGORY);
             }
         }
 
@@ -90,19 +123,19 @@ namespace SignalRClient
 
             HubProxy.On<string>("AddMessage", (message) =>
                 this.Dispatcher.InvokeAsync(() =>
-                    RichTextBoxConsole.AppendText(String.Format("{0}\r", message))
+                    rtbConsole.AppendText(String.Format("{0}\r", message))
                 )
             );
 
             HubProxy.On<string, string>("AddUserMessage", (name, message) =>
                 this.Dispatcher.InvokeAsync(() =>
-                    RichTextBoxConsole.AppendText(String.Format("{0}: {1}\r", name, message))
+                    rtbConsole.AppendText(String.Format("{0}: {1}\r", name, message))
                 )
             );
 
             HubProxy.On<string, Int32>("AddPriorityMessage", (message, priority) =>
                 this.Dispatcher.InvokeAsync(() =>
-                    RichTextBoxConsole.AppendText($"P{priority}: {message}\r")
+                    rtbConsole.AppendText($"P{priority}: {message}\r")
                 )
             );
 
@@ -110,25 +143,27 @@ namespace SignalRClient
             {
                 await Connection.Start();
             }
-            catch (HttpRequestException)
+            catch (HttpRequestException hre)
             {
-                StatusText.Content = "Unable to connect to server: Start server before connecting clients.";
+                rtbConsole.AppendText($"Unable to connect to server: Start server before connecting clients. {hre.Message}");
+                //No connection: Don't enable Send button or show chat UI
+                return;
+            }
+            catch (Exception ex)
+            {
+                rtbConsole.AppendText($"Unable to connect to server, ex: {ex.Message}");
                 //No connection: Don't enable Send button or show chat UI
                 return;
             }
 
-            //Show chat UI; hide login UI
-
-            SignInPanel.Visibility = Visibility.Collapsed;
-            ChatPanel.Visibility = Visibility.Visible;
-
             ButtonSend.IsEnabled = true;
-            ButtonSendAnoymous.IsEnabled = true;
+            ButtonSendTimed.IsEnabled = true;
+            ButtonSendAnnoymous.IsEnabled = true;
             ButtonSendPriority.IsEnabled = true;
+            ButtonSendPriorityTimed.IsEnabled = true;
+            ButtonLoggingPriorities.IsEnabled = true;
 
-            TextBoxMessage.Focus();
-
-            RichTextBoxConsole.AppendText("Connected to server at " + tbServerURI.Text + "\r");
+            rtbConsole.AppendText("Connected to server at " + tbServerURI.Text + "\r");
         }
 
         /// <summary>
@@ -137,24 +172,38 @@ namespace SignalRClient
         /// </summary>
         void Connection_Closed()
         {
-            //Hide chat UI; show login UI
             var dispatcher = Application.Current.Dispatcher;
-            dispatcher.InvokeAsync(() => ChatPanel.Visibility = Visibility.Collapsed);
+
+            //dispatcher.InvokeAsync(() => ChatPanel.Visibility = Visibility.Collapsed);
             dispatcher.InvokeAsync(() => ButtonSend.IsEnabled = false);
-            dispatcher.InvokeAsync(() => StatusText.Content = "You have been disconnected.");
-            dispatcher.InvokeAsync(() => SignInPanel.Visibility = Visibility.Visible);
+            dispatcher.InvokeAsync(() => ButtonSendTimed.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendAnnoymous.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendPriority.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendPriorityTimed.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonLoggingPriorities.IsEnabled = false);
+
+            dispatcher.InvokeAsync(() => rtbConsole.AppendText($"Connection Closed {(arg is null ? "" : arg.Message)}."));
+            //dispatcher.InvokeAsync(() => SignInPanel.Visibility = Visibility.Visible);
+
+            //return null;
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
             UserName = UserNameTextBox.Text;
-            //Connect to server (use async method to avoid blocking UI thread)
+
             if (!String.IsNullOrEmpty(UserName))
-            {     
-                StatusText.Visibility = Visibility.Visible;
-                StatusText.Content = "Connecting to server...";
+            {
+                rtbConsole.AppendText("Connecting to server...");
 
                 ConnectAsync();
+
+                SignInButton.IsEnabled = false;
+                SignOutButton.IsEnabled = true;
+            }
+            else
+            {
+                rtbConsole.AppendText("Must enter UserName");
             }
         }
 
@@ -167,21 +216,23 @@ namespace SignalRClient
             }
         }
 
-        private void btnLog_Click(object sender, RoutedEventArgs e)
+        private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            Log.Info("SignalR Delay", LOG_APPNAME, 0);
-            Thread.Sleep(125);
+            rtbConsole.Document.Blocks.Clear();
+        }
 
-            long startTicks;
+        private void SignOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Connection != null)
+            {
+                Connection.Stop();
+                Connection.Dispose();
 
-            Log.Info("Good Everything", LOG_APPNAME, 0);
-            Log.EVENT_HANDLER("High Five", LOG_APPNAME, 0);
+                rtbConsole.AppendText("Signed out of ServerHub");
+            }
 
-            startTicks = Log.Trace("Start", LOG_APPNAME);
-
-            Thread.Sleep(750);
-
-            Log.Trace("End", LOG_APPNAME, startTicks);
+            SignOutButton.IsEnabled = false;
+            SignInButton.IsEnabled = true;
         }
     }
 }
