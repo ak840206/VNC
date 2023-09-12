@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNCSignalRServerHub", "VNCSignalRServerHub.csproj", "{155130CC-CB1A-4CBE-82F8-BC222DE577E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRServerHub", "..\AspNet\SignalRServerHub\SignalRServerHub.csproj", "{31EBF6F9-69A6-4674-A595-289F7CDF281A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{155130CC-CB1A-4CBE-82F8-BC222DE577E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{155130CC-CB1A-4CBE-82F8-BC222DE577E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{155130CC-CB1A-4CBE-82F8-BC222DE577E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{155130CC-CB1A-4CBE-82F8-BC222DE577E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31EBF6F9-69A6-4674-A595-289F7CDF281A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31EBF6F9-69A6-4674-A595-289F7CDF281A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31EBF6F9-69A6-4674-A595-289F7CDF281A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31EBF6F9-69A6-4674-A595-289F7CDF281A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFE6AC54-A624-4F3D-82DD-B5A0E2AC9B99}
+	EndGlobalSection
+EndGlobal

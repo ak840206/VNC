@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
+
+        <UseWPF>true</UseWPF>
+        <FileVersion>2023.09.11A</FileVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+        <PackageReference Include="Microsoft.AspNet.Cors" Version="5.2.9" />
+        <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.3" />
+        <PackageReference Include="Microsoft.Owin.Cors" Version="4.2.2" />
+        <PackageReference Include="Microsoft.Owin.Host.HttpListener" Version="4.2.2" />
+        <PackageReference Include="Microsoft.Owin.Hosting" Version="4.2.2" />
+        <PackageReference Include="Microsoft.Owin.Security" Version="4.2.2" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+</Project>

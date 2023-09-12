@@ -45,12 +45,6 @@ namespace SignalRServerHub
 
             return base.OnDisconnected(stopCalled);
         }
-        //public override Task OnDisconnected()
-        //{
-
-
-        //    return base.OnDisconnected();
-        //}
 
     }
 }

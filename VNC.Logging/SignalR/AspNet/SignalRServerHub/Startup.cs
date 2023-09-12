@@ -2,8 +2,6 @@
 
 using Owin;
 
-using System;
-
 namespace SignalRServerHub
 {
     /// <summary>
