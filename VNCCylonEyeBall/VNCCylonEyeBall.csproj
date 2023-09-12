@@ -4,7 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net4.8</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Application.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Application.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="VNC.Core" Version="1.0.0" />
