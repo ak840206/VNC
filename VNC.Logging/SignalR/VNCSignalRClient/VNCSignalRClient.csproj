@@ -4,7 +4,7 @@
         <OutputType>WinExe</OutputType>
         <TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
         <UseWPF>true</UseWPF>
-        <FileVersion>2023.09.12A</FileVersion>
+        <FileVersion>2023.09.13A</FileVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
@@ -12,17 +12,17 @@
         <ApplicationIcon>ApplicationIcon-Right-Red.ico</ApplicationIcon>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(TargetFramework)' == 'net48' ">
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
         <ApplicationIcon>ApplicationIcon-Left-Blue.ico</ApplicationIcon>
     </PropertyGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows' ">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
         <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.10" />
         <PackageReference Include="VNC.Logging" Version="2.1.0" />
         <PackageReference Include="VNC.Logging.TraceListeners.SignalRCoreListeners" Version="1.0.0" />
     </ItemGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+    <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
         <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
         <PackageReference Include="VNC.Logging" Version="2.1.0" />
         <PackageReference Include="VNC.Logging.TraceListeners.SignalRListener" Version="1.0.0" />

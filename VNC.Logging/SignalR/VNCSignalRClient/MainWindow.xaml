@@ -66,7 +66,7 @@
 
                     <StackPanel Orientation="Horizontal" >
                         <Label Content="Count:" Width="75"/>
-                        <TextBox x:Name="Count" Height="20" Width="35" Text="50" HorizontalContentAlignment="Right" />
+                        <TextBox x:Name="Count" Height="20" Width="35" Text="5" HorizontalContentAlignment="Right" />
                     </StackPanel>
 
                 </StackPanel>

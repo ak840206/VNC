@@ -10,8 +10,8 @@ namespace VNCSignalRClient
         private static string _productVersion = "<productVersion>";
         private static string _runtimeVersion = "<RuntimeVersion>";
 
-        public const string PROJECT_NAME = "SignalRClient";
-        public const string LOG_CATEGORY = "SignalRClient";
+        public const string PROJECT_NAME = "VNCSignalRClient";
+        public const string LOG_CATEGORY = "VNCSignalRClient";
 
 #if NET48
         public const string cCONFIG_FILE = @"C:\temp\VNCSignalRClientNF_Config.xml";

@@ -226,7 +226,6 @@ namespace VNCSignalRClient
                         Connection.InvokeAsync("SendPriorityMessage", message, priority);
                     }
 #endif
-
                 }
 
                 if ((bool)cbClearMessage.IsChecked)
@@ -256,8 +255,12 @@ namespace VNCSignalRClient
                 Int32 priority = Int32.Parse(Priority.Text);
 
 #if NET48
-                // TODO(crhodes)
-                // Need to implement
+                for (int i = 0; i < Int32.Parse(Count.Text); i++)
+                {
+                    HubProxy.Invoke("SendPriorityMessage", message, priority);
+                }
+
+                HubProxy.Invoke("SendTimedMessage", "Timing Info", signalRTime);
 #else
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
@@ -273,16 +276,13 @@ namespace VNCSignalRClient
 
                 if (sendAsync)
                 {
-                    Connection.SendAsync("SendTimedMessage", "TimingInfo", signalRTime);
+                    Connection.SendAsync("SendTimedMessage", "Timing Info", signalRTime);
                 }
                 else
                 {
-                    Connection.InvokeAsync("SendTimedMessage", "TimingInfo", signalRTime);
+                    Connection.InvokeAsync("SendTimedMessage", "Timing Info", signalRTime);
                 }
 #endif
-
-
-
                 if ((bool)cbClearMessage.IsChecked)
                 {
                     TextBoxMessage.Text = String.Empty;
@@ -301,15 +301,34 @@ namespace VNCSignalRClient
 
             Boolean sendAsync = (bool)cbSendAsync.IsChecked;
 
-#if NET48
-             // TODO(crhodes)
-             // Need to implement
-             return;
-#else
-
-
             try
             {
+#if NET48
+
+                HubProxy.Invoke("SendPriorityMessage", "Critical", -10);
+                HubProxy.Invoke("SendPriorityMessage", "Error", -1);
+                HubProxy.Invoke("SendPriorityMessage", "Warning", 1);
+
+                for (int i = 100; i < 105; i++)
+                {
+                    HubProxy.Invoke("SendPriorityMessage", $"Info{i}", i);                
+                }
+
+                for (int i = 1000; i < 1005; i++)
+                {
+                    HubProxy.Invoke("SendPriorityMessage", $"Debug{i}", i);     
+                }
+
+                for (int i = 9000; i < 9020; i++)
+                {
+                    HubProxy.Invoke("SendPriorityMessage", $"Arch{i}", i);     
+                }
+
+                for (int i = 10000; i < 10030; i++)
+                {
+                    HubProxy.Invoke("SendPriorityMessage", $"TGrace{i}", i);     
+                }
+#else
                 if (sendAsync)
                 {
                     Connection.SendAsync("SendPriorityMessage", "Critical SA", -10);
@@ -332,7 +351,7 @@ namespace VNCSignalRClient
                     else
                     {
                         Connection.InvokeAsync("SendPriorityMessage", $"Info{i} IA", i);
-                    }                   
+                    }
                 }
 
                 for (int i = 1000; i < 1005; i++)
@@ -370,7 +389,7 @@ namespace VNCSignalRClient
                         Connection.InvokeAsync("SendPriorityMessage", $"Trace{i} IA", i);
                     }
                 }
-
+#endif
                 Log.Error("Error", Common.LOG_CATEGORY);
                 Log.Warning("Warning", Common.LOG_CATEGORY);
 
@@ -440,15 +459,17 @@ namespace VNCSignalRClient
                 Log.Trace27("Trace27", Common.LOG_CATEGORY);
                 Log.Trace28("Trace28", Common.LOG_CATEGORY);
                 Log.Trace29("Trace29", Common.LOG_CATEGORY);
-
-                Connection.InvokeAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
-                //Connection.SendAsync("SendTimedMessage", TextBoxMessage.Text, signalRTime);
+#if NET48
+                HubProxy.Invoke("SendTimedMessage", "Timing Info", signalRTime);
+#else
+                Connection.InvokeAsync("SendTimedMessage", "Timing Info", signalRTime);
+                //Connection.SendAsync("SendTimedMessage", "Timing Info", signalRTime);
+#endif
             }
             catch (Exception ex)
             {
                 Log.Error(ex, Common.LOG_CATEGORY);
             }
-#endif
         }
 
         /// <summary>
@@ -586,16 +607,21 @@ namespace VNCSignalRClient
             }
             catch (HttpRequestException hre)
             {
-                rtbConsole.AppendText( $"Unable to connect to server: Start server before connecting clients. {hre.Message}");
+                rtbConsole.AppendText( $"Unable to connect to server: Start server before connecting clients. {hre.Message}\r");
                 //No connection: Don't enable Send button or show chat UI
                 return;
             }
             catch (Exception ex)
             {
-                rtbConsole.AppendText($"Unable to connect to server, ex: {ex.Message}");
+                rtbConsole.AppendText($"Unable to connect to server, ex:{ex.Message}\r");
                 //No connection: Don't enable Send button or show chat UI
                 return;
             }
+
+            rtbConsole.AppendText($"Connected to server at {ServerURI}\r");
+
+            SignInButton.IsEnabled = false;
+            SignOutButton.IsEnabled = true;
 
             ButtonSend.IsEnabled = true;
             ButtonSendTimed.IsEnabled = true;
@@ -603,8 +629,6 @@ namespace VNCSignalRClient
             ButtonSendPriority.IsEnabled = true;
             ButtonSendPriorityTimed.IsEnabled = true;
             ButtonLoggingPriorities.IsEnabled = true;
-
-            rtbConsole.AppendText("Connected to server at " + ServerURI + "\r");
         }
 
 #if NET48
@@ -613,7 +637,7 @@ namespace VNCSignalRClient
         private Task Connection_Reconnecting(Exception? arg)
         {
             var dispatcher = Application.Current.Dispatcher;
-            rtbConsole.AppendText($"Reconnecting {(arg is null ? "" : arg.Message)}.");
+            rtbConsole.AppendText($"Reconnecting {(arg is null ? "" : arg.Message)}...\r");
 
             return null;
         }
@@ -621,7 +645,7 @@ namespace VNCSignalRClient
         private Task Connection_Reconnected(string? arg)
         {
             var dispatcher = Application.Current.Dispatcher;
-            rtbConsole.AppendText($"Reconnected {arg}");
+            rtbConsole.AppendText($"Reconnected {arg}\r");
 
             return null;
         }
@@ -644,7 +668,7 @@ namespace VNCSignalRClient
             dispatcher.InvokeAsync(() => ButtonSendPriorityTimed.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonLoggingPriorities.IsEnabled = false);
 
-            dispatcher.InvokeAsync(() => rtbConsole.AppendText($"Connection Closed."));
+            dispatcher.InvokeAsync(() => rtbConsole.AppendText($"Connection Closed.\r"));
             //dispatcher.InvokeAsync(() => SignInPanel.Visibility = Visibility.Visible);
 
             //return null;
@@ -666,7 +690,10 @@ namespace VNCSignalRClient
             dispatcher.InvokeAsync(() => ButtonSendPriorityTimed.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonLoggingPriorities.IsEnabled = false);
 
-            dispatcher.InvokeAsync(() => rtbConsole.AppendText($"Connection Closed {(arg is null ? "" : arg.Message)}."));
+            dispatcher.InvokeAsync(() => rtbConsole.AppendText($"Connection Closed.\r{(arg is null ? "" : (arg.Message + '\r'))}"));
+
+            dispatcher.InvokeAsync(() => SignOutButton.IsEnabled = false);
+            dispatcher.InvokeAsync(() => SignInButton.IsEnabled = true);
 
             return null;
         }
@@ -678,16 +705,13 @@ namespace VNCSignalRClient
 
             if (!String.IsNullOrEmpty(UserName))
             {
-                rtbConsole.AppendText("Connecting to server...");
+                rtbConsole.AppendText("Connecting to server...\r");
 
                 ConnectAsync();
-
-                SignInButton.IsEnabled = false;
-                SignOutButton.IsEnabled = true;
             }
             else
             {
-                rtbConsole.AppendText("Must enter UserName");
+                rtbConsole.AppendText("Must enter UserName\r");
             }
         }
 
@@ -722,8 +746,7 @@ namespace VNCSignalRClient
                 await Connection.DisposeAsync();
 #endif
 
-
-                rtbConsole.AppendText("Signed out of ServerHub");
+                rtbConsole.AppendText("Signed out of ServerHub\r");
             }
 
             SignOutButton.IsEnabled = false;
