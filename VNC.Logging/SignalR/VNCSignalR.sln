@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNCSignalRServerHub", "VNCSignalRServerHub\VNCSignalRServerHub.csproj", "{69A3790D-D0DC-47CF-BE88-0E74C3365D88}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VNCSignalRClient", "VNCSignalRClient\VNCSignalRClient.csproj", "{E93F3A6A-5D94-4B55-A6AA-9BC0CD453801}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69A3790D-D0DC-47CF-BE88-0E74C3365D88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A3790D-D0DC-47CF-BE88-0E74C3365D88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A3790D-D0DC-47CF-BE88-0E74C3365D88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A3790D-D0DC-47CF-BE88-0E74C3365D88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E93F3A6A-5D94-4B55-A6AA-9BC0CD453801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E93F3A6A-5D94-4B55-A6AA-9BC0CD453801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E93F3A6A-5D94-4B55-A6AA-9BC0CD453801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E93F3A6A-5D94-4B55-A6AA-9BC0CD453801}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B70F17F-0E07-4443-9C2C-34EB8B3A2976}
+	EndGlobalSection
+EndGlobal

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace SignalRCoreClient
+namespace VNCSignalRClient
 {
     public static class Common
     {
@@ -10,10 +10,14 @@ namespace SignalRCoreClient
         private static string _productVersion = "<productVersion>";
         private static string _runtimeVersion = "<RuntimeVersion>";
 
-        public const string PROJECT_NAME = "SignalRCoreClient";
-        public const string LOG_CATEGORY = "SignalRCoreClient";
+        public const string PROJECT_NAME = "SignalRClient";
+        public const string LOG_CATEGORY = "SignalRClient";
 
-        public const string cCONFIG_FILE = @"C:\temp\SignalRCoreClient_Config.xml";
+#if NET48
+        public const string cCONFIG_FILE = @"C:\temp\VNCSignalRClientNF_Config.xml";
+#else
+        public const string cCONFIG_FILE = @"C:\temp\VNCSignalRClient_Config.xml";
+#endif
 
 
         public static string RuntimeVersion

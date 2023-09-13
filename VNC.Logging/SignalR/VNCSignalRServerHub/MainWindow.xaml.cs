@@ -44,6 +44,7 @@ namespace VNCSignalRServerHub
         }
 
         public string ServerURI { get => serverURI; set => serverURI = value; }
+
         public string RuntimeVersion { get => Common.RuntimeVersion; }
         public string FileVersion { get => Common.FileVersion; }
         public string ProductVersion { get => Common.ProductVersion; }

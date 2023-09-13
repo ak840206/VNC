@@ -1,18 +1,20 @@
 ﻿using System;
-using System.Data.Common;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-using Microsoft.AspNetCore.SignalR.Client;
-
 using SignalRCoreServerHub;
+
+#if NET48
+using Microsoft.AspNet.SignalR.Client;
+#else
+using Microsoft.AspNetCore.SignalR.Client;
+#endif
 
 using VNC;
 
-namespace SignalRCoreClient
+namespace VNCSignalRClient
 {
     /// <summary>
     /// SignalR client hosted in a WPF application. The client
@@ -23,6 +25,28 @@ namespace SignalRCoreClient
     /// </summary>
     public partial class MainWindow : Window
     {
+#if NET48
+        private string serverURI = "http://localhost:58095";
+
+        public IDisposable SignalR { get; set; }
+
+        public IHubProxy HubProxy { get; set; }
+
+        public HubConnection Connection { get; set; }
+#else
+        private string serverURI = "http://localhost:58195";
+
+        public HubConnection Connection { get; set; }
+#endif
+
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            DataContext = this;
+        }
+
+        public string ServerURI { get => serverURI; set => serverURI = value; }
 
         /// <summary>
         /// This name is simply added to sent messages to identify the user; this 
@@ -30,21 +54,16 @@ namespace SignalRCoreClient
         /// </summary>
         public String UserName { get; set; }
 
-  
-        const string ServerURI = "http://localhost:58195/signalR";
-        public HubConnection Connection { get; set; }
-
-        public MainWindow()
-        {
-            InitializeComponent();
-            DataContext = this;
-            tbServerURI.Text = ServerURI;
-        }
-
         public string RuntimeVersion { get => Common.RuntimeVersion; }
         public string FileVersion { get => Common.FileVersion; }
         public string ProductVersion { get => Common.ProductVersion; }
         public string ProductName { get => Common.ProductName; }
+
+#if NET48
+
+#else
+
+#endif
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
@@ -55,6 +74,9 @@ namespace SignalRCoreClient
 
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
+#if NET48
+                    HubProxy.Invoke("SendUserMessage", UserName, message);
+#else
                     if (sendAsync)
                     {
                         Connection.SendAsync("SendUserMessage", UserName, message);
@@ -62,7 +84,9 @@ namespace SignalRCoreClient
                     else
                     {
                         Connection.InvokeAsync("SendUserMessage", UserName, message);
-                    }                    
+                    }
+#endif
+
                 }
 
                 if ((bool)cbClearMessage.IsChecked)
@@ -86,6 +110,10 @@ namespace SignalRCoreClient
                 Boolean sendAsync = (bool)cbSendAsync.IsChecked;
                 string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
 
+#if NET48
+                // TODO(crhodes)
+                // Need to implement
+#else
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
                     if (sendAsync)
@@ -95,7 +123,7 @@ namespace SignalRCoreClient
                     else
                     {
                         Connection.InvokeAsync("SendUserMessage", UserName, message);
-                    }                    
+                    }
                 }
 
                 if (sendAsync)
@@ -106,6 +134,8 @@ namespace SignalRCoreClient
                 {
                     Connection.InvokeAsync("SendTimedMessage", "TimingInfo", signalRTime);
                 }
+#endif
+
 
                 if ((bool)cbClearMessage.IsChecked)
                 {
@@ -128,6 +158,9 @@ namespace SignalRCoreClient
 
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
+#if NET48
+                    HubProxy.Invoke("SendMessage", message);
+#else
                     if (sendAsync)
                     {
                         Connection.SendAsync("SendMessage", message);
@@ -135,7 +168,9 @@ namespace SignalRCoreClient
                     else
                     {
                         Connection.InvokeAsync("SendMessage", message);
-                    }                   
+                    }
+#endif
+
                 }
 
                 if ((bool)cbClearMessage.IsChecked)
@@ -161,6 +196,9 @@ namespace SignalRCoreClient
 
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
+#if NET48
+                    HubProxy.Invoke("SendPriorityMessage", message, priority);
+#else
                     if (sendAsync)
                     {
                         Connection.SendAsync("SendPriorityMessage", message, priority);
@@ -168,7 +206,9 @@ namespace SignalRCoreClient
                     else
                     {
                         Connection.InvokeAsync("SendPriorityMessage", message, priority);
-                    }                   
+                    }
+#endif
+
                 }
 
                 if ((bool)cbClearMessage.IsChecked)
@@ -194,6 +234,10 @@ namespace SignalRCoreClient
                 string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
                 Int32 priority = Int32.Parse(Priority.Text);
 
+#if NET48
+                // TODO(crhodes)
+                // Need to implement
+#else
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
                     if (sendAsync)
@@ -214,6 +258,9 @@ namespace SignalRCoreClient
                 {
                     Connection.InvokeAsync("SendTimedMessage", "TimingInfo", signalRTime);
                 }
+#endif
+
+
 
                 if ((bool)cbClearMessage.IsChecked)
                 {
@@ -232,6 +279,13 @@ namespace SignalRCoreClient
             SignalRTime signalRTime = new SignalRTime();
 
             Boolean sendAsync = (bool)cbSendAsync.IsChecked;
+
+#if NET48
+             // TODO(crhodes)
+             // Need to implement
+             return;
+#else
+
 
             try
             {
@@ -373,6 +427,7 @@ namespace SignalRCoreClient
             {
                 Log.Error(ex, Common.LOG_CATEGORY);
             }
+#endif
         }
 
         /// <summary>
@@ -382,6 +437,31 @@ namespace SignalRCoreClient
         /// </summary>
         private async void ConnectAsync()
         {
+#if NET48
+            Connection = new HubConnection(tbServerURI.Text);
+            Connection.Closed += Connection_Closed;
+            HubProxy = Connection.CreateHubProxy("SignalRHub");
+
+            //Handle incoming event from server: use Invoke to write to console from SignalR's thread
+
+            HubProxy.On<string>("AddMessage", (message) =>
+                this.Dispatcher.InvokeAsync(() =>
+                    rtbConsole.AppendText(String.Format("{0}\r", message))
+                )
+            );
+
+            HubProxy.On<string, string>("AddUserMessage", (name, message) =>
+                this.Dispatcher.InvokeAsync(() =>
+                    rtbConsole.AppendText(String.Format("{0}: {1}\r", name, message))
+                )
+            );
+
+            HubProxy.On<string, Int32>("AddPriorityMessage", (message, priority) =>
+                this.Dispatcher.InvokeAsync(() =>
+                    rtbConsole.AppendText($"P{priority}: {message}\r")
+                )
+            );
+#else
             Connection = new HubConnectionBuilder()
                 .WithUrl(tbServerURI.Text)
                 .Build();
@@ -409,7 +489,11 @@ namespace SignalRCoreClient
                     rtbConsole.AppendText($"P{priority}: {message}\r")
                 )
             );
+#endif
 
+#if NET48
+
+#else
             Connection.On<string, SignalRTime>("AddTimedMessage", (message, signalrtime) =>
             {
                 signalrtime.ClientReceivedTime = DateTime.Now;
@@ -439,10 +523,15 @@ namespace SignalRCoreClient
                     rtbConsole.AppendText($"Duration: {(signalrtime.ClientMessageTicks - signalrtime.SendTicks) / (double)Stopwatch.Frequency}\r"));
 
             });
+#endif
 
             try
             {
+#if NET48
+                await Connection.Start();
+#else
                 await Connection.StartAsync();
+#endif
             }
             catch (HttpRequestException hre)
             {
@@ -467,6 +556,9 @@ namespace SignalRCoreClient
             rtbConsole.AppendText("Connected to server at " + ServerURI + "\r");
         }
 
+#if NET48
+
+#else
         private Task Connection_Reconnecting(Exception? arg)
         {
             var dispatcher = Application.Current.Dispatcher;
@@ -482,14 +574,15 @@ namespace SignalRCoreClient
 
             return null;
         }
+#endif
 
+#if NET48
         /// <summary>
         /// If the server is stopped, the connection will time out after 30 seconds (default), 
         /// and the Closed event will fire.
         /// </summary>
-        Task Connection_Closed(Exception? arg)
+        void Connection_Closed()
         {
-            //Hide chat UI; show login UI
             var dispatcher = Application.Current.Dispatcher;
 
             //dispatcher.InvokeAsync(() => ChatPanel.Visibility = Visibility.Collapsed);
@@ -500,11 +593,33 @@ namespace SignalRCoreClient
             dispatcher.InvokeAsync(() => ButtonSendPriorityTimed.IsEnabled = false);
             dispatcher.InvokeAsync(() => ButtonLoggingPriorities.IsEnabled = false);
 
-            dispatcher.InvokeAsync(() => rtbConsole.AppendText($"Connection Closed {(arg is null ? "" : arg.Message)}."));
+            dispatcher.InvokeAsync(() => rtbConsole.AppendText($"Connection Closed."));
             //dispatcher.InvokeAsync(() => SignInPanel.Visibility = Visibility.Visible);
+
+            //return null;
+        }
+#else
+
+        /// <summary>
+        /// If the server is stopped, the connection will time out after 30 seconds (default), 
+        /// and the Closed event will fire.
+        /// </summary>
+        Task Connection_Closed(Exception? arg)
+        {
+            var dispatcher = Application.Current.Dispatcher;
+
+            dispatcher.InvokeAsync(() => ButtonSend.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendTimed.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendAnnoymous.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendPriority.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonSendPriorityTimed.IsEnabled = false);
+            dispatcher.InvokeAsync(() => ButtonLoggingPriorities.IsEnabled = false);
+
+            dispatcher.InvokeAsync(() => rtbConsole.AppendText($"Connection Closed {(arg is null ? "" : arg.Message)}."));
 
             return null;
         }
+#endif
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
@@ -529,10 +644,13 @@ namespace SignalRCoreClient
         {
             if (Connection != null)
             {
+#if NET48
+                Connection.Stop();
+                Connection.Dispose();
+#else
                 await Connection.StopAsync();
-                //Connection.Stop();
                 await Connection.DisposeAsync();
-                //Connection.Dispose();
+#endif
             }
         }
 
@@ -545,10 +663,14 @@ namespace SignalRCoreClient
         {
             if (Connection != null)
             {
+#if NET48
+                Connection.Stop();
+                Connection.Dispose();
+#else
                 await Connection.StopAsync();
-                //Connection.Stop();
                 await Connection.DisposeAsync();
-                //Connection.Dispose();
+#endif
+
 
                 rtbConsole.AppendText("Signed out of ServerHub");
             }

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SignalRCoreClient
+namespace VNCSignalRClient
 {
     public partial class App : Application
     {
