@@ -29,7 +29,15 @@ namespace VNCSignalRServerHub
 #if NET48
         public void SendPriorityMessage(string message, Int32 priority)
         {
-            Clients.All.addPriorityMessage(message, priority);
+            try
+            {
+                Clients.All.addPriorityMessage(message, priority);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                    ((MainWindow)Application.Current.MainWindow).WriteToConsole(ex.ToString()));
+            }
         }
 #else
         public async void SendPriorityMessage(string message, Int32 priority)
@@ -47,7 +55,20 @@ namespace VNCSignalRServerHub
 #endif
 
 #if NET48
-
+        public void SendTimedMessage(string message, SignalRTime signalRTime)
+        {
+            try
+            {
+                signalRTime.HubReceivedTime = DateTime.Now;
+                signalRTime.HubReceivedTicks = Stopwatch.GetTimestamp();
+                Clients.All.addTimedMessage(message, signalRTime);
+            }
+            catch (Exception ex)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                    ((MainWindow)Application.Current.MainWindow).WriteToConsole(ex.ToString()));
+            }
+        }
 #else
         public async void SendTimedMessage(string message, SignalRTime signalRTime)
         {

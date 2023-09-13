@@ -25,6 +25,6 @@
     <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
         <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
         <PackageReference Include="VNC.Logging" Version="2.1.0" />
-        <PackageReference Include="VNC.Logging.TraceListeners.SignalRListeners" Version="1.0.0" />
+        <PackageReference Include="VNC.Logging.TraceListeners.SignalRListener" Version="1.0.0" />
     </ItemGroup>
 </Project>
