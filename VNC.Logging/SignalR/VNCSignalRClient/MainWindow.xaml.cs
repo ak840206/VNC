@@ -34,7 +34,7 @@ namespace VNCSignalRClient
 
         public HubConnection Connection { get; set; }
 #else
-        private string serverURI = "http://localhost:58195";
+        private string serverURI = "http://localhost:58195/signalR";
 
         public HubConnection Connection { get; set; }
 #endif
@@ -70,7 +70,11 @@ namespace VNCSignalRClient
             try
             {
                 Boolean sendAsync = (bool)cbSendAsync.IsChecked;
+#if NET48
+                string message = TextBoxMessage.Text;
+#else
                 string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+#endif
 
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
@@ -108,7 +112,11 @@ namespace VNCSignalRClient
             try
             {
                 Boolean sendAsync = (bool)cbSendAsync.IsChecked;
+#if NET48
+                string message = TextBoxMessage.Text;
+#else
                 string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+#endif
 
 #if NET48
                 // TODO(crhodes)
@@ -154,7 +162,11 @@ namespace VNCSignalRClient
             try
             {
                 Boolean sendAsync = (bool)cbSendAsync.IsChecked;
+#if NET48
+                string message = TextBoxMessage.Text;
+#else
                 string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+#endif
 
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
                 {
@@ -190,8 +202,11 @@ namespace VNCSignalRClient
             try
             {
                 Boolean sendAsync = (bool)cbSendAsync.IsChecked;
-
+#if NET48
+                string message = TextBoxMessage.Text;
+#else
                 string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+#endif
                 Int32 priority = Int32.Parse(Priority.Text);
 
                 for (int i = 0; i < Int32.Parse(Count.Text); i++)
@@ -230,8 +245,11 @@ namespace VNCSignalRClient
             try
             {
                 Boolean sendAsync = (bool)cbSendAsync.IsChecked;
-
+#if NET48
+                string message = TextBoxMessage.Text;
+#else
                 string message = TextBoxMessage.Text + (sendAsync ? " SA" : " IA");
+#endif   
                 Int32 priority = Int32.Parse(Priority.Text);
 
 #if NET48
@@ -463,7 +481,7 @@ namespace VNCSignalRClient
             );
 #else
             Connection = new HubConnectionBuilder()
-                .WithUrl(tbServerURI.Text)
+                .WithUrl(ServerURI)
                 .Build();
 
             Connection.Closed += Connection_Closed;
@@ -489,10 +507,12 @@ namespace VNCSignalRClient
                     rtbConsole.AppendText($"P{priority}: {message}\r")
                 )
             );
+
 #endif
 
 #if NET48
-
+            // TODO(crhodes)
+            // Implement
 #else
             Connection.On<string, SignalRTime>("AddTimedMessage", (message, signalrtime) =>
             {
