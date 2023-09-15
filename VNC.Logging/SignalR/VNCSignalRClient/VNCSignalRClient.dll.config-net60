@@ -77,7 +77,7 @@
                 Version=6.0.0.0,
                 Culture=neutral,
                 PublicKeyToken=d702d1a3426498a0"
-                fileName="C:\temp\logs\VNCSignalRServerHubNF.log"
+                fileName="C:\temp\logs\VNCSignalRClient.log"
                 header="" footer=""
                 formatter="FlatFile Formatter"
                 traceOutputOptions="None" />
@@ -112,7 +112,7 @@
                     Version=6.0.0.0,
                     Culture=neutral,
                     PublicKeyToken=d702d1a3426498a0"
-                fileName="C:\temp\logs\VNCSignalRServerHubNF.log"
+                fileName="C:\temp\logs\VNCSignalRClient.log"
                 header="" footer=""
                 rollInterval="Day" maxArchivedFiles="7"
                 formatter="FlatFile Formatter" />
@@ -213,16 +213,16 @@
             <add switchValue="All" name="General">
                 <listeners>
                     <add name="Rolling FlatFile TraceListener" />
-                    <!--<add name="SignalRCoreListener" />-->
-                    <add name="SignalRListener" />
+                    <add name="SignalRCoreListener" />
+                    <!-- <add name="SignalRListener" /> -->
                     <!--<add name="Formatted EventLog TraceListener" />-->
                 </listeners>
             </add>
-            <add switchValue="All" name="VNCSignalRServerHub">
+            <add switchValue="All" name="VNCSignalRClient">
                 <listeners>
                     <add name="Rolling FlatFile TraceListener" />
-                    <!--<add name="SignalRCoreListener" />-->
-                    <add name="SignalRListener" />
+                    <add name="SignalRCoreListener" />
+                    <!-- <add name="SignalRListener" /> -->
                     <!--<add name="Formatted EventLog TraceListener" />-->
                     <!--<add name="Database TraceListener" />
                   <add name="Email TraceListener" />-->
@@ -234,16 +234,16 @@
             <notProcessed switchValue="All" name="Unprocessed Category">
                 <listeners>
                     <add name="Rolling FlatFile TraceListener" />
-                    <!--<add name="SignalRCoreListener" />-->
-                    <add name="SignalRListener" />
+                    <add name="SignalRCoreListener" />
+                    <!-- <add name="SignalRListener" /> -->
                     <!--<add name="Formatted EventLog TraceListener" />-->
                 </listeners>
             </notProcessed>
             <errors switchValue="All" name="Logging Errors &amp; Warnings">
                 <listeners>
                     <add name="Rolling FlatFile TraceListener" />
-                    <!--<add name="SignalRCoreListener" />-->
-                    <add name="SignalRListener" />
+                    <add name="SignalRCoreListener" />
+                    <!-- <add name="SignalRListener" /> -->
                     <!--<add name="Formatted EventLog TraceListener" />-->
                 </listeners>
             </errors>
