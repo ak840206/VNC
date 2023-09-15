@@ -29,9 +29,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="VNCSignalRClient.dll.config-net48">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="VNCSignalRClient.dll.config-net60">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>

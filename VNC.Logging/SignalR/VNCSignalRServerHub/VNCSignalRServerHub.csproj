@@ -42,9 +42,6 @@
     </ItemGroup>
     
     <ItemGroup>
-      <None Update="VNCSignalRServerHub.dll.config-net48">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="VNCSignalRServerHub.dll.config-net60">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
