@@ -4,7 +4,7 @@
         <OutputType>WinExe</OutputType>
         <TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
         <UseWPF>true</UseWPF>
-        <FileVersion>2023.09.13A</FileVersion>
+        <FileVersion>2023.09.15A</FileVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
@@ -39,6 +39,15 @@
     <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
       <PackageReference Include="VNC.Logging" Version="2.1.0" />
       <PackageReference Include="VNC.Logging.TraceListeners.SignalRListener" Version="1.0.0" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Update="VNCSignalRServerHub.dll.config-net48">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="VNCSignalRServerHub.dll.config-net60">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
