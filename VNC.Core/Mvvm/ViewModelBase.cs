@@ -41,6 +41,11 @@ namespace VNC.Core.Mvvm
         public string ProductVersion { get => Common.ProductVersion; }
         public string ProductName { get => Common.ProductName; }
 
+        public string RuntimeVersionVNCCore { get => Common.RuntimeVersionVNCCore; }
+        public string FileVersionVNCCore { get => Common.FileVersionVNCCore; }
+        public string ProductVersionVNCCore { get => Common.ProductVersionVNCCore; }
+        public string ProductNameVNCCore { get => Common.ProductNameVNCCore; }
+
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

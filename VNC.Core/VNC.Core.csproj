@@ -3,12 +3,14 @@
     <PropertyGroup>
         <TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
         <UseWPF>true</UseWPF>
-        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <!--<GenerateAssemblyInfo>false</GenerateAssemblyInfo>-->
         <AssemblyName>VNC.Core</AssemblyName>
         <RootNamespace>VNC.Core</RootNamespace>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AssemblyVersion>2.1.1</AssemblyVersion>
+        <FileVersion>2023.09.16A</FileVersion>
         <PackageVersion>2.1.1</PackageVersion>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
@@ -27,6 +29,10 @@
       <EmbeddedResource Remove="Diagrams\NewFolder\**" />
       <None Remove="Diagrams\NewFolder\**" />
       <Page Remove="Diagrams\NewFolder\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Properties\AssemblyInfo.cs" />
     </ItemGroup>
 
     <ItemGroup>
