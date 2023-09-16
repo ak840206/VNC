@@ -36,6 +36,11 @@ namespace VNC.Core.Mvvm
             }
         }
 
+        public string RuntimeVersion { get => Common.RuntimeVersion; }
+        public string FileVersion { get => Common.FileVersion; }
+        public string ProductVersion { get => Common.ProductVersion; }
+        public string ProductName { get => Common.ProductName; }
+
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
