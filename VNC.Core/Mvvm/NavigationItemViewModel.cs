@@ -72,15 +72,14 @@ namespace VNC.Core.Mvvm
             Int64 startTicks = Log.EVENT($"Enter Id:({Id})", Common.LOG_CATEGORY);
 #endif
 
-            EventAggregator.GetEvent<OpenDetailViewEvent>()
-              .Publish
-                (
-                    new OpenDetailViewEventArgs
-                    {
-                        Id = Id,
-                        ViewModelName = _detailViewModelName
-                    }
-                );
+            EventAggregator.GetEvent<OpenDetailViewEvent>().Publish
+            (
+                new OpenDetailViewEventArgs
+                {
+                    Id = Id,
+                    ViewModelName = _detailViewModelName
+                }
+            );
 
 #if LOGGING
             Log.EVENT("Exit", Common.LOG_CATEGORY, startTicks);

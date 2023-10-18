@@ -9,9 +9,9 @@
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>VNC.snk</AssemblyOriginatorKeyFile>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <AssemblyVersion>2.1.1</AssemblyVersion>
-        <FileVersion>2023.09.16A</FileVersion>
-        <PackageVersion>2.1.1</PackageVersion>
+        <AssemblyVersion>2.1.2</AssemblyVersion>
+        <FileVersion>2023.10.18B</FileVersion>
+        <PackageVersion>2.1.2</PackageVersion>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageProjectUrl>https://github.com/chrhodes/vnc</PackageProjectUrl>
         <RepositoryUrl>https://github.com/chrhodes/vnc</RepositoryUrl>
@@ -42,7 +42,7 @@
     </ItemGroup>
    
     <ItemGroup>
-        <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
+        <PackageReference Include="CommonServiceLocator" Version="2.0.7" />
         <PackageReference Include="EntityFramework" Version="6.4.4" />
         <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.11.0" />
         <PackageReference Include="Prism.Wpf" Version="8.1.97" />

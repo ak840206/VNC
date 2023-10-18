@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
@@ -25,6 +26,7 @@ namespace VNC.Core.Mvvm
         }
 
         private bool _isBusy;
+
         [Display(AutoGenerateField = false)]
         public bool IsBusy
         {
@@ -36,15 +38,32 @@ namespace VNC.Core.Mvvm
             }
         }
 
-        public string RuntimeVersion { get => Common.RuntimeVersion; }
+        private bool _logOnPropertyChanged = false;
+
+        [Display(AutoGenerateField = false)]
+        public bool LogOnPropertyChanged
+        {
+            get => _logOnPropertyChanged;
+            set
+            {
+                if (_logOnPropertyChanged == value)
+                    return;
+                _logOnPropertyChanged = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string AssemblyVersion { get => Common.AssemblyVersion; }
         public string FileVersion { get => Common.FileVersion; }
         public string ProductVersion { get => Common.ProductVersion; }
         public string ProductName { get => Common.ProductName; }
+        public string RuntimeVersion { get => Common.RuntimeVersion; }
 
-        public string RuntimeVersionVNCCore { get => Common.RuntimeVersionVNCCore; }
+        public string AssemblyVersionVNCCore { get => Common.AssemblyVersionVNCCore; }
         public string FileVersionVNCCore { get => Common.FileVersionVNCCore; }
         public string ProductVersionVNCCore { get => Common.ProductVersionVNCCore; }
         public string ProductNameVNCCore { get => Common.ProductNameVNCCore; }
+        public string RuntimeVersionVNCCore { get => Common.RuntimeVersionVNCCore; }
 
         #region INotifyPropertyChanged
 
@@ -57,19 +76,23 @@ namespace VNC.Core.Mvvm
         //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         //}
 
-        // This is the new CompilerServices attribute!
-
         protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = null)
         {
-            // TODO(crhodes)
-            // Decide if we really want to log this.
+            long startTicks = 0;
 #if LOGGING
-            long startTicks = Log.VIEWMODEL_LOW($"Enter ({propertyName})", Common.LOG_CATEGORY);
+            if (LogOnPropertyChanged)
+            {
+                startTicks = Log.VIEWMODEL_LOW($"Enter ({propertyName})", Common.LOG_CATEGORY);
+            }
 #endif
+            // This is the new CompilerServices attribute!
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 #if LOGGING
-            Log.VIEWMODEL_LOW("Exit", Common.LOG_CATEGORY, startTicks);
+            if (LogOnPropertyChanged)
+            {
+                Log.VIEWMODEL_LOW("Exit", Common.LOG_CATEGORY, startTicks);
+            }
 #endif
         }
 

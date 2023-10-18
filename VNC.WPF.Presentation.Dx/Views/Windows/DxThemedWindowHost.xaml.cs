@@ -107,63 +107,22 @@ namespace VNC.WPF.Presentation.Dx.Views
         public void LoadUserControl(string userControlName)
         {
             Int64 startTicks = Log.PRESENTATION("Enter", Common.LOG_CATEGORY);
-            //string typeName = string.Format("SupportTools_Visio.User_Interface.User_Controls.{0}",
-            //                ((Button)sender).Tag.ToString());
 
             Type ucType = Type.GetType(userControlName);
-            //Type ucType = Type.GetType(typeName);
 
             try
             {
                 var uc = Activator.CreateInstance(ucType);
 
                 LoadUserControl((UserControl)uc);
-
-                //if (uc.GetType().BaseType.Name == "wucDX_Base")
-                //{
-                //    //ShowUserControl((User_Interface.User_Controls.wucDX_Base)uc);
-                //    ShowUserControl((UserControl)uc);
-                //}
-                //else
-                //{
-                //    ShowUserControl((UserControl)uc);
-                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Incorrect Tag Name.  Cannot load type:{0}", userControlName);
             }
-            Log.PRESENTATION("Exit", Common.LOG_CATEGORY, startTicks
-                );
+
+            Log.PRESENTATION("Exit", Common.LOG_CATEGORY, startTicks);
         }
-
-        //public void ShowUserControl(User_Interface.User_Controls.wucDX_Base control)
-        //{
-        //    Log.Trace("Enter", Common.LOG_CATEGORY);
-        //    //UnhookTitleEvent(_currentControl);
-        //    g_UserControlContainer.Children.Clear();
-
-        //    if (control != null)
-        //    {
-        //        g_UserControlContainer.Children.Add(control);
-
-        //        if (control.MinWidth > 0)
-        //        {
-        //            this.Width = control.MinWidth + Common.WINDOW_HOSTING_USER_CONTROL_WIDTH_PAD;
-        //            this.MinWidth = this.Width;
-        //        }
-
-        //        if (control.MinHeight > 0)
-        //        {
-        //            this.Height = control.MinHeight + Common.WINDOW_HOSTING_USER_CONTROL_HEIGHT_PAD;
-        //            this.MinHeight = this.Height;
-        //        }
-        //        //_currentControl = control;
-        //    }
-
-        //    //HookTitleEvent(_currentControl);
-        //    Log.Trace("Exit", Common.LOG_CATEGORY);
-        //}
 
         public void LoadUserControl(UserControl control)
         {
