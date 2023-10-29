@@ -3,153 +3,162 @@ using System.Reflection;
 
 namespace VNC.Core
 {
-    public class Common
+    public class AssemblyInformation
     {
+        public string Version { get; set; }
+        public string Name { get; set; }
+        public string FullName { get; set; }
+
+        public string AssemblyTitle { get; set; }
+        public string AssemblyVerison { get; set; }
+        public string Company { get; set; }
+        public string Configuration { get; set; }
+        public string Copyright { get; set; }
+        public string Description { get; set; }
+        public string FileVersion { get; set; }
+        public string InformationalVersion { get; set; }
+        public string Product { get; set; }
+
+        //public bool IsDebug { get; set; }
+        //public bool IsPrivateBuild { get; set; }
+        //public bool IsSpecialBuild { get; set; }
+    }
+
+    public class FileInformation
+    {
+        public string FileVersion { get; set; }
+        public string FileDescription { get; set; }
+
+        public string ProductName { get; set; }
+        public string InternalName { get; set; }
+        public string ProductVersion { get; set; }
+
+        public string ProductMajorPart { get; set; }
+        public string ProductMinorPart { get; set; }
+        public string ProductBuildPart { get; set; }
+
+
+        public string Comments { get; set; }
+
+        public bool IsDebug { get; set; }
+        public bool IsPatched { get; set; }
+        public bool IsPreRelease { get; set; }
+        public bool IsPrivateBuild { get; set; }
+        public bool IsSpecialBuild { get; set; }
+    }
+
+    public class Information
+    {
+        public AssemblyInformation AssemblyInformation = new AssemblyInformation();
+        public FileInformation FileInformation = new FileInformation();
+    }
+
+    public static class Common
+    {
+        public static Information InformationApplication = new Information();
+        public static Information InformationVNCCore = new Information();
 
         public const string APPNAME = "VNCCore";
-
         public const string LOG_CATEGORY = "VNCCore";
 
-        private static string _assemblyVersion = "<assemblyVersion>";
-        private static string _assemblyVersionVNCCore = "<assemblyVersionVNCCore>";
-        private static string _fileVersion = "<fileVersion>";
-        private static string _fileVersionVNCCore = "<fileVersionVNCCore>";
-        private static string _productName = "<productName>";
-        private static string _productNameVNCCore = "<productNameVNCCore>";
-        private static string _productVersion = "<productVersion>";
-        private static string _productVersionVNCCore = "<productVersionVNCCore>";
-        private static string _runtimeVersion = "<RuntimeVersion>";
-        private static string _runtimeVersionVNCCore = "<RuntimeVersionVNCCore>";
+        public static void SetInformation(Information information, Assembly assembly, FileVersionInfo fileVersionInfo)
+        {
+            // Information in Assembly
+            AssemblyName assemblyName = assembly.GetName();
 
-        
-        public static string AssemblyVersion
-        {
-            get => _assemblyVersion;
-            set => _assemblyVersion = value;
-        }
-        
-        public static string AssemblyVersionVNCCore
-        {
-            get => _assemblyVersionVNCCore;
-            set => _assemblyVersionVNCCore = value;
-        }
+            information.AssemblyInformation.Version = assemblyName.Version.ToString();
+            information.AssemblyInformation.Name = assemblyName.Name;
+            information.AssemblyInformation.FullName = assemblyName.FullName;
 
-        public static string FileVersion
-        {
-            get => _fileVersion;
-            set => _fileVersion = value;
-        }
+            information.AssemblyInformation.AssemblyTitle = assembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
+            information.AssemblyInformation.AssemblyVerison = assembly.GetCustomAttribute<AssemblyVersionAttribute>().Version;
+            information.AssemblyInformation.Company = assembly.GetCustomAttribute<AssemblyCompanyAttribute>().Company;
+            information.AssemblyInformation.Configuration = assembly.GetCustomAttribute<AssemblyConfigurationAttribute>().Configuration;
+            information.AssemblyInformation.Copyright = assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+            information.AssemblyInformation.Description = assembly.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
+            information.AssemblyInformation.FileVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+            information.AssemblyInformation.InformationalVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+            information.AssemblyInformation.Product = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
 
-        public static string FileVersionVNCCore
-        {
-            get => _fileVersionVNCCore;
-            set => _fileVersionVNCCore = value;
-        }
+            // Information in FileVesionInfo
 
-        public static string ProductName
-        {
-            get => _productName;
-            set => _productName = value;
-        }
+            information.FileInformation.FileVersion = fileVersionInfo.FileVersion;
+            information.FileInformation.FileDescription = fileVersionInfo.FileDescription;
 
-        public static string ProductNameVNCCore
-        {
-            get => _productNameVNCCore;
-            set => _productNameVNCCore = value;
+            information.FileInformation.ProductName = fileVersionInfo.ProductName;
+            information.FileInformation.InternalName = fileVersionInfo.InternalName;
+            information.FileInformation.ProductVersion = fileVersionInfo.ProductVersion;
+
+            information.FileInformation.ProductMajorPart = fileVersionInfo.ProductMajorPart.ToString();
+            information.FileInformation.ProductMinorPart = fileVersionInfo.ProductMajorPart.ToString();
+            information.FileInformation.ProductBuildPart = fileVersionInfo.ProductBuildPart.ToString();
+
+            information.FileInformation.Comments = fileVersionInfo.Comments;
+
+            information.FileInformation.IsDebug = fileVersionInfo.IsDebug;
+            information.FileInformation.IsPatched = fileVersionInfo.IsPatched;
+            information.FileInformation.IsPreRelease = fileVersionInfo.IsPreRelease;
+            information.FileInformation.IsPrivateBuild = fileVersionInfo.IsPrivateBuild;
+            information.FileInformation.IsSpecialBuild = fileVersionInfo.IsSpecialBuild;
         }
 
-        public static string ProductVersion
+        public static Information GetInformation(Assembly assembly, FileVersionInfo fileVersionInfo)
         {
-            get => _productVersion;
-            set => _productVersion = value;
+            Information information = new Information();
+
+            // Information in Assembly
+            AssemblyName assemblyName = assembly.GetName();
+
+            information.AssemblyInformation.Version = assemblyName.Version.ToString();
+            information.AssemblyInformation.Name = assemblyName.Name;
+            information.AssemblyInformation.FullName = assemblyName.FullName;
+
+            information.AssemblyInformation.AssemblyTitle = assembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
+            information.AssemblyInformation.AssemblyVerison = assembly.GetCustomAttribute<AssemblyVersionAttribute>().Version;
+            information.AssemblyInformation.Company = assembly.GetCustomAttribute<AssemblyCompanyAttribute>().Company;
+            information.AssemblyInformation.Configuration = assembly.GetCustomAttribute<AssemblyConfigurationAttribute>().Configuration;
+            information.AssemblyInformation.Copyright = assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+            information.AssemblyInformation.Description = assembly.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
+            information.AssemblyInformation.FileVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+            information.AssemblyInformation.InformationalVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+            information.AssemblyInformation.Product = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
+
+            // Information in FileVesionInfo
+
+            information.FileInformation.FileVersion = fileVersionInfo.FileVersion;
+            information.FileInformation.FileDescription = fileVersionInfo.FileDescription;
+
+            information.FileInformation.ProductName = fileVersionInfo.ProductName;
+            information.FileInformation.InternalName = fileVersionInfo.InternalName;
+            information.FileInformation.ProductVersion = fileVersionInfo.ProductVersion;
+
+            information.FileInformation.ProductMajorPart = fileVersionInfo.ProductMajorPart.ToString();
+            information.FileInformation.ProductMinorPart = fileVersionInfo.ProductMajorPart.ToString();
+            information.FileInformation.ProductBuildPart = fileVersionInfo.ProductBuildPart.ToString();
+
+            information.FileInformation.Comments = fileVersionInfo.Comments;
+
+            information.FileInformation.IsDebug = fileVersionInfo.IsDebug;
+            information.FileInformation.IsPatched = fileVersionInfo.IsPatched;
+            information.FileInformation.IsPreRelease = fileVersionInfo.IsPreRelease;
+            information.FileInformation.IsPrivateBuild = fileVersionInfo.IsPrivateBuild;
+            information.FileInformation.IsSpecialBuild = fileVersionInfo.IsSpecialBuild;
+
+            return information;
         }
 
-        public static string ProductVersionVNCCore
+        public static void SetVersionInfoApplication(Assembly appAssembly, FileVersionInfo appFileVersionInfo)
         {
-            get => _productVersionVNCCore;
-            set => _productVersionVNCCore = value;
-        }
-
-
-        public static string RuntimeVersion
-        {
-            get => _runtimeVersion;
-            set => _runtimeVersion = value;
-        }
-
-
-        public static string RuntimeVersionVNCCore
-        {
-            get => _runtimeVersionVNCCore;
-            set => _runtimeVersionVNCCore = value;
-        }
-
-        public static void SetVersionInfoApplication(FileVersionInfo runtimeVersion, FileVersionInfo appVersion)
-        {
-            //var runtimeVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(int).Assembly.Location);
-
-            Common.RuntimeVersion = runtimeVersion.FileVersion;
-
-            //var rv = runtimeVersion.Comments;
-            //var rv1 = runtimeVersion.CompanyName;
-            //var rv2 = runtimeVersion.FileDescription;
-            //var rv3 = runtimeVersion.FileName;
-            //var rv4 = runtimeVersion.FileVersion;
-            //var rv5 = runtimeVersion.ProductVersion;
-            //var rv6 = runtimeVersion.ProductName;
-
-
-            //var assyb = Assembly.GetExecutingAssembly();
-            //var a3 = assyb.Location;
-            //var appVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
-
-            var av = appVersion.Comments;
-            var av1 = appVersion.CompanyName;
-            var av2 = appVersion.FileDescription;
-            var av3 = appVersion.FileName;
-            var av4 = appVersion.FileVersion;
-            var av5 = appVersion.ProductVersion;
-            var av6 = appVersion.ProductName;
-
-            Common.FileVersion = appVersion.FileVersion;
-            Common.ProductName = appVersion.ProductName;
-            Common.ProductVersion = appVersion.ProductVersion;
-
+            SetInformation(InformationApplication, 
+                appAssembly, 
+                appFileVersionInfo);
         }
 
         public static void SetVersionInfoVNCCore()
         {
-            var runtimeVersion = FileVersionInfo.GetVersionInfo(typeof(int).Assembly.Location);
-
-            Common.RuntimeVersionVNCCore = runtimeVersion.FileVersion;
-
-            Common.AssemblyVersionVNCCore = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-            //var rv = runtimeVersion.Comments;
-            //var rv1 = runtimeVersion.CompanyName;
-            //var rv2 = runtimeVersion.FileDescription;
-            //var rv3 = runtimeVersion.FileName;
-            //var rv4 = runtimeVersion.FileVersion;
-            //var rv5 = runtimeVersion.ProductVersion;
-            //var rv6 = runtimeVersion.ProductName;
-
-
-            //var assyb = Assembly.GetExecutingAssembly();
-            //var a3 = assyb.Location;
-            var appVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
-
-            var av = appVersion.Comments;
-            var av1 = appVersion.CompanyName;
-            var av2 = appVersion.FileDescription;
-            var av3 = appVersion.FileName;
-            var av4 = appVersion.FileVersion;
-            var av5 = appVersion.ProductVersion;
-            var av6 = appVersion.ProductName;
-
-            Common.FileVersionVNCCore = appVersion.FileVersion;
-            Common.ProductNameVNCCore = appVersion.ProductName;
-            Common.ProductVersionVNCCore = appVersion.ProductVersion;
-
+            SetInformation(InformationVNCCore, 
+                Assembly.GetExecutingAssembly(), 
+                FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location));
         }
     }
 }
