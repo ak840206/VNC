@@ -10,7 +10,7 @@ namespace VNC.Core
         public string FullName { get; set; }
 
         public string AssemblyTitle { get; set; }
-        public string AssemblyVerison { get; set; }
+        //public string AssemblyVersion { get; set; }
         public string Company { get; set; }
         public string Configuration { get; set; }
         public string Copyright { get; set; }
@@ -18,11 +18,6 @@ namespace VNC.Core
         public string FileVersion { get; set; }
         public string InformationalVersion { get; set; }
         public string Product { get; set; }
-
-        //public bool IsDebug { get; set; }
-        //public bool IsPrivateBuild { get; set; }
-        //public bool IsSpecialBuild { get; set; }
-
     }
 
     public class FileInformation
@@ -37,6 +32,7 @@ namespace VNC.Core
         public string ProductMajorPart { get; set; }
         public string ProductMinorPart { get; set; }
         public string ProductBuildPart { get; set; }
+        public string ProductPrivatePart { get; set; }
 
         public string Comments { get; set; }
 
@@ -64,27 +60,42 @@ namespace VNC.Core
 
         private static void SetInformation(Information information, Assembly assembly, FileVersionInfo fileVersionInfo)
         {
-            // Information in Assembly
             AssemblyName assemblyName = assembly.GetName();
+
+            PopulateInformation(assembly, fileVersionInfo, information, assemblyName);
+        }
+
+        public static Information GetInformation(Assembly assembly, FileVersionInfo fileVersionInfo)
+        {
+            Information information = new Information();
+
+            AssemblyName assemblyName = assembly.GetName();
+
+            PopulateInformation(assembly, fileVersionInfo, information, assemblyName);
+
+            return information;
+        }
+
+        private static void PopulateInformation(Assembly assembly, FileVersionInfo fileVersionInfo, Information information, AssemblyName assemblyName)
+        {
+            // Information in Assembly
 
             information.AssemblyInformation.Version = assemblyName.Version.ToString();
             information.AssemblyInformation.Name = assemblyName.Name;
             information.AssemblyInformation.FullName = assemblyName.FullName;
 
-            information.AssemblyInformation.AssemblyTitle = assembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
+            information.AssemblyInformation.AssemblyTitle = assembly.GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
             // NOTE(crhodes)
-            // Throws Exception
-            information.AssemblyInformation.AssemblyVerison = assembly.GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
-            information.AssemblyInformation.Company = assembly.GetCustomAttribute<AssemblyCompanyAttribute>().Company;
-            information.AssemblyInformation.Configuration = assembly.GetCustomAttribute<AssemblyConfigurationAttribute>().Configuration;
+            // This does not get populated for some reason.
+            //information.AssemblyInformation.AssemblyVersion = assembly.GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
+            information.AssemblyInformation.Company = assembly.GetCustomAttribute<AssemblyCompanyAttribute>()?.Company;
+            information.AssemblyInformation.Configuration = assembly.GetCustomAttribute<AssemblyConfigurationAttribute>()?.Configuration;
             information.AssemblyInformation.Copyright = assembly.GetCustomAttribute<AssemblyCopyrightAttribute>()?.Copyright;
             information.AssemblyInformation.Description = assembly.GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description;
-            information.AssemblyInformation.FileVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
-            information.AssemblyInformation.InformationalVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
-            information.AssemblyInformation.Product = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
-
+            information.AssemblyInformation.FileVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version;
+            information.AssemblyInformation.InformationalVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
+            information.AssemblyInformation.Product = assembly.GetCustomAttribute<AssemblyProductAttribute>()?.Product;
             // Information in FileVesionInfo
-
             information.FileInformation.FileVersion = fileVersionInfo.FileVersion;
             information.FileInformation.FileDescription = fileVersionInfo.FileDescription;
 
@@ -93,8 +104,9 @@ namespace VNC.Core
             information.FileInformation.ProductVersion = fileVersionInfo.ProductVersion;
 
             information.FileInformation.ProductMajorPart = fileVersionInfo.ProductMajorPart.ToString();
-            information.FileInformation.ProductMinorPart = fileVersionInfo.ProductMajorPart.ToString();
+            information.FileInformation.ProductMinorPart = fileVersionInfo.ProductMinorPart.ToString();
             information.FileInformation.ProductBuildPart = fileVersionInfo.ProductBuildPart.ToString();
+            information.FileInformation.ProductPrivatePart = fileVersionInfo.ProductPrivatePart.ToString();
 
             information.FileInformation.Comments = fileVersionInfo.Comments;
 
@@ -107,51 +119,6 @@ namespace VNC.Core
             // Runtime Information
 
             information.RuntimeVersion = FileVersionInfo.GetVersionInfo(typeof(int).Assembly.Location).FileVersion;
-        }
-
-        public static Information GetInformation(Assembly assembly, FileVersionInfo fileVersionInfo)
-        {
-            Information information = new Information();
-
-            // Information in Assembly
-            AssemblyName assemblyName = assembly.GetName();
-
-            information.AssemblyInformation.Version = assemblyName.Version.ToString();
-            information.AssemblyInformation.Name = assemblyName.Name;
-            information.AssemblyInformation.FullName = assemblyName.FullName;
-
-            information.AssemblyInformation.AssemblyTitle = assembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
-            information.AssemblyInformation.AssemblyVerison = assembly.GetCustomAttribute<AssemblyVersionAttribute>().Version;
-            information.AssemblyInformation.Company = assembly.GetCustomAttribute<AssemblyCompanyAttribute>().Company;
-            information.AssemblyInformation.Configuration = assembly.GetCustomAttribute<AssemblyConfigurationAttribute>().Configuration;
-            information.AssemblyInformation.Copyright = assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
-            information.AssemblyInformation.Description = assembly.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
-            information.AssemblyInformation.FileVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
-            information.AssemblyInformation.InformationalVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
-            information.AssemblyInformation.Product = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
-
-            // Information in FileVesionInfo
-
-            information.FileInformation.FileVersion = fileVersionInfo.FileVersion;
-            information.FileInformation.FileDescription = fileVersionInfo.FileDescription;
-
-            information.FileInformation.ProductName = fileVersionInfo.ProductName;
-            information.FileInformation.InternalName = fileVersionInfo.InternalName;
-            information.FileInformation.ProductVersion = fileVersionInfo.ProductVersion;
-
-            information.FileInformation.ProductMajorPart = fileVersionInfo.ProductMajorPart.ToString();
-            information.FileInformation.ProductMinorPart = fileVersionInfo.ProductMinorPart.ToString();
-            information.FileInformation.ProductBuildPart = fileVersionInfo.ProductBuildPart.ToString();
-
-            information.FileInformation.Comments = fileVersionInfo.Comments;
-
-            information.FileInformation.IsDebug = fileVersionInfo.IsDebug;
-            information.FileInformation.IsPatched = fileVersionInfo.IsPatched;
-            information.FileInformation.IsPreRelease = fileVersionInfo.IsPreRelease;
-            information.FileInformation.IsPrivateBuild = fileVersionInfo.IsPrivateBuild;
-            information.FileInformation.IsSpecialBuild = fileVersionInfo.IsSpecialBuild;
-
-            return information;
         }
 
         public static void SetVersionInfoApplication(Assembly appAssembly, FileVersionInfo appFileVersionInfo)

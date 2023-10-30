@@ -56,8 +56,8 @@ namespace VNC.Core.Mvvm
         public string AssemblyVersion { get => Common.InformationApplication.AssemblyInformation.Version; }
         public string AssemblyName { get => Common.InformationApplication.AssemblyInformation.Name; }
         public string AssemblyFullName { get => Common.InformationApplication.AssemblyInformation.FullName; }
-        public string AssemblyTile { get => Common.InformationApplication.AssemblyInformation.AssemblyTitle; }
-        public string AssemblyAssemblyVersion { get => Common.InformationApplication.AssemblyInformation.AssemblyVerison; }
+        public string AssemblyTitle { get => Common.InformationApplication.AssemblyInformation.AssemblyTitle; }
+        //public string AssemblyAssemblyVersion { get => Common.InformationApplication.AssemblyInformation.AssemblyVersion; }
         public string AssemblyCompany { get => Common.InformationApplication.AssemblyInformation.Company; }
         public string AssemblyConfiguration { get => Common.InformationApplication.AssemblyInformation.Configuration; }
         public string AssemblyCopyright { get => Common.InformationApplication.AssemblyInformation.Copyright; }
@@ -67,13 +67,12 @@ namespace VNC.Core.Mvvm
         public string AssemblyVersionVNCCore { get => Common.InformationVNCCore.AssemblyInformation.Version; }
         public string AssemblyNameVNCCore { get => Common.InformationVNCCore.AssemblyInformation.Name; }
         public string AssemblyFullNameVNCCore { get => Common.InformationVNCCore.AssemblyInformation.FullName; }
-        public string AssemblyTileVNCCore { get => Common.InformationVNCCore.AssemblyInformation.AssemblyTitle; }
-        public string AssemblyAssemblyVersionVNCCore { get => Common.InformationVNCCore.AssemblyInformation.AssemblyVerison; }
+        public string AssemblyTitleVNCCore { get => Common.InformationVNCCore.AssemblyInformation.AssemblyTitle; }
+        //public string AssemblyAssemblyVersionVNCCore { get => Common.InformationVNCCore.AssemblyInformation.AssemblyVersion; }
         public string AssemblyCompanyVNCCore { get => Common.InformationVNCCore.AssemblyInformation.Company; }
         public string AssemblyConfigurationVNCCore { get => Common.InformationVNCCore.AssemblyInformation.Configuration; }
         public string AssemblyCopyrightVNCCore { get => Common.InformationVNCCore.AssemblyInformation.Copyright; }
         public string AssemblyDescriptionVNCCore { get => Common.InformationVNCCore.AssemblyInformation.Description; }
-
 
 
         public string FileVersion { get => Common.InformationApplication.FileInformation.FileVersion; }
@@ -84,6 +83,7 @@ namespace VNC.Core.Mvvm
         public string ProductMajorPart { get => Common.InformationApplication.FileInformation.ProductMajorPart; }
         public string ProductMinorPart { get => Common.InformationApplication.FileInformation.ProductMinorPart; }
         public string ProductBuildPart { get => Common.InformationApplication.FileInformation.ProductBuildPart; }
+        public string ProductPrivatePart { get => Common.InformationApplication.FileInformation.ProductPrivatePart; }
         public string Comments { get => Common.InformationApplication.FileInformation.Comments; }
         public string IsDebug { get => Common.InformationApplication.FileInformation.IsDebug.ToString(); }
         public string IsPatched { get => Common.InformationApplication.FileInformation.IsPatched.ToString(); }
@@ -99,6 +99,7 @@ namespace VNC.Core.Mvvm
         public string ProductMajorPartVNCCore { get => Common.InformationVNCCore.FileInformation.ProductMajorPart; }
         public string ProductMinorPartVNCCore { get => Common.InformationVNCCore.FileInformation.ProductMinorPart; }
         public string ProductBuildPartVNCCore { get => Common.InformationVNCCore.FileInformation.ProductBuildPart; }
+        public string ProductPrivatePartVNCCore { get => Common.InformationVNCCore.FileInformation.ProductPrivatePart; }
         public string CommentsVNCCore { get => Common.InformationVNCCore.FileInformation.Comments; }
         public string IsDebugVNCCore { get => Common.InformationVNCCore.FileInformation.IsDebug.ToString(); }
         public string IsPatchedVNCCore { get => Common.InformationVNCCore.FileInformation.IsPatched.ToString(); }
