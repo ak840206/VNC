@@ -102,7 +102,6 @@ namespace VNC.Core
             information.FileInformation.ProductName = fileVersionInfo.ProductName;
             information.FileInformation.InternalName = fileVersionInfo.InternalName;
             information.FileInformation.ProductVersion = fileVersionInfo.ProductVersion;
-
             information.FileInformation.ProductMajorPart = fileVersionInfo.ProductMajorPart.ToString();
             information.FileInformation.ProductMinorPart = fileVersionInfo.ProductMinorPart.ToString();
             information.FileInformation.ProductBuildPart = fileVersionInfo.ProductBuildPart.ToString();
