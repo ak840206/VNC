@@ -22,6 +22,7 @@ namespace VNC.Core
         //public bool IsDebug { get; set; }
         //public bool IsPrivateBuild { get; set; }
         //public bool IsSpecialBuild { get; set; }
+
     }
 
     public class FileInformation
@@ -50,6 +51,7 @@ namespace VNC.Core
     {
         public AssemblyInformation AssemblyInformation = new AssemblyInformation();
         public FileInformation FileInformation = new FileInformation();
+        public string RuntimeVersion { get; set; }
     }
 
     public class Common
@@ -101,6 +103,10 @@ namespace VNC.Core
             information.FileInformation.IsPreRelease = fileVersionInfo.IsPreRelease;
             information.FileInformation.IsPrivateBuild = fileVersionInfo.IsPrivateBuild;
             information.FileInformation.IsSpecialBuild = fileVersionInfo.IsSpecialBuild;
+
+            // Runtime Information
+
+            information.RuntimeVersion = FileVersionInfo.GetVersionInfo(typeof(int).Assembly.Location).FileVersion;
         }
 
         public static Information GetInformation(Assembly assembly, FileVersionInfo fileVersionInfo)
@@ -134,7 +140,7 @@ namespace VNC.Core
             information.FileInformation.ProductVersion = fileVersionInfo.ProductVersion;
 
             information.FileInformation.ProductMajorPart = fileVersionInfo.ProductMajorPart.ToString();
-            information.FileInformation.ProductMinorPart = fileVersionInfo.ProductMajorPart.ToString();
+            information.FileInformation.ProductMinorPart = fileVersionInfo.ProductMinorPart.ToString();
             information.FileInformation.ProductBuildPart = fileVersionInfo.ProductBuildPart.ToString();
 
             information.FileInformation.Comments = fileVersionInfo.Comments;

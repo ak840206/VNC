@@ -106,6 +106,8 @@ namespace VNC.Core.Mvvm
         public string IsPrivateBuildVNCCore { get => Common.InformationVNCCore.FileInformation.IsPrivateBuild.ToString(); }
         public string IsSpecialBuildVNCCore { get => Common.InformationVNCCore.FileInformation.IsSpecialBuild.ToString(); }
 
+        public string RuntimeVersion { get => Common.InformationVNCCore.RuntimeVersion; }
+
         #region INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;
