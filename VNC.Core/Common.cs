@@ -37,7 +37,6 @@ namespace VNC.Core
         public string ProductMinorPart { get; set; }
         public string ProductBuildPart { get; set; }
 
-
         public string Comments { get; set; }
 
         public bool IsDebug { get; set; }
@@ -53,7 +52,7 @@ namespace VNC.Core
         public FileInformation FileInformation = new FileInformation();
     }
 
-    public static class Common
+    public class Common
     {
         public static Information InformationApplication = new Information();
         public static Information InformationVNCCore = new Information();
@@ -61,7 +60,7 @@ namespace VNC.Core
         public const string APPNAME = "VNCCore";
         public const string LOG_CATEGORY = "VNCCore";
 
-        public static void SetInformation(Information information, Assembly assembly, FileVersionInfo fileVersionInfo)
+        private static void SetInformation(Information information, Assembly assembly, FileVersionInfo fileVersionInfo)
         {
             // Information in Assembly
             AssemblyName assemblyName = assembly.GetName();
@@ -71,11 +70,13 @@ namespace VNC.Core
             information.AssemblyInformation.FullName = assemblyName.FullName;
 
             information.AssemblyInformation.AssemblyTitle = assembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
-            information.AssemblyInformation.AssemblyVerison = assembly.GetCustomAttribute<AssemblyVersionAttribute>().Version;
+            // NOTE(crhodes)
+            // Throws Exception
+            information.AssemblyInformation.AssemblyVerison = assembly.GetCustomAttribute<AssemblyVersionAttribute>()?.Version;
             information.AssemblyInformation.Company = assembly.GetCustomAttribute<AssemblyCompanyAttribute>().Company;
             information.AssemblyInformation.Configuration = assembly.GetCustomAttribute<AssemblyConfigurationAttribute>().Configuration;
-            information.AssemblyInformation.Copyright = assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
-            information.AssemblyInformation.Description = assembly.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
+            information.AssemblyInformation.Copyright = assembly.GetCustomAttribute<AssemblyCopyrightAttribute>()?.Copyright;
+            information.AssemblyInformation.Description = assembly.GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description;
             information.AssemblyInformation.FileVersion = assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
             information.AssemblyInformation.InformationalVersion = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
             information.AssemblyInformation.Product = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;

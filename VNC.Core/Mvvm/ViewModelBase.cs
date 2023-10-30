@@ -74,13 +74,37 @@ namespace VNC.Core.Mvvm
         public string AssemblyCopyrightVNCCore { get => Common.InformationVNCCore.AssemblyInformation.Copyright; }
         public string AssemblyDescriptionVNCCore { get => Common.InformationVNCCore.AssemblyInformation.Description; }
 
-        public string FileInformationFileVersion { get => Common.InformationApplication.AssemblyInformation.FileVersion; }
-        public string AssemlbyInformationalVersion { get => Common.InformationApplication.AssemblyInformation.InformationalVersion; }
-        public string AssemblyProduct { get => Common.InformationApplication.AssemblyInformation.Product; }
 
-        public string AssemblyFileVersionVNCCore { get => Common.InformationVNCCore.AssemblyInformation.FileVersion; }
-        public string AssemlbyInformationalVersionVNCCore { get => Common.InformationVNCCore.AssemblyInformation.InformationalVersion; }
-        public string AssemblyProductVNCCore { get => Common.InformationVNCCore.AssemblyInformation.Product; }
+
+        public string FileVersion { get => Common.InformationApplication.FileInformation.FileVersion; }
+        public string FileDescription { get => Common.InformationApplication.FileInformation.FileDescription; }
+        public string ProductName { get => Common.InformationApplication.FileInformation.ProductName; }
+        public string InternalName { get => Common.InformationApplication.FileInformation.InternalName; }
+        public string ProductVersion { get => Common.InformationApplication.FileInformation.ProductVersion; }
+        public string ProductMajorPart { get => Common.InformationApplication.FileInformation.ProductMajorPart; }
+        public string ProductMinorPart { get => Common.InformationApplication.FileInformation.ProductMinorPart; }
+        public string ProductBuildPart { get => Common.InformationApplication.FileInformation.ProductBuildPart; }
+        public string Comments { get => Common.InformationApplication.FileInformation.Comments; }
+        public string IsDebug { get => Common.InformationApplication.FileInformation.IsDebug.ToString(); }
+        public string IsPatched { get => Common.InformationApplication.FileInformation.IsPatched.ToString(); }
+        public string IsPreRelease { get => Common.InformationApplication.FileInformation.IsPreRelease.ToString(); }
+        public string IsPrivateBuild { get => Common.InformationApplication.FileInformation.IsPrivateBuild.ToString(); }
+        public string IsSpecialBuild { get => Common.InformationApplication.FileInformation.IsSpecialBuild.ToString(); }
+
+        public string FileVersionVNCCore { get => Common.InformationVNCCore.FileInformation.FileVersion; }
+        public string FileDescriptionVNCCore { get => Common.InformationVNCCore.FileInformation.FileDescription; }
+        public string ProductNameVNCCore { get => Common.InformationVNCCore.FileInformation.ProductName; }
+        public string InternalNameVNCCore { get => Common.InformationVNCCore.FileInformation.InternalName; }
+        public string ProductVersionVNCCore { get => Common.InformationVNCCore.FileInformation.ProductVersion; }
+        public string ProductMajorPartVNCCore { get => Common.InformationVNCCore.FileInformation.ProductMajorPart; }
+        public string ProductMinorPartVNCCore { get => Common.InformationVNCCore.FileInformation.ProductMinorPart; }
+        public string ProductBuildPartVNCCore { get => Common.InformationVNCCore.FileInformation.ProductBuildPart; }
+        public string CommentsVNCCore { get => Common.InformationVNCCore.FileInformation.Comments; }
+        public string IsDebugVNCCore { get => Common.InformationVNCCore.FileInformation.IsDebug.ToString(); }
+        public string IsPatchedVNCCore { get => Common.InformationVNCCore.FileInformation.IsPatched.ToString(); }
+        public string IsPreReleaseVNCCore { get => Common.InformationVNCCore.FileInformation.IsPreRelease.ToString(); }
+        public string IsPrivateBuildVNCCore { get => Common.InformationVNCCore.FileInformation.IsPrivateBuild.ToString(); }
+        public string IsSpecialBuildVNCCore { get => Common.InformationVNCCore.FileInformation.IsSpecialBuild.ToString(); }
 
         #region INotifyPropertyChanged
 
